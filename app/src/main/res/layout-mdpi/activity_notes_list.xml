@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pesh.mori.learnerapp.NotesList">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/app_bar_layout_main"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/layout_recycler_notes"
+            android:layout_width="match_parent"
+            android:layout_height="300sp"
+            tools:layout_editor_absoluteY="8dp"
+            tools:layout_editor_absoluteX="8dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_notes_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Loading..."
+        android:layout_marginTop="30dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/colorAccent"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:gravity="center">
+    </TextView>
+
+</FrameLayout>

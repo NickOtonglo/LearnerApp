@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/frame_select_login_main"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".SelectLoginActivity"
+    android:background="@color/colorPrimaryDark">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="120sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:backgroundTint="@color/tint"
+        android:backgroundTintMode="src_atop"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/app"
+        android:animateLayoutChanges="true"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:paddingBottom="50sp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/txt_bottom_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:text="v2.0"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
+    <include
+        layout="@layout/layout_login"/>
+
+    <include
+        layout="@layout/layout_update"/>
+
+    <include
+        layout="@layout/layout_maintenance"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_mini"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        android:layout_margin="20sp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:visibility="gone"/>
+
+</FrameLayout>

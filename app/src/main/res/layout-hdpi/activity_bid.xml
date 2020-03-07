@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".BidActivity"
+    android:layout_margin="8sp"
+    android:padding="7sp"
+    android:animateLayoutChanges="true">
+
+
+    <TextView
+        android:id="@+id/txtTransactPrompt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:padding="5sp"
+        android:text="A Bid allows you to purchase an item for a lesser amount."
+        android:textColor="@color/colorPrimaryDark"
+        android:drawableRight="@drawable/zawadi"
+        android:drawablePadding="10dp"/>
+
+    <EditText
+        android:id="@+id/txt_edit_bid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageButton"
+        android:layout_margin="3sp"
+        android:inputType="number"
+        android:background="@drawable/input_outline"
+        android:padding="15sp"
+        android:hint="Enter Bid Amount" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_bid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:layout_gravity="center"
+        android:text="Submit Bid"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/colorPrimaryDark"
+        app:backgroundTint="@color/colorPrimaryDark"/>
+
+</LinearLayout>
+

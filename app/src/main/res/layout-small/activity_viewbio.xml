@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical"
+        tools:context=".ViewBioActivity"
+        tools:ignore="HardcodedText">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            tools:context="pesh.mori.learnerapp.ViewBioActivity"
+            tools:ignore="HardcodedText">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="30dp"
+                android:onClick="didThis"
+                android:src="@drawable/zawadi"
+                app:civ_border_color="@color/colorAccent"
+                app:civ_border_width="2dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="150dp"
+                android:src="@drawable/ic_action_female" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top|left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="200dp"
+                android:text="Zawadi"
+                android:textAlignment="center"
+                android:textColor="@color/blue"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top|left"
+                android:layout_marginTop="260dp"
+                android:text="about Zawadi"
+                android:textAlignment="center"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="285dp"
+                android:text="I am a second year medical student at Kenyatta University, Nairobi Kenya."
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top|left"
+                android:layout_marginTop="330dp"
+                android:text="skill or occupation sector"
+                android:textAlignment="center"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="355dp"
+                android:text="Medicine And Pharmacy"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top|left"
+                android:layout_marginTop="390dp"
+                android:text="skills or qualifications"
+                android:textAlignment="center"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="415dp"
+                android:text="B.Med (Pharmacy). Accounting. Business Management. Class Representative (Kenyatta University). "
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="480dp"
+                android:src="@mipmap/ic_fb" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="490dp"
+                android:text="Zawadi254"
+                android:textAlignment="center"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="530dp"
+                android:src="@mipmap/ic_twitter" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="540dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="580dp"
+                android:src="@mipmap/ic_linkedin" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="590dp"
+                android:text="Zawadi Africa"
+                android:textAlignment="center"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+
+
+
+
+    </FrameLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

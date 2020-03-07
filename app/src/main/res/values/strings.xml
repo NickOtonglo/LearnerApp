@@ -1,0 +1,154 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">L\'earnerApp</string>
+    <string name="hint_username">username</string>
+    <string name="hint_password">password</string>
+    <string name="text_academia">academic</string>
+    <string name="link_new_account"><u>Create new account</u></string>
+    <string name="link_forgot_password"><u>Forgot password?</u></string>
+    <string name="text_social">social</string>
+    <string name="text_select">search and download file</string>
+    <string name="text_pdf">course notes</string>
+    <string name="text_audio">audio course</string>
+    <string name="text_register">file_upload</string>
+    <string name="hint_university">Institution</string>
+    <string name="hint_school">School</string>
+    <string name="hint_department">School Department</string>
+    <string name="hint_course">Course Unit</string>
+    <string name="hint_lecturer">Course Instructor</string>
+    <string name="hint_name">Title</string>
+    <string name="hint_ok">Select File</string>
+    <string name="hint_pdf">Document Notes</string>
+    <string name="hint_audio">Audio Course</string>
+    <string name="error_message_username">Enter your Username</string>
+    <string name="error_message_password">Enter your Password</string>
+    <string name="error_message_passwordconfirm">Confirm Password</string>
+    <string name="error_message_name">Enter a Title</string>
+    <string name="error_message_subcategory">Enter a Do-It-Yourself Sub-Category</string>
+    <string name="error_message_university">Enter the Learning Institution\'s Name</string>
+    <string name="error_message_school">Enter the School/Faculty</string>
+    <string name="error_message_lecturer">Enter the Course Instructor</string>
+    <string name="error_message_diyinstructor">Enter the Do-It-Yourself Instructor</string>
+    <string name="error_message_department">Enter the School/Faculty Department</string>
+    <string name="error_message_course">Enter the Course Unit\'s Code and Name</string>
+    <string name="error_message_inst">Select a Learning Institution</string>
+    <string name="error_message_search">Search Empty</string>
+    <string name="error_message_firstname">Enter your First Name</string>
+    <string name="error_message_lastname">Enter your Last Name</string>
+    <string name="error_message_dob">Enter your Date of Birth d/m/yyyy</string>
+    <string name="error_message_email">Enter your Email Address</string>
+    <string name="error_message_phone">Enter your Phone Number</string>
+    <string name="error_message_code">Empty Verification Code</string>
+    <string name="error_message_newemail">Enter Email Address</string>
+    <string name="error_message_uploader">Enter the uploader\'s Username </string>
+    <string name="error_message_title">Enter the Content\'s Name</string>
+    <string name="error_message_bid">Empty Bid Amount</string>
+    <string name="error_message_oldpassword">Enter your Old Password</string>
+    <string name="error_message_fpusername">Enter Your Registration Username</string>
+    <string name="error_message_fpemail">Enter Your Registration Email Address</string>
+    <string name="text_login">login</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="error_general">Error!</string>
+    <string name="error_no_internet_connectivity">You are offline</string>
+
+    <string name="option_alert_yes">Yes</string>
+    <string name="option_alert_no">No</string>
+    <string name="option_alert_later">Later</string>
+    <string name="info_post_deleted">Post deleted</string>
+    <string name="error_error_occured_try_again">Post deleted</string>
+    <string name="title_alert_permissions_needed">Permission(s) Required</string>
+    <string name="info_alert_permissions_needed">The application requires some permissions in order to perform this action.\nPlease enable all required permissions in the app settings menu.</string>
+    <string name="option_alert_close">Close</string>
+    <string name="option_alert_open_settings">Open Settings</string>
+
+    <!--ViewAuthorActivity_DetailsFragment-->
+    <string name="info_no_user_bio">Bio is private</string>
+
+    <!-- ViewFileActivity/ViewDiyActivity -->
+    <string name="info_private_post">Sorry, this post is private.</string>
+
+    <!-- PreviewPostActivity -->
+    <string name="error_unable_to_delete">Error! Unable to delete. Please try again</string>
+    <string name="error_unable_to_save">Error! Unable to save. Please try again</string>
+
+    <!-- NewFileUpload/NewDiyUpload -->
+    <string name="alert_publish">Would you like review your post and publish right away?\nIf not, you can publish it at your own time. The post will not be made public until you publish it.\nYou can find it in your Uploads directory</string>
+    <string name="option_alert_review_and_publish">Review and Publish</string>
+    <string name="info_post_created">Post created</string>
+
+    <!-- ViewFileActivity/ViewDiyActivity -->
+    <string name="info_cannot_remove_already_purchased">You can\'t remove this post at the moment, since at least one user has purchased it. Contact support.</string>
+    <string name="info_cannot_remove_already_owned">You can\'t remove this post at the moment, since at least one other user now owns it. Contact support.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="trans_bal_insufficient">Your balance is insufficient.</string>
+    <string name="trans_successful">Transaction successful. Your new balance is: </string>
+
+    <string name="default_notification_channel_id" translatable="false">codingwithmitch.com.firebasedirectmessage.default_notification_channel_id</string>
+
+    <string name="facebook_app_id">349521735663309</string>
+    <string name="fb_login_protocol_scheme">fb349521735663309</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_new_home">NewHome</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_author">AuthorActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_view_author">Author Details</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- Preferences -->
+    <string name="pref_profile_key">profile</string>
+    <string name="pref_profile_title">Profile settings</string>
+    <string name="pref_theme_key">theme</string>
+    <string name="pref_theme_title">Enable Signature Theme</string>
+
+    <!-- Africa's Talking API -->
+    <string name="africas_talking_username">sandbox</string>
+    <string name="africas_talking_api_key">b9fecdbf91ac3b3a5a10c8d55bcddd4081610335a5e72ca3c997714ac793541e</string>
+    <string name="africas_talking_environment">sandbox</string>
+    <string name="info_post_not_available">Sorry, this post is no longer available.</string>
+
+    <!-- buytokens -->
+    <string name="help_buy_token_0"><u>Need help?</u></string>
+    <string name="help_buy_token_1">In case you are having trouble purchasing tokens from within the  app, please take the following alternative route:</string>
+    <string name="help_buy_token_2">
+        \n 1.  Go to M-PESA menu in your SIM Toolkit
+        \n 2.  click on Lipa na M-PESA.
+        \n 3.  select Pay Bill.
+        \n 4.  select Enter business no.
+        \n 5.  enter Business Number as 733698 (our Pay Bill number)
+        \n 6.  select Account no.
+        \n 7.  enter the Safaricom mobile number (07XXXXXXXX) linked to your L\'earnerApp account as your Account Number
+        \n 8.  enter Amount in KES you would like to purchase tokens worth (1 token is worth 0.01USD)
+        \n 9.  enter your M-PESA PIN and wait for a message confirming the transaction was successful
+        \n 10. check your token balance on L\'earnerApp</string>
+
+    <string name="link_loading"><u>Loading...</u></string>
+    <string name="info_token_get_started">Get started by following the link below:</string>
+    <string name="app_privacy_policy"><u>Privacy Policy</u></string>
+    <string name="action_open_in_browser">Open in Browser</string>
+    <string name="info_user_disabled">Your account is currently disabled. Kindly contact our team on any social media platform such as Twitter (@L_earnerApp) for assistance.</string>
+    <string name="info_new_phone_alert_message_1">We will send a verification SMS to the device that contains the SIM card with the number you provided</string>
+    <string name="info_new_phone_alert_message_2">L\'earnerApp will attempt to access the verification code sent in the SMS to verify your phone number</string>
+    <string name="info_new_phone_alert_message_3">If the process is successful, you will not need to do anything further. However, if L\'earnerApp is unable to complete phone verification automatically, kindly go to the Messages app and retreive the verification code from the verification SMS sent to your device</string>
+
+    <string name="title_alert_permission_denied">Permission Denied</string>
+    <string name="info_alert_permission_denied">You need to grant L\'earnerApp permission to read the incoming message that contains the verification code in order to automatically verify your phone number.
+    \n However, you can complete the verification process manually by going back to the previous screen and entering the verification code sent to your Messages inbox.</string>
+    <string name="option_alert_go_back">Go to previous screen</string>
+
+    <string name="error_occurred_try_again">An error occurred. Please try again.</string>
+
+</resources>

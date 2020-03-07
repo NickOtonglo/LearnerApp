@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference
+        android:key="@string/pref_profile_key"
+        android:title="@string/pref_profile_title"
+        android:summary="Manage your account settings here"/>
+
+    <SwitchPreferenceCompat
+        android:key="@string/pref_theme_key"
+        android:title="@string/pref_theme_title"
+        android:summary="This feature is coming soon"
+        android:enabled="false"/>
+</PreferenceScreen>

@@ -1,0 +1,102 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/transfertokens"
+    tools:context="pesh.mori.learnerapp.transfertokens"
+    tools:ignore="HardcodedText"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutusername"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_tokens_transfer_amount"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:padding="9dp"
+            android:drawablePadding="5dp"
+            android:background="@drawable/input_outline"
+            android:drawableLeft="@drawable/ic_monetization_on_black_24dp"
+            android:hint="enter amount of tokens to share"
+            android:textColorHint="@color/grey"
+            android:textStyle="bold"
+            android:inputType="text|number"
+            android:maxLines="1"
+            android:textSize="15sp"
+            android:textColor="@color/black"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:id="@+id/textInputLayoutamount"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_margin="10dp">-->
+
+        <!--<android.support.design.widget.TextInputEditText-->
+            <!--android:id="@+id/txt_tokens_transfer_email"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:padding="9dp"-->
+            <!--android:drawablePadding="5dp"-->
+            <!--android:background="@drawable/input_outline"-->
+            <!--android:drawableLeft="@drawable/ic_account_circle_black_24dp"-->
+            <!--android:hint="enter email of user to send tokens to"-->
+            <!--android:textColorHint="@color/grey"-->
+            <!--android:textStyle="bold"-->
+            <!--android:inputType="text"-->
+            <!--android:maxLines="1"-->
+            <!--android:textSize="15sp"-->
+            <!--android:textColor="@color/black"/>-->
+    <!--</android.support.design.widget.TextInputLayout>-->
+
+    <Button
+        android:id="@+id/btn_transfer_search_user"
+        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_margin="30dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:background="@drawable/input_outline_green"
+        android:text="Select user from list"
+        android:textAllCaps="false"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:id="@+id/layout_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:elevation="5sp"
+        android:background="@drawable/input_outline_green"
+        android:visibility="gone">
+
+        <include
+            layout="@layout/card_user_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_transfer_tokens"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="30dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/colorPrimary"
+        android:text="Transfer"
+        android:textStyle="bold"
+        android:textSize="15sp"/>
+
+
+</LinearLayout>

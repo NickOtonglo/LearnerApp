@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BuyTokenGuide">
+
+    <include
+        layout="@layout/app_bar_layout_main"/>
+
+    <TextView
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/help_buy_token_1"/>
+    <TextView
+        android:id="@+id/txt_message"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/help_buy_token_2"/>
+
+    <Button
+        android:padding="16dp"
+        android:id="@+id/btn_open_stk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:layout_gravity="center"
+        android:text="Open SIM Toolkit"
+        android:textAllCaps="false"
+        android:background="@drawable/input_outline_greenss"
+        android:textColor="@color/white"
+        android:visibility="visible"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

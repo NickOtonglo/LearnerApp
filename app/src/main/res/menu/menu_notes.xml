@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/new_note"
+        android:icon="@drawable/ic_new_note"
+        android:title="New Note" />
+    <item
+        android:id="@+id/all_notes"
+        android:icon="@drawable/ic_view_notes"
+        android:title="View Notes" />
+</menu>

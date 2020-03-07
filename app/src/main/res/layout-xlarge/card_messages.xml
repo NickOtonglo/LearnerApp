@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10sp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4sp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="6">
+
+                <TextView
+                    android:id="@+id/txt_title_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Title..."
+                    android:padding="7sp"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/txt_read_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:padding="4sp"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/red"
+                    android:textAlignment="textEnd"
+                    android:layout_gravity="end"
+                    android:layout_weight="5"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="7sp"
+                android:paddingRight="7sp"
+                android:paddingBottom="7sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From: "
+                    android:textSize="14dp"/>
+
+                <TextView
+                    android:id="@+id/txt_sender_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="From..."
+                    android:textSize="14dp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="7sp"
+                android:paddingRight="7sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Created at: "
+                    android:textSize="13dp"/>
+
+                <TextView
+                    android:id="@+id/txt_time_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Time..."
+                    android:textSize="13dp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_text_msg"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:text="Text..."
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:paddingLeft="7sp"
+                android:paddingRight="7sp"
+                android:paddingTop="7sp"
+                android:textSize="14dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

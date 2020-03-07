@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_main_header_profile"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:onClick="doThis"
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:src="@drawable/ic_action_user"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="top|left"
+                android:layout_margin="10dp"/>
+
+
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="150dp"
+                android:orientation="vertical"
+                android:layout_gravity="right"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/txt_header_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hi there!..."
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"
+                    android:layout_weight="1"
+                    android:textAlignment="center" />
+
+
+                <TextView
+                    android:id="@+id/txt_header_tokens"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5sp"
+                    android:layout_gravity="center|right"
+                    android:textSize="30sp"
+                    android:text="0.00"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</FrameLayout>

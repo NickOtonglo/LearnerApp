@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_action_laptop"
+        android:layout_gravity="center|right"
+        android:layout_marginRight="50dp"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_action_phone"
+        android:layout_gravity="center|left"
+        android:layout_marginLeft="50dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="establishing PC connection..."
+        android:textColor="@color/grey"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"/>
+
+
+
+</FrameLayout>

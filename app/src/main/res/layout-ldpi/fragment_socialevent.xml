@@ -1,0 +1,86 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/socialevent"
+    android:background="@color/colorPrimaryDark"
+    tools:context="pesh.mori.learnerapp.socialevent">
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textColor="@color/white"
+            android:text="academic essay"
+            android:textStyle="bold"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textColor="@color/white"
+            android:text="academic thesis"
+            android:textStyle="bold"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textColor="@color/white"
+            android:text="academic project "
+            android:textStyle="bold"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textColor="@color/white"
+            android:text="academic proposal "
+            android:textStyle="bold"/>
+    </RadioGroup>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutInstitution"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="150dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextInstitution"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:hint="select a learning institution"
+            android:drawableStart="@drawable/ic_location_city_black_24dp"
+            android:drawableLeft="@drawable/ic_location_city_black_24dp"
+            android:textColorHint="@color/black"
+            android:textStyle="bold"
+            android:inputType="textCapWords"
+            android:maxLines="1"
+            android:textSize="15sp"
+            android:textColor="@color/white"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Requests to display"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/find"
+        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom|end"
+        android:textColor="@color/grey"
+        android:background="@color/colorPrimary"
+        android:text="WRITE"
+        android:textStyle="bold"
+        android:textSize="15sp"/>
+
+
+
+
+
+
+
+</FrameLayout>

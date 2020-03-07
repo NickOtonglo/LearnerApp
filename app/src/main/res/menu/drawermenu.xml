@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/buy" android:title="Tokens" android:icon="@drawable/ic_monetization_on_black_24dp" android:onClick="doThis"/>
+    <item android:id="@+id/myfiles" android:title="Files" android:icon="@drawable/ic_folder_black_24dp" android:onClick="doThis"/>
+    <item android:id="@+id/messages" android:title="Messages" android:icon="@drawable/ic_forum_black_24dp" android:onClick="doThis"/>
+    <item android:id="@+id/pc" android:title="Connect PC" android:icon="@drawable/ic_laptop_black_24dp" android:onClick="doThis"/>
+    <item android:id="@+id/settings" android:title="Settings" android:icon="@drawable/ic_settings_black_24dp" android:onClick="doThis"/>
+    <item android:id="@+id/report" android:title="Report" android:icon="@drawable/ic_report_black_24dp" android:onClick="doThis"/>
+    <item android:id="@+id/social" android:title="Get to Know Us" android:icon="@drawable/ic_person_black_24dp" android:onClick="doThis"/>
+    <item android:id="@+id/logout" android:title="Logout" android:icon="@drawable/ic_exit_to_app_black_24dp" android:onClick="doThis"/>
+
+</menu>

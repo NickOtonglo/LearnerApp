@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewTransactionActivity"
+    android:orientation="vertical"
+    android:animateLayoutChanges="true">
+
+    <include
+        layout="@layout/app_bar_layout_main"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layout_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Timestamp: "
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loading..."
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_reg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:text="Reference Number"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_ref"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/input_outline_primary_dark"
+                    android:padding="15sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="Loading..." />
+
+                <TextView
+                    android:id="@+id/txt_item_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:text="Item"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/input_outline_primary_dark"
+                    android:padding="15sp"
+                    android:textColor="@color/black"
+                    android:text="Loading..." />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:text="Transaction Cost"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/input_outline_primary_dark"
+                    android:padding="15sp"
+                    android:textColor="@color/black"
+                    android:text="Loading..." />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:text="Prior Balance"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_bal_prev"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/input_outline_primary_dark"
+                    android:padding="15sp"
+                    android:textColor="@color/black"
+                    android:text="Loading..." />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:text="New Balance"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_bal_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/input_outline_primary_dark"
+                    android:padding="15sp"
+                    android:textColor="@color/black"
+                    android:text="Loading..." />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_tk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:text="Reference Number"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_ref_tk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/input_outline_primary_dark"
+                    android:padding="15sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="Loading..." />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:text="Item"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_item_tk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/input_outline_primary_dark"
+                    android:padding="15sp"
+                    android:textColor="@color/black"
+                    android:text="Loading..." />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:text="Transaction Cost"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_amount_tk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/input_outline_primary_dark"
+                    android:padding="15sp"
+                    android:textColor="@color/black"
+                    android:text="Loading..." />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:text="Prior Balance"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_bal_prev_tk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/input_outline_primary_dark"
+                    android:padding="15sp"
+                    android:textColor="@color/black"
+                    android:text="Loading..." />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:text="New Balance"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_bal_new_tk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/input_outline_primary_dark"
+                    android:padding="15sp"
+                    android:textColor="@color/black"
+                    android:text="Loading..." />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:text="Account Number"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_account_tk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/input_outline_primary_dark"
+                    android:padding="15sp"
+                    android:textColor="@color/black"
+                    android:text="Loading..." />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:text="Exchange Rate (1 USD to KES)"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/txt_rate_tk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/input_outline_primary_dark"
+                    android:padding="15sp"
+                    android:textColor="@color/black"
+                    android:text="Loading..." />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

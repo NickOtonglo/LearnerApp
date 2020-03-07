@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/buy"
+            android:icon="@drawable/ic_monetization_on_black_24dp"
+            android:title="Tokens" />
+        <item
+            android:id="@+id/nav_transaction_records"
+            android:icon="@drawable/ic_records"
+            android:title="Transaction Records" />
+        <item
+            android:id="@+id/myfiles"
+            android:icon="@drawable/ic_folder_black_24dp"
+            android:title="Content" />
+
+    </group>
+
+    <item android:title="More">
+        <menu>
+            <item
+                android:id="@+id/messages"
+                android:icon="@drawable/ic_forum_black_24dp"
+                android:title="Messages" />
+        </menu>
+    </item>
+
+    <item android:title="Tools">
+        <menu>
+            <item
+                android:id="@+id/settings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="Settings" />
+            <item
+                android:id="@+id/support"
+                android:icon="@drawable/ic_sentiment_satisfied_black_24dp"
+                android:title="Support" />
+            <item
+                android:id="@+id/terms"
+                android:icon="@drawable/ic_insert_drive_file_black_24dp"
+                android:title="Terms and Conditions" />
+            <item
+                android:id="@+id/privacy_policy"
+                android:icon="@mipmap/ic_privacy_policy_48"
+                android:title="Privacy Policy"/>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_exit_to_app_black_24dp"
+        android:title="Log Out" />
+
+</menu>

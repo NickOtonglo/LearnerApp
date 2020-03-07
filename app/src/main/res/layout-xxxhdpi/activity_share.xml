@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/uploadpopup"
+    android:background="@color/tint">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textInputLayoutamount"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextamount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="enter username"
+            android:drawableLeft="@drawable/ic_account_circle_black_24dp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textColorHint="@color/grey"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_addperson"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="5dp"/>
+
+
+
+    <EditText
+        android:id="@+id/edtInput"
+        android:layout_width="match_parent"
+        android:hint="Enter message"
+        android:textColorHint="@color/grey"
+        android:layout_height="80dp"
+        android:layout_weight="1"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="290dp"
+        android:background="@color/white"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="100"
+        android:padding="10dp"
+        android:maxLines="10"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:drawableRight="@drawable/ic_action_send" />
+
+
+
+</FrameLayout>

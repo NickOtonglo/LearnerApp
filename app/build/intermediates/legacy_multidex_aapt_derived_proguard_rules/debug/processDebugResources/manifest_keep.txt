@@ -1,0 +1,2 @@
+# Referenced at F:\AndroidStudioProjects\LearnerApp\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:30
+-keep class androidx.multidex.MultiDexApplication { <init>(); }

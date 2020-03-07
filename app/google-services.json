@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "910546614269",
+    "firebase_url": "https://learnerapp0001.firebaseio.com",
+    "project_id": "learnerapp0001",
+    "storage_bucket": "learnerapp0001.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910546614269:android:df321e5bf9a817c7",
+        "android_client_info": {
+          "package_name": "pesh.mori.learnerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910546614269-r6jhe1qnedgcb9usbh40pngtf34986g5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pesh.mori.learnerapp",
+            "certificate_hash": "a096c861c151f0dbaa419ded48d87a09ab771a58"
+          }
+        },
+        {
+          "client_id": "910546614269-s5hk44qqi48aqc6ivid1snqja667o57l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVVhrpdBDQezHHDYHzeXB5287c91UzRnU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910546614269-s5hk44qqi48aqc6ivid1snqja667o57l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pesh.mori.learnerapp.NewFileUpload">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/app_bar_layout_main"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/upload_layout_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="0dp"
+                tools:layout_editor_absoluteX="8dp"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:text="File type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5sp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:weightSum="3">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_upload_audio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Audio"
+                        android:layout_gravity="left"/>
+
+                    <RadioButton
+                        android:id="@+id/radio_upload_video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Video" />
+
+                    <RadioButton
+                        android:id="@+id/radio_upload_doc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Doc"
+                        android:layout_gravity="right"/>
+
+                </FrameLayout>
+
+            </RadioGroup>
+
+            <!--Image layout-->
+            <LinearLayout
+                android:id="@+id/upload_layout_2"
+                android:layout_marginTop="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btn_select_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:layout_gravity="center"
+                    android:text="Select image"
+                    android:textAllCaps="false"
+                    android:background="@drawable/input_outline_greenss"
+                    android:textColor="@color/white"
+                    android:padding="8sp"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:id="@+id/btn_upload_select_image"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/input_outline_greenss"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true" />
+
+            </LinearLayout>
+
+            <!--Audio layout-->
+            <LinearLayout
+                android:id="@+id/upload_layout_3"
+                android:layout_marginTop="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btn_select_audio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:layout_gravity="center"
+                    android:text="Select audio"
+                    android:textAllCaps="false"
+                    android:background="@drawable/input_outline_greenss"
+                    android:textColor="@color/white"
+                    android:padding="8sp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_play_audio"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/baseline_play_circle_outline_white_18dp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/input_outline_greenss"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+            <!--Video layout-->
+            <LinearLayout
+                android:id="@+id/upload_layout_4"
+                android:layout_marginTop="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btn_select_video"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:layout_gravity="center"
+                    android:text="Select video"
+                    android:textAllCaps="false"
+                    android:background="@drawable/input_outline_greenss"
+                    android:textColor="@color/white"
+                    android:padding="8sp"/>
+
+                <ImageView
+                    android:id="@+id/btn_upload_select_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/input_outline_greenss"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true" />
+
+                <RelativeLayout
+                    android:id="@+id/layout_upload_file_video_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <VideoView
+                        android:id="@+id/img_upload_file_play_video"
+                        android:layout_width="match_parent"
+                        android:layout_height="250sp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15sp"
+                        android:adjustViewBounds="true"
+                        android:background="#00ffffff"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/btn_view_upload_time_play"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="80dp"
+                        android:src="@drawable/baseline_play_arrow_white_24" />
+
+                    <ProgressBar
+                        android:id="@+id/buffer_progress_upload_file"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="80dp"
+                        android:visibility="gone"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <!--Doc layout-->
+            <LinearLayout
+                android:id="@+id/upload_layout_7"
+                android:layout_marginTop="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btn_select_doc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:layout_gravity="center"
+                    android:text="Select PDF"
+                    android:textAllCaps="false"
+                    android:background="@drawable/input_outline_greenss"
+                    android:textColor="@color/white"
+                    android:padding="8sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:padding="10sp"
+                    android:id="@+id/txt_upload_select_doc"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/input_outline"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    android:text="no file selected"/>
+
+            </LinearLayout>
+
+            <!--Thumbnail layout-->
+            <LinearLayout
+                android:id="@+id/upload_layout_8"
+                android:layout_marginTop="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btn_select_thumbnail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:layout_gravity="center"
+                    android:text="Set thumbnail (optional)"
+                    android:textAllCaps="false"
+                    android:background="@drawable/input_outline_greenss"
+                    android:textColor="@color/white"
+                    android:padding="8sp"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:id="@+id/img_upload_select_thumbnail"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/input_outline_greenss"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/upload_layout_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/txt_upload_file_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:padding="15sp"
+                    android:background="@drawable/input_outline"
+                    android:layout_below="@+id/imageButton"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:hint="Title..."/>
+
+                <EditText
+                    android:id="@+id/txt_upload_file_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:background="@drawable/input_outline"
+                    android:ems="10"
+                    android:layout_marginTop="15sp"
+                    android:padding="15sp"
+                    android:layout_below="@+id/txt_title_post"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:hint="Description..."/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/upload_layout_6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Institution"/>
+                    <Spinner
+                        android:id="@+id/spinner_upload_institution"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15sp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="School/Faculty"/>
+                        <Spinner
+                            android:id="@+id/spinner_upload_faculty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15sp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Department"/>
+                        <Spinner
+                            android:id="@+id/spinner_upload_department"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15sp"
+                        android:orientation="vertical">
+                        <Spinner
+                            android:id="@+id/spinner_upload_unit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/txt_course"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:background="@drawable/input_outline"
+                        android:ems="10"
+                        android:layout_marginTop="15sp"
+                        android:padding="15sp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:hint="Course Program"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/txt_department"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:background="@drawable/input_outline"
+                        android:ems="10"
+                        android:layout_marginTop="15sp"
+                        android:padding="15sp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:hint="Department"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/txt_unit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:background="@drawable/input_outline"
+                        android:ems="10"
+                        android:layout_marginTop="15sp"
+                        android:padding="15sp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:hint="Course Unit"/>
+                </LinearLayout>
+
+
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/layout_upload_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Price (Tokens)"/>
+                    <EditText
+                        android:id="@+id/txt_file_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="0.00"
+                        android:hint="0.00"
+                        android:inputType="numberDecimal"/>
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:layout_editor_absoluteY="0dp"
+                        tools:layout_editor_absoluteX="8dp"
+                        android:layout_gravity="center_horizontal">
+
+                        <TextView
+                            android:text="Accept bids?"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5sp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <RadioButton
+                                android:id="@+id/radio_upload_bid_yes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:text="Yes"/>
+
+                            <RadioButton
+                                android:id="@+id/radio_upload_bid_no"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="No"
+                                android:layout_weight="1"/>
+
+                        </LinearLayout>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_upload_file"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:layout_gravity="center"
+                android:text="Upload file"
+                android:textAllCaps="false"
+                android:background="@drawable/input_outline_greenss"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

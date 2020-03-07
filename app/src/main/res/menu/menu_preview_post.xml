@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_new_thumbnail"
+        android:title="New Thumbnail"/>
+    <item
+        android:id="@+id/menu_delete_post"
+        android:title="Delete Post"/>
+    <item
+        android:id="@+id/menu_save"
+        android:title="Save Changes"/>
+    <item
+        android:id="@+id/menu_publish"
+        android:title="Publish"/>
+</menu>

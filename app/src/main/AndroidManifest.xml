@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="pesh.mori.learnerapp">
+
+    <uses-sdk tools:overrideLibrary="com.firebase.ui" />
+
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<!--    <uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+<!--    <uses-permission android:name="android.permission.READ_PROFILE" />-->
+<!--    <uses-permission android:name="android.permission.READ_CONTACTS" />-->
+<!--    <uses-permission android:name="android.permission.RECEIVE_SMS" />-->
+<!--    <uses-permission android:name="android.permission.READ_SMS" />-->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:remove="android:appComponentFactory">
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"
+            tools:replace="android:value" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_push_notification" />
+
+<!--        <receiver android:name=".MyBroadcastReceiver" android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SelectLoginActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:label="Password Reset"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme3" />
+        <activity
+            android:name=".RegistrationActivity"
+            android:label="Sign Up"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme3" />
+        <activity
+            android:name=".CredentialsActivity"
+            android:label="Create Credentials"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme3" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="Home"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme4" />
+        <activity
+            android:name=".CategoryActivity"
+            android:label="DIY"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme2" />
+        <activity
+            android:name=".DownloadDiyActivity"
+            android:label="DIY"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme2" />
+        <activity
+            android:name=".UploadDiyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme2" />
+        <activity
+            android:name=".InstitutionActivity"
+            android:label="Institution"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme2" />
+        <activity
+            android:name=".DownloadActivity"
+            android:label="Institution"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme2" />
+        <activity
+            android:name=".UploadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme2" />
+        <activity
+            android:name=".ContentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme2" />
+        <activity
+            android:name=".TokensActivity"
+            android:label="Tokens"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyFilesActivity"
+            android:label="Content"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SocialActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MymessagesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfileActivity"
+            android:label="Profile Settings"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ChangeEmailActivity"
+            android:label="Change Email"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme3" />
+        <activity
+            android:name=".ChangePasswordActivity"
+            android:label="Change Password"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme3" />
+        <activity
+            android:name=".BioActivity"
+            android:label="Bio"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme3" />
+        <activity
+            android:name=".ChangePhoneActivity"
+            android:label="New Phone Number"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme3" />
+        <activity
+            android:name=".MypcActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ReportPostActivity"
+            android:label="Report"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme3" />
+        <activity
+            android:name=".ViewBioActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ShareActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme2" />
+        <activity
+            android:name=".RecentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme2" />
+        <activity
+            android:name=".ContentDiyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme2" />
+        <activity
+            android:name=".WriterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme3" />
+        <activity
+            android:name=".NewFileUpload"
+            android:excludeFromRecents="true"
+            android:label="Upload File"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".NewNoteActivity"
+            android:excludeFromRecents="true"
+            android:label="New Note"
+            android:theme="@style/Theme.UserDialog" />
+        <activity
+            android:name=".ViewFileActivity"
+            android:label="Viewing"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ViewNoteActivity"
+            android:label="My Notes"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AuthenticationActivity"
+            android:excludeFromRecents="true"
+            android:label="Authentication"
+            android:theme="@style/Theme.UserDialog" />
+        <activity
+            android:name=".NewFileUploadFull"
+            android:excludeFromRecents="true"
+            android:label="Upload File"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".DownloadsList"
+            android:excludeFromRecents="true"
+            android:label="Search Results"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".NewDiyUpload"
+            android:excludeFromRecents="true"
+            android:label="New DIY Tutorial"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".MessagesActivity"
+            android:label="Messages"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ViewDiyActivity"
+            android:label="Viewing"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ViewMessagesActivity"
+            android:label="View Message"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".TransactionsActivity"
+            android:excludeFromRecents="true"
+            android:label="Purchase Item"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".BidActivity"
+            android:excludeFromRecents="true"
+            android:label="Bid Item"
+            android:theme="@style/Theme.UserDialog" />
+        <activity
+            android:name=".ViewBidActivity"
+            android:excludeFromRecents="true"
+            android:label="Bid Review"
+            android:theme="@style/Theme.UserDialog" />
+        <activity
+            android:name=".SearchUserActivity"
+            android:excludeFromRecents="true"
+            android:label="Select Recepient"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ReadDocument"
+            android:excludeFromRecents="true"
+            android:label="Read Document"
+            android:theme="@style/AppTheme" />
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_fullscreen"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".WelcomeActivity"
+            android:screenOrientation="portrait" /> <!-- <activity -->
+        <!-- android:name=".NewHome" -->
+        <!-- android:label="@string/title_activity_new_home" -->
+        <!-- android:theme="@style/AppTheme" /> -->
+        <activity
+            android:name=".NotesList"
+            android:excludeFromRecents="true"
+            android:label="List of Notes"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ViewAuthorActivity"
+            android:label="@string/title_activity_view_author"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/action_settings"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".MaintenanceActivity" />
+        <activity
+            android:name=".GoogleAuthHandlerActivity"
+            android:label="Sign In"
+            android:theme="@style/Theme.UserDialog" />
+        <activity
+            android:name=".FacebookAuthHandlerActivity"
+            android:label="Sign In"
+            android:theme="@style/Theme.UserDialog" />
+        <activity
+            android:name=".SetThumbnailActivity"
+            android:label="Select Thumbnail"
+            android:theme="@style/Theme.UserDialog" />
+        <activity android:name=".PhoneVerificationActivity" />
+        <activity
+            android:name=".PreviewPostActivity"
+            android:label="Preview Post"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".BuyTokenGuide"
+            android:excludeFromRecents="true"
+            android:label="Help"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ViewAnnouncementActivity"
+            android:label="Announcement"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".OpenPDF"
+            android:label="View Document"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".TransactionHistoryActivity"
+            android:label="Transactions History"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ViewTransactionActivity"
+            android:label="View Record"
+            android:theme="@style/AppTheme"/>
+    </application>
+
+</manifest>
