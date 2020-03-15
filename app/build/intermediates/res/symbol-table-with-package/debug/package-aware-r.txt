@@ -3891,6 +3891,7 @@ string error_occurred_try_again
 string error_unable_to_delete
 string error_unable_to_save
 string error_unregister_carrier_number
+string error_user_account_unable_to_transfer_tokens
 string expand_button_title
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
@@ -4026,6 +4027,7 @@ string option_alert_no
 string option_alert_open_settings
 string option_alert_review_and_publish
 string option_alert_yes
+string option_contact_support
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through

@@ -1726,12 +1726,12 @@ public final class R {
         public static final int country_zimbabwe_name = 0x7f110309;
         public static final int country_zimbabwe_number = 0x7f11030a;
         public static final int error_unregister_carrier_number = 0x7f110334;
-        public static final int no_result_found = 0x7f1103b3;
-        public static final int phone_code = 0x7f1103c1;
-        public static final int search_hint = 0x7f1103c8;
-        public static final int search_menu_title = 0x7f1103c9;
-        public static final int select_country = 0x7f1103cb;
-        public static final int status_bar_notification_info_overflow = 0x7f1103cd;
+        public static final int no_result_found = 0x7f1103b4;
+        public static final int phone_code = 0x7f1103c3;
+        public static final int search_hint = 0x7f1103ca;
+        public static final int search_menu_title = 0x7f1103cb;
+        public static final int select_country = 0x7f1103cd;
+        public static final int status_bar_notification_info_overflow = 0x7f1103cf;
     }
     public static final class style {
         private style() {}

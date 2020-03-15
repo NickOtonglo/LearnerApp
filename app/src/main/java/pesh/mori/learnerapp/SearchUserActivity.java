@@ -1,14 +1,20 @@
 package pesh.mori.learnerapp;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +37,7 @@ public class SearchUserActivity extends AppCompatActivity {
     private RecyclerView mRecycler;
     private DatabaseReference mUsers;
     private FirebaseAuth mAuth;
+    private AlertDialog.Builder mAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +54,8 @@ public class SearchUserActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_close);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        mAlert = new AlertDialog.Builder(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -105,70 +114,109 @@ public class SearchUserActivity extends AppCompatActivity {
     }
 
     public void listUsers(Query databaseReference){
-        FirebaseRecyclerAdapter<SearchUser,SearchUserActivity.UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<SearchUser,SearchUserActivity.UsersViewHolder>(
-                SearchUser.class,
-                R.layout.card_user_list,
-                SearchUserActivity.UsersViewHolder.class,
-                databaseReference
-        ) {
-            @Override
-            protected void populateViewHolder(final SearchUserActivity.UsersViewHolder viewHolder, SearchUser model, int position) {
-                final String userId = getRef(position).getKey();
+        try {
+            FirebaseRecyclerAdapter<SearchUser,SearchUserActivity.UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<SearchUser,SearchUserActivity.UsersViewHolder>(
+                    SearchUser.class,
+                    R.layout.card_user_list,
+                    SearchUserActivity.UsersViewHolder.class,
+                    databaseReference
+            ) {
+                @Override
+                protected void populateViewHolder(final SearchUserActivity.UsersViewHolder viewHolder, SearchUser model, int position) {
+                    final String userId = getRef(position).getKey();
 
-                mUsers.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(final DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()){
-                            if (dataSnapshot.getChildrenCount()>0){
-                                viewHolder.setName(String.valueOf(dataSnapshot.child(userId).child("username").getValue()));
-                                if (!dataSnapshot.child(userId).child("profile_picture").getValue().toString().equals("")){
-                                    viewHolder.setAvatar(getApplicationContext(),dataSnapshot.child(userId).child("profile_picture").getValue().toString());
+                    mUsers.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(final DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()){
+                                if (dataSnapshot.getChildrenCount()>0){
+                                    viewHolder.setName(String.valueOf(dataSnapshot.child(userId).child("username").getValue()));
+                                    if (dataSnapshot.child(userId).child("profile_picture").exists() && !dataSnapshot.child(userId).child("profile_picture").getValue().toString().equals("")){
+                                        viewHolder.setAvatar(getApplicationContext(),dataSnapshot.child(userId).child("profile_picture").getValue().toString());
+                                    } else {
+                                        viewHolder.setAvatar();
+                                    }
+                                    FirebaseDatabase.getInstance().getReference().child("Bio").child(userId).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            if (dataSnapshot.exists()){
+                                                viewHolder.setBio(String.valueOf(dataSnapshot.child("about").getValue()));
+                                            } else {
+                                                viewHolder.setBio("Bio information not available.");
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                    viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            if (dataSnapshot.child(userId).child("email").exists()){
+                                                if (dataSnapshot.child(userId).child("email").getValue().equals(mAuth.getCurrentUser().getEmail())){
+                                                    Toast.makeText(SearchUserActivity.this, "You cannot transfer tokens to yourself!", Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    Intent returnIntent = getIntent();
+                                                    returnIntent.putExtra("userId",userId);
+                                                    setResult(Activity.RESULT_OK,returnIntent);
+                                                    onBackPressed();
+                                                }
+                                            } else {
+                                                mAlert.setTitle(R.string.error_general)
+                                                        .setMessage(R.string.error_user_account_unable_to_transfer_tokens)
+                                                        .setPositiveButton(R.string.option_contact_support, new DialogInterface.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                                contactSupport();
+                                                            }
+                                                        })
+                                                        .setNegativeButton(R.string.option_alert_close, new DialogInterface.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                            }
+                                                        })
+                                                        .show();
+                                            }
+
+                                        }
+                                    });
                                 } else {
-                                    viewHolder.setAvatar();
+
                                 }
-                                FirebaseDatabase.getInstance().getReference().child("Bio").child(userId).addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                        if (dataSnapshot.exists()){
-                                            viewHolder.setBio(String.valueOf(dataSnapshot.child("about").getValue()));
-                                        } else {
-                                            viewHolder.setBio("Bio information not available.");
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-
-                                    }
-                                });
-                                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        if (dataSnapshot.child(userId).child("email").getValue().equals(mAuth.getCurrentUser().getEmail())){
-                                            Toast.makeText(SearchUserActivity.this, "You cannot transfer tokens to yourself!", Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            Intent returnIntent = getIntent();
-                                            returnIntent.putExtra("userId",userId);
-                                            setResult(Activity.RESULT_OK,returnIntent);
-                                            onBackPressed();
-                                        }
-                                    }
-                                });
-                            } else {
-
+                            } else if (!dataSnapshot.exists()){
                             }
-                        } else if (!dataSnapshot.exists()){
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
+                }
+            };
+            mRecycler.setAdapter(firebaseRecyclerAdapter);
+        } catch (NullPointerException e){
+            Log.d("LOG_EmptyUserNode",e.getMessage());
+        }
+    }
+
+    public void contactSupport(){
+        DatabaseReference mLinks = FirebaseDatabase.getInstance().getReference().child("Links");
+        mLinks.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Intent intent1 = new Intent( Intent.ACTION_VIEW, Uri.parse(dataSnapshot.child("support").getValue().toString()));
+                SearchUserActivity.this.startActivity( intent1 );
             }
-        };
-        mRecycler.setAdapter(firebaseRecyclerAdapter);
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

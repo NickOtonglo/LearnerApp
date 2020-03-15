@@ -150,5 +150,7 @@
     <string name="option_alert_go_back">Go to previous screen</string>
 
     <string name="error_occurred_try_again">An error occurred. Please try again.</string>
+    <string name="error_user_account_unable_to_transfer_tokens">Unfortunately there is a problem with the recipient\'s account that is preventing him/her from receiving tokens. Kindly contact us on any of our support channels for assistance.</string>
+    <string name="option_contact_support">Contact Support</string>
 
 </resources>

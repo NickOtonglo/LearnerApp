@@ -828,22 +828,22 @@ public final class R {
         public static final int bottom_sheet_behavior = 0x7f110030;
         public static final int character_counter_pattern = 0x7f110032;
         public static final int empty_directory_hint = 0x7f110313;
-        public static final int file_picker_app_name = 0x7f11033d;
-        public static final int start_path_name = 0x7f1103cc;
-        public static final int status_bar_notification_info_overflow = 0x7f1103cd;
-        public static final int type_apk = 0x7f1103e3;
-        public static final int type_archive = 0x7f1103e4;
-        public static final int type_certificate = 0x7f1103e5;
-        public static final int type_directory = 0x7f1103e6;
-        public static final int type_document = 0x7f1103e7;
-        public static final int type_drawing = 0x7f1103e8;
-        public static final int type_excel = 0x7f1103e9;
-        public static final int type_image = 0x7f1103ea;
-        public static final int type_music = 0x7f1103eb;
-        public static final int type_pdf = 0x7f1103ec;
-        public static final int type_power_point = 0x7f1103ed;
-        public static final int type_video = 0x7f1103ee;
-        public static final int type_word = 0x7f1103ef;
+        public static final int file_picker_app_name = 0x7f11033e;
+        public static final int start_path_name = 0x7f1103ce;
+        public static final int status_bar_notification_info_overflow = 0x7f1103cf;
+        public static final int type_apk = 0x7f1103e5;
+        public static final int type_archive = 0x7f1103e6;
+        public static final int type_certificate = 0x7f1103e7;
+        public static final int type_directory = 0x7f1103e8;
+        public static final int type_document = 0x7f1103e9;
+        public static final int type_drawing = 0x7f1103ea;
+        public static final int type_excel = 0x7f1103eb;
+        public static final int type_image = 0x7f1103ec;
+        public static final int type_music = 0x7f1103ed;
+        public static final int type_pdf = 0x7f1103ee;
+        public static final int type_power_point = 0x7f1103ef;
+        public static final int type_video = 0x7f1103f0;
+        public static final int type_word = 0x7f1103f1;
     }
     public static final class style {
         private style() {}

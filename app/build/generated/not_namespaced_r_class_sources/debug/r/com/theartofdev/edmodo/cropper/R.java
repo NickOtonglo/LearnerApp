@@ -740,8 +740,8 @@ public final class R {
         public static final int crop_image_menu_crop = 0x7f11030c;
         public static final int crop_image_menu_rotate_left = 0x7f11030d;
         public static final int crop_image_menu_rotate_right = 0x7f11030e;
-        public static final int pick_image_intent_chooser_title = 0x7f1103c2;
-        public static final int status_bar_notification_info_overflow = 0x7f1103cd;
+        public static final int pick_image_intent_chooser_title = 0x7f1103c4;
+        public static final int status_bar_notification_info_overflow = 0x7f1103cf;
     }
     public static final class style {
         private style() {}
