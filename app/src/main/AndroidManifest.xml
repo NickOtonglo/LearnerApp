@@ -269,7 +269,7 @@
         <activity
             android:name=".SearchUserActivity"
             android:excludeFromRecents="true"
-            android:label="Select Recepient"
+            android:label="Select Recipient"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ReadDocument"

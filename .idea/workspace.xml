@@ -26,7 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1e3661a-1e01-45a7-aab9-5205dda0a4e4" name="Default" comment="Migrated the project th AndroidX, fixed incompatibilities created by new Gradle library updates and added Crashlytics">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
     </list>
     <ignored path="LearnerApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,13 +78,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/pesh/mori/learnerapp/ChangePhoneActivity.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3978">
-              <caret line="258" column="37" selection-start-line="258" selection-start-column="37" selection-end-line="258" selection-end-column="37" />
+            <state relative-caret-position="361">
+              <caret line="257" column="46" lean-forward="true" selection-start-line="257" selection-start-column="46" selection-end-line="257" selection-end-column="46" />
             </state>
           </provider>
+          <provider editor-type-id="android-manifest" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -114,10 +115,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
+            <state relative-caret-position="519">
               <caret line="156" lean-forward="true" selection-start-line="156" selection-end-line="156" />
             </state>
           </provider>
@@ -203,7 +204,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>buytokens</find>
       <find>histor</find>
       <find>background</find>
       <find>firebaseRecyclerAdapter</find>
@@ -233,6 +233,7 @@
       <find>toast.ma</find>
       <find>broadca</find>
       <find>close</find>
+      <find>select reci</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -283,7 +284,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout-xlarge/fragment_redeemtokens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_view_announcement.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/pesh/mori/learnerapp/ChangePhoneActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/pesh/mori/learnerapp/PhoneVerificationActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/pesh/mori/learnerapp/MyBroadcastReceiver.java" />
@@ -292,6 +292,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/pesh/mori/learnerapp/buytokens.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/pesh/mori/learnerapp/SearchUserActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -314,6 +315,11 @@
             <path>
               <item name="LearnerApp" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="LearnerApp" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
             </path>
             <path>
               <item name="LearnerApp" type="1abcf292:AndroidViewProjectNode" />
@@ -582,8 +588,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" order="0" visible="true" weight="0.18637532" />
+      <window_info active="true" id="Project" order="0" visible="true" weight="0.18637532" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Captures" order="2" side_tool="true" weight="0.25" />
       <window_info id="Build Variants" order="3" side_tool="true" />
@@ -602,7 +609,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50771207" side_tool="true" weight="0.66487217" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32974428" />
       <window_info anchor="bottom" id="Android Monitor" order="9" sideWeight="0.4922879" weight="0.52506965" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3270525" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3270525" />
       <window_info anchor="bottom" id="Gradle Console" order="11" sideWeight="0.50578403" side_tool="true" weight="0.32729805" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49421594" weight="0.3091922" />
       <window_info anchor="bottom" id="Build" order="13" weight="0.32974428" />
@@ -957,14 +964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/pesh/mori/learnerapp/ChangePhoneActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3978">
@@ -990,14 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1836">
           <caret line="137" column="40" selection-start-line="137" selection-start-column="40" selection-end-line="137" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_transactions_history.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
@@ -1048,12 +1039,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_transactions_history.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
+        <state relative-caret-position="519">
           <caret line="156" lean-forward="true" selection-start-line="156" selection-end-line="156" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="257" column="46" lean-forward="true" selection-start-line="257" selection-start-column="46" selection-end-line="257" selection-end-column="46" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
   </component>
 </project>
