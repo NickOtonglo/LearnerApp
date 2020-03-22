@@ -283,7 +283,7 @@
         <activity
             android:name="pesh.mori.learnerapp.SearchUserActivity"
             android:excludeFromRecents="true"
-            android:label="Select Recepient"
+            android:label="Select Recipient"
             android:theme="@style/AppTheme" />
         <activity
             android:name="pesh.mori.learnerapp.ReadDocument"

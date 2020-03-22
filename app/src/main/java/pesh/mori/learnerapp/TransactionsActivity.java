@@ -307,8 +307,10 @@ public class TransactionsActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();
                             }
-                        })
-                        .show();
+                        });
+                if (!(TransactionsActivity.this).isFinishing()){
+                    mAlert.show();
+                }
             }
         });
         btnTransactBid.setOnClickListener(new View.OnClickListener() {
@@ -448,7 +450,9 @@ public class TransactionsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
-                    mProgress.show();
+                    if (!(TransactionsActivity.this).isFinishing()){
+                        mProgress.show();
+                    }
                     DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(mAuth.getCurrentUser().getUid());
                     mMonetaryAccount.child("email").setValue(mAuth.getCurrentUser().getEmail());
                     mMonetaryAccount.child("previous_balance").setValue(0.00);
@@ -473,7 +477,9 @@ public class TransactionsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
-                    mProgress.show();
+                    if (!(TransactionsActivity.this).isFinishing()){
+                        mProgress.show();
+                    }
                     DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(mAuth.getCurrentUser().getUid());
                     mMonetaryAccount.child("email").setValue(mAuth.getCurrentUser().getEmail());
                     mMonetaryAccount.child("previous_balance").setValue(0.00);
@@ -494,7 +500,9 @@ public class TransactionsActivity extends AppCompatActivity {
 
     public void checkBalance(final String key){
         mProgress.setMessage("Please wait...");
-        mProgress.show();
+        if (!mProgress.isShowing() && !(TransactionsActivity.this).isFinishing()){
+            mProgress.show();
+        }
         FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

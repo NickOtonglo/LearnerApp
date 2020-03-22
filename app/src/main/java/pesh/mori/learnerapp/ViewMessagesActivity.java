@@ -153,7 +153,7 @@ public class ViewMessagesActivity extends AppCompatActivity {
     public void loadViews(){
         mProgress.setMessage("Loading...");
         try {
-            if (!mProgress.isShowing()){
+            if (!mProgress.isShowing() && !((ViewMessagesActivity) this).isFinishing()){
                 mProgress.show();
             }
         }catch (WindowManager.BadTokenException e){
@@ -200,7 +200,9 @@ public class ViewMessagesActivity extends AppCompatActivity {
     public void loadMessageDetails(){
         mProgress.setCanceledOnTouchOutside(false);
         mProgress.setMessage("Loading...");
-        mProgress.show();
+        if (!((ViewMessagesActivity) this).isFinishing()){
+            mProgress.show();
+        }
         mMessages = FirebaseDatabase.getInstance().getReference().child("Messages").child(mAuth.getCurrentUser().getUid()).child(messageKey);
         mMessages.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -238,7 +240,9 @@ public class ViewMessagesActivity extends AppCompatActivity {
     public void deleteMessage(){
         mProgress.setMessage("Deleting message...");
         mProgress.setCancelable(false);
-        mProgress.show();
+        if (!((ViewMessagesActivity) this).isFinishing()){
+            mProgress.show();
+        }
         mMessages.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

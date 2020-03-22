@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -155,10 +156,12 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String url = String.valueOf(dataSnapshot.child("link").getValue());
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
+                if (dataSnapshot.child("link").exists() && !dataSnapshot.child("link").getValue().equals("")){
+                    String url = String.valueOf(dataSnapshot.child("link").getValue());
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    startActivity(i);
+                }
             }
 
             @Override
@@ -176,9 +179,14 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
                 txtTitle.setText(String.valueOf(dataSnapshot.child("title").getValue()));
                 getSupportActionBar().setSubtitle(String.valueOf(dataSnapshot.child("title").getValue()));
                 txtMessage.setText(String.valueOf(dataSnapshot.child("body").getValue()));
-                SpannableString content = new SpannableString(String.valueOf(dataSnapshot.child("link").getValue()));
-                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                txtMoreInfo.setText(content);
+                if (!dataSnapshot.child("link").exists() || dataSnapshot.child("link").getValue().toString().equals("")){
+                    txtMoreInfo.setText("None at the moment");
+                    txtMoreInfo.setTextColor(Color.parseColor("#cccccc"));
+                } else {
+                    SpannableString content = new SpannableString(String.valueOf(dataSnapshot.child("link").getValue()));
+                    content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                    txtMoreInfo.setText(content);
+                }
                 if (dataSnapshot.child("file_type").getValue().equals("audio")){
                     layoutAudio.setVisibility(View.VISIBLE);
                 } else if (dataSnapshot.child("file_type").getValue().equals("video")){

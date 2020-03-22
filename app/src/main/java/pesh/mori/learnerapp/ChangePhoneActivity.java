@@ -162,8 +162,10 @@ public class ChangePhoneActivity extends AppCompatActivity {
                                                 intent.putExtra("phone",phoneNumber);
                                                 startActivity(intent);
                                             }
-                                        })
-                                        .show();
+                                        });
+                                if (!(ChangePhoneActivity.this).isFinishing()){
+                                    mAlert.show();
+                                }
                             }
                         }
 
@@ -223,7 +225,9 @@ public class ChangePhoneActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         mProgress.setMessage("Updating phone number...");
                         mProgress.setCanceledOnTouchOutside(false);
-                        mProgress.show();
+                        if (!mProgress.isShowing() && !(ChangePhoneActivity.this).isFinishing()){
+                            mProgress.show();
+                        }
                         if (TemporaryPermissions.isUserVerified(ChangePhoneActivity.this)){
                             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid());
                             mDatabase.child("phone_verified").setValue("true");
@@ -284,7 +288,9 @@ public class ChangePhoneActivity extends AppCompatActivity {
         });
 
         AlertDialog alert1 = builder1.create();
-        alert1.show();
+
+        if (!(ChangePhoneActivity.this).isFinishing())
+            alert1.show();
     }
 
     @Override

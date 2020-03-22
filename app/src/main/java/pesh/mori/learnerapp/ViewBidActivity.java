@@ -136,7 +136,7 @@ public class ViewBidActivity extends AppCompatActivity {
 
     public void loadViews(){
         mProgress.setMessage("Loading...");
-        if (!mProgress.isShowing()){
+        if (!mProgress.isShowing() && !((ViewBidActivity) this).isFinishing()){
             mProgress.show();
         }
         try {
@@ -232,7 +232,9 @@ public class ViewBidActivity extends AppCompatActivity {
         final String bidder_id = txtBlank.getText().toString();
         mProgress.setMessage("Please wait...");
         mProgress.setCancelable(false);
-        mProgress.show();
+        if (!((ViewBidActivity) this).isFinishing()){
+            mProgress.show();
+        }
         FirebaseDatabase.getInstance().getReference().child("Bids").child(mAuth.getCurrentUser().getUid()).child(bidRef).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -285,7 +287,9 @@ public class ViewBidActivity extends AppCompatActivity {
         final String bidder_id = txtBlank.getText().toString();
         mProgress.setMessage("Finishing...");
         mProgress.setCancelable(false);
-        mProgress.show();
+        if (!((ViewBidActivity) this).isFinishing()){
+            mProgress.show();
+        }
         FirebaseDatabase.getInstance().getReference().child("Bids").child(mAuth.getCurrentUser().getUid()).child(bidRef).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -315,7 +319,9 @@ public class ViewBidActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
-                    mProgress.show();
+                    if (!mProgress.isShowing() && !(ViewBidActivity.this).isFinishing()){
+                        mProgress.show();
+                    }
                     DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(bidderId);
                     mMonetaryAccount.child("email").setValue(getBidderEmail(bidderId));
                     mMonetaryAccount.child("previous_balance").setValue(0.00);
@@ -340,7 +346,9 @@ public class ViewBidActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
-                    mProgress.show();
+                    if (!mProgress.isShowing() && !(ViewBidActivity.this).isFinishing()){
+                        mProgress.show();
+                    }
                     DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(bidderId);
                     mMonetaryAccount.child("email").setValue(getBidderEmail(bidderId));
                     mMonetaryAccount.child("previous_balance").setValue(0.00);
@@ -361,7 +369,9 @@ public class ViewBidActivity extends AppCompatActivity {
 
     public void checkBalance(final String key){
         mProgress.setMessage("Please wait...");
-        mProgress.show();
+        if (!((ViewBidActivity) this).isFinishing()){
+            mProgress.show();
+        }
         FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(bidderId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -530,8 +540,8 @@ public class ViewBidActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (mProgress.isShowing()){
-            mProgress.dismiss();
+        if (!mProgress.isShowing() && !((ViewBidActivity) this).isFinishing()){
+            mProgress.show();
         }
         finish();
     }

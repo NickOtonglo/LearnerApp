@@ -553,7 +553,7 @@
 283-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:270:13-47
 284            android:excludeFromRecents="true"
 284-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:271:13-46
-285            android:label="Select Recepient"
+285            android:label="Select Recipient"
 285-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:272:13-45
 286            android:theme="@style/AppTheme" />
 286-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:273:13-44
