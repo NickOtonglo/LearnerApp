@@ -172,8 +172,11 @@ public class SelectLoginActivity extends AppCompatActivity {
                         public void onCancel(DialogInterface dialogInterface) {
                             txtBottomLabel.setText("No internet connection :(");
                         }
-                    })
-                    .show();
+                    });
+            /*v1.0.4 bug fix 00004*/
+            if(!SelectLoginActivity.this.isFinishing()){
+                mAlert.show();
+            }
         } else {
             checkMaintenanceStatus();
         }

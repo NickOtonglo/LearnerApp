@@ -146,8 +146,9 @@ public class ReadDocument extends AppCompatActivity {
                                     @Override
                                     public void onError(FileLoadRequest fileLoadRequest, Throwable throwable) {
                                         mProgressBar.setVisibility(View.GONE);
-                                        Toast.makeText(ReadDocument.this, "Error: Unable to load file. Please report a problem with this file or contact support.", Toast.LENGTH_LONG).show();
                                         Log.d("LOG_PdfViewError",throwable.getMessage());
+                                        /*v1.0.4 bug fix 00007*/
+                                        /*v1.0.5 enhancement 00001*/
                                         openDocFromUrl(filePath);
                                     }
                                 });
@@ -169,12 +170,59 @@ public class ReadDocument extends AppCompatActivity {
     }
 
     public void openDocFromUrl(String url){
-        pdfView.setVisibility(View.GONE);
-        webView.setVisibility(View.VISIBLE);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setAllowFileAccess(true);
-        webView.loadUrl("https://docs.google.com/gview?embedded=true&url="+Uri.parse(url));
-//        webView.loadUrl("https://docs.google.com/gview?embedded=true&url="+url);
+        /*v1.0.4 bug fix 00007*/
+        /*v1.0.5 enhancement 00001*/
+        mProgressBar.setVisibility(View.VISIBLE);
+        FileLoader.with(this)
+                .load(url,false) //2nd parameter is optioal, pass true to force load from network
+                .fromDirectory("storage", FileLoader.DIR_INTERNAL)
+                .asFile(new FileRequestListener<File>() {
+                    @Override
+                    public void onLoad(FileLoadRequest request, FileResponse<File> response) {
+                        mProgressBar.setVisibility(View.GONE);
+
+                        File docFile = response.getBody();
+
+                        pdfView.fromFile(docFile)
+                                .password(null)
+                                .defaultPage(0)
+                                .enableSwipe(true)
+                                .swipeHorizontal(false)
+                                .enableDoubletap(true)
+                                .onDraw(new OnDrawListener() {
+                                    @Override
+                                    public void onLayerDrawn(Canvas canvas, float v, float v1, int i) {
+
+                                    }
+                                })
+                                .onDrawAll(new OnDrawListener() {
+                                    @Override
+                                    public void onLayerDrawn(Canvas canvas, float v, float v1, int i) {
+
+                                    }
+                                })
+                                .onPageError(new OnPageErrorListener() {
+                                    @Override
+                                    public void onPageError(int i, Throwable throwable) {
+                                        Toast.makeText(ReadDocument.this, "Error opening page "+i, Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .onTap(new OnTapListener() {
+                                    @Override
+                                    public boolean onTap(MotionEvent motionEvent) {
+                                        return false;
+                                    }
+                                })
+                                .enableAnnotationRendering(true)
+                                .load();
+                        Toast.makeText(ReadDocument.this, "Opening "+docName, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(FileLoadRequest request, Throwable t) {
+                        Toast.makeText(ReadDocument.this, "Error: Unable to load file. Please report a problem with this file or contact support.", Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
     public void permissionsInit(){

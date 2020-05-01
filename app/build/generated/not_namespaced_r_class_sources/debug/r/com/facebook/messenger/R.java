@@ -139,8 +139,8 @@ public final class R {
     public static final class string {
         private string() {}
 
-        public static final int messenger_send_button_text = 0x7f1103ad;
-        public static final int status_bar_notification_info_overflow = 0x7f1103cf;
+        public static final int messenger_send_button_text = 0x7f1103b2;
+        public static final int status_bar_notification_info_overflow = 0x7f1103d6;
     }
     public static final class style {
         private style() {}

@@ -118,6 +118,8 @@ public class HomeActivity extends AppCompatActivity
     private String vName = BuildConfig.VERSION_NAME;
 
     private BadgeDrawerToggle badgeToggle;
+    /*v1.0.5 enhancement 00002*/
+    int announcementLimit=10,promosLimit=10,postsLimit=25;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +137,8 @@ public class HomeActivity extends AppCompatActivity
         setAppVersion();
         checkAppUpdate();
         checkUserEnabledStatus();
+        /*v1.0.5 enhancement 00002*/
+        initCardLimits();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -189,11 +193,16 @@ public class HomeActivity extends AppCompatActivity
             FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.child("account_manager").getValue().equals("learner_app") && dataSnapshot.child("phone").getValue().equals("")){
-                        Intent loginIntent = new Intent(HomeActivity.this, ChangePhoneActivity.class);
-                        loginIntent.putExtra("incomingIntent","HomeActivity");
-                        startActivity(loginIntent);
-                        finish();
+                    /*v1.0.4 bug fix 00002*/
+                    if (dataSnapshot.child("account_manager").exists() && dataSnapshot.child("phone").exists()){
+                        if(dataSnapshot.child("account_manager").getValue().equals("learner_app") && dataSnapshot.child("phone").getValue().equals("")){
+                            Intent loginIntent = new Intent(HomeActivity.this, ChangePhoneActivity.class);
+                            loginIntent.putExtra("incomingIntent","HomeActivity");
+                            startActivity(loginIntent);
+                            finish();
+                        }
+                    } else {
+                        Toast.makeText(HomeActivity.this, R.string.error_account_error, Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -203,6 +212,8 @@ public class HomeActivity extends AppCompatActivity
                 }
             });
         }
+
+
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -347,115 +358,213 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public void loadCards(){
-        try {
-            FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard> firebaseRecyclerAdapter1 = new FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard>(
-                    File.class,
-                    R.layout.card_home_horizontal_view,
-                    PostsViewHolder_BigCard.class,
-                    mAnnouncementsRef.limitToLast(10)
-            ) {
-                @Override
-                protected void populateViewHolder(final PostsViewHolder_BigCard viewHolder, final File model, int position) {
-                    final String fileKey = getRef(position).getKey();
-
-                    FirebaseDatabase.getInstance().getReference().child("AnnouncementsRef").child(fileKey).addValueEventListener(new ValueEventListener() {
+        /*v1.0.5 enhancement 0001*/
+        /*Because it loads asynchronously, dynamic limitToLast() will not work without initCardLimits(). The actual values can remain as they are when initCardLimits() is run.*/
+        FirebaseDatabase.getInstance().getReference().child("Values").child("Defaults").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                try {
+                    FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard> firebaseRecyclerAdapter1 = new FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard>(
+                            File.class,
+                            R.layout.card_home_horizontal_view,
+                            PostsViewHolder_BigCard.class,
+                            mAnnouncementsRef.limitToLast(announcementLimit)
+                    ) {
                         @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.exists())
-                                mAnnouncements.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                        viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
-                                        viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
-                                        viewHolder.setAuthorName("Administrator");
-                                        try{
-                                            viewHolder.setAdminImage();
-                                        } catch (NullPointerException e){
-                                            loadCards();
-                                            e.printStackTrace();
-                                        }
-                                        String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
-                                        try {
-                                            String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
-                                            if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
-                                                if (file_type.equals("audio")){
-                                                    viewHolder.setAudioImage();
-                                                } else if (file_type.equals("video")){
-                                                    viewHolder.setVideoImage();
-                                                } else if (file_type.equals("image")){
-                                                    viewHolder.setImageImage();
-                                                } else if (file_type.equals("doc")){
-                                                    viewHolder.setDocImage();
-                                                }
-                                            } else {
-                                                viewHolder.setThumbnail(getApplicationContext(),thumbnail);
-                                            }
-                                        } catch (NullPointerException e){
-                                            loadCards();
-                                            e.printStackTrace();
-                                        }
-                                        viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                        protected void populateViewHolder(final PostsViewHolder_BigCard viewHolder, final File model, int position) {
+                            final String fileKey = getRef(position).getKey();
+
+                            FirebaseDatabase.getInstance().getReference().child("AnnouncementsRef").child(fileKey).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.exists())
+                                        mAnnouncements.addValueEventListener(new ValueEventListener() {
                                             @Override
-                                            public void onClick(View view) {
-                                                openAnnouncement(fileKey);
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
+                                                viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
+                                                viewHolder.setAuthorName("Administrator");
+                                                try{
+                                                    viewHolder.setAdminImage();
+                                                } catch (NullPointerException e){
+                                                    loadCards();
+                                                    e.printStackTrace();
+                                                }
+                                                String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
+                                                try {
+                                                    String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
+                                                    if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
+                                                        if (file_type.equals("audio")){
+                                                            viewHolder.setAudioImage();
+                                                        } else if (file_type.equals("video")){
+                                                            viewHolder.setVideoImage();
+                                                        } else if (file_type.equals("image")){
+                                                            viewHolder.setImageImage();
+                                                        } else if (file_type.equals("doc")){
+                                                            viewHolder.setDocImage();
+                                                        }
+                                                    } else {
+                                                        viewHolder.setThumbnail(getApplicationContext(),thumbnail);
+                                                    }
+                                                } catch (NullPointerException e){
+                                                    loadCards();
+                                                    e.printStackTrace();
+                                                }
+                                                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        openAnnouncement(fileKey);
+                                                    }
+                                                });
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
                                             }
                                         });
-                                    }
+                                }
 
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
 
-                                    }
-                                });
+                                }
+                            });
                         }
+                    };
+                    recyclerAnnouncements.setAdapter(firebaseRecyclerAdapter1);
 
+                    FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard> firebaseRecyclerAdapter2 = new FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard>(
+                            File.class,
+                            R.layout.card_home_horizontal_view,
+                            PostsViewHolder_BigCard.class,
+                            mPromos.limitToLast(promosLimit)
+                    ) {
                         @Override
-                        public void onCancelled(DatabaseError databaseError) {
+                        protected void populateViewHolder(final PostsViewHolder_BigCard viewHolder, final File model, int position) {
+                            final String fileKey = getRef(position).getKey();
 
-                        }
-                    });
-                }
-            };
-            recyclerAnnouncements.setAdapter(firebaseRecyclerAdapter1);
-
-            FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard> firebaseRecyclerAdapter2 = new FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard>(
-                    File.class,
-                    R.layout.card_home_horizontal_view,
-                    PostsViewHolder_BigCard.class,
-                    mPromos.limitToLast(10)
-            ) {
-                @Override
-                protected void populateViewHolder(final PostsViewHolder_BigCard viewHolder, final File model, int position) {
-                    final String fileKey = getRef(position).getKey();
-
-                    FirebaseDatabase.getInstance().getReference().child("PromotedItems").child(fileKey).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.exists())
-                                if (dataSnapshot.child("Category").getValue().equals("Files")){
-                                    mFiles.addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
-                                            viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
-                                            String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
-                                            mAuthor = String.valueOf(dataSnapshot.child(fileKey).child("author").getValue());
-                                            FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor).addValueEventListener(new ValueEventListener() {
+                            FirebaseDatabase.getInstance().getReference().child("PromotedItems").child(fileKey).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.exists())
+                                        if (dataSnapshot.child("Category").getValue().equals("Files")){
+                                            mFiles.addValueEventListener(new ValueEventListener() {
                                                 @Override
                                                 public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
+                                                    viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
+                                                    String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
+                                                    mAuthor = String.valueOf(dataSnapshot.child(fileKey).child("author").getValue());
+                                                    FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor).addValueEventListener(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                                            try {
+                                                                String name = dataSnapshot.child("username").getValue().toString();
+                                                                String avatarLink = dataSnapshot.child("profile_picture").getValue().toString();
+                                                                viewHolder.setAuthorName(name);
+                                                                if (!avatarLink.isEmpty()){
+                                                                    viewHolder.setAuthorImage(getApplicationContext(),avatarLink);
+                                                                } else {
+                                                                    viewHolder.setAuthorImage();
+                                                                }
+                                                            } catch (NullPointerException e){
+                                                                e.printStackTrace();
+                                                                loadCards();
+                                                            }
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(DatabaseError databaseError) {
+
+                                                        }
+                                                    });
+                                                    String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
+                                                    if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
+                                                        if (file_type.equals("audio")){
+                                                            viewHolder.setAudioImage();
+                                                        } else if (file_type.equals("video")){
+                                                            viewHolder.setVideoImage();
+                                                        } else if (file_type.equals("image")){
+                                                            viewHolder.setImageImage();
+                                                        } else if (file_type.equals("doc")){
+                                                            viewHolder.setDocImage();
+                                                        }
+                                                    } else {
+                                                        viewHolder.setThumbnail(getApplicationContext(),thumbnail);
+                                                    }
+                                                    viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View view) {
+                                                            checkOwnershipStatus(fileKey,"Files");
+                                                        }
+                                                    });
+                                                }
+
+                                                @Override
+                                                public void onCancelled(DatabaseError databaseError) {
+
+                                                }
+                                            });
+                                        }
+                                        else if (dataSnapshot.child("Category").getValue().equals("DIY")){
+                                            mDIY.addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
+                                                    viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
+                                                    String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
+                                                    mAuthor = String.valueOf(dataSnapshot.child(fileKey).child("author").getValue());
+                                                    FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor).addValueEventListener(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                                            try{
+                                                                String name = dataSnapshot.child("username").getValue().toString();
+                                                                String avatarLink = dataSnapshot.child("profile_picture").getValue().toString();
+                                                                viewHolder.setAuthorName(name);
+                                                                if (!avatarLink.isEmpty()){
+                                                                    viewHolder.setAuthorImage(getApplicationContext(),avatarLink);
+                                                                } else {
+                                                                    viewHolder.setAuthorImage();
+                                                                }
+                                                            } catch (NullPointerException e){
+                                                                e.printStackTrace();
+                                                                loadCards();
+                                                            }
+
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(DatabaseError databaseError) {
+
+                                                        }
+                                                    });
                                                     try {
-                                                        String name = dataSnapshot.child("username").getValue().toString();
-                                                        String avatarLink = dataSnapshot.child("profile_picture").getValue().toString();
-                                                        viewHolder.setAuthorName(name);
-                                                        if (!avatarLink.isEmpty()){
-                                                            viewHolder.setAuthorImage(getApplicationContext(),avatarLink);
+                                                        String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
+                                                        if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
+                                                            if (file_type.equals("audio")){
+                                                                viewHolder.setAudioImage();
+                                                            } else if (file_type.equals("video")){
+                                                                viewHolder.setVideoImage();
+                                                            } else if (file_type.equals("image")){
+                                                                viewHolder.setImageImage();
+                                                            } else if (file_type.equals("doc")){
+                                                                viewHolder.setDocImage();
+                                                            }
                                                         } else {
-                                                            viewHolder.setAuthorImage();
+                                                            viewHolder.setThumbnail(getApplicationContext(),thumbnail);
                                                         }
                                                     } catch (NullPointerException e){
                                                         e.printStackTrace();
                                                         loadCards();
                                                     }
+
+                                                    viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View view) {
+                                                            checkOwnershipStatus(fileKey,"DIY");
+                                                        }
+                                                    });
                                                 }
 
                                                 @Override
@@ -463,215 +572,89 @@ public class HomeActivity extends AppCompatActivity
 
                                                 }
                                             });
-                                            String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
-                                            if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
-                                                if (file_type.equals("audio")){
-                                                    viewHolder.setAudioImage();
-                                                } else if (file_type.equals("video")){
-                                                    viewHolder.setVideoImage();
-                                                } else if (file_type.equals("image")){
-                                                    viewHolder.setImageImage();
-                                                } else if (file_type.equals("doc")){
-                                                    viewHolder.setDocImage();
-                                                }
-                                            } else {
-                                                viewHolder.setThumbnail(getApplicationContext(),thumbnail);
-                                            }
-                                            viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-                                                    checkOwnershipStatus(fileKey,"Files");
-                                                }
-                                            });
                                         }
-
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-
-                                        }
-                                    });
                                 }
-                                else if (dataSnapshot.child("Category").getValue().equals("DIY")){
-                                    mDIY.addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
-                                            viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
-                                            String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
-                                            mAuthor = String.valueOf(dataSnapshot.child(fileKey).child("author").getValue());
-                                            FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor).addValueEventListener(new ValueEventListener() {
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+                        }
+                    };
+                    recyclerPromotions.setAdapter(firebaseRecyclerAdapter2);
+
+                    FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard> firebaseRecyclerAdapter3 = new FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard>(
+                            File.class,
+                            R.layout.card_home_posts,
+                            PostsViewHolder_BigCard.class,
+                            mFilesItems.limitToLast(postsLimit)
+                    ) {
+                        @Override
+                        protected void populateViewHolder(final PostsViewHolder_BigCard viewHolder, final File model, int position) {
+                            final String fileKey = getRef(position).getKey();
+
+                            FirebaseDatabase.getInstance().getReference().child("AllPosts").child(fileKey).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.exists())
+                                        if (dataSnapshot.child("Category").getValue().equals("Files")){
+                                            mFiles.addValueEventListener(new ValueEventListener() {
                                                 @Override
                                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                                    try{
-                                                        String name = dataSnapshot.child("username").getValue().toString();
-                                                        String avatarLink = dataSnapshot.child("profile_picture").getValue().toString();
-                                                        viewHolder.setAuthorName(name);
-                                                        if (!avatarLink.isEmpty()){
-                                                            viewHolder.setAuthorImage(getApplicationContext(),avatarLink);
-                                                        } else {
-                                                            viewHolder.setAuthorImage();
+                                                    viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
+                                                    viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
+                                                    String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
+                                                    mAuthor = String.valueOf(dataSnapshot.child(fileKey).child("author").getValue());
+                                                    FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor).addValueEventListener(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                                            try {
+                                                                String name = dataSnapshot.child("username").getValue().toString();
+                                                                String avatarLink = dataSnapshot.child("profile_picture").getValue().toString();
+                                                                viewHolder.setAuthorName(name);
+                                                                if (!avatarLink.isEmpty()){
+                                                                    viewHolder.setAuthorImage(getApplicationContext(),avatarLink);
+                                                                } else {
+                                                                    viewHolder.setAuthorImage();
+                                                                }
+                                                            }catch (NullPointerException e){
+                                                                e.printStackTrace();
+                                                                loadCards();
+                                                            }
                                                         }
-                                                    } catch (NullPointerException e){
-                                                        e.printStackTrace();
-                                                        loadCards();
-                                                    }
 
-                                                }
+                                                        @Override
+                                                        public void onCancelled(DatabaseError databaseError) {
 
-                                                @Override
-                                                public void onCancelled(DatabaseError databaseError) {
-
-                                                }
-                                            });
-                                            try {
-                                                String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
-                                                if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
-                                                    if (file_type.equals("audio")){
-                                                        viewHolder.setAudioImage();
-                                                    } else if (file_type.equals("video")){
-                                                        viewHolder.setVideoImage();
-                                                    } else if (file_type.equals("image")){
-                                                        viewHolder.setImageImage();
-                                                    } else if (file_type.equals("doc")){
-                                                        viewHolder.setDocImage();
-                                                    }
-                                                } else {
-                                                    viewHolder.setThumbnail(getApplicationContext(),thumbnail);
-                                                }
-                                            } catch (NullPointerException e){
-                                                e.printStackTrace();
-                                                loadCards();
-                                            }
-
-                                            viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-                                                    checkOwnershipStatus(fileKey,"DIY");
-                                                }
-                                            });
-                                        }
-
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-
-                                        }
-                                    });
-                                }
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-                }
-            };
-            recyclerPromotions.setAdapter(firebaseRecyclerAdapter2);
-
-            FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard> firebaseRecyclerAdapter3 = new FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard>(
-                    File.class,
-                    R.layout.card_home_posts,
-                    PostsViewHolder_BigCard.class,
-                    mFilesItems.limitToLast(10)
-            ) {
-                @Override
-                protected void populateViewHolder(final PostsViewHolder_BigCard viewHolder, final File model, int position) {
-                    final String fileKey = getRef(position).getKey();
-
-                    FirebaseDatabase.getInstance().getReference().child("AllPosts").child(fileKey).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.exists())
-                                if (dataSnapshot.child("Category").getValue().equals("Files")){
-                                    mFiles.addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
-                                            viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
-                                            String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
-                                            mAuthor = String.valueOf(dataSnapshot.child(fileKey).child("author").getValue());
-                                            FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor).addValueEventListener(new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                        }
+                                                    });
                                                     try {
-                                                        String name = dataSnapshot.child("username").getValue().toString();
-                                                        String avatarLink = dataSnapshot.child("profile_picture").getValue().toString();
-                                                        viewHolder.setAuthorName(name);
-                                                        if (!avatarLink.isEmpty()){
-                                                            viewHolder.setAuthorImage(getApplicationContext(),avatarLink);
+                                                        String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
+                                                        if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
+                                                            if (file_type.equals("audio")){
+                                                                viewHolder.setAudioImage();
+                                                            } else if (file_type.equals("video")){
+                                                                viewHolder.setVideoImage();
+                                                            } else if (file_type.equals("image")){
+                                                                viewHolder.setImageImage();
+                                                            } else if (file_type.equals("doc")){
+                                                                viewHolder.setDocImage();
+                                                            }
                                                         } else {
-                                                            viewHolder.setAuthorImage();
-                                                        }
-                                                    }catch (NullPointerException e){
-                                                        e.printStackTrace();
-                                                        loadCards();
-                                                    }
-                                                }
-
-                                                @Override
-                                                public void onCancelled(DatabaseError databaseError) {
-
-                                                }
-                                            });
-                                            try {
-                                                String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
-                                                if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
-                                                    if (file_type.equals("audio")){
-                                                        viewHolder.setAudioImage();
-                                                    } else if (file_type.equals("video")){
-                                                        viewHolder.setVideoImage();
-                                                    } else if (file_type.equals("image")){
-                                                        viewHolder.setImageImage();
-                                                    } else if (file_type.equals("doc")){
-                                                        viewHolder.setDocImage();
-                                                    }
-                                                } else {
-                                                    viewHolder.setThumbnail(getApplicationContext(),thumbnail);
-                                                }
-                                            } catch (NullPointerException e){
-                                                e.printStackTrace();
-                                                loadCards();
-                                            }
-
-                                            viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-                                                    checkOwnershipStatus(fileKey,"Files");
-                                                }
-                                            });
-                                        }
-
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-
-                                        }
-                                    });
-                                }
-                                else if (dataSnapshot.child("Category").getValue().equals("DIY")){
-                                    mDIY.addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
-                                            viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
-                                            String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
-                                            mAuthor = String.valueOf(dataSnapshot.child(fileKey).child("author").getValue());
-                                            FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor).addValueEventListener(new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                                    try{
-                                                        String name = dataSnapshot.child("username").getValue().toString();
-                                                        String avatarLink = dataSnapshot.child("profile_picture").getValue().toString();
-                                                        viewHolder.setAuthorName(name);
-                                                        if (!avatarLink.isEmpty()){
-                                                            viewHolder.setAuthorImage(getApplicationContext(),avatarLink);
-                                                        } else {
-                                                            viewHolder.setAuthorImage();
+                                                            viewHolder.setThumbnail(getApplicationContext(),thumbnail);
                                                         }
                                                     } catch (NullPointerException e){
                                                         e.printStackTrace();
                                                         loadCards();
                                                     }
 
+                                                    viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View view) {
+                                                            checkOwnershipStatus(fileKey,"Files");
+                                                        }
+                                                    });
                                                 }
 
                                                 @Override
@@ -679,54 +662,95 @@ public class HomeActivity extends AppCompatActivity
 
                                                 }
                                             });
-                                            try {
-                                                String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
-                                                if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
-                                                    if (file_type.equals("audio")){
-                                                        viewHolder.setAudioImage();
-                                                    } else if (file_type.equals("video")){
-                                                        viewHolder.setVideoImage();
-                                                    } else if (file_type.equals("image")){
-                                                        viewHolder.setImageImage();
-                                                    } else if (file_type.equals("doc")){
-                                                        viewHolder.setDocImage();
-                                                    }
-                                                } else {
-                                                    viewHolder.setThumbnail(getApplicationContext(),thumbnail);
-                                                }
-                                            } catch (NullPointerException e){
-                                                e.printStackTrace();
-                                                loadCards();
-                                            }
-
-                                            viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                                        }
+                                        else if (dataSnapshot.child("Category").getValue().equals("DIY")){
+                                            mDIY.addValueEventListener(new ValueEventListener() {
                                                 @Override
-                                                public void onClick(View view) {
-                                                    checkOwnershipStatus(fileKey,"DIY");
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
+                                                    viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
+                                                    String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
+                                                    mAuthor = String.valueOf(dataSnapshot.child(fileKey).child("author").getValue());
+                                                    FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor).addValueEventListener(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                                            try{
+                                                                String name = dataSnapshot.child("username").getValue().toString();
+                                                                String avatarLink = dataSnapshot.child("profile_picture").getValue().toString();
+                                                                viewHolder.setAuthorName(name);
+                                                                if (!avatarLink.isEmpty()){
+                                                                    viewHolder.setAuthorImage(getApplicationContext(),avatarLink);
+                                                                } else {
+                                                                    viewHolder.setAuthorImage();
+                                                                }
+                                                            } catch (NullPointerException e){
+                                                                e.printStackTrace();
+                                                                loadCards();
+                                                            }
+
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(DatabaseError databaseError) {
+
+                                                        }
+                                                    });
+                                                    try {
+                                                        String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
+                                                        if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
+                                                            if (file_type.equals("audio")){
+                                                                viewHolder.setAudioImage();
+                                                            } else if (file_type.equals("video")){
+                                                                viewHolder.setVideoImage();
+                                                            } else if (file_type.equals("image")){
+                                                                viewHolder.setImageImage();
+                                                            } else if (file_type.equals("doc")){
+                                                                viewHolder.setDocImage();
+                                                            }
+                                                        } else {
+                                                            viewHolder.setThumbnail(getApplicationContext(),thumbnail);
+                                                        }
+                                                    } catch (NullPointerException e){
+                                                        e.printStackTrace();
+                                                        loadCards();
+                                                    }
+
+                                                    viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View view) {
+                                                            checkOwnershipStatus(fileKey,"DIY");
+                                                        }
+                                                    });
+                                                }
+
+                                                @Override
+                                                public void onCancelled(DatabaseError databaseError) {
+
                                                 }
                                             });
                                         }
-
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-
-                                        }
-                                    });
                                 }
-                        }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
 
+                                }
+                            });
                         }
-                    });
+                    };
+                    recyclerPosts.setAdapter(firebaseRecyclerAdapter3);
+                } catch (NullPointerException e){
+                    loadCards();
+                    e.printStackTrace();
                 }
-            };
-            recyclerPosts.setAdapter(firebaseRecyclerAdapter3);
-        } catch (NullPointerException e){
-            loadCards();
-            e.printStackTrace();
-        }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
     }
 
@@ -1335,6 +1359,32 @@ public class HomeActivity extends AppCompatActivity
                             (Toolbar)findViewById(R.id.toolbar), R.string.navigation_drawer_open, R.string.navigation_drawer_close);
                     badgeToggle.setBadgeText(String.valueOf(dataSnapshot.getChildrenCount()));
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    /*v1.0.5 enhancement 0002*/
+    public void initCardLimits(){
+        FirebaseDatabase.getInstance().getReference().child("Values").child("Defaults").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    if (dataSnapshot.child("HomeAnnouncementsCardsLimit").exists() && !dataSnapshot.child("HomeAnnouncementsCardsLimit").getValue().equals("")){
+                        announcementLimit = Integer.parseInt(dataSnapshot.child("HomeAnnouncementsCardsLimit").getValue().toString());
+                    }
+                    if (dataSnapshot.child("HomePromosCardsLimit").exists() && !dataSnapshot.child("HomePromosCardsLimit").getValue().equals("")){
+                        promosLimit = Integer.parseInt(dataSnapshot.child("HomePromosCardsLimit").getValue().toString());
+                    }
+                    if (dataSnapshot.child("HomePostsCardsLimit").exists() && !dataSnapshot.child("HomePostsCardsLimit").getValue().equals("")){
+                        postsLimit = Integer.parseInt(dataSnapshot.child("HomePostsCardsLimit").getValue().toString());
+                    }
+                }
+
             }
 
             @Override

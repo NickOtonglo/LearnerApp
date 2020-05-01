@@ -105,7 +105,12 @@ public class redeemtokens extends Fragment{
                 String url = String.valueOf(dataSnapshot.getValue());
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
-                startActivity(i);
+                /*v1.0.4 bug fix 00001*/
+                if (isAdded()){
+                    startActivity(i);
+                } else {
+                    Toast.makeText(getActivity(), R.string.error_occurred_try_again,  Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -124,6 +129,5 @@ public class redeemtokens extends Fragment{
             getActivity().finish();
         }
     }
-
 
 }

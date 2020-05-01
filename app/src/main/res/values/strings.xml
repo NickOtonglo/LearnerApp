@@ -152,5 +152,12 @@
     <string name="error_occurred_try_again">An error occurred. Please try again.</string>
     <string name="error_user_account_unable_to_transfer_tokens">Unfortunately there is a problem with the recipient\'s account that is preventing him/her from receiving tokens. Kindly contact us on any of our support channels for assistance.</string>
     <string name="option_contact_support">Contact Support</string>
+    <string name="error_account_error">There is an error with your account. Kindly contact our team on any social media platform such as Twitter (@L_earnerApp) for assistance.</string>
+    <string name="info_bid_cancelled">You have cancelled your bid. You are free to make another bid on this item or to purchase it upfront.</string>
+    <string name="alert_cancel_bid">You are about to cancel your bid of</string>
+    <string name="option_continue">Continue</string>
+    <string name="option_do_not_continue">Do Not Continue</string>
 
+    <string name="bids_category_message_id">def_bids_0000</string>
+    <string name="info_please_wait">Please wait...</string>
 </resources>

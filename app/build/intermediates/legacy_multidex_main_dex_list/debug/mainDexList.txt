@@ -150,6 +150,7 @@ com/google/android/gms/ads/identifier/AdvertisingIdClient.class
 com/google/android/gms/auth/api/accounttransfer/AuthenticatorTransferCompletionStatus.class
 com/google/android/gms/auth/api/credentials/Credential.class
 com/google/android/gms/auth/api/credentials/CredentialPickerConfig$Prompt.class
+com/google/android/gms/auth/api/phone/SmsCodeAutofillClient$PermissionState.class
 com/google/android/gms/auth/api/proxy/ProxyApi$SpatulaHeaderResult.class
 com/google/android/gms/auth/api/signin/SignInAccount.class
 com/google/android/gms/auth/api/signin/internal/Storage.class
@@ -182,8 +183,8 @@ com/google/android/gms/common/util/ProcessUtils.class
 com/google/android/gms/common/util/RetainForClient.class
 com/google/android/gms/common/util/VisibleForTesting.class
 com/google/android/gms/common/zzc.class
-com/google/android/gms/common/zzk.class
-com/google/android/gms/common/zzm.class
+com/google/android/gms/common/zzj.class
+com/google/android/gms/common/zzl.class
 com/google/android/gms/internal/auth/zzax.class
 com/google/android/gms/internal/firebase_auth/zzae.class
 com/google/android/gms/internal/firebase_auth/zzao.class

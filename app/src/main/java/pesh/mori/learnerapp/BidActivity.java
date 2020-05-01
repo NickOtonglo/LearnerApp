@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Build;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,12 +34,11 @@ public class BidActivity extends AppCompatActivity {
     private String itemPrice, itemKey, buyerId;
     private String authorId;
     private FirebaseAuth mAuth;
-    private DatabaseReference mSource;
     private EditText bidAmount;
     Calendar calendar;
     private SimpleDateFormat sdf;
     private ProgressDialog mProgress;
-    private AlertDialog.Builder mAlert;
+    private AlertDialog.Builder mAlert,mAlert2;
     private String TAG = "BidActivity";
     private String incomingIntent;
     private String childRef;
@@ -51,6 +54,7 @@ public class BidActivity extends AppCompatActivity {
 
         mProgress = new ProgressDialog(this);
         mAlert = new AlertDialog.Builder(this);
+        mAlert2 = new AlertDialog.Builder(this);
 
         calendar = Calendar.getInstance();
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -73,21 +77,24 @@ public class BidActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        mSource = FirebaseDatabase.getInstance().getReference().child(childRef);
-
         btn_bid = findViewById(R.id.btn_bid);
         bidAmount = findViewById(R.id.txt_edit_bid);
 
+        /*v1.0.5 new feature 00001*/
         btn_bid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mProgress.setMessage("Please wait...");
                 mProgress.setCancelable(false);
                 mProgress.show();
-                checkPendingBid();
+                checkBidAmount();
             }
         });
 
+        mProgress.setMessage("Please wait...");
+        mProgress.setCancelable(false);
+        mProgress.show();
+        checkPendingBid();
     }
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public String preCreateBid(){
@@ -106,12 +113,16 @@ public class BidActivity extends AppCompatActivity {
         });
 
         createBid(mBidPushKey,mMessagePushKey);
-        mProgress.dismiss();
+        /*v1.0.4 bug fix 00005*/
+        if (mProgress!=null && mProgress.isShowing()){
+            mProgress.dismiss();
+        }
         mAlert.show();
         return authorId;
 
     }
 
+    /*v1.0.5 new feature 00001*/
     public void checkPendingBid(){
         final String [] pushKey = {""};
         final DatabaseReference mBids = FirebaseDatabase.getInstance().getReference().child("Status").child("Bids").child(mAuth.getCurrentUser().getUid());
@@ -121,23 +132,114 @@ public class BidActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()){
                     mBids.child(itemKey).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
+                        public void onDataChange(final DataSnapshot dataSnapshot) {
                             if (dataSnapshot.exists()){
                                 if (dataSnapshot.child("status").getValue().equals("pending")){
                                     mAlert.setTitle("Pending bid")
                                             .setMessage("You already submitted a bid for this item. Kindly wait for the author to review it.")
+                                            .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                                @Override
+                                                public void onCancel(DialogInterface dialogInterface) {
+                                                    finish();
+                                                }
+                                            })
                                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
+                                                    dialogInterface.dismiss();
+                                                    if (mProgress != null && mProgress.isShowing() && !BidActivity.this.isFinishing()){
+                                                        mProgress.dismiss();
+                                                    }
+                                                    finish();
+                                                }
+                                            })
+                                            .setNeutralButton("Cancel Bid", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+                                                    /*v1.0.5 new feature 00001*/
+                                                    dialogInterface.dismiss();
 
+                                                    FirebaseDatabase.getInstance().getReference().child("Bids").child(authorId)
+                                                            .addListenerForSingleValueEvent(new ValueEventListener() {
+                                                                @Override
+                                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                                    for (final DataSnapshot dataSnapshot2:dataSnapshot.getChildren()) {
+//                                                                        Log.d("LOG_X_itemKey",itemKey+" : "+dataSnapshot2.child("item_key").getValue());
+//                                                                        Log.d("LOG_X_bidder",mAuth.getCurrentUser().getUid()+" : "+dataSnapshot2.child("bidder_id").getValue());
+//                                                                        Log.d("LOG_X_status","pending"+" : "+dataSnapshot2.child("status").getValue());
+                                                                        if (dataSnapshot2.child("item_key").getValue().equals(itemKey)
+                                                                                && dataSnapshot2.child("bidder_id").getValue().equals(mAuth.getCurrentUser().getUid())
+                                                                                && dataSnapshot2.child("status").getValue().equals("pending")){
+                                                                            mAlert2.setTitle(getString(R.string.alert_cancel_bid)+" "+dataSnapshot2.child("price_bid").getValue()+" tokens.")
+                                                                                    .setPositiveButton(R.string.option_continue, new DialogInterface.OnClickListener() {
+                                                                                        @Override
+                                                                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                                                                            FirebaseDatabase.getInstance().getReference().child("Messages").child(authorId)
+                                                                                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                                                                                        @Override
+                                                                                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                                                                            for (DataSnapshot dataSnapshot3:dataSnapshot.getChildren()){
+//                                                                                                                Log.d("LOG_X_category",getString(R.string.bids_category_message_id)+" : "+dataSnapshot3.child("category").getValue());
+//                                                                                                                Log.d("LOG_X_sender",mAuth.getCurrentUser().getUid()+" : "+dataSnapshot3.child("sender_id").getValue());
+//                                                                                                                Log.d("LOG_X_ref",dataSnapshot2.getKey()+" : "+dataSnapshot3.child("reference").getValue());
+                                                                                                                if (dataSnapshot3.child("category").getValue().equals(getString(R.string.bids_category_message_id))
+                                                                                                                        && dataSnapshot3.child("sender_id").getValue().equals(mAuth.getCurrentUser().getUid())
+                                                                                                                        && dataSnapshot3.child("reference").getValue().equals(dataSnapshot2.getKey())){
+                                                                                                                    cancelBid(dataSnapshot2.getKey(),dataSnapshot3.getKey());
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+
+                                                                                                        @Override
+                                                                                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                                                                        }
+                                                                                                    });
+                                                                                        }
+                                                                                    })
+                                                                                    .setNeutralButton(R.string.option_do_not_continue, new DialogInterface.OnClickListener() {
+                                                                                        @Override
+                                                                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                                                                            dialogInterface.dismiss();
+                                                                                            finish();
+                                                                                        }
+                                                                                    })
+                                                                                    .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                                                                        @Override
+                                                                                        public void onCancel(DialogInterface dialogInterface) {
+                                                                                            finish();
+                                                                                        }
+                                                                                    });
+                                                                            if (!BidActivity.this.isFinishing()){
+                                                                                mAlert2.show();
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                                @Override
+                                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                                }
+                                                            });
                                                 }
                                             })
                                             .show();
-                                    mProgress.dismiss();
+                                    if (mProgress != null && mProgress.isShowing() && !BidActivity.this.isFinishing()){
+                                        mProgress.dismiss();
+                                    }
                                 } else if (dataSnapshot.child("status").getValue().equals("ready")){
-                                    checkBidAmount();
+//                                    checkBidAmount();
+                                    if (mProgress != null && mProgress.isShowing() && !BidActivity.this.isFinishing()){
+                                        mProgress.dismiss();
+                                    }
                                 }
-                            } else {checkBidAmount();}
+                            } else {
+//                                checkBidAmount();
+                                if (mProgress != null && mProgress.isShowing() && !BidActivity.this.isFinishing()){
+                                    mProgress.dismiss();
+                                }
+                            }
                         }
 
                         @Override
@@ -145,8 +247,12 @@ public class BidActivity extends AppCompatActivity {
 
                         }
                     });
-                } else {checkBidAmount();}
-
+                } else {
+//                    checkBidAmount();
+                    if (mProgress != null && mProgress.isShowing() && !BidActivity.this.isFinishing()){
+                        mProgress.dismiss();
+                    }
+                }
             }
 
             @Override
@@ -177,6 +283,20 @@ public class BidActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
+                            /*v1.0.4 bug fix 00005*/
+                            if (mProgress!=null && mProgress.isShowing()){
+                                mProgress.dismiss();
+                            }
+                        }
+                    })
+                    /*v1.0.4 bug fix 00005*/
+                    .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialogInterface) {
+                            dialogInterface.dismiss();
+                            if (mProgress!=null && mProgress.isShowing()){
+                                mProgress.dismiss();
+                            }
                         }
                     })
                     .show();
@@ -189,7 +309,7 @@ public class BidActivity extends AppCompatActivity {
 
         DatabaseReference mBid = FirebaseDatabase.getInstance().getReference().child("Bids").child(authorId).child(bidsKey);
         String ref = String.valueOf(mBid.getKey());
-        Log.d(TAG,"createBid: mBid.getKey() "+ref);
+//        Log.d(TAG,"createBid: mBid.getKey() "+ref);
         mBid.child("bidder_id").setValue(buyerId);
         mBid.child("item_key").setValue(itemKey);
 
@@ -203,7 +323,7 @@ public class BidActivity extends AppCompatActivity {
         mMessage.child("sender_id").setValue(buyerId);
         mMessage.child("recipient_id").setValue(authorId);
         mMessage.child("title").setValue("Bid");
-        mMessage.child("category").setValue("def_bids_0000");
+        mMessage.child("category").setValue(getString(R.string.bids_category_message_id));
         mMessage.child("message").setValue("I have placed a bid on an item of yours. Kindly consider my offer.");
         mMessage.child("seen").setValue("false");
         mMessage.child("timestamp").setValue(bidTime);
@@ -211,6 +331,36 @@ public class BidActivity extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().getReference().child("Status").child("Bids").child(mAuth.getCurrentUser().getUid()).child(itemKey).child("status").setValue("pending");
 
+    }
+
+    /*v1.0.5 new feature 00001*/
+    public void cancelBid(String bidsKey, final String messageKey){
+        mProgress.setMessage(getString(R.string.info_please_wait));
+        if (mProgress != null && !mProgress.isShowing() && !BidActivity.this.isFinishing()){
+            mProgress.show();
+        }
+        DatabaseReference mBid = FirebaseDatabase.getInstance().getReference().child("Bids").child(authorId).child(bidsKey);
+        mBid.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                DatabaseReference mMessage = FirebaseDatabase.getInstance().getReference().child("Messages").child(authorId).child(messageKey);
+                mMessage.removeValue();
+                DatabaseReference mBidStatus = FirebaseDatabase.getInstance().getReference().child("Status").child("Bids").child(mAuth.getCurrentUser().getUid()).child(itemKey);
+                mBidStatus.removeValue();
+                Toast.makeText(BidActivity.this, R.string.info_bid_cancelled, Toast.LENGTH_LONG).show();
+                if (mProgress != null && mProgress.isShowing() && !BidActivity.this.isFinishing()){
+                    mProgress.dismiss();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                if (mProgress != null && mProgress.isShowing() && !BidActivity.this.isFinishing()){
+                    mProgress.dismiss();
+                }
+                Toast.makeText(BidActivity.this, R.string.error_occurred_try_again, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 //    public void bidderNotification(String title, String content) {

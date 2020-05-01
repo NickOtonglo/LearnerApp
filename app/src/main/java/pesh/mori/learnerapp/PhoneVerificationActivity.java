@@ -298,9 +298,16 @@ public class PhoneVerificationActivity extends AppCompatActivity {
     }
 
     public void handleVerification(String msgCode){
-        int vCode = Integer.parseInt(msgCode);
-        if (vCode==code){
-            TemporaryPermissions.saveVerificationValue(getApplicationContext());
+        /*v1.0.4 bug fix 00003*/
+        try {
+            int vCode = Integer.parseInt(msgCode);
+            if (vCode==code){
+                TemporaryPermissions.saveVerificationValue(getApplicationContext());
+            }
+        } catch (NumberFormatException e){
+            e.printStackTrace();
+            Toast.makeText(this, R.string.error_occurred_try_again, Toast.LENGTH_SHORT).show();
+            onBackPressed();
         }
     }
 

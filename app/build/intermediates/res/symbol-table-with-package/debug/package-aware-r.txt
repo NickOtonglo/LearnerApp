@@ -3115,10 +3115,12 @@ string action_settings
 string africas_talking_api_key
 string africas_talking_environment
 string africas_talking_username
+string alert_cancel_bid
 string alert_publish
 string app_name
 string app_privacy_policy
 string appbar_scrolling_view_behavior
+string bids_category_message_id
 string bottom_sheet_behavior
 string character_counter_content_description
 string character_counter_pattern
@@ -3858,6 +3860,7 @@ string default_web_client_id
 string dummy_button
 string dummy_content
 string empty_directory_hint
+string error_account_error
 string error_error_occured_try_again
 string error_general
 string error_message_bid
@@ -3996,12 +3999,14 @@ string hint_university
 string hint_username
 string info_alert_permission_denied
 string info_alert_permissions_needed
+string info_bid_cancelled
 string info_cannot_remove_already_owned
 string info_cannot_remove_already_purchased
 string info_new_phone_alert_message_1
 string info_new_phone_alert_message_2
 string info_new_phone_alert_message_3
 string info_no_user_bio
+string info_please_wait
 string info_post_created
 string info_post_deleted
 string info_post_not_available
@@ -4028,6 +4033,8 @@ string option_alert_open_settings
 string option_alert_review_and_publish
 string option_alert_yes
 string option_contact_support
+string option_continue
+string option_do_not_continue
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through

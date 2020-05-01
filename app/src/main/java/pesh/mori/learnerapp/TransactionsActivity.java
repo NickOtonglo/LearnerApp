@@ -299,7 +299,7 @@ public class TransactionsActivity extends AppCompatActivity {
                         .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                createFinancialAccount();
+                                checkPendingBid();
                             }
                         })
                         .setNeutralButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -434,6 +434,51 @@ public class TransactionsActivity extends AppCompatActivity {
 
                     }
                 });
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    /*v1.0.4 bug fix 00006*/
+    public void checkPendingBid(){
+        final String [] pushKey = {""};
+        final DatabaseReference mBids = FirebaseDatabase.getInstance().getReference().child("Status").child("Bids").child(mAuth.getCurrentUser().getUid());
+        mBids.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    mBids.child(itemKey).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()){
+                                if (dataSnapshot.child("status").getValue().equals("pending")){
+                                    mAlert.setTitle("Pending bid")
+                                            .setMessage("You already submitted a bid for this item. Kindly wait for the author to review it.")
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                }
+                                            })
+                                            .show();
+                                    mProgress.dismiss();
+                                } else if (dataSnapshot.child("status").getValue().equals("ready")){
+                                    createFinancialAccount();
+                                }
+                            } else {createFinancialAccount();}
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                } else {createFinancialAccount();}
+
             }
 
             @Override
@@ -796,7 +841,7 @@ public class TransactionsActivity extends AppCompatActivity {
     }
 
     public void loadFileDetails() {
-        Log.d("LOG_DEBUG","childRef: "+childRef+", itemKey:"+itemKey);
+//        Log.d("LOG_DEBUG","childRef: "+childRef+", itemKey:"+itemKey);
         mFiles = FirebaseDatabase.getInstance().getReference().child(childRef).child(itemKey);
         mFiles.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
