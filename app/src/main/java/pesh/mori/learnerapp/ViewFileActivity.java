@@ -7,6 +7,8 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+
+import androidx.annotation.NonNull;
 import androidx.core.widget.NestedScrollView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +33,9 @@ import android.widget.VideoView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -72,7 +77,8 @@ public class ViewFileActivity extends AppCompatActivity {
     private ImageView btnPlayVideo;
     private TextView txtVidNow,txtVidEnd;
 
-    private Boolean playState;
+    /*v1.0.6 new feature 00001*/
+    private Boolean playState,hideState;
 
     private int current=0,duration=0;
 
@@ -189,6 +195,8 @@ public class ViewFileActivity extends AppCompatActivity {
         mRecycler.setHasFixedSize(true);
         mRecycler.setLayoutManager(layoutManager);
 
+        /*v1.0.6 new feature 00001*/
+        checkHidden();
         checkPrivacy();
 
         FirebaseDatabase.getInstance().getReference().child("Files").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -232,21 +240,40 @@ public class ViewFileActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAlert.setTitle("Delete post")
-                        .setMessage("Are you sure?")
-                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                checkOwners();
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+                /*v1.0.6 new feature 00001*/
+                if (!hideState){
+                    mAlert.setTitle(R.string.title_hide_post)
+                            .setMessage(R.string.warning_hide_post)
+                            .setPositiveButton(R.string.option_hide, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    hidePost();
+                                }
+                            })
+                            .setNegativeButton(R.string.option_cancel, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
 
-                            }
-                        })
-                        .show();
+                                }
+                            })
+                            .show();
+                } else {
+                    mAlert.setTitle(R.string.title_unhide_post)
+                            .setMessage(R.string.warning_unhide_post)
+                            .setPositiveButton(R.string.option_unhide, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    hidePost();
+                                }
+                            })
+                            .setNegativeButton(R.string.option_cancel, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            })
+                            .show();
+                }
             }
         });
 
@@ -269,6 +296,8 @@ public class ViewFileActivity extends AppCompatActivity {
         btnOpenDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*v1.0.5 bug fix 00009*/
+                mFiles = FirebaseDatabase.getInstance().getReference().child("Files").child(fileKey);
                 mFiles.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -455,6 +484,116 @@ public class ViewFileActivity extends AppCompatActivity {
             return false;
         } else {
             return true;
+        }
+    }
+
+    /*v1.0.6 new feature 00001*/
+    public void checkHidden(){
+        FirebaseDatabase.getInstance().getReference().child("AllPosts").child(fileKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    FirebaseDatabase.getInstance().getReference().child("AllPostsSplit").child("Files").child(fileKey).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()){
+                                hideState=false;
+                                btnDelete.setText(R.string.option_hide);
+
+                                Log.d("LOG_checkHidden","condition1");
+                            } else {
+                                hideState=true;
+                                btnDelete.setText(R.string.option_unhide);
+                                Log.d("LOG_checkHidden","condition2");
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+                } else {
+                    FirebaseDatabase.getInstance().getReference().child("AllPostsSplit").child("Files").child(fileKey).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()){
+                                hideState=false;
+                                btnDelete.setText(R.string.option_hide);
+                                Log.d("LOG_checkHidden","condition3");
+                            } else {
+                                hideState=true;
+                                btnDelete.setText(R.string.option_unhide);
+                                Log.d("LOG_checkHidden","condition4");
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    /*v1.0.6 new feature 00001*/
+    public void hidePost(){
+        if (hideState){
+            mProgress.setMessage(getApplicationContext().getResources().getString(R.string.info_unhiding_post));
+            mProgress.setCancelable(false);
+            mProgress.show();
+            FirebaseDatabase.getInstance().getReference().child("Files").child(fileKey).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    DatabaseReference mAllPosts = FirebaseDatabase.getInstance().getReference().child("AllPosts").child(fileKey);
+                    mAllPosts.child("Category").setValue("Files");
+                    mAllPosts.child("FileType").setValue(dataSnapshot.child("file_type").getValue());
+                    mAllPosts.child("ItemId").setValue(fileKey);
+                    mAllPosts.child("Title").setValue(dataSnapshot.child("title").getValue());
+
+                    DatabaseReference mAllPostsSplit = FirebaseDatabase.getInstance().getReference().child("AllPostsSplit").child("Files").child(fileKey);
+                    mAllPostsSplit.child("Category").setValue("Files");
+                    mAllPostsSplit.child("FileType").setValue(dataSnapshot.child("file_type").getValue());
+                    mAllPostsSplit.child("Institution").setValue(dataSnapshot.child("institution").getValue());
+                    mAllPostsSplit.child("ItemId").setValue(fileKey);
+                    mAllPostsSplit.child("Title").setValue(dataSnapshot.child("title").getValue());
+
+                    checkHidden();
+                    Toast.makeText(ViewFileActivity.this, R.string.info_post_unhidden, Toast.LENGTH_SHORT).show();
+                    mProgress.dismiss();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        } else {
+            mProgress.setMessage(getApplicationContext().getResources().getString(R.string.info_hiding_post));
+            mProgress.setCancelable(false);
+            mProgress.show();
+            FirebaseDatabase.getInstance().getReference().child("AllPosts").child(fileKey).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    FirebaseDatabase.getInstance().getReference().child("AllPostsSplit").child("Files").child(fileKey).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            checkHidden();
+                            Toast.makeText(ViewFileActivity.this, R.string.info_post_hidden, Toast.LENGTH_LONG).show();
+                            mProgress.dismiss();
+                        }
+                    });
+                }
+            });
         }
     }
 
@@ -724,21 +863,40 @@ public class ViewFileActivity extends AppCompatActivity {
                 viewAuthor(fileKey,"Files");
                 return true;
             case R.id.menu_delete_post:
-                mAlert.setTitle("Delete post")
-                        .setMessage("Are you sure?")
-                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                checkOwners();
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+                /*v1.0.6 new feature 00001*/
+                if (!hideState){
+                    mAlert.setTitle(R.string.title_hide_post)
+                            .setMessage(R.string.warning_hide_post)
+                            .setPositiveButton(R.string.option_hide, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    hidePost();
+                                }
+                            })
+                            .setNegativeButton(R.string.option_cancel, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
 
-                            }
-                        })
-                        .show();
+                                }
+                            })
+                            .show();
+                } else {
+                    mAlert.setTitle(R.string.title_unhide_post)
+                            .setMessage(R.string.warning_unhide_post)
+                            .setPositiveButton(R.string.option_unhide, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    hidePost();
+                                }
+                            })
+                            .setNegativeButton(R.string.option_cancel, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            })
+                            .show();
+                }
                 return true;
         }
 

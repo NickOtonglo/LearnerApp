@@ -3122,6 +3122,8 @@ string app_privacy_policy
 string appbar_scrolling_view_behavior
 string bids_category_message_id
 string bottom_sheet_behavior
+string button_hide_post
+string button_unhide_post
 string character_counter_content_description
 string character_counter_pattern
 string close
@@ -4002,6 +4004,7 @@ string info_alert_permissions_needed
 string info_bid_cancelled
 string info_cannot_remove_already_owned
 string info_cannot_remove_already_purchased
+string info_hiding_post
 string info_new_phone_alert_message_1
 string info_new_phone_alert_message_2
 string info_new_phone_alert_message_3
@@ -4009,9 +4012,12 @@ string info_no_user_bio
 string info_please_wait
 string info_post_created
 string info_post_deleted
+string info_post_hidden
 string info_post_not_available
+string info_post_unhidden
 string info_private_post
 string info_token_get_started
+string info_unhiding_post
 string info_user_disabled
 string link_forgot_password
 string link_loading
@@ -4032,9 +4038,12 @@ string option_alert_no
 string option_alert_open_settings
 string option_alert_review_and_publish
 string option_alert_yes
+string option_cancel
 string option_contact_support
 string option_continue
 string option_do_not_continue
+string option_hide
+string option_unhide
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -4068,8 +4077,10 @@ string title_activity_view_author
 string title_alert_permission_denied
 string title_alert_permissions_needed
 string title_dashboard
+string title_hide_post
 string title_home
 string title_notifications
+string title_unhide_post
 string trans_bal_insufficient
 string trans_successful
 string twitter_consumer_key
@@ -4089,6 +4100,8 @@ string type_video
 string type_word
 string v7_preference_off
 string v7_preference_on
+string warning_hide_post
+string warning_unhide_post
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

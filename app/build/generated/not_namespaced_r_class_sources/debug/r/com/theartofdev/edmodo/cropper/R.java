@@ -736,12 +736,12 @@ public final class R {
         public static final int abc_shareactionprovider_share_with = 0x7f110024;
         public static final int abc_shareactionprovider_share_with_application = 0x7f110025;
         public static final int abc_toolbar_collapse_description = 0x7f110026;
-        public static final int crop_image_activity_title = 0x7f11030d;
-        public static final int crop_image_menu_crop = 0x7f11030e;
-        public static final int crop_image_menu_rotate_left = 0x7f11030f;
-        public static final int crop_image_menu_rotate_right = 0x7f110310;
-        public static final int pick_image_intent_chooser_title = 0x7f1103cb;
-        public static final int status_bar_notification_info_overflow = 0x7f1103d6;
+        public static final int crop_image_activity_title = 0x7f11030f;
+        public static final int crop_image_menu_crop = 0x7f110310;
+        public static final int crop_image_menu_rotate_left = 0x7f110311;
+        public static final int crop_image_menu_rotate_right = 0x7f110312;
+        public static final int pick_image_intent_chooser_title = 0x7f1103d4;
+        public static final int status_bar_notification_info_overflow = 0x7f1103df;
     }
     public static final class style {
         private style() {}

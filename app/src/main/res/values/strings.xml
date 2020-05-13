@@ -160,4 +160,18 @@
 
     <string name="bids_category_message_id">def_bids_0000</string>
     <string name="info_please_wait">Please wait...</string>
+
+    <string name="title_hide_post">Hide Post</string>
+    <string name="title_unhide_post">Unhide Post</string>
+    <string name="info_hiding_post">Removing post from public access...</string>
+    <string name="info_unhiding_post">Enabling public access to post...</string>
+    <string name="warning_hide_post">This post will be hidden from everyone except you. Are you sure?</string>
+    <string name="warning_unhide_post">This post will be unhidden. Are you sure?</string>
+    <string name="option_cancel">Cancel</string>
+    <string name="option_hide">Hide</string>
+    <string name="option_unhide">Unhide</string>
+    <string name="button_hide_post">Hide post from public</string>
+    <string name="button_unhide_post">Unhide post from public</string>
+    <string name="info_post_hidden">Post hidden from public</string>
+    <string name="info_post_unhidden">Post visible to public</string>
 </resources>

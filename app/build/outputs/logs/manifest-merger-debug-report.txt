@@ -18,9 +18,9 @@ MERGED from [androidx.legacy:legacy-preference-v14:1.0.0] C:\Users\Nick Otto\.gr
 MERGED from [androidx.preference:preference:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\3370237b51308a73c3a29872040a5330\preference-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.firebaseui:firebase-ui-storage:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\01ca751bbf2d3d6ec36121b72cc9d1b3\firebase-ui-storage-2.3.0\AndroidManifest.xml:2:1-12:12
 MERGED from [com.facebook.android:facebook-android-sdk:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd264f2b19d50d14a636fd5b9fc4d2f9\facebook-android-sdk-4.42.0\AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\4a3e03751c5a45f4fbdd5c24fb4074c2\jetified-facebook-login-4.42.0\AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\657be6407ec71a35e02122fd83530854\jetified-facebook-share-4.42.0\AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\054076e53ddd4245dd8dd465330d56bd\jetified-facebook-common-4.42.0\AndroidManifest.xml:21:1-37:12
+MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\563461b23c0e7e7948ab442e5eab7d57\jetified-facebook-login-4.42.0\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\da045e56df0a75cf4675c71eb7c2511c\jetified-facebook-share-4.42.0\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:21:1-37:12
 MERGED from [androidx.appcompat:appcompat:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\8e8af25434bbed48df8a82dd7e99e55b\appcompat-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.sothree.slidinguppanel:library:3.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\c94b7df13d2fe2551351db2da8dd3e5e\jetified-library-3.4.0\AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.barteksc:android-pdf-viewer:3.1.0-beta.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b045fb8cda90ccd5e4cddb0a905cbf8e\jetified-android-pdf-viewer-3.1.0-beta.1\AndroidManifest.xml:2:1-11:12
@@ -61,7 +61,7 @@ MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Nick Otto\.g
 MERGED from [com.facebook.android:facebook-places:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b6c0fcb6755d94e28b1ae041b246f26a\facebook-places-4.42.0\AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-applinks:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\90a837784f7d0d2b3449d64b025cd64d\facebook-applinks-4.42.0\AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-messenger:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\de1c6cc6f1b8b2de884f6fe77d61129f\facebook-messenger-4.42.0\AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:21:1-53:12
+MERGED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:21:1-53:12
 MERGED from [androidx.palette:palette:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9b480830fb4ea56b3f191dbb0fd5678\palette-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\2e7012bf200499669ecc0d47bde9c89e\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e40f1db4ca89d7824435ce022634101c\vectordrawable-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -154,12 +154,12 @@ MERGED from [com.firebaseui:firebase-ui-storage:2.3.0] C:\Users\Nick Otto\.gradl
 MERGED from [com.firebaseui:firebase-ui-storage:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\01ca751bbf2d3d6ec36121b72cc9d1b3\firebase-ui-storage-2.3.0\AndroidManifest.xml:8:5-10:41
 MERGED from [com.facebook.android:facebook-android-sdk:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd264f2b19d50d14a636fd5b9fc4d2f9\facebook-android-sdk-4.42.0\AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-android-sdk:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd264f2b19d50d14a636fd5b9fc4d2f9\facebook-android-sdk-4.42.0\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\4a3e03751c5a45f4fbdd5c24fb4074c2\jetified-facebook-login-4.42.0\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\4a3e03751c5a45f4fbdd5c24fb4074c2\jetified-facebook-login-4.42.0\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\657be6407ec71a35e02122fd83530854\jetified-facebook-share-4.42.0\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\657be6407ec71a35e02122fd83530854\jetified-facebook-share-4.42.0\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\054076e53ddd4245dd8dd465330d56bd\jetified-facebook-common-4.42.0\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\054076e53ddd4245dd8dd465330d56bd\jetified-facebook-common-4.42.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\563461b23c0e7e7948ab442e5eab7d57\jetified-facebook-login-4.42.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\563461b23c0e7e7948ab442e5eab7d57\jetified-facebook-login-4.42.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\da045e56df0a75cf4675c71eb7c2511c\jetified-facebook-share-4.42.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\da045e56df0a75cf4675c71eb7c2511c\jetified-facebook-share-4.42.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:24:5-26:41
 MERGED from [androidx.appcompat:appcompat:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\8e8af25434bbed48df8a82dd7e99e55b\appcompat-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\8e8af25434bbed48df8a82dd7e99e55b\appcompat-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.sothree.slidinguppanel:library:3.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\c94b7df13d2fe2551351db2da8dd3e5e\jetified-library-3.4.0\AndroidManifest.xml:7:5-44
@@ -240,8 +240,8 @@ MERGED from [com.facebook.android:facebook-applinks:4.42.0] C:\Users\Nick Otto\.
 MERGED from [com.facebook.android:facebook-applinks:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\90a837784f7d0d2b3449d64b025cd64d\facebook-applinks-4.42.0\AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-messenger:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\de1c6cc6f1b8b2de884f6fe77d61129f\facebook-messenger-4.42.0\AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-messenger:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\de1c6cc6f1b8b2de884f6fe77d61129f\facebook-messenger-4.42.0\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:24:5-26:41
 MERGED from [androidx.palette:palette:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9b480830fb4ea56b3f191dbb0fd5678\palette-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.palette:palette:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9b480830fb4ea56b3f191dbb0fd5678\palette-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\2e7012bf200499669ecc0d47bde9c89e\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
@@ -438,12 +438,12 @@ MERGED from [com.google.android.material:material:1.0.0] C:\Users\Nick Otto\.gra
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\94d59a887a195ebc342af82534446d93\material-1.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.facebook.android:facebook-android-sdk:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd264f2b19d50d14a636fd5b9fc4d2f9\facebook-android-sdk-4.42.0\AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-android-sdk:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd264f2b19d50d14a636fd5b9fc4d2f9\facebook-android-sdk-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\4a3e03751c5a45f4fbdd5c24fb4074c2\jetified-facebook-login-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\4a3e03751c5a45f4fbdd5c24fb4074c2\jetified-facebook-login-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\657be6407ec71a35e02122fd83530854\jetified-facebook-share-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\657be6407ec71a35e02122fd83530854\jetified-facebook-share-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\054076e53ddd4245dd8dd465330d56bd\jetified-facebook-common-4.42.0\AndroidManifest.xml:28:5-35:19
-MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\054076e53ddd4245dd8dd465330d56bd\jetified-facebook-common-4.42.0\AndroidManifest.xml:28:5-35:19
+MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\563461b23c0e7e7948ab442e5eab7d57\jetified-facebook-login-4.42.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\563461b23c0e7e7948ab442e5eab7d57\jetified-facebook-login-4.42.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\da045e56df0a75cf4675c71eb7c2511c\jetified-facebook-share-4.42.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\da045e56df0a75cf4675c71eb7c2511c\jetified-facebook-share-4.42.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:28:5-35:19
+MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:28:5-35:19
 MERGED from [com.sothree.slidinguppanel:library:3.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\c94b7df13d2fe2551351db2da8dd3e5e\jetified-library-3.4.0\AndroidManifest.xml:9:5-20
 MERGED from [com.sothree.slidinguppanel:library:3.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\c94b7df13d2fe2551351db2da8dd3e5e\jetified-library-3.4.0\AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-messaging:20.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\262380460e7785b5454aa5338f45185e\jetified-firebase-messaging-20.1.0\AndroidManifest.xml:22:5-42:19
@@ -500,8 +500,8 @@ MERGED from [com.facebook.android:facebook-applinks:4.42.0] C:\Users\Nick Otto\.
 MERGED from [com.facebook.android:facebook-applinks:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\90a837784f7d0d2b3449d64b025cd64d\facebook-applinks-4.42.0\AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-messenger:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\de1c6cc6f1b8b2de884f6fe77d61129f\facebook-messenger-4.42.0\AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-messenger:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\de1c6cc6f1b8b2de884f6fe77d61129f\facebook-messenger-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:28:5-51:19
-MERGED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:28:5-51:19
+MERGED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:28:5-51:19
+MERGED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:28:5-51:19
 MERGED from [androidx.core:core:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\32d56eb9d6a2f40a36d52014ff27baa0\core-1.0.0\AndroidManifest.xml:22:5-89
 MERGED from [androidx.core:core:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\32d56eb9d6a2f40a36d52014ff27baa0\core-1.0.0\AndroidManifest.xml:22:5-89
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7609723c1334fda827ab6c00ffe80092\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
@@ -563,8 +563,8 @@ activity#com.facebook.FacebookActivity
 ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:50:9-53:48
 MERGED from [com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:59:9-63:48
 MERGED from [com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:59:9-63:48
-MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\054076e53ddd4245dd8dd465330d56bd\jetified-facebook-common-4.42.0\AndroidManifest.xml:29:9-32:66
-MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\054076e53ddd4245dd8dd465330d56bd\jetified-facebook-common-4.42.0\AndroidManifest.xml:29:9-32:66
+MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:29:9-32:66
+MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:29:9-32:66
 	android:label
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:53:13-45
 	tools:ignore
@@ -572,15 +572,15 @@ MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gr
 	android:configChanges
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:52:13-96
 	android:theme
-		ADDED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\054076e53ddd4245dd8dd465330d56bd\jetified-facebook-common-4.42.0\AndroidManifest.xml:32:13-63
+		ADDED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:32:13-63
 	android:name
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:51:13-57
 activity#com.facebook.CustomTabActivity
 ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:54:9-65:20
 MERGED from [com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:64:9-76:20
 MERGED from [com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:64:9-76:20
-MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\054076e53ddd4245dd8dd465330d56bd\jetified-facebook-common-4.42.0\AndroidManifest.xml:34:9-67
-MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\054076e53ddd4245dd8dd465330d56bd\jetified-facebook-common-4.42.0\AndroidManifest.xml:34:9-67
+MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:34:9-67
+MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:34:9-67
 	android:exported
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:56:13-36
 	tools:ignore
@@ -1262,9 +1262,9 @@ ADDED from [com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\ca
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:@string/facebook_login_protocol_scheme
 ADDED from [com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:68:13-75:29
 activity#com.facebook.CustomTabMainActivity
-ADDED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\054076e53ddd4245dd8dd465330d56bd\jetified-facebook-common-4.42.0\AndroidManifest.xml:33:9-71
+ADDED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:33:9-71
 	android:name
-		ADDED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\054076e53ddd4245dd8dd465330d56bd\jetified-facebook-common-4.42.0\AndroidManifest.xml:33:19-68
+		ADDED from [com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:33:19-68
 service#com.google.firebase.messaging.FirebaseMessagingService
 ADDED from [com.google.firebase:firebase-messaging:20.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\262380460e7785b5454aa5338f45185e\jetified-firebase-messaging-20.1.0\AndroidManifest.xml:28:9-34:19
 	android:exported
@@ -1478,25 +1478,25 @@ ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Ni
 	android:name
 		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:49:13-87
 provider#com.facebook.internal.FacebookInitProvider
-ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:39:9-42:40
+ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:39:9-42:40
 	android:authorities
-		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:41:13-72
+		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:41:13-72
 	android:exported
-		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:42:13-37
+		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:42:13-37
 	android:name
-		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:40:13-70
+		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:40:13-70
 receiver#com.facebook.CurrentAccessTokenExpirationBroadcastReceiver
-ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:44:9-50:20
+ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:44:9-50:20
 	android:exported
-		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:46:13-37
+		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:46:13-37
 	android:name
-		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:45:13-86
+		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:45:13-86
 intent-filter#action:name:com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
-ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:47:13-49:29
+ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:47:13-49:29
 action#com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
-ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:48:17-95
+ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:48:17-95
 	android:name
-		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0741b159f027d9ca9831289a24a78975\jetified-facebook-core-4.42.0\AndroidManifest.xml:48:25-92
+		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:48:25-92
 provider#com.iceteck.silicompressorr.provider.GenericFileProvider
 ADDED from [com.iceteck.silicompressorr:silicompressor:2.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\12ca0e58e24c43d5540d4ecb376b7499\jetified-silicompressor-2.2.1\AndroidManifest.xml:18:9-26:20
 	android:grantUriPermissions

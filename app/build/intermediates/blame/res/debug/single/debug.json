@@ -1,11 +1,11 @@
 [
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_profile.xml.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout\\activity_profile.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_baseline_audiotrack_black_18.png.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable-xxhdpi\\baseline_audiotrack_black_18.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_profile.xml.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout\\activity_profile.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-mdpi_activity_report_post.xml.flat",
@@ -76,12 +76,12 @@
         "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\9db89400378570105dfd50cec7d287c7\\jetified-library-1.09\\res\\drawable-hdpi-v4\\ic_word_box.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-hdpi_activity_writer.xml.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-hdpi\\activity_writer.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-ldpi_content_main3.xml.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-ldpi\\content_main3.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-hdpi_activity_writer.xml.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-hdpi\\activity_writer.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_login.xml.flat",
@@ -128,12 +128,12 @@
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-hdpi\\activity_messages.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-mdpi_card_mydownloads.xml.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-mdpi\\card_mydownloads.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxhdpi_institution_dialog_activity.xml.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-xxhdpi\\institution_dialog_activity.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-mdpi_card_mydownloads.xml.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-mdpi\\card_mydownloads.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_close.png.flat",
@@ -164,12 +164,12 @@
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_tile_bg.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\32d56eb9d6a2f40a36d52014ff27baa0\\core-1.0.0\\res\\drawable\\notification_tile_bg.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_baseline_play_circle_outline_white_18dp.png.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\mipmap-xxhdpi\\baseline_play_circle_outline_white_18dp.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_tile_bg.xml.flat",
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\32d56eb9d6a2f40a36d52014ff27baa0\\core-1.0.0\\res\\drawable\\notification_tile_bg.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-small_activity_new_diy_upload.xml.flat",
@@ -208,12 +208,12 @@
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-small\\cars_myuploads.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\8e8af25434bbed48df8a82dd7e99e55b\\appcompat-1.0.0\\res\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxxhdpi_bidpopup_activity.xml.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-xxxhdpi\\bidpopup_activity.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\8e8af25434bbed48df8a82dd7e99e55b\\appcompat-1.0.0\\res\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi-v4_flag_namibia.png.flat",
@@ -261,7 +261,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_send_button_icon.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\657be6407ec71a35e02122fd83530854\\jetified-facebook-share-4.42.0\\res\\drawable\\com_facebook_send_button_icon.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\da045e56df0a75cf4675c71eb7c2511c\\jetified-facebook-share-4.42.0\\res\\drawable\\com_facebook_send_button_icon.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-hdpi_card_home_posts.xml.flat",
@@ -289,7 +289,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_tooltip_black_bottomnub.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_black_bottomnub.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_black_bottomnub.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_doc_preview_hi_res.png.flat",
@@ -297,7 +297,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\color_com_facebook_send_button_text_color.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\657be6407ec71a35e02122fd83530854\\jetified-facebook-share-4.42.0\\res\\color\\com_facebook_send_button_text_color.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\da045e56df0a75cf4675c71eb7c2511c\\jetified-facebook-share-4.42.0\\res\\color\\com_facebook_send_button_text_color.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_read_document.xml.flat",
@@ -308,20 +308,20 @@
         "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\0bc09dc9c62eb0b0113c361ab87b9998\\jetified-countrycodepicker-2.1.5\\res\\drawable-nodpi-v4\\flag_cook_islands.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi-v4_flag_ukraine.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\0bc09dc9c62eb0b0113c361ab87b9998\\jetified-countrycodepicker-2.1.5\\res\\drawable-nodpi-v4\\flag_ukraine.png"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxhdpi_activity_downloaddiy.xml.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-xxhdpi\\activity_downloaddiy.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxhdpi_activity_viewbio.xml.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-xxhdpi\\activity_viewbio.xml"
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi-v4_flag_ukraine.png.flat",
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\0bc09dc9c62eb0b0113c361ab87b9998\\jetified-countrycodepicker-2.1.5\\res\\drawable-nodpi-v4\\flag_ukraine.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_blue_topnub.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_topnub.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_topnub.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxhdpi_activity_viewbio.xml.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-xxhdpi\\activity_viewbio.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxhdpi_slide.xml.flat",
@@ -356,16 +356,16 @@
         "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\8e8af25434bbed48df8a82dd7e99e55b\\appcompat-1.0.0\\res\\drawable-mdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_ic_image_box.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\9db89400378570105dfd50cec7d287c7\\jetified-library-1.09\\res\\drawable-hdpi-v4\\ic_image_box.png"
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxhdpi_activity_view_file.xml.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-xxhdpi\\activity_view_file.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_auth_method_picker_layout.xml.flat",
         "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a9a2f7a2e2a8650dcfa9572a44f8725f\\jetified-firebase-ui-auth-2.3.0\\res\\layout\\fui_auth_method_picker_layout.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxhdpi_activity_view_file.xml.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-xxhdpi\\activity_view_file.xml"
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_ic_image_box.png.flat",
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\9db89400378570105dfd50cec7d287c7\\jetified-library-1.09\\res\\drawable-hdpi-v4\\ic_image_box.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_phone.png.flat",
@@ -388,20 +388,20 @@
         "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\8e8af25434bbed48df8a82dd7e99e55b\\appcompat-1.0.0\\res\\drawable-xxxhdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_bid.png.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_bid.png"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\anim_fab_slide_in_from_left.xml.flat",
         "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\cc64fe453ad532ef4a4149f6be2766f9\\fab-1.6.4\\res\\anim\\fab_slide_in_from_left.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_locks.png.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_locks.png"
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_bid.png.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_bid.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_light.xml.flat",
         "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\566c5c80bf01ec0a80c33a3833a45677\\play-services-base-17.1.0\\res\\drawable\\common_google_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_locks.png.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_locks.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_black_16dp.png.flat",
@@ -488,20 +488,20 @@
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-mdpi\\activity_maintenance.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xlarge_activity_content.xml.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-xlarge\\activity_content.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-ldpi_content_new_home.xml.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-ldpi\\content_new_home.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_menu_send.xml.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable-v21\\ic_menu_send.xml"
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xlarge_activity_content.xml.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout-xlarge\\activity_content.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\8e8af25434bbed48df8a82dd7e99e55b\\appcompat-1.0.0\\res\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_menu_send.xml.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable-v21\\ic_menu_send.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-hdpi_activity_bid.xml.flat",
@@ -529,7 +529,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_tooltip_blue_topnub.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_blue_topnub.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_blue_topnub.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xlarge_header.xml.flat",
@@ -753,7 +753,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_black_topnub.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_topnub.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_topnub.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_call_black_24dp.xml.flat",
@@ -897,7 +897,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_favicon_blue.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_favicon_blue.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_favicon_blue.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xhdpi_institution_dialog_activity.xml.flat",
@@ -1017,7 +1017,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_button_send_icon_white.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\657be6407ec71a35e02122fd83530854\\jetified-facebook-share-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_button_send_icon_white.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\da045e56df0a75cf4675c71eb7c2511c\\jetified-facebook-share-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_button_send_icon_white.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_phone_progress_dialog.xml.flat",
@@ -1033,7 +1033,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\color_com_facebook_button_text_color.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\color\\com_facebook_button_text_color.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\color\\com_facebook_button_text_color.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_addperson.png.flat",
@@ -1389,11 +1389,11 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_button_like_icon_selected.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_button_like_icon_selected.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_button_like_icon_selected.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_button_send_icon_blue.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\657be6407ec71a35e02122fd83530854\\jetified-facebook-share-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_button_send_icon_blue.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\da045e56df0a75cf4675c71eb7c2511c\\jetified-facebook-share-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_button_send_icon_blue.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-large_card_messages.xml.flat",
@@ -1633,7 +1633,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_button_send_background.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\657be6407ec71a35e02122fd83530854\\jetified-facebook-share-4.42.0\\res\\drawable\\com_facebook_button_send_background.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\da045e56df0a75cf4675c71eb7c2511c\\jetified-facebook-share-4.42.0\\res\\drawable\\com_facebook_button_send_background.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxxhdpi_card_authors.xml.flat",
@@ -1685,7 +1685,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_close.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_close.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_close.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_transfertokens.xml.flat",
@@ -1957,7 +1957,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_auth_dialog_background.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_auth_dialog_background.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_auth_dialog_background.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xlarge_activity_institution.xml.flat",
@@ -2445,7 +2445,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_button_send_icon_blue.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\657be6407ec71a35e02122fd83530854\\jetified-facebook-share-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_button_send_icon_blue.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\da045e56df0a75cf4675c71eb7c2511c\\jetified-facebook-share-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_button_send_icon_blue.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-hdpi_downloadpopup_activity.xml.flat",
@@ -2493,7 +2493,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_tooltip_black_topnub.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_black_topnub.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_black_topnub.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-hdpi_activity_set_thumbnail.xml.flat",
@@ -2549,7 +2549,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_blue_background.9.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_background.9.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_background.9.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_ic_document_box.png.flat",
@@ -2897,7 +2897,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_button_send_icon_blue.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\657be6407ec71a35e02122fd83530854\\jetified-facebook-share-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_button_send_icon_blue.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\da045e56df0a75cf4675c71eb7c2511c\\jetified-facebook-share-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_button_send_icon_blue.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_baseline_pause_24.xml.flat",
@@ -3217,7 +3217,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_button_icon_white.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_button_icon_white.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_button_icon_white.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_baseline_play_arrow_white_48.png.flat",
@@ -3425,7 +3425,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_button_like_icon_selected.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_button_like_icon_selected.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_button_like_icon_selected.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-mdpi_activity_myfiles.xml.flat",
@@ -3585,7 +3585,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_auth_dialog_header_background.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_auth_dialog_header_background.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_auth_dialog_header_background.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-large_content_main4.xml.flat",
@@ -3637,7 +3637,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_tooltip_blue_xout.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_blue_xout.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_blue_xout.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_view_announcement.xml.flat",
@@ -3709,7 +3709,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_black_bottomnub.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_bottomnub.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_bottomnub.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_paypal.png.flat",
@@ -3741,7 +3741,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_com_facebook_activity_layout.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\layout\\com_facebook_activity_layout.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\layout\\com_facebook_activity_layout.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_account_circle_black.xml.flat",
@@ -3781,7 +3781,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_button_background.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_button_background.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_button_background.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_group_black_24dp.xml.flat",
@@ -3801,7 +3801,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_tooltip_blue_background.9.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_blue_background.9.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_blue_background.9.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-small_card_user_list.xml.flat",
@@ -3833,7 +3833,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_close.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_close.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_close.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxhdpi_activity_credentials.xml.flat",
@@ -3945,7 +3945,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_com_facebook_button_icon_blue.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-xxhdpi-v4\\com_facebook_button_icon_blue.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-xxhdpi-v4\\com_facebook_button_icon_blue.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_ic_drawing_box.png.flat",
@@ -4217,7 +4217,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_com_facebook_device_auth_dialog_fragment.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\layout\\com_facebook_device_auth_dialog_fragment.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\layout\\com_facebook_device_auth_dialog_fragment.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_btn_checkable.xml.flat",
@@ -4433,7 +4433,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_com_facebook_smart_device_dialog_fragment.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\layout\\com_facebook_smart_device_dialog_fragment.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\layout\\com_facebook_smart_device_dialog_fragment.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_baseline_stop_white_18dp.png.flat",
@@ -4525,7 +4525,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_com_facebook_button_icon_white.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-xxhdpi-v4\\com_facebook_button_icon_white.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-xxhdpi-v4\\com_facebook_button_icon_white.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_icons8_google_icon_48.png.flat",
@@ -4913,7 +4913,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_button_send_icon_white.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\657be6407ec71a35e02122fd83530854\\jetified-facebook-share-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_button_send_icon_white.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\da045e56df0a75cf4675c71eb7c2511c\\jetified-facebook-share-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_button_send_icon_white.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-mdpi_fragment_mynotes.xml.flat",
@@ -5309,7 +5309,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_tooltip_blue_bottomnub.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_blue_bottomnub.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_blue_bottomnub.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_view_author_black.png.flat",
@@ -5437,7 +5437,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_tooltip_blue_topnub.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_blue_topnub.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_blue_topnub.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-hdpi_fragment_myuploads.xml.flat",
@@ -5469,7 +5469,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_black_xout.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_xout.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_xout.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxxhdpi_fragment_transfertokens.xml.flat",
@@ -5801,7 +5801,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_button_icon_white.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_button_icon_white.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_button_icon_white.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xlarge_activity_contentdiy.xml.flat",
@@ -5845,7 +5845,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_button_send_icon_white.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\657be6407ec71a35e02122fd83530854\\jetified-facebook-share-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_button_send_icon_white.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\da045e56df0a75cf4675c71eb7c2511c\\jetified-facebook-share-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_button_send_icon_white.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-hdpi_activity_view_file.xml.flat",
@@ -5885,7 +5885,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_button_login_background.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable\\com_facebook_button_login_background.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable\\com_facebook_button_login_background.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_layout_snackbar.xml.flat",
@@ -6137,7 +6137,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_blue_xout.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_xout.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_xout.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi-v4_flag_italy.png.flat",
@@ -6593,7 +6593,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_button_like_background.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_button_like_background.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_button_like_background.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-large_activity_transactions.xml.flat",
@@ -6617,7 +6617,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_button_icon_blue.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_button_icon_blue.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_button_icon_blue.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-hdpi_activity_phone_verification.xml.flat",
@@ -6801,7 +6801,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_button_icon_blue.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_button_icon_blue.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_button_icon_blue.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-mdpi_content_main2.xml.flat",
@@ -7013,7 +7013,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_button_login_silver_background.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable\\com_facebook_button_login_silver_background.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable\\com_facebook_button_login_silver_background.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi-v4_flag_colombia.png.flat",
@@ -7053,7 +7053,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_profile_picture_blank_portrait.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_profile_picture_blank_portrait.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_profile_picture_blank_portrait.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_recommended.png.flat",
@@ -7081,7 +7081,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_auth_dialog_cancel_background.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_auth_dialog_cancel_background.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_auth_dialog_cancel_background.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xhdpi_content_main4.xml.flat",
@@ -7409,7 +7409,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_tooltip_black_bottomnub.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_black_bottomnub.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_black_bottomnub.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xhdpi_activity_view_note.xml.flat",
@@ -7713,7 +7713,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_tooltip_black_background.9.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_black_background.9.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_black_background.9.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-small_fragment_author_posts.xml.flat",
@@ -8349,7 +8349,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_tooltip_black_background.9.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_black_background.9.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_black_background.9.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_learnerapp.png.flat",
@@ -8689,7 +8689,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_button_icon_white.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_button_icon_white.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_button_icon_white.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_search_black_24dp.xml.flat",
@@ -8713,7 +8713,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_tooltip_blue_background.9.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_blue_background.9.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_blue_background.9.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_baseline_pause_white_24.png.flat",
@@ -8745,7 +8745,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_button_login_logo.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable\\com_facebook_button_login_logo.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable\\com_facebook_button_login_logo.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_close.png.flat",
@@ -8765,7 +8765,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_com_facebook_button_send_icon_white.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\657be6407ec71a35e02122fd83530854\\jetified-facebook-share-4.42.0\\res\\drawable-xxhdpi-v4\\com_facebook_button_send_icon_white.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\da045e56df0a75cf4675c71eb7c2511c\\jetified-facebook-share-4.42.0\\res\\drawable-xxhdpi-v4\\com_facebook_button_send_icon_white.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_preview_post.xml.flat",
@@ -8929,7 +8929,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_blue_bottomnub.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_bottomnub.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_bottomnub.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_search.png.flat",
@@ -8953,7 +8953,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_close.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_close.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_close.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_paypal.png.flat",
@@ -9161,7 +9161,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_tooltip_blue_xout.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_blue_xout.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_blue_xout.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi-v4_flag_macao.png.flat",
@@ -9421,7 +9421,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_com_facebook_button_like_icon_selected.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-xxhdpi-v4\\com_facebook_button_like_icon_selected.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-xxhdpi-v4\\com_facebook_button_like_icon_selected.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xxxhdpi_fragment_alerts.xml.flat",
@@ -9429,7 +9429,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_tooltip_blue_bottomnub.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_blue_bottomnub.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_blue_bottomnub.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_lines_media.xml.flat",
@@ -9445,7 +9445,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_button_like_icon_selected.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_button_like_icon_selected.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_button_like_icon_selected.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xhdpi_app_bar_new_home.xml.flat",
@@ -9485,7 +9485,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_tooltip_black_topnub.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_black_topnub.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_black_topnub.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi-v4_flag_sweden.png.flat",
@@ -9613,7 +9613,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_profile_picture_blank_square.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_profile_picture_blank_square.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_profile_picture_blank_square.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_baseline_play_arrow_white_36.png.flat",
@@ -9729,7 +9729,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_tooltip_black_xout.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_black_xout.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-mdpi-v4\\com_facebook_tooltip_black_xout.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_messenger_button_white_bg_round.xml.flat",
@@ -9805,7 +9805,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_black_background.9.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_background.9.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_background.9.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-xhdpi_spinner_item.xml.flat",
@@ -10225,7 +10225,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_tooltip_black_xout.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_black_xout.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_black_xout.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_socialevent.xml.flat",
@@ -10277,7 +10277,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_com_facebook_tooltip_bubble.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\4a3e03751c5a45f4fbdd5c24fb4074c2\\jetified-facebook-login-4.42.0\\res\\layout\\com_facebook_tooltip_bubble.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\563461b23c0e7e7948ab442e5eab7d57\\jetified-facebook-login-4.42.0\\res\\layout\\com_facebook_tooltip_bubble.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-small_card_notes.xml.flat",
@@ -10529,7 +10529,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_com_facebook_login_fragment.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\layout\\com_facebook_login_fragment.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\layout\\com_facebook_login_fragment.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_screen_content_include.xml.flat",
@@ -10813,7 +10813,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_button_icon.xml.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_button_icon.xml"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable\\com_facebook_button_icon.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-mdpi_content_new_home.xml.flat",
@@ -11097,7 +11097,7 @@
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_button_icon_blue.png.flat",
-        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\054076e53ddd4245dd8dd465330d56bd\\jetified-facebook-common-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_button_icon_blue.png"
+        "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a760a4d3949809fbd5b1a3546c659b4f\\jetified-facebook-common-4.42.0\\res\\drawable-hdpi-v4\\com_facebook_button_icon_blue.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-hdpi_content_main4.xml.flat",

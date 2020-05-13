@@ -826,24 +826,24 @@ public final class R {
         public static final int abc_toolbar_collapse_description = 0x7f110026;
         public static final int appbar_scrolling_view_behavior = 0x7f110030;
         public static final int bottom_sheet_behavior = 0x7f110032;
-        public static final int character_counter_pattern = 0x7f110034;
-        public static final int empty_directory_hint = 0x7f110315;
-        public static final int file_picker_app_name = 0x7f110341;
-        public static final int start_path_name = 0x7f1103d5;
-        public static final int status_bar_notification_info_overflow = 0x7f1103d6;
-        public static final int type_apk = 0x7f1103ec;
-        public static final int type_archive = 0x7f1103ed;
-        public static final int type_certificate = 0x7f1103ee;
-        public static final int type_directory = 0x7f1103ef;
-        public static final int type_document = 0x7f1103f0;
-        public static final int type_drawing = 0x7f1103f1;
-        public static final int type_excel = 0x7f1103f2;
-        public static final int type_image = 0x7f1103f3;
-        public static final int type_music = 0x7f1103f4;
-        public static final int type_pdf = 0x7f1103f5;
-        public static final int type_power_point = 0x7f1103f6;
-        public static final int type_video = 0x7f1103f7;
-        public static final int type_word = 0x7f1103f8;
+        public static final int character_counter_pattern = 0x7f110036;
+        public static final int empty_directory_hint = 0x7f110317;
+        public static final int file_picker_app_name = 0x7f110343;
+        public static final int start_path_name = 0x7f1103de;
+        public static final int status_bar_notification_info_overflow = 0x7f1103df;
+        public static final int type_apk = 0x7f1103f7;
+        public static final int type_archive = 0x7f1103f8;
+        public static final int type_certificate = 0x7f1103f9;
+        public static final int type_directory = 0x7f1103fa;
+        public static final int type_document = 0x7f1103fb;
+        public static final int type_drawing = 0x7f1103fc;
+        public static final int type_excel = 0x7f1103fd;
+        public static final int type_image = 0x7f1103fe;
+        public static final int type_music = 0x7f1103ff;
+        public static final int type_pdf = 0x7f110400;
+        public static final int type_power_point = 0x7f110401;
+        public static final int type_video = 0x7f110402;
+        public static final int type_word = 0x7f110403;
     }
     public static final class style {
         private style() {}

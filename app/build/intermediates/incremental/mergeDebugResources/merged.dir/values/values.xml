@@ -1034,6 +1034,8 @@
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bids_category_message_id">def_bids_0000</string>
     <string name="bottom_sheet_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
+    <string name="button_hide_post">Hide post from public</string>
+    <string name="button_unhide_post">Unhide post from public</string>
     <string name="character_counter_content_description">Character limit exceeded %1$d of %2$d</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="close">Close</string>
@@ -1932,6 +1934,7 @@
     <string name="info_bid_cancelled">You have cancelled your bid. You are free to make another bid on this item or to purchase it upfront.</string>
     <string name="info_cannot_remove_already_owned">You can\'t remove this post at the moment, since at least one other user now owns it. Contact support.</string>
     <string name="info_cannot_remove_already_purchased">You can\'t remove this post at the moment, since at least one user has purchased it. Contact support.</string>
+    <string name="info_hiding_post">Removing post from public access...</string>
     <string name="info_new_phone_alert_message_1">We will send a verification SMS to the device that contains the SIM card with the number you provided</string>
     <string name="info_new_phone_alert_message_2">L\'earnerApp will attempt to access the verification code sent in the SMS to verify your phone number</string>
     <string name="info_new_phone_alert_message_3">If the process is successful, you will not need to do anything further. However, if L\'earnerApp is unable to complete phone verification automatically, kindly go to the Messages app and retreive the verification code from the verification SMS sent to your device</string>
@@ -1939,9 +1942,12 @@
     <string name="info_please_wait">Please wait...</string>
     <string name="info_post_created">Post created</string>
     <string name="info_post_deleted">Post deleted</string>
+    <string name="info_post_hidden">Post hidden from public</string>
     <string name="info_post_not_available">Sorry, this post is no longer available.</string>
+    <string name="info_post_unhidden">Post visible to public</string>
     <string name="info_private_post">Sorry, this post is private.</string>
     <string name="info_token_get_started">Get started by following the link below:</string>
+    <string name="info_unhiding_post">Enabling public access to post...</string>
     <string name="info_user_disabled">Your account is currently disabled. Kindly contact our team on any social media platform such as Twitter (@L_earnerApp) for assistance.</string>
     <string name="link_forgot_password"><u>Forgot password?</u></string>
     <string name="link_loading"><u>Loading...</u></string>
@@ -1962,9 +1968,12 @@
     <string name="option_alert_open_settings">Open Settings</string>
     <string name="option_alert_review_and_publish">Review and Publish</string>
     <string name="option_alert_yes">Yes</string>
+    <string name="option_cancel">Cancel</string>
     <string name="option_contact_support">Contact Support</string>
     <string name="option_continue">Continue</string>
     <string name="option_do_not_continue">Do Not Continue</string>
+    <string name="option_hide">Hide</string>
+    <string name="option_unhide">Unhide</string>
     <string name="password_toggle_content_description">Show password</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
@@ -1998,8 +2007,10 @@
     <string name="title_alert_permission_denied">Permission Denied</string>
     <string name="title_alert_permissions_needed">Permission(s) Required</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="title_hide_post">Hide Post</string>
     <string name="title_home">Home</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_unhide_post">Unhide Post</string>
     <string name="trans_bal_insufficient">Your balance is insufficient.</string>
     <string name="trans_successful">Transaction successful. Your new balance is: </string>
     <string name="twitter_consumer_key" translatable="false">CHANGE-ME</string>
@@ -2019,6 +2030,8 @@
     <string name="type_word">Document</string>
     <string name="v7_preference_off">OFF</string>
     <string name="v7_preference_on">ON</string>
+    <string name="warning_hide_post">This post will be hidden from everyone except you. Are you sure?</string>
+    <string name="warning_unhide_post">This post will be unhidden. Are you sure?</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

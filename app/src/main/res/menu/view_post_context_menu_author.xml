@@ -3,5 +3,5 @@
     <item
         android:id="@+id/menu_delete_post"
         android:icon="@mipmap/ic_delete_black"
-        android:title="Delete" />
+        android:title="Show/Hide post" />
 </menu>
