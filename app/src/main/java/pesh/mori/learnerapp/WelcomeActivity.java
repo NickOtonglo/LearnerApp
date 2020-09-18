@@ -1,20 +1,19 @@
 package pesh.mori.learnerapp;
 
 import android.content.Intent;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class WelcomeActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
-    private SlideAdapter myadapter;
+//    private SlideAdapter myadapter;
     private FirebaseAuth mAuth;
 
 
@@ -23,9 +22,9 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        myadapter = new SlideAdapter(this);
-        viewPager.setAdapter(myadapter);
-        final Animation myanim = AnimationUtils.loadAnimation(this, R.anim.bounce3);
+//        myadapter = new SlideAdapter(this);
+//        viewPager.setAdapter(myadapter);
+//        final Animation myanim = AnimationUtils.loadAnimation(this, R.anim.bounce3);
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -40,7 +39,7 @@ public class WelcomeActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textView.startAnimation(myanim);
+//                textView.startAnimation(myanim);
                 startActivity(new Intent(getApplicationContext(), SelectLoginActivity.class));
                 finish();
 

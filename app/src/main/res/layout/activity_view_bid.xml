@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pesh.mori.learnerapp.ViewBidActivity"
-    android:orientation="vertical">
+    tools:context=".ViewBidActivity"
+    android:orientation="vertical"
+    android:background="?attr/attrBackgroundColor">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -14,35 +15,41 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="8sp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/view_bid_layout_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8sp"
                 android:orientation="vertical"
                 android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8sp"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Created at: "
-                        android:textColor="@color/blue" />
+                        android:text="@string/hint_posted_at"
+                        android:textColor="?attr/attrTextSecondaryColor"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:padding="@dimen/text_secondary_padding"/>
 
                     <TextView
-                        android:id="@+id/txt_view_bid_bid_time"
-                        android:layout_width="match_parent"
+                        android:id="@+id/txt_time"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Loading..."
-                        android:textColor="@color/black"/>
+                        android:text="@string/link_loading"
+                        android:textColor="?attr/attrTextColor"
+                        android:textSize="@dimen/text_primary_size"
+                        android:padding="@dimen/text_secondary_padding"/>
                 </LinearLayout>
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -50,103 +57,86 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_height="80dp"
                     android:layout_width="match_parent"
-                    android:src="@drawable/ic_action_user"
-                    app:civ_border_color="@color/white"
-                    app:civ_border_width="2dp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:src="@drawable/ic_baseline_person_24_theme"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15sp"
-                    android:text="Bidder"
-                    android:textColor="@color/colorGreen"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/hint_bidder"
+                    android:textColor="?attr/attrTextSecondaryColor"
+                    android:textSize="@dimen/text_secondary_size"
+                    android:padding="@dimen/text_secondary_padding"/>
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/txt_view_bid_bid_sender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/txt_view_bid_bid_sender"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="3sp"
-                        android:background="@drawable/input_outline"
-                        android:padding="15sp"
-                        android:text="Loading..."
-                        android:textColor="@color/black"/>
-
-                </LinearLayout>
+                    android:textSize="@dimen/text_primary_size"
+                    android:padding="@dimen/text_input_padding"
+                    android:ellipsize="none"
+                    android:textColor="?attr/attrTextColor"
+                    android:text="@string/link_loading" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15sp"
-                    android:text="Item"
-                    android:textColor="@color/blue"
-                    />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/hint_item"
+                    android:textColor="?attr/attrTextSecondaryColor"
+                    android:textSize="@dimen/text_secondary_size"
+                    android:padding="@dimen/text_secondary_padding"/>
 
                 <TextView
                     android:id="@+id/txt_view_bid_bid_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="3sp"
-                    android:background="@drawable/input_outline"
-                    android:padding="15sp"
-                    android:text="Loading..."
-                    android:textColor="@color/black"/>
+                    android:textSize="@dimen/text_primary_size"
+                    android:padding="@dimen/text_input_padding"
+                    android:ellipsize="none"
+                    android:textColor="?attr/attrTextColor"
+                    android:text="@string/link_loading" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15sp"
-                    android:text="Original Price"
-                    android:textColor="@color/blue"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/hint_original_price"
+                    android:textColor="?attr/attrTextSecondaryColor"
+                    android:textSize="@dimen/text_secondary_size"
+                    android:padding="@dimen/text_secondary_padding"/>
 
                 <TextView
                     android:id="@+id/txt_view_bid_bid_price_old"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="3sp"
-                    android:background="@drawable/input_outline"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:padding="15sp"
-                    android:text="Loading..."
-                    android:textColor="@color/black"/>
+                    android:textSize="@dimen/text_primary_size"
+                    android:padding="@dimen/text_input_padding"
+                    android:ellipsize="none"
+                    android:textColor="?attr/attrTextColor"
+                    android:text="@string/link_loading" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15sp"
-                    android:text="Bidder's Offer"
-                    android:textColor="@color/blue"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/hint_bidder_s_offer"
+                    android:textColor="?attr/attrTextSecondaryColor"
+                    android:textSize="@dimen/text_secondary_size"
+                    android:padding="@dimen/text_secondary_padding"/>
 
                 <TextView
                     android:id="@+id/txt_view_bid_bid_price_new"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="3sp"
-                    android:background="@drawable/input_outline"
-                    android:ems="10"
+                    android:textSize="@dimen/text_primary_size"
+                    android:padding="@dimen/text_input_padding"
+                    android:ellipsize="none"
                     android:textStyle="bold"
-                    android:inputType="numberDecimal"
-                    android:padding="15sp"
-                    android:text="Loading..."
-                    android:textColor="@color/black"/>
+                    android:textColor="?attr/attrTextColor"
+                    android:text="@string/link_loading" />
 
                 <TextView
                     android:id="@+id/txt_view_bid_bid_blank"
@@ -166,10 +156,9 @@
                 android:id="@+id/layout_view_bid_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15sp"
-                android:layout_marginTop="15sp"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:orientation="horizontal"
-                android:layout_margin="8dp"
                 android:visibility="gone"
                 android:weightSum="2">
 
@@ -177,24 +166,26 @@
                     android:id="@+id/btn_view_bid_view_approve"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/button_small_margin"
+                    android:layout_marginRight="@dimen/button_small_margin"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/colorGreen"
-                    app:backgroundTint="@color/colorGreen"
-                    android:text="Approve"
+                    android:text="@string/option_approve"
+                    android:background="@drawable/button_primary"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"/>
+                    android:textColor="?attr/attrButtonTextColor"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_view_bid_view_reject"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/button_small_margin"
+                    android:layout_marginRight="@dimen/button_small_margin"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimary"
-                    app:backgroundTint="@color/colorPrimary"
-                    android:text="Reject"
+                    android:text="@string/option_reject"
+                    android:background="@drawable/button_primary"
+                    android:backgroundTint="@color/colorDanger"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textColorLink="@android:color/holo_red_light" />
+                    android:textColor="?attr/attrButtonTextColor" />
 
             </LinearLayout>
 

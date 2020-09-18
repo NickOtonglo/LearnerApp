@@ -1,28 +1,20 @@
 package pesh.mori.learnerapp;
 
-/**
- * Created by MORIAMA on 21/11/2017.
- */
-
-/**
- * Created by MORIAMA on 20/11/2017.
- */
-
 import android.content.Intent;
 import android.os.Bundle;
-import com.google.android.material.tabs.TabLayout;
+import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import android.view.MenuItem;
 
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class TokensActivity extends AppCompatActivity {
@@ -32,6 +24,13 @@ public class TokensActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_tokens);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,9 +51,9 @@ public class TokensActivity extends AppCompatActivity {
     public void setUpViewPager(ViewPager viewpage){
         MyViewPageAdapter Adapter = new MyViewPageAdapter(getSupportFragmentManager());
 
-        Adapter.AddFragmentPage(new buytokens(),"buy tokens");
-        Adapter.AddFragmentPage(new redeemtokens(),"redeem tokens");
-        Adapter.AddFragmentPage(new transfertokens(),"share tokens");
+        Adapter.AddFragmentPage(new TokensActivity_BuyTokensFragment(),getString(R.string.title_buy_tokens));
+        Adapter.AddFragmentPage(new TokensActivity_RedeemTokensFragment(),getString(R.string.title_redeem_tokens));
+        Adapter.AddFragmentPage(new TokensActivity_TransferTokensFragment(),getString(R.string.title_share_tokens));
 
         viewpage.setAdapter(Adapter);
     }
@@ -66,7 +65,7 @@ public class TokensActivity extends AppCompatActivity {
     }
 
 
-    public class MyViewPageAdapter extends FragmentPagerAdapter{
+    public class MyViewPageAdapter extends FragmentPagerAdapter {
         private List<Fragment> MyFragment = new ArrayList<>();
         private List<String> MyPageTitle = new ArrayList<>();
 

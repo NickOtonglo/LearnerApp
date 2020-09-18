@@ -11,25 +11,20 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.CountDownTimer;
-import androidx.annotation.NonNull;
-
-import com.google.android.material.textfield.TextInputEditText;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.AppCompatButton;
-import android.util.Log;
+import android.os.CountDownTimer;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -39,6 +34,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -75,8 +71,6 @@ public class SelectLoginActivity extends AppCompatActivity {
     private int code;
     private String force,message;
 
-    private Animation myanim;
-
    //Maintenance
     private TextView txtMaintenance;
     private AppCompatButton btnExit;
@@ -107,7 +101,7 @@ public class SelectLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_login);
         initCloudPackets();
         mProgress = new ProgressDialog(this);
-        mAlert = new AlertDialog.Builder(this);
+        mAlert = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
         mProgressBar = findViewById(R.id.progress_bar_login);
         mProgressBar1 = findViewById(R.id.progress_bar);
         mProgressBar.setVisibility(View.GONE);
@@ -121,8 +115,6 @@ public class SelectLoginActivity extends AppCompatActivity {
 
         calendar = Calendar.getInstance();
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-        myanim = AnimationUtils.loadAnimation(this, R.anim.bounce3);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -153,15 +145,15 @@ public class SelectLoginActivity extends AppCompatActivity {
 
     public void initialiseActivity(){
         if (!checkNetworkState()){
-            mAlert.setMessage("No internet connection. Kindly ensure you are connected to the internet then Reload.")
+            mAlert.setMessage(getString(R.string.info_no_internet_connection_ensure_then_reload))
                     .setCancelable(true)
-                    .setPositiveButton("Reload", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(R.string.option_reload, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             initialiseActivity();
                         }
                     })
-                    .setNeutralButton("Exit", new DialogInterface.OnClickListener() {
+                    .setNeutralButton(getString(R.string.option_exit), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             finish();
@@ -170,7 +162,7 @@ public class SelectLoginActivity extends AppCompatActivity {
                     .setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
                         public void onCancel(DialogInterface dialogInterface) {
-                            txtBottomLabel.setText("No internet connection :(");
+                            txtBottomLabel.setText(R.string.info_no_internet_connection_sad_face);
                         }
                     });
             /*v1.0.4 bug fix 00004*/
@@ -191,7 +183,7 @@ public class SelectLoginActivity extends AppCompatActivity {
         txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),RegistrationActivity.class));
+                startActivity(new Intent(getApplicationContext(), RegistrationActivity_Initial.class));
             }
         });
         txtForgotPassword = findViewById(R.id.txt_forgot_password);
@@ -229,7 +221,6 @@ public class SelectLoginActivity extends AppCompatActivity {
         btnFacebookLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnFacebookLogin.startAnimation(myanim);
                 startActivityForResult(new Intent(getApplicationContext(),FacebookAuthHandlerActivity.class),GET_FACEBOOK_AUTH_RESULT);
             }
         });
@@ -237,7 +228,6 @@ public class SelectLoginActivity extends AppCompatActivity {
         btnGoogleSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnGoogleSignIn.startAnimation(myanim);
                 startActivityForResult(new Intent(getApplicationContext(),GoogleAuthHandlerActivity.class),GET_GOOGLE_AUTH_REQUEST);
             }
         });
@@ -260,7 +250,7 @@ public class SelectLoginActivity extends AppCompatActivity {
             mProgressBar.setVisibility(View.GONE);
             mProgressBar1.setVisibility(View.GONE);
             imgLogo.requestLayout();
-            imgLogo.getLayoutParams().height = 200;
+            imgLogo.getLayoutParams().height = 100;
             layoutLogin.setVisibility(View.VISIBLE);
         }
     }
@@ -282,7 +272,7 @@ public class SelectLoginActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child(node).child(socket).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(!HandleSockets.validateSockets(Integer.parseInt(String.valueOf(dataSnapshot.getValue())))) {
+                if(!SocketsHandler.validateSockets(Integer.parseInt(String.valueOf(dataSnapshot.getValue())))) {
                     finish();
                 } else {
                     frameLayout.setEnabled(true);
@@ -338,14 +328,14 @@ public class SelectLoginActivity extends AppCompatActivity {
         String passwordLogin = txtPassword.getText().toString();
 
         if (emailLogin.isEmpty()){
-            txtEmail.setError("Enter your email");
+            txtEmail.setError(getString(R.string.hint_enter_your_email_address));
         }
         if (passwordLogin.isEmpty()){
-            txtPassword.setError("Enter your password");
+            txtPassword.setError(getString(R.string.hint_enter_password));
         }
         if (!emailLogin.isEmpty() && !passwordLogin.isEmpty()){
             layoutLogin.setVisibility(View.GONE);
-            mProgress.setMessage("Please wait...");
+            mProgress.setMessage(getString(R.string.info_please_wait));
             if (!mProgress.isShowing()){
                 mProgress.show();
             }
@@ -359,7 +349,7 @@ public class SelectLoginActivity extends AppCompatActivity {
                             layoutLogin.setVisibility(View.VISIBLE);
                             mProgress.dismiss();
                             mAlert.setTitle(R.string.error_general)
-                                    .setMessage("Login failed: "+task.getException().getMessage())
+                                    .setMessage(getString(R.string.error_login_failed)+": "+task.getException().getMessage())
                                     .show();
                         }
                     } else {
@@ -384,7 +374,7 @@ public class SelectLoginActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("App").child("Version").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("LOG_DataSnapshot",dataSnapshot.toString());
+//                Log.d("LOG_DataSnapshot",dataSnapshot.toString());
                 try {
                     PackageInfo pInfo = getApplication().getPackageManager().getPackageInfo(getPackageName(), 0);
                     vCode = pInfo.versionCode;
@@ -405,8 +395,8 @@ public class SelectLoginActivity extends AppCompatActivity {
                         mProgressBarMini.setVisibility(View.GONE);
                         mProgressBar.setVisibility(View.GONE);
                         if (force.equals("true")){
-                            btnCancel.setText("Exit");
-                            txtUpdateHeader.setText("An update is required");
+                            btnCancel.setText(getString(R.string.option_exit));
+                            txtUpdateHeader.setText(R.string.info_an_update_is_required);
                             txtUpdateMessage.setText(String.valueOf(dataSnapshot.child("UpdateMessageForce").getValue()));
                             btnUpdate.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -427,7 +417,7 @@ public class SelectLoginActivity extends AppCompatActivity {
                                 }
                             });
                         } else if (force.equals("false")){
-                            btnCancel.setText("Later");
+                            btnCancel.setText(R.string.option_later);
                             btnUpdate.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
@@ -455,7 +445,7 @@ public class SelectLoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("LOG_DatabaseError",databaseError.getMessage());
+//                Log.d("LOG_DatabaseError",databaseError.getMessage());
             }
         });
     }
@@ -526,8 +516,8 @@ public class SelectLoginActivity extends AppCompatActivity {
     }
 
     public void openPrivacyPolicy(){
-        startActivity(new Intent(getApplicationContext(),OpenPDF.class));
-        overridePendingTransition(R.anim.slide_in_from_bottom,R.anim.static_animation);
+        startActivity(new Intent(getApplicationContext(), ViewPrivacyPolicy.class));
+        overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
 //        FirebaseDatabase.getInstance().getReference().child("Links").child("PrivacyPolicy").addListenerForSingleValueEvent(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

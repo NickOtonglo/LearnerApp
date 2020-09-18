@@ -3,12 +3,7 @@ package pesh.mori.learnerapp;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import androidx.annotation.NonNull;
-import androidx.annotation.StringDef;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +13,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -47,6 +47,13 @@ public class ViewMessagesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_view_messages);
 
         HomeActivity homeActivity = new HomeActivity();
@@ -55,7 +62,7 @@ public class ViewMessagesActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_close);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -63,7 +70,7 @@ public class ViewMessagesActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        mAlert = new AlertDialog.Builder(this);
+        mAlert = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
         mProgress = new ProgressDialog(this);
 
         layoutBtn = findViewById(R.id.layout_view_msg_btn);
@@ -77,15 +84,15 @@ public class ViewMessagesActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAlert.setTitle("Delete Message")
-                        .setMessage("Are you sure?")
-                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                mAlert.setTitle(R.string.title_delete_message)
+                        .setMessage(getString(R.string.confirm_are_you_sure))
+                        .setPositiveButton(getString(R.string.option_delete), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 deleteMessage();
                             }
                         })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getString(R.string.option_cancel), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -98,6 +105,7 @@ public class ViewMessagesActivity extends AppCompatActivity {
         btnViewBid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("LOG_bidRef",bidRef);
                 Intent viewBidsIntent = new Intent(getApplicationContext(),ViewBidActivity.class);
                 viewBidsIntent.putExtra("bid_reference",bidRef);
                 viewBidsIntent.putExtra("bidder_id",senderId);
@@ -130,7 +138,7 @@ public class ViewMessagesActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 bidRef = String.valueOf(dataSnapshot.child("reference").getValue());
-                FirebaseDatabase.getInstance().getReference().child("Bids").child(mAuth.getCurrentUser().getUid()).child(bidRef).addListenerForSingleValueEvent(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_bids)).child(mAuth.getCurrentUser().getUid()).child(bidRef).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         bidderId = String.valueOf(dataSnapshot.child("bidder_id").getValue());
@@ -151,7 +159,7 @@ public class ViewMessagesActivity extends AppCompatActivity {
     }
 
     public void loadViews(){
-        mProgress.setMessage("Loading...");
+        mProgress.setMessage(getString(R.string.link_loading));
         try {
             if (!mProgress.isShowing() && !((ViewMessagesActivity) this).isFinishing()){
                 mProgress.show();
@@ -166,14 +174,14 @@ public class ViewMessagesActivity extends AppCompatActivity {
                     recipientId = String.valueOf(dataSnapshot.child("recipient_id").getValue());
 //                Log.d(TAG,"logDetails(): dataSnapshot:"+String.valueOf(dataSnapshot.child("category").getValue()));
                     if(String.valueOf(dataSnapshot.child("category").getValue()).equals("def_bids_0000")){
-                        FirebaseDatabase.getInstance().getReference().child("Bids").child(mAuth.getCurrentUser().getUid()).child(bidRef).addListenerForSingleValueEvent(new ValueEventListener() {
+                        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_bids)).child(mAuth.getCurrentUser().getUid()).child(bidRef).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.exists()){
                                     if (senderId.equals(bidderId) && recipientId.equals(mAuth.getCurrentUser().getUid())){
                                         btnViewBid.setVisibility(View.VISIBLE);
                                     }
-                                    Log.d(TAG,"senderId: "+senderId+", bidderId: "+bidderId+", recipientId: "+recipientId+", getUid: "+mAuth.getCurrentUser().getUid());
+//                                    Log.d(TAG,"senderId: "+senderId+", bidderId: "+bidderId+", recipientId: "+recipientId+", getUid: "+mAuth.getCurrentUser().getUid());
                                 }
                             }
 
@@ -199,7 +207,7 @@ public class ViewMessagesActivity extends AppCompatActivity {
 
     public void loadMessageDetails(){
         mProgress.setCanceledOnTouchOutside(false);
-        mProgress.setMessage("Loading...");
+        mProgress.setMessage(getString(R.string.link_loading));
         if (!((ViewMessagesActivity) this).isFinishing()){
             mProgress.show();
         }
@@ -238,7 +246,7 @@ public class ViewMessagesActivity extends AppCompatActivity {
     }
 
     public void deleteMessage(){
-        mProgress.setMessage("Deleting message...");
+        mProgress.setMessage(getString(R.string.info_deleting_message));
         mProgress.setCancelable(false);
         if (!((ViewMessagesActivity) this).isFinishing()){
             mProgress.show();
@@ -250,7 +258,7 @@ public class ViewMessagesActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         mProgress.dismiss();
-                        Toast.makeText(ViewMessagesActivity.this, "Message deleted", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewMessagesActivity.this, R.string.info_message_deleted, Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 });
@@ -259,14 +267,14 @@ public class ViewMessagesActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 mProgress.dismiss();
-                Toast.makeText(ViewMessagesActivity.this, "An error occurred. Please try again.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewMessagesActivity.this, getString(R.string.error_error_occurred_try_again), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.view_post_context_menu_author, menu);
+        getMenuInflater().inflate(R.menu.menu_view_message, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -276,16 +284,16 @@ public class ViewMessagesActivity extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 return true;
-            case R.id.menu_delete_post:
-                mAlert.setTitle("Delete Message")
-                        .setMessage("Are you sure?")
-                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            case R.id.menu_delete_message:
+                mAlert.setTitle(getString(R.string.title_delete_message))
+                        .setMessage(getString(R.string.confirm_are_you_sure))
+                        .setPositiveButton(getString(R.string.option_delete), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 deleteMessage();
                             }
                         })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getString(R.string.option_cancel), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -304,6 +312,6 @@ public class ViewMessagesActivity extends AppCompatActivity {
         if (mProgress.isShowing()) {
             mProgress.dismiss();
         }
-        overridePendingTransition(R.anim.static_animation,R.anim.slide_in_from_top);
+        overridePendingTransition(R.transition.static_animation,R.transition.slide_in_from_top);
     }
 }

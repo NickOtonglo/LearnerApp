@@ -1,16 +1,16 @@
 package pesh.mori.learnerapp;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DatabaseReference;
@@ -28,11 +28,18 @@ public class TransactionHistoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_view_author);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Transactions History");
+        getSupportActionBar().setTitle(R.string.title_transactions_history);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -51,9 +58,9 @@ public class TransactionHistoryActivity extends AppCompatActivity {
     public void setUpViewPager(ViewPager viewPager){
         TransactionHistoryActivity.mViewPageAdapter mAdapter = new TransactionHistoryActivity.mViewPageAdapter(getSupportFragmentManager());
 
-        mAdapter.AddFragmentPage(new TransactionHistoryActivity_PurchaseFragment(),"Purchases");
-        mAdapter.AddFragmentPage(new TransactionHistoryActivity_SalesFragment(),"Sales");
-        mAdapter.AddFragmentPage(new TransactionHistoryActivity_TokensFragment(),"Token Purchases");
+        mAdapter.AddFragmentPage(new TransactionHistoryActivity_PurchaseFragment(),getString(R.string.title_purchases));
+        mAdapter.AddFragmentPage(new TransactionHistoryActivity_SalesFragment(),getString(R.string.title_sales));
+        mAdapter.AddFragmentPage(new TransactionHistoryActivity_TokensFragment(),getString(R.string.title_token_purchases));
 
         viewPager.setAdapter(mAdapter);
     }

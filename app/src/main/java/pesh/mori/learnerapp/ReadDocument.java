@@ -3,15 +3,7 @@ package pesh.mori.learnerapp;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
-import android.net.Uri;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -19,6 +11,12 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnDrawListener;
@@ -48,13 +46,20 @@ public class ReadDocument extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_read_document);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
 
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_close);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorToolBarMainText));
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -71,7 +76,7 @@ public class ReadDocument extends AppCompatActivity {
 
         permissionsInit();
 
-        File newDir = new File("Documents");
+        File newDir = new File("Downloads");
         if (!newDir.exists()){
             newDir.mkdir();
         }
@@ -99,7 +104,7 @@ public class ReadDocument extends AppCompatActivity {
                     public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
                         FileLoader.with(ReadDocument.this)
                                 .load(filePath)
-                                .fromDirectory("Documents",FileLoader.DIR_EXTERNAL_PUBLIC)
+                                .fromDirectory("Downloads",FileLoader.DIR_EXTERNAL_PUBLIC)
                                 .asFile(new FileRequestListener<File>() {
                                     @Override
                                     public void onLoad(FileLoadRequest fileLoadRequest, FileResponse<File> fileResponse) {
@@ -128,7 +133,7 @@ public class ReadDocument extends AppCompatActivity {
                                                 .onPageError(new OnPageErrorListener() {
                                                     @Override
                                                     public void onPageError(int i, Throwable throwable) {
-                                                        Toast.makeText(ReadDocument.this, "Error opening page "+i, Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(ReadDocument.this, getString(R.string.error_error_opening_page)+" "+i, Toast.LENGTH_SHORT).show();
                                                     }
                                                 })
                                                 .onTap(new OnTapListener() {
@@ -139,14 +144,14 @@ public class ReadDocument extends AppCompatActivity {
                                                 })
                                                 .enableAnnotationRendering(true)
                                                 .load();
-                                        Toast.makeText(ReadDocument.this, "Opening "+docName, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ReadDocument.this, getString(R.string.info_opening)+" "+docName, Toast.LENGTH_SHORT).show();
 
                                     }
 
                                     @Override
                                     public void onError(FileLoadRequest fileLoadRequest, Throwable throwable) {
                                         mProgressBar.setVisibility(View.GONE);
-                                        Log.d("LOG_PdfViewError",throwable.getMessage());
+//                                        Log.d("LOG_PdfViewError",throwable.getMessage());
                                         /*v1.0.4 bug fix 00007*/
                                         /*v1.0.5 enhancement 00001*/
                                         openDocFromUrl(filePath);
@@ -157,7 +162,7 @@ public class ReadDocument extends AppCompatActivity {
                     @Override
                     public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
                         mProgressBar.setVisibility(View.GONE);
-                        Toast.makeText(ReadDocument.this, "Error: "+permissionDeniedResponse, Toast.LENGTH_LONG).show();
+                        Toast.makeText(ReadDocument.this, getString(R.string.error_general)+": "+permissionDeniedResponse, Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -204,7 +209,7 @@ public class ReadDocument extends AppCompatActivity {
                                 .onPageError(new OnPageErrorListener() {
                                     @Override
                                     public void onPageError(int i, Throwable throwable) {
-                                        Toast.makeText(ReadDocument.this, "Error opening page "+i, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ReadDocument.this, getString(R.string.error_error_opening_page)+" "+i, Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .onTap(new OnTapListener() {
@@ -215,12 +220,12 @@ public class ReadDocument extends AppCompatActivity {
                                 })
                                 .enableAnnotationRendering(true)
                                 .load();
-                        Toast.makeText(ReadDocument.this, "Opening "+docName, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ReadDocument.this, getString(R.string.info_opening)+" "+docName, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onError(FileLoadRequest request, Throwable t) {
-                        Toast.makeText(ReadDocument.this, "Error: Unable to load file. Please report a problem with this file or contact support.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ReadDocument.this, R.string.error_unable_to_open_file_report_problem, Toast.LENGTH_LONG).show();
                     }
                 });
     }
@@ -269,14 +274,14 @@ public class ReadDocument extends AppCompatActivity {
                 intent.putExtra("post_key",postKey);
                 intent.putExtra("outgoing_intent",outgoingIntent);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_from_bottom,R.anim.static_animation);
+                overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
                 return true;
             case R.id.all_notes:
                 Intent intent1 = new Intent(getApplicationContext(),NotesList.class);
                 intent1.putExtra("post_key",postKey);
                 intent1.putExtra("outgoing_intent",outgoingIntent);
                 startActivity(intent1);
-                overridePendingTransition(R.anim.slide_in_from_bottom,R.anim.static_animation);
+                overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
                 return true;
         }
 
@@ -286,6 +291,6 @@ public class ReadDocument extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.static_animation,R.anim.slide_in_from_top);
+        overridePendingTransition(R.transition.static_animation,R.transition.slide_in_from_top);
     }
 }

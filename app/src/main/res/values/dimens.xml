@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
@@ -8,4 +9,47 @@
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="body_padding_bottom">16px</dimen>
     <dimen name="body_padding_top">16px</dimen>
+
+    <dimen name="spinner_padding">18dp</dimen>
+    <dimen name="spinner_margin">10dp</dimen>
+    <dimen name="text_input_padding">15dp</dimen>
+    <dimen name="text_input_margin">10dp</dimen>
+    <dimen name="button_small_padding">10dp</dimen>
+    <dimen name="text_primary_size">15sp</dimen>
+    <dimen name="text_primary_padding">10dp</dimen>
+    <dimen name="text_secondary_size">14sp</dimen>
+    <dimen name="text_secondary_padding">5dp</dimen>
+    <dimen name="text_secondary_margin">10dp</dimen>
+    <dimen name="text_input_text_size">15sp</dimen>
+    <dimen name="button_small_margin">10dp</dimen>
+    <dimen name="card_big_bottom_section_padding">6dp</dimen>
+    <dimen name="text_tertiary_size">13sp</dimen>
+    <dimen name="card_big_height">292dp</dimen>
+    <dimen name="card_big_margin">10dp</dimen>
+    <dimen name="card_big_thumbnail_height">196dp</dimen>
+    <dimen name="card_home_thumbnail_height">150dp</dimen>
+    <dimen name="card_home_title_text_size">14sp</dimen>
+    <dimen name="card_home_timestamp_text_size">12sp</dimen>
+    <dimen name="card_home_username_text_size">12sp</dimen>
+    <dimen name="card_home_width">300dp</dimen>
+    <dimen name="card_home_height">242dp</dimen>
+    <dimen name="card_home_margin">10dp</dimen>
+    <dimen name="card_margin">10dp</dimen>
+    <dimen name="card_small_padding">8dp</dimen>
+    <dimen name="card_small_thumbnail_height">100dp</dimen>
+    <dimen name="card_small_title_text_size">14sp</dimen>
+    <dimen name="card_small_username_text_size">13sp</dimen>
+    <dimen name="card_small_text_padding">7dp</dimen>
+    <dimen name="card_small_timestamp_text_size">12sp</dimen>
+    <dimen name="card_small_text_height">30dp</dimen>
+    <dimen name="card_user_list_height">80dp</dimen>
+    <dimen name="card_user_list_username_text_size">14sp</dimen>
+    <dimen name="card_user_list_about_text_size">13sp</dimen>
+    <dimen name="card_users_list_username_padding">7dp</dimen>
+    <dimen name="card_users_list_about_padding">7dp</dimen>
+    <dimen name="text_author_large">20sp</dimen>
+    <dimen name="radio_token_purchase_padding">10dp</dimen>
+    <dimen name="button_large_margin">15dp</dimen>
+    <dimen name="radio_margin">10dp</dimen>
+
 </resources>

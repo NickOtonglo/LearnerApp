@@ -1,51 +1,130 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Light (Default) mode. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
+        <item name="attrTextColor">@color/colorTextPrimary</item>
+        <item name="attrTextSecondaryColor">@color/colorTextSecondary</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="attrBackgroundColor">@color/colorBackground</item>
+        <item name="attrButtonColor">@color/colorButton</item>
+        <item name="attrButtonTextColor">@color/colorButtonText</item>
+        <item name="attrOutlineColor">@color/colorOutline</item>
+        <item name="attrNewIndicator">@color/colorNewIndicatorLight</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="MyTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <!-- Dark mode. -->
+    <style name="DarkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/accent</item>
+        <item name="colorPrimary">@color/colorDarkPrimary</item>
+        <item name="colorPrimaryDark">@color/colorDarkPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorDarkTextPrimary</item>
+        <item name="android:textColorSecondary">@color/colorDarkTextSecondary</item>
+        <item name="attrTextColor">@color/colorDarkTextPrimary</item>
+        <item name="attrTextSecondaryColor">@color/colorDarkTextSecondary</item>
+        <item name="android:textColorHint">@color/colorDarkOutline</item>
+        <item name="attrBackgroundColor">@color/colorDarkBackground</item>
+        <item name="attrButtonColor">@color/colorDarkButton</item>
+        <item name="attrButtonTextColor">@color/colorDarkBackground</item>
+        <item name="attrOutlineColor">@color/colorDarkOutline</item>
+        <item name="attrNewIndicator">@color/colorNewIndicatorDark</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="MyTheme2" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <!-- Signature mode. -->
+    <style name="SignatureTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorSignaturePrimary</item>
+        <item name="colorPrimaryDark">@color/colorSignaturePrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorSignatureTextPrimary</item>
+        <item name="android:textColorSecondary">@color/colorSignatureTextSecondary</item>
+        <item name="attrTextColor">@color/colorSignatureTextPrimary</item>
+        <item name="attrTextSecondaryColor">@color/colorSignatureTextSecondary</item>
+        <item name="android:textColorHint">@color/colorSignatureOutline</item>
+        <item name="attrBackgroundColor">@color/colorSignatureBackground</item>
+        <item name="attrButtonColor">@color/colorSignatureButton</item>
+        <item name="attrButtonTextColor">@color/colorSignatureBackground</item>
+        <item name="attrOutlineColor">@color/colorSignatureOutline</item>
+        <item name="attrNewIndicator">@color/colorNewIndicatorDark</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="MyTheme4" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/transparent</item>
+    <style name="Theme.UserDialog" parent="AppTheme.NoActionBar">
+        <item name="android:windowMinWidthMajor">97%</item>
+        <item name="android:windowMinWidthMinor">97%</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+<!--        <item name="android:background">@android:color/transparent</item>-->
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <style name="Theme.UserDialogDark" parent="DarkTheme.NoActionBar">
+        <item name="android:windowMinWidthMajor">97%</item>
+        <item name="android:windowMinWidthMinor">97%</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--        <item name="android:background">@android:color/transparent</item>-->
+    </style>
+
+    <style name="Theme.UserDialogSignature" parent="SignatureTheme.NoActionBar">
+        <item name="android:windowMinWidthMajor">97%</item>
+        <item name="android:windowMinWidthMinor">97%</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--        <item name="android:background">@android:color/transparent</item>-->
+    </style>
+
+    <style name="Theme.UserDialog2" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="attrTextColor">?attr/attrTextColor</item>
+        <item name="attrTextSecondaryColor">?attr/attrTextSecondaryColor</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="attrBackgroundColor">?attr/attrBackgroundColor</item>
+        <item name="attrButtonColor">?attr/attrButtonColor</item>
+        <item name="attrButtonTextColor">?attrButtonTextColor</item>
+        <item name="attrOutlineColor">?attr/attrOutlineColor</item>
+<!--        <item name="android:background">@android:color/transparent</item>-->
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+        <item name="attrTextColor">?attr/attrTextColor</item>
+        <item name="attrTextSecondaryColor">?attr/attrTextSecondaryColor</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="attrBackgroundColor">?attr/attrBackgroundColor</item>
+        <item name="attrButtonColor">?attr/attrButtonColor</item>
+        <item name="attrButtonTextColor">?attrButtonTextColor</item>
+        <item name="attrOutlineColor">?attr/attrOutlineColor</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="animation">
-        <item name="android:windowEnterAnimation">@anim/popup_in</item>
-        <item name="android:windowExitAnimation">@anim/popup_out</item>
-    </style>
 
     <style name="NewDialog" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
         <item name="android:windowFrame">@null</item>
@@ -60,41 +139,88 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
-    <style name="MyTheme3" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="LoginTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="Theme.UserDialog" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
+        <item name="attrTextColor">@color/colorTextPrimary</item>
+        <item name="attrTextSecondaryColor">@color/colorTextSecondary</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="attrBackgroundColor">@color/colorBackground</item>
+        <item name="attrButtonColor">@color/colorButton</item>
+        <item name="attrButtonTextColor">@color/colorButtonText</item>
+        <item name="attrOutlineColor">@color/colorOutline</item>
+        <item name="attrNewIndicator">@color/colorNewIndicatorLight</item>
         <item name="android:windowNoTitle">true</item>
-
-        <item name="android:background">@android:color/transparent</item>
     </style>
 
-    <style name="Theme.UserDialog2" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
+        <item name="attrTextColor">@color/colorTextPrimary</item>
+        <item name="attrTextSecondaryColor">@color/colorTextSecondary</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="attrBackgroundColor">@color/colorBackground</item>
+        <item name="attrButtonColor">@color/colorButton</item>
+        <item name="attrButtonTextColor">@color/colorButtonText</item>
+        <item name="attrOutlineColor">@color/colorOutline</item>
+        <item name="attrNewIndicator">@color/colorNewIndicatorLight</item>
         <item name="android:windowNoTitle">true</item>
+<!--        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>-->
+    </style>
 
+    <style name="DarkTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorDarkPrimary</item>
+        <item name="colorPrimaryDark">@color/colorDarkPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorDarkTextPrimary</item>
+        <item name="android:textColorSecondary">@color/colorDarkTextSecondary</item>
+        <item name="attrTextColor">@color/colorDarkTextPrimary</item>
+        <item name="attrTextSecondaryColor">@color/colorDarkTextSecondary</item>
+        <item name="android:textColorHint">@color/colorDarkOutline</item>
+        <item name="attrBackgroundColor">@color/colorDarkBackground</item>
+        <item name="attrButtonColor">@color/colorDarkButton</item>
+        <item name="attrButtonTextColor">@color/colorDarkBackground</item>
+        <item name="attrOutlineColor">@color/colorDarkOutline</item>
+        <item name="attrNewIndicator">@color/colorNewIndicatorDark</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- Signature mode. -->
+    <style name="SignatureTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorSignaturePrimary</item>
+        <item name="colorPrimaryDark">@color/colorSignaturePrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorSignatureTextPrimary</item>
+        <item name="android:textColorSecondary">@color/colorSignatureTextSecondary</item>
+        <item name="attrTextColor">@color/colorSignatureTextPrimary</item>
+        <item name="attrTextSecondaryColor">@color/colorSignatureTextSecondary</item>
+        <item name="android:textColorHint">@color/colorSignatureOutline</item>
+        <item name="attrBackgroundColor">@color/colorSignatureBackground</item>
+        <item name="attrButtonColor">@color/colorSignatureButton</item>
+        <item name="attrButtonTextColor">@color/colorSignatureBackground</item>
+        <item name="attrOutlineColor">@color/colorSignatureOutline</item>
+        <item name="attrNewIndicator">@color/colorNewIndicatorDark</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+    <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+<!--        <item name="android:colorAccent">@color/colorAccent</item>-->
         <item name="android:background">@android:color/transparent</item>
-    </style>
-
-    <style name="FullscreenTheme" parent="AppTheme">
-        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@null</item>
-        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
-        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
-    </style>
-
-    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
-        <item name="android:background">@color/black_overlay</item>
     </style>
 
 </resources>

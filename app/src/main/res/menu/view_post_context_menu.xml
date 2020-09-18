@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/report_post"
-        android:icon="@drawable/ic_report_black_24dp"
-        android:title="Report Post" />
+        android:icon="@drawable/ic_baseline_report_24"
+        android:title="@string/action_report_post" />
     <item
         android:id="@+id/view_author"
-        android:icon="@drawable/baseline_account_circle_black_18dp"
-        android:title="View Author" />
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="@string/menu_view_author" />
 </menu>

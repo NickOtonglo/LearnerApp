@@ -3,7 +3,6 @@ package pesh.mori.learnerapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,11 +27,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class TransactionHistoryActivity_TokensFragment extends Fragment {
     private RecyclerView mRecycler;
-    private DatabaseReference mDebit,mFiles,mDIY;
+    private DatabaseReference mDebit,mPosts;
     private FirebaseAuth mAuth;
     private TextView txtEmpty;
     private AlertDialog.Builder mAlert;
-    private String sourceNode;
 
     private ProgressDialog mProgress;
 
@@ -44,10 +42,8 @@ public class TransactionHistoryActivity_TokensFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View postsFragment = inflater.inflate(R.layout.fragment_transactions_history,container,false);
 
-//        mAuthor = ((ViewAuthorActivity)getActivity()).getAuthorId();
-
-        mProgress = new ProgressDialog(getContext());
-        mAlert = new AlertDialog.Builder(getContext());
+        mProgress = new ProgressDialog(getActivity());
+        mAlert = new AlertDialog.Builder(requireActivity(),R.style.AlertDialogStyle);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -55,16 +51,14 @@ public class TransactionHistoryActivity_TokensFragment extends Fragment {
 
         mDebit = FirebaseDatabase.getInstance().getReference().child("TokenPurchase").child(mAuth.getCurrentUser().getUid());
         mDebit.keepSynced(true);
-        mFiles = FirebaseDatabase.getInstance().getReference().child("Files");
-        mFiles.keepSynced(true);
-        mDIY = FirebaseDatabase.getInstance().getReference().child("DIY");
-        mDIY.keepSynced(true);
+        mPosts = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_type_1));
+        mPosts.keepSynced(true);
 
         mDebit.orderByChild("User").equalTo(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
-                    txtEmpty.setText("Your transaction history is empty!");
+                    txtEmpty.setText(getString(R.string.info_your_transaction_history_is_empty));
                 }
             }
 
@@ -98,7 +92,7 @@ public class TransactionHistoryActivity_TokensFragment extends Fragment {
                 mDebit.child(fileKey).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Log.d("listDebts",dataSnapshot.toString());
+//                        Log.d("listDebts",dataSnapshot.toString());
                         if (dataSnapshot.exists()){
                             if (dataSnapshot.getChildrenCount()>0){
                                 txtEmpty.setVisibility(View.GONE);

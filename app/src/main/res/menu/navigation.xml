@@ -3,12 +3,10 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_account_circle_black"
         android:title="Bio" />
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_cloud_upload_black"
         android:title="uploads" />
 
 

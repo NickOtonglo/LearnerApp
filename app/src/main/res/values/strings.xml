@@ -1,6 +1,17 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" translatable="false">L\'earnerApp</string>
-    <string name="hint_username">username</string>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+    <!ENTITY appname "L\'earnerApp">
+    <!ENTITY appver "v1.07">
+    <!ENTITY author "Nick Otonglo">
+    <!ENTITY package "pesh.mori.learnerapp">
+    <!ENTITY twitter "@Twitter">
+    ]>
+
+<resources>
+    <string name="app_name">&appname;</string>
+    <string name="app_ver">&appver;</string>
+    <string name="app_package_name">&package;</string>
+    <string name="hint_username">Username</string>
     <string name="hint_password">password</string>
     <string name="text_academia">academic</string>
     <string name="link_new_account"><u>Create new account</u></string>
@@ -12,8 +23,8 @@
     <string name="text_register">file_upload</string>
     <string name="hint_university">Institution</string>
     <string name="hint_school">School</string>
-    <string name="hint_department">School Department</string>
-    <string name="hint_course">Course Unit</string>
+    <string name="hint_department">School/Department/Faculty</string>
+    <string name="hint_course">Course/Programme</string>
     <string name="hint_lecturer">Course Instructor</string>
     <string name="hint_name">Title</string>
     <string name="hint_ok">Select File</string>
@@ -32,13 +43,13 @@
     <string name="error_message_course">Enter the Course Unit\'s Code and Name</string>
     <string name="error_message_inst">Select a Learning Institution</string>
     <string name="error_message_search">Search Empty</string>
-    <string name="error_message_firstname">Enter your First Name</string>
-    <string name="error_message_lastname">Enter your Last Name</string>
-    <string name="error_message_dob">Enter your Date of Birth d/m/yyyy</string>
-    <string name="error_message_email">Enter your Email Address</string>
-    <string name="error_message_phone">Enter your Phone Number</string>
+    <string name="hint_enter_your_first_name">Enter your first name</string>
+    <string name="hint_enter_your_last_name">Enter your last name</string>
+    <string name="hint_enter_your_dob">Enter your date of birth dd/mm/yyyy</string>
+    <string name="hint_enter_your_email_address">Enter your email address</string>
+    <string name="error_message_phone">Enter your phone number</string>
     <string name="error_message_code">Empty Verification Code</string>
-    <string name="error_message_newemail">Enter Email Address</string>
+    <string name="error_message_newemail">Enter email address</string>
     <string name="error_message_uploader">Enter the uploader\'s Username </string>
     <string name="error_message_title">Enter the Content\'s Name</string>
     <string name="error_message_bid">Empty Bid Amount</string>
@@ -51,11 +62,13 @@
     <string name="error_general">Error!</string>
     <string name="error_no_internet_connectivity">You are offline</string>
 
+    <string name="info_sign_up_notice">"By Signing Up you agree to the Terms and Conditions of &appname;"</string>
+
     <string name="option_alert_yes">Yes</string>
     <string name="option_alert_no">No</string>
     <string name="option_alert_later">Later</string>
     <string name="info_post_deleted">Post deleted</string>
-    <string name="error_error_occured_try_again">Post deleted</string>
+    <string name="error_error_occurred_try_again">An error occurred. Please try again</string>
     <string name="title_alert_permissions_needed">Permission(s) Required</string>
     <string name="info_alert_permissions_needed">The application requires some permissions in order to perform this action.\nPlease enable all required permissions in the app settings menu.</string>
     <string name="option_alert_close">Close</string>
@@ -64,19 +77,19 @@
     <!--ViewAuthorActivity_DetailsFragment-->
     <string name="info_no_user_bio">Bio is private</string>
 
-    <!-- ViewFileActivity/ViewDiyActivity -->
+    <!-- ViewFileActivity/ViewPostActivity -->
     <string name="info_private_post">Sorry, this post is private.</string>
 
     <!-- PreviewPostActivity -->
     <string name="error_unable_to_delete">Error! Unable to delete. Please try again</string>
     <string name="error_unable_to_save">Error! Unable to save. Please try again</string>
 
-    <!-- NewFileUpload/NewDiyUpload -->
-    <string name="alert_publish">Would you like review your post and publish right away?\nIf not, you can publish it at your own time. The post will not be made public until you publish it.\nYou can find it in your Uploads directory</string>
+    <!-- NewFileUpload/NewPostActivity -->
+    <string name="confirm_publish_post">Would you like review your post and publish right away?\nIf not, you can publish it at your own time. The post will not be made public until you publish it.\nYou can find it in your Uploads directory</string>
     <string name="option_alert_review_and_publish">Review and Publish</string>
     <string name="info_post_created">Post created</string>
 
-    <!-- ViewFileActivity/ViewDiyActivity -->
+    <!-- ViewFileActivity/ViewPostActivity -->
     <string name="info_cannot_remove_already_purchased">You can\'t remove this post at the moment, since at least one user has purchased it. Contact support.</string>
     <string name="info_cannot_remove_already_owned">You can\'t remove this post at the moment, since at least one other user now owns it. Contact support.</string>
 
@@ -111,7 +124,7 @@
     <!-- Preferences -->
     <string name="pref_profile_key">profile</string>
     <string name="pref_profile_title">Profile settings</string>
-    <string name="pref_theme_key">theme</string>
+    <string name="pref_sign_theme_key">signature theme</string>
     <string name="pref_theme_title">Enable Signature Theme</string>
 
     <!-- Africa's Talking API -->
@@ -120,9 +133,9 @@
     <string name="africas_talking_environment">sandbox</string>
     <string name="info_post_not_available">Sorry, this post is no longer available.</string>
 
-    <!-- buytokens -->
+    <!-- TokensActivity_BuyTokensFragment -->
     <string name="help_buy_token_0"><u>Need help?</u></string>
-    <string name="help_buy_token_1">In case you are having trouble purchasing tokens from within the  app, please take the following alternative route:</string>
+    <string name="help_buy_token_1">In case you are having trouble purchasing tokens from within the app, please take the following alternative route:</string>
     <string name="help_buy_token_2">
         \n 1.  Go to M-PESA menu in your SIM Toolkit
         \n 2.  click on Lipa na M-PESA.
@@ -130,41 +143,43 @@
         \n 4.  select Enter business no.
         \n 5.  enter Business Number as 733698 (our Pay Bill number)
         \n 6.  select Account no.
-        \n 7.  enter the Safaricom mobile number (07XXXXXXXX) linked to your L\'earnerApp account as your Account Number
+        \n 7.  enter the text "learner" followed by a hyphen (-) followed by your Safaricom mobile number (07XXXXXXXX) linked to your &appname;
+        account as your Account Number (it should appear as learner-07XXXXXXXX)
         \n 8.  enter Amount in KES you would like to purchase tokens worth (1 token is worth 0.01USD)
         \n 9.  enter your M-PESA PIN and wait for a message confirming the transaction was successful
-        \n 10. check your token balance on L\'earnerApp</string>
+        \n 10. check your token balance on &appname;</string>
 
-    <string name="link_loading"><u>Loading...</u></string>
+    <string name="link_loading"><u>Loading…</u></string>
     <string name="info_token_get_started">Get started by following the link below:</string>
     <string name="app_privacy_policy"><u>Privacy Policy</u></string>
     <string name="action_open_in_browser">Open in Browser</string>
-    <string name="info_user_disabled">Your account is currently disabled. Kindly contact our team on any social media platform such as Twitter (@L_earnerApp) for assistance.</string>
+    <string name="info_user_disabled">Your account is currently disabled. Kindly contact our team on any social media platform such as Twitter (&twitter;) for assistance.</string>
     <string name="info_new_phone_alert_message_1">We will send a verification SMS to the device that contains the SIM card with the number you provided</string>
-    <string name="info_new_phone_alert_message_2">L\'earnerApp will attempt to access the verification code sent in the SMS to verify your phone number</string>
-    <string name="info_new_phone_alert_message_3">If the process is successful, you will not need to do anything further. However, if L\'earnerApp is unable to complete phone verification automatically, kindly go to the Messages app and retreive the verification code from the verification SMS sent to your device</string>
+    <string name="info_new_phone_alert_message_2">&appname; will attempt to access the verification code sent in the SMS to verify your phone number</string>
+    <string name="info_new_phone_alert_message_3">If the process is successful, you will not need to do anything further. However, if &appname;
+        is unable to complete phone verification automatically, kindly go to the Messages app and retrieve the verification code from the verification SMS sent to your device</string>
 
     <string name="title_alert_permission_denied">Permission Denied</string>
-    <string name="info_alert_permission_denied">You need to grant L\'earnerApp permission to read the incoming message that contains the verification code in order to automatically verify your phone number.
+    <string name="info_alert_permission_denied">You need to grant &appname; permission to read the incoming message that contains the verification code in order to automatically verify your phone number.
     \n However, you can complete the verification process manually by going back to the previous screen and entering the verification code sent to your Messages inbox.</string>
     <string name="option_alert_go_back">Go to previous screen</string>
 
     <string name="error_occurred_try_again">An error occurred. Please try again.</string>
     <string name="error_user_account_unable_to_transfer_tokens">Unfortunately there is a problem with the recipient\'s account that is preventing him/her from receiving tokens. Kindly contact us on any of our support channels for assistance.</string>
     <string name="option_contact_support">Contact Support</string>
-    <string name="error_account_error">There is an error with your account. Kindly contact our team on any social media platform such as Twitter (@L_earnerApp) for assistance.</string>
+    <string name="error_account_error">There is an error with your account. Kindly contact our team on any social media platform such as Twitter (&twitter;) for assistance.</string>
     <string name="info_bid_cancelled">You have cancelled your bid. You are free to make another bid on this item or to purchase it upfront.</string>
     <string name="alert_cancel_bid">You are about to cancel your bid of</string>
     <string name="option_continue">Continue</string>
     <string name="option_do_not_continue">Do Not Continue</string>
 
     <string name="bids_category_message_id">def_bids_0000</string>
-    <string name="info_please_wait">Please wait...</string>
+    <string name="info_please_wait">Please wait…</string>
 
     <string name="title_hide_post">Hide Post</string>
     <string name="title_unhide_post">Unhide Post</string>
-    <string name="info_hiding_post">Removing post from public access...</string>
-    <string name="info_unhiding_post">Enabling public access to post...</string>
+    <string name="info_hiding_post">Removing post from public access…</string>
+    <string name="info_unhiding_post">Enabling public access to post…</string>
     <string name="warning_hide_post">This post will be hidden from everyone except you. Are you sure?</string>
     <string name="warning_unhide_post">This post will be unhidden. Are you sure?</string>
     <string name="option_cancel">Cancel</string>
@@ -174,4 +189,458 @@
     <string name="button_unhide_post">Unhide post from public</string>
     <string name="info_post_hidden">Post hidden from public</string>
     <string name="info_post_unhidden">Post visible to public</string>
+
+    <string name="option_authenticate">Authenticate</string>
+    <string name="hint_enter_password">Enter your password</string>
+    <string name="warning_confirm_your_account">In order to proceed, kindly confirm that this is your account</string>
+    <string name="info_bid_description">A bid allows you to purchase an item for a lesser amount.</string>
+    <string name="info_enter_bid_amount">Enter Bid Amount</string>
+    <string name="option_submit">Submit</string>
+    <string name="option_female">Female</string>
+    <string name="option_male">Male</string>
+    <string name="info_tell_us_about_yourself">Tell us about yourself (max 100 characters)</string>
+    <string name="title_skill_occupation">Skill/Occupation Sector</string>
+    <string name="info_description_skills_qualifications">Brief description of your skills/qualifications (max 100 characters)</string>
+    <string name="info_facebook_profile">Facebook profile</string>
+    <string name="info_twitter_account">Twitter account</string>
+    <string name="info_linkedin_profile">Linkedin profile</string>
+    <string name="option_open_sim_toolkit">Open SIM Toolkit</string>
+    <string name="title_select_tag_category">Select tag from the options below</string>
+    <string name="hint_enter_new_email">Enter new email address</string>
+    <string name="hint_reenter_new_email">Confirm new email address</string>
+    <string name="hint_enter_new_password">Enter new password</string>
+    <string name="hint_reenter_new_password">Confirm new password</string>
+    <string name="hint_enter_phone_number">Enter phone number</string>
+    <string name="hint_enter_verification_code">Enter verification code</string>
+    <string name="option_save_phone_number">Save Phone Number</string>
+    <string name="hint_enter_new_username">Enter your new username</string>
+    <string name="info_authenticating_please_wait">Authenticating, please wait…</string>
+    <string name="info_kindly_enter_the_email_address_you_used_to_sign_up">Kindly enter the email address you used to sign up</string>
+    <string name="hint_email_address">Email address</string>
+    <string name="title_nav_token_balance">Token Balance:</string>
+    <string name="hint_token_default_value">0.00</string>
+    <string name="title_select_institution">Select an institution from the options below</string>
+    <string name="alert_system_under_maintenance">System under maintenance!</string>
+    <string name="info_please_come_back_later">Please come back later</string>
+    <string name="info_file_type">File type</string>
+    <string name="radio_audio">Audio</string>
+    <string name="radio_video">Video</string>
+    <string name="radio_doc">PDF</string>
+    <string name="option_select_image">Select image</string>
+    <string name="option_select_audio">Select audio</string>
+    <string name="option_select_pdf">Select PDF</string>
+    <string name="hint_no_file_selected">No file selected</string>
+    <string name="option_set_thumbnail_optional">Set thumbnail (optional)</string>
+    <string name="hint_title_of_your_post">Title of your post</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_description_of_your_post">Description of your post</string>
+    <string name="hint_description">Description</string>
+    <string name="hint_coursework">Coursework</string>
+    <string name="hint_non_coursework">Non-Coursework</string>
+    <string name="hint_institution">Institution</string>
+    <string name="hint_price_tokens">Price (tokens)</string>
+    <string name="default_token_amount">0.00</string>
+    <string name="required_accept_bids">Accept bids?</string>
+    <string name="radio_yes">Yes</string>
+    <string name="radio_no">No</string>
+    <string name="option_upload_file">Upload file</string>
+    <string name="title_announcements">Announcements</string>
+    <string name="title_promoted">Promoted</string>
+    <string name="hint_enter_title">Enter title</string>
+    <string name="hint_enter_note_details">Enter note details</string>
+    <string name="option_save">Save</string>
+    <string name="info_please_wait_while_we_verify_your_phone_number">Please wait while we verify your phone number…</string>
+    <string name="option_open_document">Open PDF</string>
+    <string name="hint_bidding">Bidding</string>
+    <string name="hint_required_name">Name…</string>
+    <string name="hint_required_phone">Phone…</string>
+    <string name="hint_required_email">Email…</string>
+    <string name="link_change_email_address">Change email address</string>
+    <string name="link_change_password">Change password</string>
+    <string name="link_update_phone_number">Update phone number</string>
+    <string name="link_update_bio">Update Bio</string>
+    <string name="info_no_recent_uploads">No recent uploads</string>
+    <string name="link_next">Next</string>
+    <string name="title_why_are_you_reporting_this_post">Why are you reporting this post?</string>
+    <string name="radio_adult_content">Adult content</string>
+    <string name="radio_illegal_content">Illegal content</string>
+    <string name="radio_abusive_content">Abusive content</string>
+    <string name="radio_malicious_content">Malicious content</string>
+    <string name="radio_copyright_infringement">Copyright infringement</string>
+    <string name="radio_other">Other</string>
+    <string name="hint_more_details">More details</string>
+    <string name="hint_email_login">email</string>
+    <string name="title_new_here">New here?</string>
+    <string name="hint_or_sign_in_with">or sign in with</string>
+    <string name="option_facebook">Facebook</string>
+    <string name="option_google">Google</string>
+    <string name="info_an_update_is_available">An update is available</string>
+    <string name="option_later">Later</string>
+    <string name="option_update">Update</string>
+    <string name="option_exit">Exit</string>
+    <string name="option_select_post_thumbnail">Select post thumbnail</string>
+    <string name="hint_author">Author</string>
+    <string name="hint_posted_at">Posted at</string>
+    <string name="title_title">Title</string>
+    <string name="hint_brief">Brief</string>
+    <string name="option_purchase">Purchase</string>
+    <string name="option_bid">Bid</string>
+    <string name="hint_message">Message</string>
+    <string name="link_more_info_tap_to_open">More Info (tap to open)</string>
+    <string name="hint_bidder">Bidder</string>
+    <string name="hint_item">Item</string>
+    <string name="hint_original_price">Original Price</string>
+    <string name="hint_bidder_s_offer">Bidder\'s Offer</string>
+    <string name="option_approve">Approve</string>
+    <string name="option_reject">Reject</string>
+    <string name="title_recommended">Recommended</string>
+    <string name="hint_sent_at">Sent at</string>
+    <string name="hint_sender">Sender</string>
+    <string name="option_review_bid">Review Bid</string>
+    <string name="option_delete">Delete</string>
+    <string name="option_delete_message">Delete Message</string>
+    <string name="hint_created_at">Created at</string>
+    <string name="hint_text">Text</string>
+    <string name="hint_time">Time</string>
+    <string name="label_transaction_time">Transaction time:</string>
+    <string name="hint_reference_number">Reference number</string>
+    <string name="label_transaction_cost">Transaction cost:</string>
+    <string name="label_prior_balance">Prior balance:</string>
+    <string name="label_new_balance">New balance:</string>
+    <string name="hint_from">From</string>
+    <string name="hint_about">About</string>
+    <string name="hint_gender">Gender</string>
+    <string name="hint_about_author">About Author</string>
+    <string name="hint_list_of_skills_and_or_qualifications">List of skills and/or qualifications</string>
+    <string name="hint_facebook">Facebook</string>
+    <string name="hint_twitter">Twitter</string>
+    <string name="hint_linkedin">LinkedIn</string>
+    <string name="hint_amount_of_tokens_to_buy_in_kes">Amount of tokens to buy in KES</string>
+    <string name="hint_mode_of_payment">Mode of payment</string>
+    <string name="radio_m_pesa">M-Pesa</string>
+    <string name="hint_enter_amount_of_tokens_to_share">Enter amount of tokens to share</string>
+    <string name="hint_select_user_from_list">Select user from list</string>
+    <string name="option_transfer">Transfer</string>
+    <string name="label_hi_there">Hi there!…</string>
+    <string name="title_buy_tokens">Buy</string>
+    <string name="title_redeem_tokens">Redeem</string>
+    <string name="title_share_tokens">Share</string>
+    <string name="info_you_have_not_linked_a_phone_number_to_your_account">You have not linked a phone number to your account</string>
+    <string name="info_your_phone_number_is_not_verified">Your phone number is not verified</string>
+    <string name="hint_enter_amount">Enter amount</string>
+    <string name="info_invalid_amount">Invalid amount</string>
+    <string name="info_please_wait_twenty_seconds">Please wait for up to 20 seconds</string>
+    <string name="error_network_error">Network error!</string>
+    <string name="info_select_payment_method_first">Select a payment method first</string>
+    <string name="info_your_financial_account_is_being_configured">Your financial account is being configured. Please wait…</string>
+    <string name="error_an_error_occurred_while_configuring_your_account">An error occurred while configuring your account</string>
+    <string name="info_setup_complete">Setup complete</string>
+    <string name="title_sending_tokens">Sending Tokens</string>
+    <string name="info_bio_info_not_available">Bio information not available</string>
+    <string name="title_enter_required_info">Enter required info</string>
+    <string name="info_select_recipient_tap_button_below">Select the recipient of your tokens from the list by tapping the button below</string>
+    <string name="option_ok">OK</string>
+    <string name="option_select_user_from_list">Select User from List</string>
+    <string name="info_please_enter_required_info">Please enter all required information</string>
+    <string name="info_transaction_successful">Transaction successful</string>
+    <string name="info_fetching_results">Fetching results…</string>
+    <string name="info_no_results">No results</string>
+    <string name="error_network_access_unavailable">Network access unavailable!</string>
+    <string name="confirm_are_you_sure_you_want_to_change_your_email_address">Are you sure you want to change your email address?</string>
+    <string name="option_no">No</string>
+    <string name="option_yes">Yes</string>
+    <string name="info_update_successful">Update successful</string>
+    <string name="error_passwords_dont_match">Your two passwords do not match!</string>
+    <string name="confirm_are_you_sure_you_want_to_change_your_password">Are you sure you want to change your password?</string>
+    <string name="info_email_address_changed">Email address changed</string>
+    <string name="info_password_changed">Password changed</string>
+    <string name="info_invalid_phone_number">Invalid phone number</string>
+    <string name="info_cancelled">Cancelled</string>
+    <string name="info_this_number_is_already_verified">This number is already verified</string>
+    <string name="option_proceed">Proceed</string>
+    <string name="confirm_are_you_sure_you_want_to_update_your_phone_number">Are you sure you want to update your phone number?</string>
+    <string name="info_phone_number_updated">Phone number updated</string>
+    <string name="info_invalid_verification_code">Invalid verification code</string>
+    <string name="info_the_phone_number_is_not_verified">The phone number is not verified</string>
+    <string name="title_creating_your_account">Creating your account</string>
+    <string name="link_review">Review</string>
+    <string name="info_the_two_passwords_you_have_entered_must_be_exactly_the_same">The two passwords you have entered must be exactly the same</string>
+    <string name="error_registration_failed">Registration failed</string>
+    <string name="info_sign_up_complete">Sign-up complete</string>
+    <string name="link_proceed_to_login">Proceed to login</string>
+    <string name="option_login">Login</string>
+    <string name="info_you_are_almost_done">You\'re almost done</string>
+    <string name="info_no_posts_found">No posts found</string>
+    <string name="info_no_posts_to_display">No posts to display</string>
+    <string name="title_all_posts">All Posts</string>
+    <string name="info_invalid_action">Invalid action</string>
+    <string name="title_reset_link_generated">Reset link generated</string>
+    <string name="info_reset_link_details">
+        We have sent you reset link to the email address you submitted. Check your inbox and follow the link to reset your password.
+        \n The link expires in 10 minutes. In case it expires, repeat the process to reset your password.</string>
+    <string name="error_error_opening_page">Error opening page</string>
+    <string name="info_opening">Opening</string>
+    <string name="error_authentication_failed_try_again">Authentication failed! Please try again</string>
+    <string name="title_hi">Hi</string>
+    <string name="title_administrator">Administrator</string>
+    <string name="info_no_announcements_yet">No announcements yet</string>
+    <string name="info_no_promotions_yet">No promotions yet</string>
+    <string name="info_no_posts_yet">No posts yet</string>
+    <string name="error_login_failed">Login failed</string>
+    <string name="info_no_messages_to_display">No messages to display</string>
+    <string name="info_new_indicator">*</string>
+    <string name="title_downloads">Inventory</string>
+    <string name="title_notes">Notes</string>
+    <string name="title_uploads">My Posts</string>
+    <string name="info_no_notes_found">No notes found</string>
+    <string name="info_no_notes_to_display">No notes to display</string>
+    <string name="title_purchase_item">Purchase Item</string>
+    <string name="confirm_you_do_not_own_item_purchase_item">You don\'t own this item yet. Would you like to purchase it?</string>
+    <string name="option_select_video">Select video</string>
+    <string name="info_you_cannot_allow_bidding_on_a_free_item">You cannot allow bidding on a free item</string>
+    <string name="info_one_or_more_required_fields_is_empty">One or more required field(s) is empty</string>
+    <string name="info_no_audio_file_selected">No audio file selected</string>
+    <string name="info_required">Required</string>
+    <string name="info_no_video_file_selected">No video file selected</string>
+    <string name="info_no_supported_document_file_selected">No supported document file selected</string>
+    <string name="info_uploading_file">Uploading file…</string>
+    <string name="option_take_photo">Take Photo</string>
+    <string name="option_choose_from_gallery">Choose from Gallery</string>
+    <string name="title_image_options">Image options</string>
+    <string name="info_saving_note">Saving note…</string>
+    <string name="info_note_saved">Note saved</string>
+    <string name="title_privacy_policy">Privacy Policy</string>
+    <string name="info_your_phone_number_is_verified">Your phone number is verified</string>
+    <string name="info_title_must_not_be_empty">Title must not be empty</string>
+    <string name="info_price_must_not_be_empty">Price must not be empty</string>
+    <string name="info_description_must_not_be_empty">Description must not be empty</string>
+    <string name="info_you_must_select_if_item_is_biddable_or_not">You must select whether the item is biddable or not</string>
+    <string name="info_no_category_selected">No category selected</string>
+    <string name="info_saving_post">Saving post…</string>
+    <string name="info_saved">Saved</string>
+    <string name="info_deleting_post">Deleting post…</string>
+    <string name="title_save_post">Save post</string>
+    <string name="confirm_are_you_sure">Are you sure?</string>
+    <string name="title_delete_post">Delete post</string>
+    <string name="title_publish_post">Publish post</string>
+    <string name="info_pre_publishing_notice">All changes will be saved. You will not have much control of this post after publishing.\nAre you sure you want to publish?</string>
+    <string name="option_publish">Publish</string>
+    <string name="info_your_post_has_been_published">Your post has been published</string>
+    <string name="title_not_yet_published">Not Yet Published</string>
+    <string name="info_logged_in_with_facebook">Logged in with Facebook</string>
+    <string name="title_profile_management">Profile Management</string>
+    <string name="info_your_profile_is_currently_managed_by_external_service">Your profile is currently managed by an external service</string>
+    <string name="option_close_dialog">Close Dialog</string>
+    <string name="info_logged_in_with_google">Logged in with Google</string>
+    <string name="title_update_picture">Update Picture</string>
+    <string name="info_saving_profile_picture">Saving profile picture…</string>
+    <string name="info_profile_picture_updated">Profile picture updated</string>
+    <string name="error_unable_to_open_file_report_problem">Error: Unable to load file. Please report a problem with this file or contact support</string>
+    <string name="info_invalid_email_format">Invalid email format</string>
+    <string name="info_kindly_select_a_criterion">Kindly select a criterion</string>
+    <string name="info_submitting_report">Submitting report…</string>
+    <string name="info_kindly_give_us_more_information">Kindly give us more information</string>
+    <string name="info_post_reported">Post reported</string>
+    <string name="info_you_cannot_transfer_tokens_to_yourself">You cannot transfer tokens to yourself</string>
+    <string name="info_no_internet_connection_ensure_then_reload">No internet connection. Kindly ensure you are connected to the internet then Reload.</string>
+    <string name="option_reload">Reload</string>
+    <string name="info_no_internet_connection_sad_face">No internet connection :(</string>
+    <string name="info_an_update_is_required">An update is required</string>
+    <string name="hint_select_post_thumbnail">Select post thumbnail</string>
+    <string name="hint_select_thumbnail">Set thumbnail</string>
+    <string name="info_thumbnail_added">Thumbnail added</string>
+    <string name="info_your_balance_is_insufficient_by">Your balance is insufficient by</string>
+    <string name="title_transactions_history">Transactions History</string>
+    <string name="title_purchases">Purchases</string>
+    <string name="title_sales">Sales</string>
+    <string name="title_token_purchases">Token Purchases</string>
+    <string name="info_your_transaction_history_is_empty">Your transaction history is empty</string>
+    <string name="confirm_are_you_sure_you_want_to_purchase_this_item">Are you sure you want to purchase this item?</string>
+    <string name="info_this_item_is_not_biddable">This item is not biddable</string>
+    <string name="title_pending_bid">Pending bid</string>
+    <string name="info_bid_pending_wait_for_author_to_review">You already submitted a bid for this item. Kindly wait for the author to review it.</string>
+    <string name="info_none_at_the_moment">None at the moment</string>
+    <string name="title_details">Details</string>
+    <string name="title_posts">Posts</string>
+    <string name="title_author">Author</string>
+    <string name="title_reject_bid">Reject bid</string>
+    <string name="title_accept_bid">Accept bid</string>
+    <string name="confirm_you_are_about_to_accept_bid_offer_proceed">You are about to accept a bid offer. Proceed?</string>
+    <string name="info_bid_rejected_bidder_notified">Bid rejected. The concerned bidder has been notified.</string>
+    <string name="info_finishing">Finishing…</string>
+    <string name="info_bidders_account_is_being_prepared_please_wait">Bidder\'s account is being prepared. Please wait…</string>
+    <string name="info_bidder_unable_to_complete_transaction">Bidder is unable to complete the transaction at this point</string>
+    <string name="title_delete_message">Delete Message</string>
+    <string name="info_deleting_message">Deleting message…</string>
+    <string name="info_message_deleted">Message deleted</string>
+    <string name="title_delete_note">Delete note</string>
+    <string name="info_deleting_note">Deleting note…</string>
+    <string name="note_deleted">Note deleted</string>
+    <string name="title_sign_up">Sign-Up</string>
+    <string name="title_reset_password">Reset Password</string>
+    <string name="title_select_category">Select Category</string>
+    <string name="title_results">Results</string>
+    <string name="title_tokens">Tokens</string>
+    <string name="title_my_content">My Content</string>
+    <string name="title_profile_settings">Profile Settings</string>
+    <string name="title_change_email_address">Change Email Address</string>
+    <string name="title_change_password">Change Password</string>
+    <string name="title_bio">Bio</string>
+    <string name="title_new_phone_number">New Phone Number</string>
+    <string name="title_new_note">New Note</string>
+    <string name="title_my_notes">My Notes</string>
+    <string name="title_authentication">Authentication</string>
+    <string name="title_search_results">Search Results</string>
+    <string name="title_new_post">New Post</string>
+    <string name="title_messages">Messages</string>
+    <string name="title_view_post">View Post</string>
+    <string name="title_view_message">View Message</string>
+    <string name="title_place_bid">Place Bid</string>
+    <string name="title_review_bid">Review Bid</string>
+    <string name="title_select_recipient">Select Recipient</string>
+    <string name="title_view_document">View PDF</string>
+    <string name="title_list_of_notes">List of Notes</string>
+    <string name="title_sign_in">Sign In</string>
+    <string name="title_select_thumbnail">Select Thumbnail</string>
+    <string name="title_preview_post">Preview Post</string>
+    <string name="title_help">Help</string>
+    <string name="title_announcement">Announcement</string>
+    <string name="title_view_transaction">View Transaction</string>
+    <string name="menu_go_to_source">Go To Source</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_new_note">New Note</string>
+    <string name="menu_view_notes">View Notes</string>
+    <string name="menu_new_thumbnail">New Thumbnail</string>
+    <string name="menu_delete_post">Delete post</string>
+    <string name="menu_save_changes">Save Changes</string>
+    <string name="menu_publish">Publish</string>
+    <string name="action_search">Search</string>
+    <string name="menu_upload_file">Upload File</string>
+    <string name="action_report_post">Report Post</string>
+    <string name="menu_view_author">View Author</string>
+    <string name="menu_toggle_post">Show/Hide post</string>
+    <string name="info_kindly_ensure_email_addresses_match">Kindly ensure that the two addresses you entered are exactly the same</string>
+    <string name="hint_reenter_your_new_email_address">Re-enter your new email address</string>
+    <string name="confirm_bio_update">Are sure you want to update your &appname; bio with new information?</string>
+    <string name="info_bio_updated">Bio updated</string>
+    <string name="info_manage_your_settings_here">Manage your account settings here</string>
+    <string name="info_feature_coming_soon">This feature is coming soon</string>
+    <string name="pref_night_theme_key">night theme</string>
+    <string name="pref_night_theme_title">Enable Night Theme</string>
+    <string name="info_changes_the_default_theme">Changes the default theme</string>
+
+    <string name="THEME_NAME">app theme</string>
+    <string name="PREFS_TAG">theme</string>
+    <string name="title_nav_tokens">Tokens</string>
+    <string name="title_nav_transaction_records">Transaction Records</string>
+    <string name="title_nav_content">Content</string>
+    <string name="title_nav_more">More</string>
+    <string name="title_nav_messages">Messages</string>
+    <string name="title_nav_tools">Tools</string>
+    <string name="title_nav_settings">Settings</string>
+    <string name="title_nav_support">Support</string>
+    <string name="title_nav_terms_and_conditions">Terms and Conditions</string>
+    <string name="title_nav_privacy_policy">Privacy Policy</string>
+    <string name="title_nav_log_out">Log Out</string>
+    <string name="required_log_out">Log out?</string>
+    <string name="info_bid_submitted_successfuly_please_wait_for_author_to_accept">Bid submitted successfully. Please wait for the author to accept.</string>
+    <string name="info_you_already_submitted_a_bid_for_this_item">You already submitted a bid for this item. Kindly wait for the author to review it.</string>
+    <string name="option_cancel_bid">Cancel Bid</string>
+    <string name="info_please_enter_bid_price">Please enter bid price</string>
+    <string name="title_submit_bid">Submit Bid</string>
+    <string name="required_are_you_sure_you_want_to_submit_your_bid_of_1">Are you sure you want to place your bid of</string>
+    <string name="required_are_you_sure_you_want_to_submit_your_bid_of_2">token(s) on this item?</string>
+    <string name="firebase_ref_posts_type_1">Files</string>
+    <string name="firebase_ref_posts_type_2">DIY</string>
+    <string name="firebase_ref_posts_sub">Posts_Sub</string>
+    <string name="firebase_ref_lists">Lists</string>
+    <string name="firebase_ref_posts_all">AllPosts</string>
+    <string name="firebase_ref_posts_published">PublishedItems</string>
+    <string name="firebase_ref_posts_all_split">AllPostsSplit</string>
+    <string name="firebase_ref_posts_announcements">Announcements</string>
+    <string name="firebase_ref_posts_announcements_ref">AnnouncementsRef</string>
+    <string name="firebase_ref_posts_promoted">PromotedItems</string>
+    <string name="firebase_ref_posts_promoted_ref">PromotedItemsRef</string>
+    <string name="firebase_ref_account_monetary">MonetaryAccount</string>
+    <string name="option_select">Select</string>
+    <string name="firebase_ref_posts_search_keyword_ref">Title</string>
+    <string name="firebase_ref_posts_owned">OwnedItems</string>
+    <string name="option_verify_number">Verify Number</string>
+    <string name="firebase_ref_users_bio">Bio</string>
+    <string name="firebase_ref_users_account_manager">learner_app</string>
+    <string name="option_hide_bio">Hide Bio</string>
+    <string name="option_remove_bio">Remove Bio</string>
+    <string name="confirm_hide_bio">Hide bio from public?</string>
+    <string name="into_bio_hidden">Bio hidden</string>
+    <string name="confirm_bio_hidden_make_public">Your bio is currently hidden. Would you like to make it public again?</string>
+    <string name="into_bio_made_public">Bio made public</string>
+    <string name="confirm_remove_bio">Are you sure you want to delete your bio?</string>
+    <string name="into_bio_removed">Bio removed</string>
+    <string name="info_you_have_not_created_your_bio_yet">You have not created your bio yet</string>
+    <string name="info_post_is_private">Post is private</string>
+    <string name="firebase_ref_posts_bids">Bids</string>
+    <string name="hint_item_tap_to_open">Item (tap to open)</string>
+    <string name="title_mpesa_token_topup">M-Pesa Token top-up</string>
+    <string name="title_tokens_sent">TOKENS SENT</string>
+    <string name="title_tokens_received">TOKENS RECEIVED</string>
+    <string name="firebase_ref_posts_reported">ReportedPosts</string>
+    <string name="action_delete_message">Delete message</string>
+    <string name="info_proceed_to_verify_your_email_address">Proceed to verify your email address</string>
+    <string name="option_verify_email_address">Verify Email Address</string>
+    <string name="info_resending_verification_link_please_wait">Resending verification email, please wait…</string>
+    <string name="info_your_email_address_is_already_verified_no_further_action_is_required">Your email address is already verified, no further action is required.</string>
+    <string name="info_sending_verification_email_please_wait">Sending verification email, please wait…</string>
+    <string name="error_error_sending_verification_email_retry">There was an error sending the verification email. Please tap on the button below to attempt to resend it.</string>
+    <string name="info_we_have_sent_verification_link_to_the_email_address_provided">We have sent a verification link to the email address you provided. Please check your inbox or spam folder and follow the link to verify your email address.</string>
+    <string name="option_resend_verification_link">Resend Verification Link</string>
+    <string name="title_email_verification">Email Verification</string>
+    <string name="label_reference_number">Reference Number:</string>
+    <string name="label_item">Item:</string>
+    <string name="label_account_number">Account Number:</string>
+    <string name="label_exchange_rate_one_usd_to_kes">Exchange Rate (1 USD to KES)</string>
+    <string name="info_uploaded">Uploaded</string>
+
+    <string name="firebase_ref_lists_cat_1">category_1_list</string>
+    <string name="firebase_ref_lists_cat_2">bio_occupation_list</string>
+    <string name="firebase_ref_lists_cat_3">category_3_list</string>
+    <string name="firebase_ref_lists_cat_4">category_4_list</string>
+    <string name="firebase_ref_lists_cat_5">category_5_list</string>
+    <string name="firebase_ref_lists_cat_6">category_6_list</string>
+    <string name="firebase_ref_lists_cat_7">category_7_list</string>
+    <string name="firebase_ref_lists_cat_8">institutions_list</string>
+    <string name="firebase_ref_lists_cat_9">tags_list</string>
+    <string name="option_create_post">Create Post</string>
+    <string name="radio_coursework">Coursework</string>
+    <string name="radio_non_coursework">Non-Coursework</string>
+    <string name="hint_unit">Unit</string>
+    <string name="info_you_must_select_a_post_category">You must select a post category</string>
+    <string name="you_must_select_a_valid_institution">You must select a valid institution from the list</string>
+    <string name="title_institution">Institution</string>
+    <string name="title_faculty">Faculty</string>
+    <string name="title_course">Course</string>
+    <string name="title_non_coursework_category">Non-Coursework Category</string>
+    <string name="menu_edit_post">Edit post</string>
+    <string name="title_edit_post">Edit Post</string>
+    <string name="menu_update_thumbnail">Update thumbnail</string>
+    <string name="title_add_sub_post">Add Sub-Post</string>
+    <string name="title_file_type">File Type</string>
+    <string name="info_sub_post_created">Sub-Post created.</string>
+    <string name="info_you_can_view_and_manage_sub_posts">You can view and manage sub-posts by accessing their parent posts.</string>
+    <string name="option_view_sub_post">View sub-post</string>
+    <string name="info_no_image_file_selected">No image file selected</string>
+    <string name="info_sub_post_removed">Sub-post removed</string>
+    <string name="hint_post_type">Post type</string>
+    <string name="title_view_sub_post">View Sub-Post</string>
+    <string name="firebase_ref_values_transactions">Transactions</string>
+    <string name="firebase_ref_values_transactions_fees_sell_content">Fees_SellContent</string>
+    <string name="firebase_ref_monetary_app_default_name">APP_DEFAULT</string>
+    <string-array name="spinner_sub_post_file_types">
+        <item>--select type below--</item>
+        <item>Text</item>
+        <item>Image</item>
+        <item>Audio</item>
+        <item>Video</item>
+        <item>PDF</item>
+    </string-array>
+
 </resources>

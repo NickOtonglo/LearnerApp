@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_new_thumbnail"
-        android:title="New Thumbnail"/>
+        android:title="@string/menu_new_thumbnail"/>
     <item
         android:id="@+id/menu_delete_post"
-        android:title="Delete Post"/>
+        android:title="@string/menu_delete_post"/>
     <item
         android:id="@+id/menu_save"
-        android:title="Save Changes"/>
+        android:title="@string/menu_save_changes"/>
     <item
         android:id="@+id/menu_publish"
-        android:title="Publish"/>
+        android:title="@string/menu_publish"/>
 </menu>

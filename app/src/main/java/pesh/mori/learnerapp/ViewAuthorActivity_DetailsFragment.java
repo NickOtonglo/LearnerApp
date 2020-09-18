@@ -2,10 +2,6 @@ package pesh.mori.learnerapp;
 
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +9,15 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.net.MalformedURLException;
@@ -37,22 +32,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ViewAuthorActivity_DetailsFragment extends Fragment {
 
     private TextView mTextMessage,mName,mAbout,mFacebook,mGender,mLinkedin,mSkilldetails,mSkillsector,mTwitter;
-
-    private RecyclerView mRecycler;
     private DatabaseReference mBio;
     private String mAuthor,txtName;
     private DatabaseReference mUsers;
-    private FirebaseAuth mAuth;
-    private FirebaseUser mUser;
-    private StorageReference sStorage;
     private Uri mFileUri = null;
     private CircleImageView profile;
-    private DatabaseReference mFiles,mFilesItems,mDIY;
-    private StorageReference mStorage;
-    private TextView txtEmpty;
-    private Query mUserFiles,mUserDIY;
-    private LinearLayout layoutBio,layoutUploads;
     private ProgressBar mProgressBar;
+    private LinearLayout layoutInfo;
 
     public ViewAuthorActivity_DetailsFragment() {
     }
@@ -76,7 +62,7 @@ public class ViewAuthorActivity_DetailsFragment extends Fragment {
         mLinkedin = (TextView) detailsFragment.findViewById(R.id.txt_view_linkedin);
         mTwitter = (TextView) detailsFragment.findViewById(R.id.txt_view_twitter);
         profile = (CircleImageView) detailsFragment.findViewById(R.id.img_main_profile);
-        layoutBio = (LinearLayout) detailsFragment.findViewById(R.id.bio_author);
+        layoutInfo = (LinearLayout) detailsFragment.findViewById(R.id.layout_info_section);
 
         preloadBio();
 
@@ -84,27 +70,21 @@ public class ViewAuthorActivity_DetailsFragment extends Fragment {
     }
 
     public void preloadBio(){
-        mBio = FirebaseDatabase.getInstance().getReference().child("Bio").child(mAuthor);
+        mBio = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_users_bio)).child(mAuthor);
         mBio.keepSynced(true);
         mBio.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    mAbout.setText(String.valueOf(dataSnapshot.child("about").getValue()));
-                    mFacebook.setText(String.valueOf(dataSnapshot.child("facebook").getValue()));
-                    mLinkedin.setText(String.valueOf(dataSnapshot.child("linkedin").getValue()));
-                    mGender.setText("gender: "+String.valueOf(dataSnapshot.child("gender").getValue()));
-                    mSkilldetails.setText(String.valueOf(dataSnapshot.child("skill_details").getValue()));
-                    mTwitter.setText(String.valueOf(dataSnapshot.child("twitter").getValue()));
-                    mSkillsector.setText(String.valueOf(dataSnapshot.child("skills_sector").getValue()));
+                    if (dataSnapshot.child("hidden").exists() && dataSnapshot.child("hidden").getValue().equals("false")){
+                        showInfo(dataSnapshot);
+                    } else if (dataSnapshot.child("hidden").exists() && dataSnapshot.child("hidden").getValue().equals("true")){
+                        hideInfo();
+                    } else if (!dataSnapshot.child("hidden").exists()){
+                        showInfo(dataSnapshot);
+                    }
                 } else {
-                    mAbout.setVisibility(View.GONE);
-                    mFacebook.setVisibility(View.GONE);
-                    mLinkedin.setVisibility(View.GONE);
-                    mGender.setText(R.string.info_no_user_bio);
-                    mSkilldetails.setVisibility(View.GONE);
-                    mTwitter.setVisibility(View.GONE);
-                    mSkillsector.setVisibility(View.GONE);
+                    hideInfo();
                 }
             }
 
@@ -113,7 +93,6 @@ public class ViewAuthorActivity_DetailsFragment extends Fragment {
 
             }
         });
-        sStorage = FirebaseStorage.getInstance().getReference().child("Users").child(mAuthor);
         mUsers = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor);
         mUsers.addValueEventListener(new ValueEventListener() {
             @Override
@@ -126,7 +105,7 @@ public class ViewAuthorActivity_DetailsFragment extends Fragment {
                         Picasso.with(getContext()).load(mFileUri).into(profile);
                         mProgressBar.setVisibility(View.GONE);
                     } else {
-                        profile.setImageResource(R.drawable.ic_action_user);
+                        profile.setImageResource(R.drawable.ic_baseline_person_24_theme);
                         mProgressBar.setVisibility(View.GONE);
                     }
                 } else {
@@ -141,8 +120,32 @@ public class ViewAuthorActivity_DetailsFragment extends Fragment {
         });
     }
 
+    private void showInfo(DataSnapshot dataSnapshot){
+        layoutInfo.setVisibility(View.VISIBLE);
+        mAbout.setText(String.valueOf(dataSnapshot.child("about").getValue()));
+        mFacebook.setText(String.valueOf(dataSnapshot.child("facebook").getValue()));
+        mLinkedin.setText(String.valueOf(dataSnapshot.child("linkedin").getValue()));
+        mGender.setVisibility(View.GONE);
+//        mGender.setText("gender: "+ String.valueOf(dataSnapshot.child("gender").getValue()));
+        mSkilldetails.setText(String.valueOf(dataSnapshot.child("skill_details").getValue()));
+        mTwitter.setText(String.valueOf(dataSnapshot.child("twitter").getValue()));
+        mSkillsector.setText(String.valueOf(dataSnapshot.child("skills_sector").getValue()));
+    }
+
+    private void hideInfo(){
+        layoutInfo.setVisibility(View.GONE);
+        mAbout.setVisibility(View.GONE);
+        mFacebook.setVisibility(View.GONE);
+        mLinkedin.setVisibility(View.GONE);
+        mGender.setText(R.string.info_no_user_bio);
+        mGender.setVisibility(View.VISIBLE);
+        mSkilldetails.setVisibility(View.GONE);
+        mTwitter.setVisibility(View.GONE);
+        mSkillsector.setVisibility(View.GONE);
+    }
+
     public void checkAccountManager(final String manager){
-        if (manager.equals("learner_app")){
+        if (manager.equals(getString(R.string.firebase_ref_users_account_manager))){
             mUsers.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -153,7 +156,7 @@ public class ViewAuthorActivity_DetailsFragment extends Fragment {
                         Picasso.with(getContext()).load(mFileUri).into(profile);
                         mProgressBar.setVisibility(View.GONE);
                     } else {
-                        profile.setImageResource(R.drawable.ic_action_user);
+                        profile.setImageResource(R.drawable.ic_baseline_person_24_theme);
                         mProgressBar.setVisibility(View.GONE);
                     }
                 }

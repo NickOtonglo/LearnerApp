@@ -8,18 +8,17 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import com.google.android.material.tabs.TabLayout;
+import android.view.MenuItem;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.view.MenuItem;
-
-
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,6 +43,13 @@ public class MyFilesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_myfiles);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,7 +58,7 @@ public class MyFilesActivity extends AppCompatActivity {
         homeActivity.checkMaintenanceStatus(getApplicationContext());
 
         mProgress = new ProgressDialog(this);
-        mAlert = new AlertDialog.Builder(this);
+        mAlert = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
         mAuth = FirebaseAuth.getInstance();
 
         MyTabs =(TabLayout) findViewById(R.id.Mytabs);
@@ -69,9 +75,9 @@ public class MyFilesActivity extends AppCompatActivity {
     public void setUpViewPager(ViewPager viewpage){
         MyViewPageAdapter Adapter = new MyViewPageAdapter(getSupportFragmentManager());
 
-        Adapter.AddFragmentPage(new mydownloads(),"Downloads");
-        Adapter.AddFragmentPage(new mynotes(),"Notes");
-        Adapter.AddFragmentPage( new myuploads(),"Uploads" );
+        Adapter.AddFragmentPage(new MyFilesActivity_DownloadsFragment(),getString(R.string.title_downloads));
+        Adapter.AddFragmentPage(new MyFilesActivity_NotesFragment(),getString(R.string.title_notes));
+        Adapter.AddFragmentPage(new MyFilesActivity_UploadsFragment(),getString(R.string.title_uploads));
 
         viewpage.setAdapter(Adapter);
     }
@@ -82,7 +88,7 @@ public class MyFilesActivity extends AppCompatActivity {
         return true;
     }
 
-    public class MyViewPageAdapter extends FragmentPagerAdapter{
+    public class MyViewPageAdapter extends FragmentPagerAdapter {
         private List<Fragment> MyFragment = new ArrayList<>();
         private List<String> MyPageTitle = new ArrayList<>();
 
@@ -162,16 +168,16 @@ public class MyFilesActivity extends AppCompatActivity {
         finish();
     }
 
-    public void performSearch(final String searchQuery,final String node,final String outgoingFragment){
-        mAlert.setMessage("No results")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+    public void performSearch(final String searchQuery, final String node, final String outgoingFragment){
+        mAlert.setMessage(getString(R.string.info_no_results))
+                .setPositiveButton(getString(R.string.option_ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                     }
                 });
         mProgress.setCanceledOnTouchOutside(false);
-        mProgress.setMessage("Fetching results...");
+        mProgress.setMessage(getString(R.string.info_fetching_results));
         mProgress.show();
         final Query mParent = FirebaseDatabase.getInstance().getReference().child(node);
         final DatabaseReference[] mSearch = new DatabaseReference[1];
@@ -189,7 +195,7 @@ public class MyFilesActivity extends AppCompatActivity {
 //                            Toast.makeText(getApplicationContext(), "No results", Toast.LENGTH_SHORT).show();
                         } else {
                             mProgress.dismiss();
-                            Intent resultsActivity = new Intent(getApplicationContext(),DownloadsList.class);
+                            Intent resultsActivity = new Intent(getApplicationContext(), SearchPostActivity.class);
                             resultsActivity.putExtra("query",searchQuery.toUpperCase());
                             resultsActivity.putExtra("activityFrom",outgoingFragment);
 

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:popupTheme="@style/AppTheme.PopupOverlay"
-    tools:context="pesh.mori.learnerapp.TransactionsActivity">
+    android:background="?attr/attrBackgroundColor"
+    tools:context=".TransactionsActivity">
 
     <include
         layout="@layout/app_bar_layout_main" />
@@ -30,7 +31,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="15sp"
+                android:layout_marginTop="15dp"
                 android:adjustViewBounds="true"
                 android:background="@color/black"
                 android:scaleType="centerCrop" />
@@ -53,14 +54,14 @@
                 <VideoView
                     android:id="@+id/img_view_file_play_audio"
                     android:layout_width="match_parent"
-                    android:layout_height="120sp"
+                    android:layout_height="120dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="15sp"
+                    android:layout_marginTop="15dp"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:background="@color/black"/>
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/btn_view_file_time_play_audio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -68,9 +69,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_marginBottom="80dp"
-                    android:src="@drawable/baseline_play_arrow_white_24" />
+                    app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/btn_view_file_audio_static"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -78,7 +79,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_marginBottom="80dp"
-                    android:src="@drawable/baseline_audiotrack_white_48"
+                    app:srcCompat="@drawable/ic_baseline_audiotrack_24"
                     android:visibility="gone"/>
 
                 <ProgressBar
@@ -111,14 +112,14 @@
                 <VideoView
                     android:id="@+id/img_view_file_play_video"
                     android:layout_width="match_parent"
-                    android:layout_height="250sp"
+                    android:layout_height="200dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15sp"
+                    android:layout_marginTop="15dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/btn_view_file_time_play"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -126,7 +127,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_marginBottom="80dp"
-                    android:src="@drawable/baseline_play_arrow_white_24" />
+                    app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
 
                 <ProgressBar
                     android:id="@+id/buffer_progress_view_file"
@@ -165,9 +166,7 @@
                 android:id="@+id/pdfview_file_select_doc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15sp"
+                android:layout_marginTop="15dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop" />
 
@@ -180,22 +179,20 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:orientation="vertical">
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8sp">
+                    android:layout_height="wrap_content">
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_author"
-                        android:layout_width="60sp"
-                        android:layout_height="60sp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_action_user"
-                        app:civ_border_color="@color/white"
-                        app:civ_border_width="1sp"
-                        android:layout_margin="0sp"
-                        app:civ_fill_color="@color/white"/>
+                        android:src="@drawable/ic_baseline_person_24_theme"/>
                     <ProgressBar
                         android:id="@+id/progress_bar"
                         android:layout_width="wrap_content"
@@ -209,197 +206,173 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:padding="8sp"
-                    android:text="Author"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    android:padding="@dimen/text_secondary_padding"
+                    android:textSize="@dimen/text_secondary_size"
+                    android:text="@string/hint_author"
+                    android:textColor="?attr/attrTextSecondaryColor"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8sp"
-                    android:padding="8sp"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Posted at: "
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:text="@string/hint_posted_at"
+                        android:textColor="?attr/attrTextSecondaryColor"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:padding="@dimen/text_secondary_padding"/>
 
                     <TextView
                         android:id="@+id/txt_view_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Loading..."
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:text="@string/link_loading"
+                        android:textColor="?attr/attrTextColor"
+                        android:textSize="@dimen/text_primary_size"
+                        android:padding="@dimen/text_secondary_padding"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8sp">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15sp"
-                        android:text="Title"
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:text="@string/title_title"
+                        android:textColor="?attr/attrTextSecondaryColor"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:padding="@dimen/text_secondary_padding"/>
 
                     <TextView
                         android:id="@+id/txt_view_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/imageButton"
-                        android:layout_marginTop="3sp"
-                        android:background="@drawable/input_outline_primary_dark"
-                        android:padding="15sp"
+                        android:textSize="@dimen/text_primary_size"
+                        android:padding="@dimen/text_input_padding"
                         android:ellipsize="none"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:text="Loading..." />
+                        android:textColor="?attr/attrTextColor"
+                        android:text="@string/link_loading" />
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15sp"
-                        android:text="Price (Tokens)"
-                        android:textColor="@color/colorGreen" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:text="@string/hint_price_tokens"
+                        android:textColor="?attr/attrTextSecondaryColor"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:padding="@dimen/text_secondary_padding"/>
 
                     <TextView
                         android:id="@+id/txt_view_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/txt_title_post"
-                        android:layout_marginTop="3sp"
-                        android:background="@drawable/input_outline_green"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:padding="15sp"
-                        android:text="Loading..."
-                        android:textColor="@color/colorGreen" />
+                        android:textSize="@dimen/text_primary_size"
+                        android:padding="@dimen/text_input_padding"
+                        android:text="@string/link_loading"
+                        android:textColor="?attr/attrTextColor" />
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15sp"
-                        android:text="Bidding"
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:text="@string/hint_bidding"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:padding="@dimen/text_secondary_padding"
+                        android:textColor="?attr/attrTextSecondaryColor"/>
 
                     <TextView
                         android:id="@+id/txt_view_bid"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/txt_title_post"
-                        android:layout_marginTop="3sp"
-                        android:background="@drawable/input_outline_primary_dark"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:padding="15sp"
-                        android:text="Loading..."
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:textSize="@dimen/text_primary_size"
+                        android:padding="@dimen/text_input_padding"
+                        android:text="@string/link_loading"
+                        android:textColor="?attr/attrTextColor"/>
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15sp"
-                        android:text="Brief"
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:text="@string/hint_brief"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:padding="@dimen/text_secondary_padding"
+                        android:textColor="?attr/attrTextSecondaryColor"/>
 
                     <TextView
                         android:id="@+id/txt_view_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="3sp"
-                        android:background="@drawable/input_outline_primary_dark"
-                        android:ellipsize="end"
-                        android:maxLines="4"
-                        android:inputType="textMultiLine"
-                        android:padding="15sp"
-                        android:text="Loading..."
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:textSize="@dimen/text_primary_size"
+                        android:padding="15dp"
+                        android:text="@string/link_loading"
+                        android:textColor="?attr/attrTextColor"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:id="@+id/layout_files"
+                    android:id="@+id/layout_coursework"
                     android:visibility="gone">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15sp"
-                        android:text="Institution"
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:text="@string/title_institution"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:padding="@dimen/text_secondary_padding"
+                        android:textColor="?attr/attrTextSecondaryColor"/>
 
                     <TextView
                         android:id="@+id/txt_view_institution"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/txt_title_post"
-                        android:layout_marginTop="3sp"
-                        android:background="@drawable/input_outline_primary_dark"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:padding="15sp"
-                        android:text="Loading..."
-                        android:textColor="@color/colorPrimaryDark" />
+                        android:textSize="@dimen/text_primary_size"
+                        android:padding="15dp"
+                        android:text="@string/link_loading"
+                        android:textColor="?attr/attrTextColor"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15sp"
-                        android:text="Faculty"
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:text="@string/title_faculty"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:padding="@dimen/text_secondary_padding"
+                        android:textColor="?attr/attrTextSecondaryColor"/>
 
                     <TextView
                         android:id="@+id/txt_view_faculty"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/txt_title_post"
-                        android:layout_marginTop="3sp"
-                        android:background="@drawable/input_outline_primary_dark"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:padding="15sp"
-                        android:text="Loading..."
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:textSize="@dimen/text_primary_size"
+                        android:padding="15dp"
+                        android:text="@string/link_loading"
+                        android:textColor="?attr/attrTextColor"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15sp"
-                        android:text="Course"
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:text="@string/title_course"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:padding="@dimen/text_secondary_padding"
+                        android:textColor="?attr/attrTextSecondaryColor"/>
 
                     <TextView
                         android:id="@+id/txt_view_course"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/txt_title_post"
-                        android:layout_marginBottom="10sp"
-                        android:layout_marginTop="3sp"
-                        android:background="@drawable/input_outline_primary_dark"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:padding="15sp"
-                        android:text="Loading..."
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:textSize="@dimen/text_primary_size"
+                        android:padding="15dp"
+                        android:text="@string/link_loading"
+                        android:textColor="?attr/attrTextColor"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -407,28 +380,25 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone"
-                    android:id="@+id/layout_diy">
+                    android:id="@+id/layout_non_coursework">
+
                     <TextView
-                        android:text="Tag"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15sp"
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:text="@string/hint_non_coursework"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:padding="@dimen/text_secondary_padding"
+                        android:textColor="?attr/attrTextSecondaryColor"/>
 
                     <TextView
                         android:id="@+id/txt_view_tag"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textMultiLine"
-                        android:background="@drawable/input_outline_primary_dark"
-                        android:ems="10"
-                        android:layout_marginTop="3sp"
-                        android:padding="15sp"
-                        android:layout_below="@+id/txt_title_post"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:text="Loading..."
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:textSize="@dimen/text_primary_size"
+                        android:padding="15dp"
+                        android:text="@string/link_loading"
+                        android:textColor="?attr/attrTextColor"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -440,10 +410,10 @@
                         android:id="@+id/txtTransactPrompt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5sp"
-                        android:padding="5sp"
+                        android:padding="@dimen/text_secondary_padding"
                         android:text="..."
-                        android:textColor="@color/colorAccent"
+                        android:textColor="?attr/attrTextSecondaryColor"
+                        android:textSize="@dimen/text_secondary_size"
                         android:gravity="center"
                         android:visibility="gone"/>
 
@@ -451,18 +421,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5sp"
+                        android:padding="5dp"
                         android:weightSum="1">
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/btnTransactBid"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_margin="2sp"
-                            android:text="Bid"
-                            android:background="@drawable/button_app_theme"
+                            android:layout_marginLeft="@dimen/button_small_margin"
+                            android:layout_marginRight="@dimen/button_small_margin"
+                            android:text="@string/option_bid"
+                            android:background="@drawable/button_primary"
                             android:textAllCaps="false"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/attrButtonTextColor"
                             android:layout_weight="0.5"
                             android:visibility="gone"/>
 
@@ -470,12 +441,13 @@
                             android:id="@+id/btnTransactPurchase"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_margin="2sp"
-                            android:text="Purchase"
-                            android:background="@drawable/button_app_theme"
+                            android:layout_marginLeft="@dimen/button_small_margin"
+                            android:layout_marginRight="@dimen/button_small_margin"
+                            android:text="@string/option_purchase"
+                            android:background="@drawable/button_primary"
                             android:textAllCaps="false"
                             android:textStyle="bold"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/attrButtonTextColor"
                             android:layout_weight="0.5"/>
 
                     </LinearLayout>
@@ -484,12 +456,12 @@
                         android:id="@+id/btnTransactCancel"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_margin="6sp"
-                        android:text="Cancel"
-                        android:backgroundTint="@color/colorPrimary"
-                        app:backgroundTint="@color/colorPrimary"
+                        android:layout_margin="@dimen/button_small_margin"
+                        android:text="@string/option_cancel"
+                        android:backgroundTint="?attr/attrButtonColor"
+                        app:backgroundTint="?attr/attrButtonColor"
                         android:textAllCaps="false"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/attrButtonTextColor"
                         android:layout_gravity="center"/>
 
                 </LinearLayout>

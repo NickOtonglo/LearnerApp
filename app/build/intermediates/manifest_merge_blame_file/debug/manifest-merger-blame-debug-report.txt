@@ -34,1059 +34,864 @@
 20    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 20-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:17:5-81
 20-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:17:22-78
-21    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
-22    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-22-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:19:5-76
-22-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:19:22-73
-23    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-23-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:20:5-71
-23-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:20:22-68
-24    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-24-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\505458ab127bd1791e18a94b5b56540f\play-services-measurement-api-17.2.2\AndroidManifest.xml:24:5-68
-24-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\505458ab127bd1791e18a94b5b56540f\play-services-measurement-api-17.2.2\AndroidManifest.xml:24:22-65
-25    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-25-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0ca231230bda65afdc3e8629af501d99\firebase-iid-20.0.2\AndroidManifest.xml:26:5-82
-25-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0ca231230bda65afdc3e8629af501d99\firebase-iid-20.0.2\AndroidManifest.xml:26:22-79
-26    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- <uses-permission android:name="android.permission.READ_PROFILE" /> -->
-26-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:26:5-110
-26-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:26:22-107
-27    <!-- <uses-permission android:name="android.permission.READ_CONTACTS" /> -->
-28    <!-- <uses-permission android:name="android.permission.RECEIVE_SMS" /> -->
-29    <!-- <uses-permission android:name="android.permission.READ_SMS" /> -->
-30    <application
-30-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:26:5-351:19
-31        android:name="androidx.multidex.MultiDexApplication"
-32        android:allowBackup="true"
-32-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:27:9-35
-33        android:debuggable="true"
-34        android:icon="@mipmap/ic_launcher_round"
-34-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:28:9-49
-35        android:label="@string/app_name"
-35-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:29:9-41
-36        android:roundIcon="@mipmap/ic_launcher_round"
-36-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:30:9-54
-37        android:supportsRtl="true"
-37-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:31:9-35
-38        android:testOnly="true"
-39        android:theme="@style/AppTheme"
-39-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:32:9-40
-40        android:usesCleartextTraffic="true" >
-40-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:33:9-44
+21    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+21-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:18:5-76
+21-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:18:22-73
+22    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+22-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:19:5-71
+22-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:19:22-68
+23    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+23-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:24:5-68
+23-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:24:22-65
+24    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+24-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:26:5-82
+24-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:26:22-79
+25    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+25-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:26:5-110
+25-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:26:22-107
+26
+27    <application
+27-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:21:5-248:19
+28        android:name="androidx.multidex.MultiDexApplication"
+29        android:allowBackup="true"
+29-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:22:9-35
+30        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+30-->[androidx.core:core:1.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b8a42566902122ba073398481a046a17\core-1.3.1\AndroidManifest.xml:24:18-86
+31        android:debuggable="true"
+32        android:icon="@mipmap/ic_launcher_final"
+32-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:23:9-49
+33        android:label="@string/app_name"
+33-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:24:9-41
+34        android:roundIcon="@mipmap/ic_launcher_final"
+34-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:25:9-54
+35        android:supportsRtl="true"
+35-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:26:9-35
+36        android:testOnly="true"
+37        android:theme="@style/AppTheme" >
+37-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:27:9-40
+38        <meta-data
+38-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:29:9-32:45
+39            android:name="com.facebook.sdk.ApplicationId"
+39-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:30:13-58
+40            android:value="@string/facebook_app_id" />
+40-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:31:13-52
 41        <meta-data
-41-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:36:9-39:45
-42            android:name="com.facebook.sdk.ApplicationId"
-42-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:37:13-58
-43            android:value="@string/facebook_app_id" />
-43-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:38:13-52
-44        <meta-data
-44-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:40:9-42:63
-45            android:name="com.google.firebase.messaging.default_notification_icon"
-45-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:41:13-83
-46            android:resource="@mipmap/ic_push_notification" />
-46-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:42:13-60
-47
-48        <!-- <receiver android:name=".MyBroadcastReceiver" android:exported="true"> -->
-49        <!-- <intent-filter> -->
-50        <!-- <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED" /> -->
-51        <!-- </intent-filter> -->
-52        <!-- </receiver> -->
-53
-54        <activity
-54-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:50:9-53:48
-55            android:name="com.facebook.FacebookActivity"
-55-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:51:13-57
-56            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-56-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:52:13-96
-57            android:label="@string/app_name"
-57-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:53:13-45
-58            android:theme="@style/com_facebook_activity_theme" />
-58-->[com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:32:13-63
-59        <activity
-59-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:54:9-65:20
-60            android:name="com.facebook.CustomTabActivity"
-60-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:55:13-58
-61            android:exported="true" >
-61-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:56:13-36
-62            <intent-filter>
-62-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:57:13-64:29
-63                <action android:name="android.intent.action.VIEW" />
-63-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:58:17-69
-63-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:58:25-66
-64
-65                <category android:name="android.intent.category.DEFAULT" />
-65-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:60:17-76
-65-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:60:27-73
-66                <category android:name="android.intent.category.BROWSABLE" />
-66-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:61:17-78
-66-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:61:27-75
-67
-68                <data android:scheme="@string/fb_login_protocol_scheme" />
-68-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:63:17-75
-68-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:63:23-72
-69            </intent-filter>
-70            <intent-filter>
-70-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:68:13-75:29
-71                <action android:name="android.intent.action.VIEW" />
-71-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:58:17-69
-71-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:58:25-66
-72
-73                <category android:name="android.intent.category.DEFAULT" />
-73-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:60:17-76
-73-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:60:27-73
-74                <category android:name="android.intent.category.BROWSABLE" />
-74-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:61:17-78
-74-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:61:27-75
-75
-76                <data android:scheme="@string/facebook_login_protocol_scheme" />
-76-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:63:17-75
-76-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:63:23-72
-77            </intent-filter>
-78        </activity>
-79        <activity
-79-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:66:9-74:20
-80            android:name="pesh.mori.learnerapp.SelectLoginActivity"
-80-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:67:13-48
-81            android:screenOrientation="portrait" >
-81-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:68:13-49
-82            <intent-filter>
-82-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:69:13-73:29
-83                <action android:name="android.intent.action.MAIN" />
-83-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:70:17-69
-83-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:70:25-66
-84
-85                <category android:name="android.intent.category.LAUNCHER" />
-85-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:72:17-77
-85-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:72:27-74
-86            </intent-filter>
-87        </activity>
-88        <activity
-88-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:75:9-77:59
-89            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-89-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:76:13-76
-90            android:theme="@style/Base.Theme.AppCompat" />
-90-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:77:13-56
-91        <activity
-91-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:78:9-81:46
-92            android:name="pesh.mori.learnerapp.LoginActivity"
-92-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:79:13-42
-93            android:screenOrientation="portrait"
-93-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:80:13-49
-94            android:theme="@style/MyTheme" />
-94-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:81:13-43
+41-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:33:9-35:54
+42            android:name="com.google.firebase.messaging.default_notification_icon"
+42-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:34:13-83
+43            android:resource="@mipmap/ic_launcher" /> <!-- <provider -->
+43-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:35:13-51
+44        <!-- android:name="com.facebook.FacebookContentProvider" -->
+45        <!-- android:authorities="com.facebook.app.FacebookContentProvider287509642607379" -->
+46        <!-- android:exported="true" /> -->
+47        <activity
+47-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:39:9-42:48
+48            android:name="com.facebook.FacebookActivity"
+48-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:40:13-57
+49            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+49-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:41:13-96
+50            android:label="@string/app_name"
+50-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:42:13-45
+51            android:theme="@style/com_facebook_activity_theme" />
+51-->[com.facebook.android:facebook-common:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\aa89922f1a6b7521a12e7a106524964d\jetified-facebook-common-5.15.3\AndroidManifest.xml:33:13-63
+52        <activity
+52-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:43:9-54:20
+53            android:name="com.facebook.CustomTabActivity"
+53-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:44:13-58
+54            android:exported="true" >
+54-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:45:13-36
+55            <intent-filter>
+55-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:46:13-53:29
+56                <action android:name="android.intent.action.VIEW" />
+56-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:47:17-69
+56-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:47:25-66
+57
+58                <category android:name="android.intent.category.DEFAULT" />
+58-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:49:17-76
+58-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:49:27-73
+59                <category android:name="android.intent.category.BROWSABLE" />
+59-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:50:17-78
+59-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:50:27-75
+60
+61                <data android:scheme="@string/fb_login_protocol_scheme" />
+61-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:52:17-75
+61-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:52:23-72
+62            </intent-filter>
+63            <intent-filter>
+63-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:68:13-75:29
+64                <action android:name="android.intent.action.VIEW" />
+64-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:47:17-69
+64-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:47:25-66
+65
+66                <category android:name="android.intent.category.DEFAULT" />
+66-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:49:17-76
+66-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:49:27-73
+67                <category android:name="android.intent.category.BROWSABLE" />
+67-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:50:17-78
+67-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:50:27-75
+68
+69                <data android:scheme="@string/facebook_login_protocol_scheme" />
+69-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:52:17-75
+69-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:52:23-72
+70            </intent-filter>
+71            <intent-filter>
+71-->[com.facebook.android:facebook-common:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\aa89922f1a6b7521a12e7a106524964d\jetified-facebook-common-5.15.3\AndroidManifest.xml:39:13-48:29
+72                <action android:name="android.intent.action.VIEW" />
+72-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:47:17-69
+72-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:47:25-66
+73
+74                <category android:name="android.intent.category.DEFAULT" />
+74-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:49:17-76
+74-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:49:27-73
+75                <category android:name="android.intent.category.BROWSABLE" />
+75-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:50:17-78
+75-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:50:27-75
+76
+77                <data
+77-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:52:17-75
+78                    android:host="cct.pesh.mori.learnerapp"
+79                    android:scheme="fbconnect" />
+79-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:52:23-72
+80            </intent-filter>
+81        </activity>
+82        <activity
+82-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:55:9-64:20
+83            android:name="pesh.mori.learnerapp.SelectLoginActivity"
+83-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:56:13-48
+84            android:screenOrientation="portrait"
+84-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:57:13-49
+85            android:theme="@style/LoginTheme" >
+85-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:58:13-46
+86            <intent-filter>
+86-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:59:13-63:29
+87                <action android:name="android.intent.action.MAIN" />
+87-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:60:17-69
+87-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:60:25-66
+88
+89                <category android:name="android.intent.category.LAUNCHER" />
+89-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:62:17-77
+89-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:62:27-74
+90            </intent-filter>
+91        </activity>
+92        <activity
+92-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:65:9-67:59
+93            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+93-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:66:13-76
+94            android:theme="@style/Base.Theme.AppCompat" />
+94-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:67:13-56
 95        <activity
-95-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:82:9-86:47
+95-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:68:9-70:60
 96            android:name="pesh.mori.learnerapp.ForgotPasswordActivity"
-96-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:83:13-51
-97            android:label="Password Reset"
-97-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:84:13-43
-98            android:screenOrientation="portrait"
-98-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:85:13-49
-99            android:theme="@style/MyTheme3" />
-99-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:86:13-44
-100        <activity
-100-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:87:9-91:47
-101            android:name="pesh.mori.learnerapp.RegistrationActivity"
-101-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:88:13-49
-102            android:label="Sign Up"
-102-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:89:13-36
-103            android:screenOrientation="portrait"
-103-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:90:13-49
-104            android:theme="@style/MyTheme3" />
-104-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:91:13-44
-105        <activity
-105-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:92:9-96:47
-106            android:name="pesh.mori.learnerapp.CredentialsActivity"
-106-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:93:13-48
-107            android:label="Create Credentials"
-107-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:94:13-47
-108            android:screenOrientation="portrait"
-108-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:95:13-49
-109            android:theme="@style/MyTheme3" />
-109-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:96:13-44
+96-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:69:13-51
+97            android:label="@string/title_reset_password" />
+97-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:70:13-57
+98        <activity
+98-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:71:9-73:53
+99            android:name="pesh.mori.learnerapp.RegistrationActivity_Initial"
+99-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:72:13-57
+100            android:label="@string/title_sign_up" />
+100-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:73:13-50
+101        <activity
+101-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:74:9-76:53
+102            android:name="pesh.mori.learnerapp.RegistrationActivity_Final"
+102-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:75:13-55
+103            android:label="@string/title_sign_up" />
+103-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:76:13-50
+104        <activity
+104-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:77:9-79:50
+105            android:name="pesh.mori.learnerapp.HomeActivity"
+105-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:78:13-41
+106            android:label="@string/title_home" />
+106-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:79:13-47
+107        <activity
+107-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:80:9-82:61
+108            android:name="pesh.mori.learnerapp.SelectGenreActivity"
+108-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:81:13-48
+109            android:label="@string/title_select_category" />
+109-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:82:13-58
 110        <activity
-110-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:97:9-101:47
-111            android:name="pesh.mori.learnerapp.HomeActivity"
-111-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:98:13-41
-112            android:label="Home"
-112-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:99:13-33
-113            android:screenOrientation="portrait"
-113-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:100:13-49
-114            android:theme="@style/MyTheme4" />
-114-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:101:13-44
-115        <activity
-115-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:102:9-106:47
-116            android:name="pesh.mori.learnerapp.CategoryActivity"
-116-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:103:13-45
-117            android:label="DIY"
-117-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:104:13-32
-118            android:screenOrientation="portrait"
-118-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:105:13-49
-119            android:theme="@style/MyTheme2" />
-119-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:106:13-44
-120        <activity
-120-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:107:9-111:47
-121            android:name="pesh.mori.learnerapp.DownloadDiyActivity"
-121-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:108:13-48
-122            android:label="DIY"
-122-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:109:13-32
-123            android:screenOrientation="portrait"
-123-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:110:13-49
-124            android:theme="@style/MyTheme2" />
-124-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:111:13-44
+110-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:83:9-85:53
+111            android:name="pesh.mori.learnerapp.FilteredCategoryActivity"
+111-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:84:13-53
+112            android:label="@string/title_results" />
+112-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:85:13-50
+113        <activity
+113-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:86:9-89:59
+114            android:name="pesh.mori.learnerapp.TokensActivity"
+114-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:87:13-43
+115            android:label="@string/title_tokens"
+115-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:88:13-49
+116            android:theme="@style/AppTheme.NoActionBar" />
+116-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:89:13-56
+117        <activity
+117-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:90:9-93:59
+118            android:name="pesh.mori.learnerapp.MyFilesActivity"
+118-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:91:13-44
+119            android:label="@string/title_my_content"
+119-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:92:13-53
+120            android:theme="@style/AppTheme.NoActionBar" />
+120-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:93:13-56
+121        <activity
+121-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:94:9-97:59
+122            android:name="pesh.mori.learnerapp.ProfileActivity"
+122-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:95:13-44
+123            android:label="@string/title_profile_settings"
+123-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:96:13-59
+124            android:theme="@style/AppTheme.NoActionBar" />
+124-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:97:13-56
 125        <activity
-125-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:112:9-115:47
-126            android:name="pesh.mori.learnerapp.UploadDiyActivity"
-126-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:113:13-46
-127            android:screenOrientation="portrait"
-127-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:114:13-49
-128            android:theme="@style/MyTheme2" />
-128-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:115:13-44
-129        <activity
-129-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:116:9-120:47
-130            android:name="pesh.mori.learnerapp.InstitutionActivity"
-130-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:117:13-48
-131            android:label="Institution"
-131-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:118:13-40
-132            android:screenOrientation="portrait"
-132-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:119:13-49
-133            android:theme="@style/MyTheme2" />
-133-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:120:13-44
+125-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:98:9-100:66
+126            android:name="pesh.mori.learnerapp.ChangeEmailActivity"
+126-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:99:13-48
+127            android:label="@string/title_change_email_address" />
+127-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:100:13-63
+128        <activity
+128-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:101:9-103:61
+129            android:name="pesh.mori.learnerapp.ChangePasswordActivity"
+129-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:102:13-51
+130            android:label="@string/title_change_password" />
+130-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:103:13-58
+131        <activity
+131-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:104:9-106:49
+132            android:name="pesh.mori.learnerapp.BioActivity"
+132-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:105:13-40
+133            android:label="@string/title_bio" />
+133-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:106:13-46
 134        <activity
-134-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:121:9-125:47
-135            android:name="pesh.mori.learnerapp.DownloadActivity"
-135-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:122:13-45
-136            android:label="Institution"
-136-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:123:13-40
-137            android:screenOrientation="portrait"
-137-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:124:13-49
-138            android:theme="@style/MyTheme2" />
-138-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:125:13-44
-139        <activity
-139-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:126:9-129:47
-140            android:name="pesh.mori.learnerapp.UploadActivity"
-140-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:127:13-43
-141            android:screenOrientation="portrait"
-141-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:128:13-49
-142            android:theme="@style/MyTheme2" />
-142-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:129:13-44
-143        <activity
-143-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:130:9-133:47
-144            android:name="pesh.mori.learnerapp.ContentActivity"
-144-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:131:13-44
-145            android:screenOrientation="portrait"
-145-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:132:13-49
-146            android:theme="@style/MyTheme2" />
-146-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:133:13-44
-147        <activity
-147-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:134:9-137:52
-148            android:name="pesh.mori.learnerapp.TokensActivity"
-148-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:135:13-43
-149            android:label="Tokens"
-149-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:136:13-35
-150            android:screenOrientation="portrait" />
-150-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:137:13-49
-151        <activity
-151-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:138:9-141:52
-152            android:name="pesh.mori.learnerapp.MyFilesActivity"
-152-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:139:13-44
-153            android:label="Content"
-153-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:140:13-36
-154            android:screenOrientation="portrait" />
-154-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:141:13-49
-155        <activity
-155-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:142:9-144:52
-156            android:name="pesh.mori.learnerapp.SocialActivity"
-156-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:143:13-43
-157            android:screenOrientation="portrait" />
-157-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:144:13-49
-158        <activity
-158-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:145:9-147:52
-159            android:name="pesh.mori.learnerapp.MymessagesActivity"
-159-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:146:13-47
-160            android:screenOrientation="portrait" />
-160-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:147:13-49
-161        <activity
-161-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:148:9-152:47
-162            android:name="pesh.mori.learnerapp.ProfileActivity"
-162-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:149:13-44
-163            android:label="Profile Settings"
-163-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:150:13-45
-164            android:screenOrientation="portrait"
-164-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:151:13-49
-165            android:theme="@style/AppTheme" />
-165-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:152:13-44
+134-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:107:9-109:62
+135            android:name="pesh.mori.learnerapp.ChangePhoneActivity"
+135-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:108:13-48
+136            android:label="@string/title_new_phone_number" />
+136-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:109:13-59
+137        <activity
+137-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:110:9-112:38
+138            android:name="pesh.mori.learnerapp.ReportPostActivity"
+138-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:111:13-47
+139            android:label="Report" />
+139-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:112:13-35
+140        <activity
+140-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:113:9-117:55
+141            android:name="pesh.mori.learnerapp.NewNoteActivity"
+141-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:114:13-44
+142            android:excludeFromRecents="true"
+142-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:115:13-46
+143            android:label="@string/title_new_note"
+143-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:116:13-51
+144            android:theme="@style/Theme.UserDialog" />
+144-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:117:13-52
+145        <activity
+145-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:118:9-120:54
+146            android:name="pesh.mori.learnerapp.ViewNoteActivity"
+146-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:119:13-45
+147            android:label="@string/title_my_notes" />
+147-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:120:13-51
+148        <activity
+148-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:121:9-125:59
+149            android:name="pesh.mori.learnerapp.AuthenticationActivity"
+149-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:122:13-51
+150            android:excludeFromRecents="true"
+150-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:123:13-46
+151            android:label="@string/title_authentication"
+151-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:124:13-57
+152            android:theme="@style/AppTheme.NoActionBar" />
+152-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:125:13-56
+153        <activity
+153-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:126:9-129:60
+154            android:name="pesh.mori.learnerapp.SearchPostActivity"
+154-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:127:13-47
+155            android:excludeFromRecents="true"
+155-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:128:13-46
+156            android:label="@string/title_search_results" />
+156-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:129:13-57
+157        <activity
+157-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:130:9-134:59
+158            android:name="pesh.mori.learnerapp.NewPostActivity"
+158-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:131:13-44
+159            android:excludeFromRecents="true"
+159-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:132:13-46
+160            android:label="@string/title_new_post"
+160-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:133:13-51
+161            android:theme="@style/AppTheme.NoActionBar" />
+161-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:134:13-56
+162        <activity
+162-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:135:9-138:59
+163            android:name="pesh.mori.learnerapp.MessagesActivity"
+163-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:136:13-45
+164            android:label="@string/title_messages"
+164-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:137:13-51
+165            android:theme="@style/AppTheme.NoActionBar" />
+165-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:138:13-56
 166        <activity
-166-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:153:9-157:47
-167            android:name="pesh.mori.learnerapp.ChangeEmailActivity"
-167-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:154:13-48
-168            android:label="Change Email"
-168-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:155:13-41
-169            android:screenOrientation="portrait"
-169-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:156:13-49
-170            android:theme="@style/MyTheme3" />
-170-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:157:13-44
-171        <activity
-171-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:158:9-162:47
-172            android:name="pesh.mori.learnerapp.ChangePasswordActivity"
-172-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:159:13-51
-173            android:label="Change Password"
-173-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:160:13-44
-174            android:screenOrientation="portrait"
-174-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:161:13-49
-175            android:theme="@style/MyTheme3" />
-175-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:162:13-44
-176        <activity
-176-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:163:9-167:47
-177            android:name="pesh.mori.learnerapp.BioActivity"
-177-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:164:13-40
-178            android:label="Bio"
-178-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:165:13-32
-179            android:screenOrientation="portrait"
-179-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:166:13-49
-180            android:theme="@style/MyTheme3" />
-180-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:167:13-44
-181        <activity
-181-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:168:9-172:47
-182            android:name="pesh.mori.learnerapp.ChangePhoneActivity"
-182-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:169:13-48
-183            android:label="New Phone Number"
-183-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:170:13-45
-184            android:screenOrientation="portrait"
-184-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:171:13-49
-185            android:theme="@style/MyTheme3" />
-185-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:172:13-44
-186        <activity
-186-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:173:9-175:52
-187            android:name="pesh.mori.learnerapp.MypcActivity"
-187-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:174:13-41
-188            android:screenOrientation="portrait" />
-188-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:175:13-49
-189        <activity
-189-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:176:9-180:47
-190            android:name="pesh.mori.learnerapp.ReportPostActivity"
-190-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:177:13-47
-191            android:label="Report"
-191-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:178:13-35
-192            android:screenOrientation="portrait"
-192-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:179:13-49
-193            android:theme="@style/MyTheme3" />
-193-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:180:13-44
-194        <activity
-194-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:181:9-184:47
-195            android:name="pesh.mori.learnerapp.ViewBioActivity"
-195-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:182:13-44
-196            android:screenOrientation="portrait"
-196-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:183:13-49
-197            android:theme="@style/AppTheme" />
-197-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:184:13-44
-198        <activity
-198-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:185:9-188:47
-199            android:name="pesh.mori.learnerapp.ShareActivity"
-199-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:186:13-42
-200            android:screenOrientation="portrait"
-200-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:187:13-49
-201            android:theme="@style/MyTheme2" />
-201-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:188:13-44
-202        <activity
-202-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:189:9-192:47
-203            android:name="pesh.mori.learnerapp.RecentActivity"
-203-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:190:13-43
-204            android:screenOrientation="portrait"
-204-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:191:13-49
-205            android:theme="@style/MyTheme2" />
-205-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:192:13-44
-206        <activity
-206-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:193:9-196:47
-207            android:name="pesh.mori.learnerapp.ContentDiyActivity"
-207-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:194:13-47
-208            android:screenOrientation="portrait"
-208-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:195:13-49
-209            android:theme="@style/MyTheme2" />
-209-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:196:13-44
-210        <activity
-210-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:197:9-200:47
-211            android:name="pesh.mori.learnerapp.WriterActivity"
-211-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:198:13-43
-212            android:screenOrientation="portrait"
-212-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:199:13-49
-213            android:theme="@style/MyTheme3" />
-213-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:200:13-44
-214        <activity
-214-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:201:9-205:47
-215            android:name="pesh.mori.learnerapp.NewFileUpload"
-215-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:202:13-42
-216            android:excludeFromRecents="true"
-216-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:203:13-46
-217            android:label="Upload File"
-217-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:204:13-40
-218            android:theme="@style/AppTheme" />
-218-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:205:13-44
+166-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:139:9-142:55
+167            android:name="pesh.mori.learnerapp.ViewPostActivity"
+167-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:140:13-45
+168            android:configChanges="keyboardHidden|orientation|screenSize"
+168-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:141:13-74
+169            android:label="@string/title_view_post" />
+169-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:142:13-52
+170        <activity
+170-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:143:9-145:58
+171            android:name="pesh.mori.learnerapp.ViewMessagesActivity"
+171-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:144:13-49
+172            android:label="@string/title_view_message" />
+172-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:145:13-55
+173        <activity
+173-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:146:9-149:59
+174            android:name="pesh.mori.learnerapp.TransactionsActivity"
+174-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:147:13-49
+175            android:excludeFromRecents="true"
+175-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:148:13-46
+176            android:label="@string/title_purchase_item" />
+176-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:149:13-56
+177        <activity
+177-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:150:9-154:55
+178            android:name="pesh.mori.learnerapp.BidActivity"
+178-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:151:13-40
+179            android:excludeFromRecents="true"
+179-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:152:13-46
+180            android:label="@string/title_place_bid"
+180-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:153:13-52
+181            android:theme="@style/Theme.UserDialog" />
+181-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:154:13-52
+182        <activity
+182-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:155:9-159:55
+183            android:name="pesh.mori.learnerapp.ViewBidActivity"
+183-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:156:13-44
+184            android:excludeFromRecents="true"
+184-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:157:13-46
+185            android:label="@string/title_review_bid"
+185-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:158:13-53
+186            android:theme="@style/Theme.UserDialog" />
+186-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:159:13-52
+187        <activity
+187-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:160:9-164:59
+188            android:name="pesh.mori.learnerapp.SearchUserActivity"
+188-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:161:13-47
+189            android:excludeFromRecents="true"
+189-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:162:13-46
+190            android:label="@string/title_select_recipient"
+190-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:163:13-59
+191            android:theme="@style/AppTheme.NoActionBar" />
+191-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:164:13-56
+192        <activity
+192-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:165:9-168:59
+193            android:name="pesh.mori.learnerapp.ReadDocument"
+193-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:166:13-41
+194            android:excludeFromRecents="true"
+194-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:167:13-46
+195            android:label="@string/title_view_document" />
+195-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:168:13-56
+196
+197        <service
+197-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:170:9-176:19
+198            android:name="pesh.mori.learnerapp.MyFirebaseMessagingService"
+198-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:171:13-55
+199            android:exported="false" >
+199-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:172:13-37
+200            <intent-filter>
+200-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:173:13-175:29
+201                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+201-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:174:17-78
+201-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:174:25-75
+202            </intent-filter>
+203        </service>
+204
+205        <activity
+205-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:178:9-180:52
+206            android:name="pesh.mori.learnerapp.WelcomeActivity"
+206-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:179:13-44
+207            android:screenOrientation="portrait" />
+207-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:180:13-49
+208        <activity
+208-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:181:9-184:59
+209            android:name="pesh.mori.learnerapp.NotesList"
+209-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:182:13-38
+210            android:excludeFromRecents="true"
+210-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:183:13-46
+211            android:label="@string/title_list_of_notes" />
+211-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:184:13-56
+212        <activity
+212-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:185:9-187:66
+213            android:name="pesh.mori.learnerapp.ViewAuthorActivity"
+213-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:186:13-47
+214            android:label="@string/title_activity_view_author" />
+214-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:187:13-63
+215        <activity
+215-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:188:9-190:55
+216            android:name="pesh.mori.learnerapp.SettingsActivity"
+216-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:189:13-45
+217            android:label="@string/action_settings" />
+217-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:190:13-52
+218        <activity android:name="pesh.mori.learnerapp.MaintenanceActivity" />
+218-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:191:9-57
+218-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:191:19-54
 219        <activity
-219-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:206:9-210:55
-220            android:name="pesh.mori.learnerapp.NewNoteActivity"
-220-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:207:13-44
-221            android:excludeFromRecents="true"
-221-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:208:13-46
-222            android:label="New Note"
-222-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:209:13-37
-223            android:theme="@style/Theme.UserDialog" />
-223-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:210:13-52
-224        <activity
-224-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:211:9-214:47
-225            android:name="pesh.mori.learnerapp.ViewFileActivity"
-225-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:212:13-45
-226            android:label="Viewing"
-226-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:213:13-36
-227            android:theme="@style/AppTheme" />
-227-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:214:13-44
-228        <activity
-228-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:215:9-219:47
-229            android:name="pesh.mori.learnerapp.ViewNoteActivity"
-229-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:216:13-45
-230            android:label="My Notes"
-230-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:217:13-37
-231            android:screenOrientation="portrait"
-231-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:218:13-49
-232            android:theme="@style/AppTheme" />
-232-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:219:13-44
+219-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:192:9-195:55
+220            android:name="pesh.mori.learnerapp.GoogleAuthHandlerActivity"
+220-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:193:13-54
+221            android:label="@string/title_sign_in"
+221-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:194:13-50
+222            android:theme="@style/Theme.UserDialog" />
+222-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:195:13-52
+223        <activity
+223-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:196:9-199:55
+224            android:name="pesh.mori.learnerapp.FacebookAuthHandlerActivity"
+224-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:197:13-56
+225            android:label="@string/title_sign_in"
+225-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:198:13-50
+226            android:theme="@style/Theme.UserDialog" />
+226-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:199:13-52
+227        <activity
+227-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:200:9-204:55
+228            android:name="pesh.mori.learnerapp.SetThumbnailActivity"
+228-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:201:13-49
+229            android:label="@string/title_select_thumbnail"
+229-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:202:13-59
+230            android:launchMode="singleTop"
+230-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:203:13-43
+231            android:theme="@style/Theme.UserDialog" />
+231-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:204:13-52
+232        <activity android:name="pesh.mori.learnerapp.PhoneVerificationActivity" />
+232-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:205:9-63
+232-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:205:19-60
 233        <activity
-233-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:220:9-224:55
-234            android:name="pesh.mori.learnerapp.AuthenticationActivity"
-234-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:221:13-51
-235            android:excludeFromRecents="true"
-235-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:222:13-46
-236            android:label="Authentication"
-236-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:223:13-43
-237            android:theme="@style/Theme.UserDialog" />
-237-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:224:13-52
-238        <activity
-238-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:225:9-229:47
-239            android:name="pesh.mori.learnerapp.NewFileUploadFull"
-239-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:226:13-46
-240            android:excludeFromRecents="true"
-240-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:227:13-46
-241            android:label="Upload File"
-241-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:228:13-40
-242            android:theme="@style/AppTheme" />
-242-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:229:13-44
-243        <activity
-243-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:230:9-234:47
-244            android:name="pesh.mori.learnerapp.DownloadsList"
-244-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:231:13-42
-245            android:excludeFromRecents="true"
-245-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:232:13-46
-246            android:label="Search Results"
-246-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:233:13-43
-247            android:theme="@style/AppTheme" />
-247-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:234:13-44
-248        <activity
-248-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:235:9-239:47
-249            android:name="pesh.mori.learnerapp.NewDiyUpload"
-249-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:236:13-41
-250            android:excludeFromRecents="true"
-250-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:237:13-46
-251            android:label="New DIY Tutorial"
-251-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:238:13-45
-252            android:theme="@style/AppTheme" />
-252-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:239:13-44
+233-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:206:9-208:58
+234            android:name="pesh.mori.learnerapp.PreviewPostActivity"
+234-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:207:13-48
+235            android:label="@string/title_preview_post" />
+235-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:208:13-55
+236        <activity
+236-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:209:9-213:59
+237            android:name="pesh.mori.learnerapp.BuyTokenGuide"
+237-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:210:13-42
+238            android:excludeFromRecents="true"
+238-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:211:13-46
+239            android:label="@string/title_help"
+239-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:212:13-47
+240            android:theme="@style/AppTheme.NoActionBar" />
+240-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:213:13-56
+241        <activity
+241-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:214:9-217:59
+242            android:name="pesh.mori.learnerapp.ViewAnnouncementActivity"
+242-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:215:13-53
+243            android:label="@string/title_announcement"
+243-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:216:13-55
+244            android:theme="@style/AppTheme.NoActionBar" />
+244-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:217:13-56
+245        <activity
+245-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:218:9-221:59
+246            android:name="pesh.mori.learnerapp.ViewPrivacyPolicy"
+246-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:219:13-46
+247            android:label="@string/title_privacy_policy"
+247-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:220:13-57
+248            android:theme="@style/AppTheme.NoActionBar" />
+248-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:221:13-56
+249        <activity
+249-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:222:9-225:59
+250            android:name="pesh.mori.learnerapp.TransactionHistoryActivity"
+250-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:223:13-55
+251            android:label="@string/title_transactions_history"
+251-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:224:13-63
+252            android:theme="@style/AppTheme.NoActionBar" />
+252-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:225:13-56
 253        <activity
-253-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:240:9-244:47
-254            android:name="pesh.mori.learnerapp.MessagesActivity"
-254-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:241:13-45
-255            android:label="Messages"
-255-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:242:13-37
-256            android:screenOrientation="portrait"
-256-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:243:13-49
-257            android:theme="@style/AppTheme" />
-257-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:244:13-44
-258        <activity
-258-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:245:9-248:47
-259            android:name="pesh.mori.learnerapp.ViewDiyActivity"
-259-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:246:13-44
-260            android:label="Viewing"
-260-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:247:13-36
-261            android:theme="@style/AppTheme" />
-261-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:248:13-44
+253-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:226:9-228:62
+254            android:name="pesh.mori.learnerapp.ViewTransactionActivity"
+254-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:227:13-52
+255            android:label="@string/title_view_transaction" />
+255-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:228:13-59
+256        <activity
+256-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:229:9-234:55
+257            android:name="pesh.mori.learnerapp.EditPostActivity"
+257-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:230:13-45
+258            android:excludeFromRecents="true"
+258-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:231:13-46
+259            android:label="@string/title_edit_post"
+259-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:232:13-52
+260            android:launchMode="singleTop"
+260-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:233:13-43
+261            android:theme="@style/Theme.UserDialog" />
+261-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:234:13-52
 262        <activity
-262-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:249:9-253:47
-263            android:name="pesh.mori.learnerapp.ViewMessagesActivity"
-263-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:250:13-49
-264            android:label="View Message"
-264-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:251:13-41
-265            android:screenOrientation="portrait"
-265-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:252:13-49
-266            android:theme="@style/AppTheme" />
-266-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:253:13-44
-267        <activity
-267-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:254:9-258:47
-268            android:name="pesh.mori.learnerapp.TransactionsActivity"
-268-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:255:13-49
-269            android:excludeFromRecents="true"
-269-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:256:13-46
-270            android:label="Purchase Item"
-270-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:257:13-42
-271            android:theme="@style/AppTheme" />
-271-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:258:13-44
-272        <activity
-272-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:259:9-263:55
-273            android:name="pesh.mori.learnerapp.BidActivity"
-273-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:260:13-40
-274            android:excludeFromRecents="true"
-274-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:261:13-46
-275            android:label="Bid Item"
-275-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:262:13-37
-276            android:theme="@style/Theme.UserDialog" />
-276-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:263:13-52
-277        <activity
-277-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:264:9-268:55
-278            android:name="pesh.mori.learnerapp.ViewBidActivity"
-278-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:265:13-44
-279            android:excludeFromRecents="true"
-279-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:266:13-46
-280            android:label="Bid Review"
-280-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:267:13-39
-281            android:theme="@style/Theme.UserDialog" />
-281-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:268:13-52
-282        <activity
-282-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:269:9-273:47
-283            android:name="pesh.mori.learnerapp.SearchUserActivity"
-283-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:270:13-47
-284            android:excludeFromRecents="true"
-284-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:271:13-46
-285            android:label="Select Recipient"
-285-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:272:13-45
-286            android:theme="@style/AppTheme" />
-286-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:273:13-44
-287        <activity
-287-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:274:9-278:47
-288            android:name="pesh.mori.learnerapp.ReadDocument"
-288-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:275:13-41
-289            android:excludeFromRecents="true"
-289-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:276:13-46
-290            android:label="Read Document"
-290-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:277:13-42
-291            android:theme="@style/AppTheme" />
-291-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:278:13-44
-292
-293        <service
-293-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:280:9-286:19
-294            android:name="pesh.mori.learnerapp.MyFirebaseMessagingService"
-294-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:281:13-55
-295            android:exported="false" >
-295-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:282:13-37
-296            <intent-filter>
-296-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:283:13-285:29
-297                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-297-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:284:17-78
-297-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:284:25-75
-298            </intent-filter>
-299        </service>
-300
-301        <activity
-301-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:288:9-292:54
-302            android:name="pesh.mori.learnerapp.FullscreenActivity"
-302-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:289:13-47
-303            android:configChanges="orientation|keyboardHidden|screenSize"
-303-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:290:13-74
-304            android:label="@string/title_activity_fullscreen"
-304-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:291:13-62
-305            android:theme="@style/FullscreenTheme" />
-305-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:292:13-51
-306        <activity
-306-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:293:9-295:52
-307            android:name="pesh.mori.learnerapp.WelcomeActivity"
-307-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:294:13-44
-308            android:screenOrientation="portrait" /> <!-- <activity -->
-308-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:295:13-49
-309        <!-- android:name=".NewHome" -->
-310        <!-- android:label="@string/title_activity_new_home" -->
-311        <!-- android:theme="@style/AppTheme" /> -->
+262-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:235:9-237:58
+263            android:name="pesh.mori.learnerapp.AddSubPostActivity"
+263-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:236:13-47
+264            android:label="@string/title_add_sub_post" />
+264-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:237:13-55
+265        <activity
+265-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:238:9-241:59
+266            android:name="pesh.mori.learnerapp.ViewSubPostActivity"
+266-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:239:13-48
+267            android:configChanges="keyboardHidden|orientation|screenSize"
+267-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:240:13-74
+268            android:label="@string/title_view_sub_post" />
+268-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:241:13-56
+269        <activity
+269-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:242:9-247:54
+270            android:name="pesh.mori.learnerapp.EditSubPostActivity"
+270-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:243:13-48
+271            android:excludeFromRecents="true"
+271-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:244:13-46
+272            android:label="@string/title_edit_post"
+272-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:245:13-52
+273            android:launchMode="singleTop"
+273-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:246:13-43
+274            android:theme="@style/Theme.UserDialog" />
+274-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:247:13-52
+275
+276        <meta-data
+276-->[com.firebaseui:firebase-ui-database:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\079ceb615c6861c39796607474460f7a\jetified-firebase-ui-database-2.3.0\AndroidManifest.xml:14:9-16:69
+277            android:name="com.google.android.gms.version"
+277-->[com.firebaseui:firebase-ui-database:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\079ceb615c6861c39796607474460f7a\jetified-firebase-ui-database-2.3.0\AndroidManifest.xml:15:13-58
+278            android:value="@integer/google_play_services_version" />
+278-->[com.firebaseui:firebase-ui-database:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\079ceb615c6861c39796607474460f7a\jetified-firebase-ui-database-2.3.0\AndroidManifest.xml:16:13-66
+279        <meta-data
+279-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:19:9-21:63
+280            android:name="io.fabric.ApiKey"
+280-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:20:13-44
+281            android:value="@string/twitter_consumer_secret" />
+281-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:21:13-60
+282        <meta-data
+282-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:25:9-27:36
+283            android:name="com.facebook.sdk.AutoLogAppEventsEnabled"
+283-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:26:13-68
+284            android:value="true" />
+284-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:27:13-33
+285
+286        <activity
+286-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:29:9-33:61
+287            android:name="com.firebase.ui.auth.KickoffActivity"
+287-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:30:13-64
+288            android:exported="false"
+288-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:31:13-37
+289            android:label=""
+289-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:32:13-29
+290            android:theme="@style/FirebaseUI.Transparent" />
+290-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:33:13-58
+291        <activity
+291-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:34:9-37:75
+292            android:name="com.firebase.ui.auth.ui.email.RecoverPasswordActivity"
+292-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:35:13-81
+293            android:exported="false"
+293-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:36:13-37
+294            android:label="@string/fui_title_recover_password_activity" />
+294-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:37:13-72
+295        <activity
+295-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:38:9-41:59
+296            android:name="com.firebase.ui.auth.ui.email.RegisterEmailActivity"
+296-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:39:13-79
+297            android:exported="false"
+297-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:40:13-37
+298            android:label="@string/fui_sign_in_default" />
+298-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:41:13-56
+299        <activity
+299-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:42:9-46:64
+300            android:name="com.firebase.ui.auth.ui.phone.PhoneVerificationActivity"
+300-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:43:13-83
+301            android:exported="false"
+301-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:44:13-37
+302            android:label="@string/fui_sign_in_with_phone_number"
+302-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:45:13-66
+303            android:windowSoftInputMode="stateAlwaysVisible" />
+303-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:46:13-61
+304        <activity
+304-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:47:9-50:73
+305            android:name="com.firebase.ui.auth.ui.accountlink.WelcomeBackIdpPrompt"
+305-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:48:13-84
+306            android:exported="false"
+306-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:49:13-37
+307            android:label="@string/fui_title_welcome_back_idp_prompt" />
+307-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:50:13-70
+308        <activity
+308-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:51:9-54:78
+309            android:name="com.firebase.ui.auth.ui.accountlink.WelcomeBackPasswordPrompt"
+309-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:52:13-89
+310            android:exported="false"
+310-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:53:13-37
+311            android:label="@string/fui_title_welcome_back_password_prompt" />
+311-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:54:13-75
 312        <activity
-312-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:299:9-303:47
-313            android:name="pesh.mori.learnerapp.NotesList"
-313-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:300:13-38
-314            android:excludeFromRecents="true"
-314-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:301:13-46
-315            android:label="List of Notes"
-315-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:302:13-42
-316            android:theme="@style/AppTheme" />
-316-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:303:13-44
-317        <activity
-317-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:304:9-307:47
-318            android:name="pesh.mori.learnerapp.ViewAuthorActivity"
-318-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:305:13-47
-319            android:label="@string/title_activity_view_author"
-319-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:306:13-63
-320            android:theme="@style/AppTheme" />
-320-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:307:13-44
-321        <activity
-321-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:308:9-311:47
-322            android:name="pesh.mori.learnerapp.SettingsActivity"
-322-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:309:13-45
-323            android:label="@string/action_settings"
-323-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:310:13-52
-324            android:theme="@style/AppTheme" />
-324-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:311:13-44
-325        <activity android:name="pesh.mori.learnerapp.MaintenanceActivity" />
-325-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:312:9-57
-325-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:312:19-54
-326        <activity
-326-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:313:9-316:55
-327            android:name="pesh.mori.learnerapp.GoogleAuthHandlerActivity"
-327-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:314:13-54
-328            android:label="Sign In"
-328-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:315:13-36
-329            android:theme="@style/Theme.UserDialog" />
-329-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:316:13-52
-330        <activity
-330-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:317:9-320:55
-331            android:name="pesh.mori.learnerapp.FacebookAuthHandlerActivity"
-331-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:318:13-56
-332            android:label="Sign In"
-332-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:319:13-36
-333            android:theme="@style/Theme.UserDialog" />
-333-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:320:13-52
-334        <activity
-334-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:321:9-324:55
-335            android:name="pesh.mori.learnerapp.SetThumbnailActivity"
-335-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:322:13-49
-336            android:label="Select Thumbnail"
-336-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:323:13-45
-337            android:theme="@style/Theme.UserDialog" />
-337-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:324:13-52
-338        <activity android:name="pesh.mori.learnerapp.PhoneVerificationActivity" />
-338-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:325:9-63
-338-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:325:19-60
-339        <activity
-339-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:326:9-329:47
-340            android:name="pesh.mori.learnerapp.PreviewPostActivity"
-340-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:327:13-48
-341            android:label="Preview Post"
-341-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:328:13-41
-342            android:theme="@style/AppTheme" />
-342-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:329:13-44
-343        <activity
-343-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:330:9-334:47
-344            android:name="pesh.mori.learnerapp.BuyTokenGuide"
-344-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:331:13-42
-345            android:excludeFromRecents="true"
-345-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:332:13-46
-346            android:label="Help"
-346-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:333:13-33
-347            android:theme="@style/AppTheme" />
-347-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:334:13-44
-348        <activity
-348-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:335:9-338:47
-349            android:name="pesh.mori.learnerapp.ViewAnnouncementActivity"
-349-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:336:13-53
-350            android:label="Announcement"
-350-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:337:13-41
-351            android:theme="@style/AppTheme" />
-351-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:338:13-44
-352        <activity
-352-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:339:9-342:47
-353            android:name="pesh.mori.learnerapp.OpenPDF"
-353-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:340:13-36
-354            android:label="View Document"
-354-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:341:13-42
-355            android:theme="@style/AppTheme" />
-355-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:342:13-44
-356        <activity
-356-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:343:9-346:47
-357            android:name="pesh.mori.learnerapp.TransactionHistoryActivity"
-357-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:344:13-55
-358            android:label="Transactions History"
-358-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:345:13-49
-359            android:theme="@style/AppTheme" />
-359-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:346:13-44
-360        <activity
-360-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:347:9-350:46
-361            android:name="pesh.mori.learnerapp.ViewTransactionActivity"
-361-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:348:13-52
-362            android:label="View Record"
-362-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:349:13-40
-363            android:theme="@style/AppTheme" />
-363-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:350:13-44
-364
-365        <meta-data
-365-->[com.firebaseui:firebase-ui-database:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\bdf5a7a069a502c09ebcab1c28c9600f\jetified-firebase-ui-database-2.3.0\AndroidManifest.xml:14:9-16:69
-366            android:name="com.google.android.gms.version"
-366-->[com.firebaseui:firebase-ui-database:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\bdf5a7a069a502c09ebcab1c28c9600f\jetified-firebase-ui-database-2.3.0\AndroidManifest.xml:15:13-58
-367            android:value="@integer/google_play_services_version" />
-367-->[com.firebaseui:firebase-ui-database:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\bdf5a7a069a502c09ebcab1c28c9600f\jetified-firebase-ui-database-2.3.0\AndroidManifest.xml:16:13-66
+312-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:55:9-58:65
+313            android:name="com.firebase.ui.auth.ui.idp.AuthMethodPickerActivity"
+313-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:56:13-80
+314            android:exported="false"
+314-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:57:13-37
+315            android:label="@string/fui_default_toolbar_title" />
+315-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:58:13-62
+316        <activity
+316-->[com.nbsp:library:1.09] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\404501608307e831f0a683639f7def0e\jetified-library-1.09\AndroidManifest.xml:16:9-19:20
+317            android:name="com.nbsp.materialfilepicker.ui.FilePickerActivity"
+317-->[com.nbsp:library:1.09] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\404501608307e831f0a683639f7def0e\jetified-library-1.09\AndroidManifest.xml:17:13-77
+318            android:theme="@style/MFP_BaseTheme" >
+318-->[com.nbsp:library:1.09] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\404501608307e831f0a683639f7def0e\jetified-library-1.09\AndroidManifest.xml:18:13-49
+319        </activity>
+320        <activity
+320-->[com.karumi:dexter:5.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0aeaff1f5b3bb489b6841f15525dd9f9\jetified-dexter-5.0.0\AndroidManifest.xml:27:9-29:72
+321            android:name="com.karumi.dexter.DexterActivity"
+321-->[com.karumi:dexter:5.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0aeaff1f5b3bb489b6841f15525dd9f9\jetified-dexter-5.0.0\AndroidManifest.xml:28:13-60
+322            android:theme="@style/Dexter.Internal.Theme.Transparent" />
+322-->[com.karumi:dexter:5.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0aeaff1f5b3bb489b6841f15525dd9f9\jetified-dexter-5.0.0\AndroidManifest.xml:29:13-69
+323        <activity android:name="com.facebook.CustomTabMainActivity" />
+323-->[com.facebook.android:facebook-common:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\aa89922f1a6b7521a12e7a106524964d\jetified-facebook-common-5.15.3\AndroidManifest.xml:34:9-71
+323-->[com.facebook.android:facebook-common:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\aa89922f1a6b7521a12e7a106524964d\jetified-facebook-common-5.15.3\AndroidManifest.xml:34:19-68
+324        <!--
+325             FirebaseMessagingService performs security checks at runtime,
+326             but set to not exported to explicitly avoid allowing another app to call it.
+327        -->
+328        <service
+328-->[com.google.firebase:firebase-messaging:20.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd33af8b488ff8f7d951a15b3d6cd0e0\jetified-firebase-messaging-20.2.4\AndroidManifest.xml:28:9-35:19
+329            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+329-->[com.google.firebase:firebase-messaging:20.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd33af8b488ff8f7d951a15b3d6cd0e0\jetified-firebase-messaging-20.2.4\AndroidManifest.xml:29:13-82
+330            android:directBootAware="true"
+330-->[com.google.firebase:firebase-messaging:20.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd33af8b488ff8f7d951a15b3d6cd0e0\jetified-firebase-messaging-20.2.4\AndroidManifest.xml:30:13-43
+331            android:exported="false" >
+331-->[com.google.firebase:firebase-messaging:20.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd33af8b488ff8f7d951a15b3d6cd0e0\jetified-firebase-messaging-20.2.4\AndroidManifest.xml:31:13-37
+332            <intent-filter android:priority="-500" >
+332-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:173:13-175:29
+333                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+333-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:174:17-78
+333-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:174:25-75
+334            </intent-filter>
+335        </service>
+336        <service
+336-->[com.google.firebase:firebase-messaging:20.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd33af8b488ff8f7d951a15b3d6cd0e0\jetified-firebase-messaging-20.2.4\AndroidManifest.xml:36:9-42:19
+337            android:name="com.google.firebase.components.ComponentDiscoveryService"
+337-->[com.google.firebase:firebase-messaging:20.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd33af8b488ff8f7d951a15b3d6cd0e0\jetified-firebase-messaging-20.2.4\AndroidManifest.xml:37:13-84
+338            android:directBootAware="true"
+338-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b21d9d664d0576b41a2ca2c908c34c21\jetified-firebase-common-19.3.1\AndroidManifest.xml:35:13-43
+339            android:exported="false" >
+339-->[com.google.firebase:firebase-messaging:20.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd33af8b488ff8f7d951a15b3d6cd0e0\jetified-firebase-messaging-20.2.4\AndroidManifest.xml:38:13-37
+340            <meta-data
+340-->[com.google.firebase:firebase-messaging:20.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd33af8b488ff8f7d951a15b3d6cd0e0\jetified-firebase-messaging-20.2.4\AndroidManifest.xml:39:13-41:85
+341                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+341-->[com.google.firebase:firebase-messaging:20.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd33af8b488ff8f7d951a15b3d6cd0e0\jetified-firebase-messaging-20.2.4\AndroidManifest.xml:40:17-119
+342                android:value="com.google.firebase.components.ComponentRegistrar" />
+342-->[com.google.firebase:firebase-messaging:20.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\dd33af8b488ff8f7d951a15b3d6cd0e0\jetified-firebase-messaging-20.2.4\AndroidManifest.xml:41:17-82
+343            <meta-data
+343-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:32:13-34:85
+344                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+344-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:33:17-96
+345                android:value="com.google.firebase.components.ComponentRegistrar" />
+345-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:34:17-82
+346            <meta-data
+346-->[com.google.android.gms:play-services-measurement-api:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eed99e10d77660b8fc433784447953df\jetified-play-services-measurement-api-17.5.0\AndroidManifest.xml:30:13-32:85
+347                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+347-->[com.google.android.gms:play-services-measurement-api:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eed99e10d77660b8fc433784447953df\jetified-play-services-measurement-api-17.5.0\AndroidManifest.xml:31:17-139
+348                android:value="com.google.firebase.components.ComponentRegistrar" />
+348-->[com.google.android.gms:play-services-measurement-api:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eed99e10d77660b8fc433784447953df\jetified-play-services-measurement-api-17.5.0\AndroidManifest.xml:32:17-82
+349            <meta-data
+349-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:36:13-38:85
+350                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+350-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:37:17-109
+351                android:value="com.google.firebase.components.ComponentRegistrar" />
+351-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:38:17-82
+352            <meta-data
+352-->[com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:32:13-34:85
+353                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+353-->[com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:33:17-109
+354                android:value="com.google.firebase.components.ComponentRegistrar" />
+354-->[com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:34:17-82
+355            <meta-data
+355-->[com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:33:13-35:85
+356                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+356-->[com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:34:17-107
+357                android:value="com.google.firebase.components.ComponentRegistrar" />
+357-->[com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:35:17-82
+358            <meta-data
+358-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\be41cb5c4de42b4d225cde01cb835ca2\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:16:13-18:85
+359                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
+359-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\be41cb5c4de42b4d225cde01cb835ca2\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:17:17-115
+360                android:value="com.google.firebase.components.ComponentRegistrar" />
+360-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\be41cb5c4de42b4d225cde01cb835ca2\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:18:17-82
+361            <meta-data
+361-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\ed418626e742f1a5151f0d03eae3504b\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:28:13-30:85
+362                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+362-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\ed418626e742f1a5151f0d03eae3504b\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:29:17-115
+363                android:value="com.google.firebase.components.ComponentRegistrar" />
+363-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\ed418626e742f1a5151f0d03eae3504b\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:30:17-82
+364            <meta-data
+364-->[com.google.firebase:firebase-installations:16.3.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\21446d3168dc3f25c79d4d65a1e3e48e\jetified-firebase-installations-16.3.3\AndroidManifest.xml:17:13-19:85
+365                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+365-->[com.google.firebase:firebase-installations:16.3.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\21446d3168dc3f25c79d4d65a1e3e48e\jetified-firebase-installations-16.3.3\AndroidManifest.xml:18:17-127
+366                android:value="com.google.firebase.components.ComponentRegistrar" />
+366-->[com.google.firebase:firebase-installations:16.3.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\21446d3168dc3f25c79d4d65a1e3e48e\jetified-firebase-installations-16.3.3\AndroidManifest.xml:19:17-82
+367        </service>
 368
-369        <activity
-369-->[com.nbsp:library:1.09] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9db89400378570105dfd50cec7d287c7\jetified-library-1.09\AndroidManifest.xml:16:9-19:20
-370            android:name="com.nbsp.materialfilepicker.ui.FilePickerActivity"
-370-->[com.nbsp:library:1.09] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9db89400378570105dfd50cec7d287c7\jetified-library-1.09\AndroidManifest.xml:17:13-77
-371            android:theme="@style/MFP_BaseTheme" >
-371-->[com.nbsp:library:1.09] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9db89400378570105dfd50cec7d287c7\jetified-library-1.09\AndroidManifest.xml:18:13-49
-372        </activity>
-373        <activity
-373-->[com.karumi:dexter:5.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\c30eb4ea8aa7a06311d9f67cec63d1ba\jetified-dexter-5.0.0\AndroidManifest.xml:27:9-29:72
-374            android:name="com.karumi.dexter.DexterActivity"
-374-->[com.karumi:dexter:5.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\c30eb4ea8aa7a06311d9f67cec63d1ba\jetified-dexter-5.0.0\AndroidManifest.xml:28:13-60
-375            android:theme="@style/Dexter.Internal.Theme.Transparent" />
-375-->[com.karumi:dexter:5.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\c30eb4ea8aa7a06311d9f67cec63d1ba\jetified-dexter-5.0.0\AndroidManifest.xml:29:13-69
-376
-377        <meta-data
-377-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:19:9-21:63
-378            android:name="io.fabric.ApiKey"
-378-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:20:13-44
-379            android:value="@string/twitter_consumer_secret" />
-379-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:21:13-60
-380        <meta-data
-380-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:25:9-27:36
-381            android:name="com.facebook.sdk.AutoLogAppEventsEnabled"
-381-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:26:13-68
-382            android:value="true" />
-382-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:27:13-33
-383
-384        <activity
-384-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:29:9-33:61
-385            android:name="com.firebase.ui.auth.KickoffActivity"
-385-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:30:13-64
-386            android:exported="false"
-386-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:31:13-37
-387            android:label=""
-387-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:32:13-29
-388            android:theme="@style/FirebaseUI.Transparent" />
-388-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:33:13-58
-389        <activity
-389-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:34:9-37:75
-390            android:name="com.firebase.ui.auth.ui.email.RecoverPasswordActivity"
-390-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:35:13-81
-391            android:exported="false"
-391-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:36:13-37
-392            android:label="@string/fui_title_recover_password_activity" />
-392-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:37:13-72
-393        <activity
-393-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:38:9-41:59
-394            android:name="com.firebase.ui.auth.ui.email.RegisterEmailActivity"
-394-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:39:13-79
-395            android:exported="false"
-395-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:40:13-37
-396            android:label="@string/fui_sign_in_default" />
-396-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:41:13-56
-397        <activity
-397-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:42:9-46:64
-398            android:name="com.firebase.ui.auth.ui.phone.PhoneVerificationActivity"
-398-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:43:13-83
-399            android:exported="false"
-399-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:44:13-37
-400            android:label="@string/fui_sign_in_with_phone_number"
-400-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:45:13-66
-401            android:windowSoftInputMode="stateAlwaysVisible" />
-401-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:46:13-61
-402        <activity
-402-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:47:9-50:73
-403            android:name="com.firebase.ui.auth.ui.accountlink.WelcomeBackIdpPrompt"
-403-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:48:13-84
-404            android:exported="false"
-404-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:49:13-37
-405            android:label="@string/fui_title_welcome_back_idp_prompt" />
-405-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:50:13-70
-406        <activity
-406-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:51:9-54:78
-407            android:name="com.firebase.ui.auth.ui.accountlink.WelcomeBackPasswordPrompt"
-407-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:52:13-89
-408            android:exported="false"
-408-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:53:13-37
-409            android:label="@string/fui_title_welcome_back_password_prompt" />
-409-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:54:13-75
-410        <activity
-410-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:55:9-58:65
-411            android:name="com.firebase.ui.auth.ui.idp.AuthMethodPickerActivity"
-411-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:56:13-80
-412            android:exported="false"
-412-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:57:13-37
-413            android:label="@string/fui_default_toolbar_title" />
-413-->[com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a9a2f7a2e2a8650dcfa9572a44f8725f\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:58:13-62
-414        <activity android:name="com.facebook.CustomTabMainActivity" />
-414-->[com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:33:9-71
-414-->[com.facebook.android:facebook-common:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a760a4d3949809fbd5b1a3546c659b4f\jetified-facebook-common-4.42.0\AndroidManifest.xml:33:19-68
-415        <!--
-416             FirebaseMessagingService performs security checks at runtime,
-417             but set to not exported to explicitly avoid allowing another app to call it.
-418        -->
-419        <service
-419-->[com.google.firebase:firebase-messaging:20.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\262380460e7785b5454aa5338f45185e\jetified-firebase-messaging-20.1.0\AndroidManifest.xml:28:9-34:19
-420            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-420-->[com.google.firebase:firebase-messaging:20.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\262380460e7785b5454aa5338f45185e\jetified-firebase-messaging-20.1.0\AndroidManifest.xml:29:13-82
-421            android:exported="false" >
-421-->[com.google.firebase:firebase-messaging:20.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\262380460e7785b5454aa5338f45185e\jetified-firebase-messaging-20.1.0\AndroidManifest.xml:30:13-37
-422            <intent-filter android:priority="-500" >
-422-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:283:13-285:29
-423                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-423-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:284:17-78
-423-->F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:284:25-75
-424            </intent-filter>
-425        </service>
-426        <service
-426-->[com.google.firebase:firebase-messaging:20.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\262380460e7785b5454aa5338f45185e\jetified-firebase-messaging-20.1.0\AndroidManifest.xml:35:9-41:19
-427            android:name="com.google.firebase.components.ComponentDiscoveryService"
-427-->[com.google.firebase:firebase-messaging:20.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\262380460e7785b5454aa5338f45185e\jetified-firebase-messaging-20.1.0\AndroidManifest.xml:36:13-84
-428            android:directBootAware="true"
-428-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e0a0fb76e47c5c1d4bb7c758cb119924\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
-429            android:exported="false" >
-429-->[com.google.firebase:firebase-messaging:20.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\262380460e7785b5454aa5338f45185e\jetified-firebase-messaging-20.1.0\AndroidManifest.xml:37:13-37
-430            <meta-data
-430-->[com.google.firebase:firebase-messaging:20.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\262380460e7785b5454aa5338f45185e\jetified-firebase-messaging-20.1.0\AndroidManifest.xml:38:13-40:85
-431                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-431-->[com.google.firebase:firebase-messaging:20.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\262380460e7785b5454aa5338f45185e\jetified-firebase-messaging-20.1.0\AndroidManifest.xml:39:17-119
-432                android:value="com.google.firebase.components.ComponentRegistrar" />
-432-->[com.google.firebase:firebase-messaging:20.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\262380460e7785b5454aa5338f45185e\jetified-firebase-messaging-20.1.0\AndroidManifest.xml:40:17-82
-433            <meta-data
-433-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b143e5b9c0d0426fd2c3e340939bf150\firebase-auth-19.2.0\AndroidManifest.xml:36:13-38:85
-434                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-434-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b143e5b9c0d0426fd2c3e340939bf150\firebase-auth-19.2.0\AndroidManifest.xml:37:17-109
-435                android:value="com.google.firebase.components.ComponentRegistrar" />
-435-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b143e5b9c0d0426fd2c3e340939bf150\firebase-auth-19.2.0\AndroidManifest.xml:38:17-82
-436            <meta-data
-436-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b2e9617928d3cd83012a547ca90b9265\firebase-database-19.2.1\AndroidManifest.xml:32:13-34:85
-437                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-437-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b2e9617928d3cd83012a547ca90b9265\firebase-database-19.2.1\AndroidManifest.xml:33:17-109
-438                android:value="com.google.firebase.components.ComponentRegistrar" />
-438-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b2e9617928d3cd83012a547ca90b9265\firebase-database-19.2.1\AndroidManifest.xml:34:17-82
-439            <meta-data
-439-->[com.google.firebase:firebase-storage:19.1.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5933249ef19373be7d90e483506fd62e\firebase-storage-19.1.1\AndroidManifest.xml:33:13-35:85
-440                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-440-->[com.google.firebase:firebase-storage:19.1.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5933249ef19373be7d90e483506fd62e\firebase-storage-19.1.1\AndroidManifest.xml:34:17-107
-441                android:value="com.google.firebase.components.ComponentRegistrar" />
-441-->[com.google.firebase:firebase-storage:19.1.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5933249ef19373be7d90e483506fd62e\firebase-storage-19.1.1\AndroidManifest.xml:35:17-82
-442            <meta-data
-442-->[com.google.firebase:firebase-crashlytics:17.0.0-beta01] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\3c80dc1902a31749294b2274225b270d\firebase-crashlytics-17.0.0-beta01\AndroidManifest.xml:16:13-18:85
-443                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
-443-->[com.google.firebase:firebase-crashlytics:17.0.0-beta01] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\3c80dc1902a31749294b2274225b270d\firebase-crashlytics-17.0.0-beta01\AndroidManifest.xml:17:17-115
-444                android:value="com.google.firebase.components.ComponentRegistrar" />
-444-->[com.google.firebase:firebase-crashlytics:17.0.0-beta01] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\3c80dc1902a31749294b2274225b270d\firebase-crashlytics-17.0.0-beta01\AndroidManifest.xml:18:17-82
-445            <meta-data
-445-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\505458ab127bd1791e18a94b5b56540f\play-services-measurement-api-17.2.2\AndroidManifest.xml:30:13-32:85
-446                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-446-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\505458ab127bd1791e18a94b5b56540f\play-services-measurement-api-17.2.2\AndroidManifest.xml:31:17-139
-447                android:value="com.google.firebase.components.ComponentRegistrar" />
-447-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\505458ab127bd1791e18a94b5b56540f\play-services-measurement-api-17.2.2\AndroidManifest.xml:32:17-82
-448            <meta-data
-448-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0ca231230bda65afdc3e8629af501d99\firebase-iid-20.0.2\AndroidManifest.xml:32:13-34:85
-449                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-449-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0ca231230bda65afdc3e8629af501d99\firebase-iid-20.0.2\AndroidManifest.xml:33:17-96
-450                android:value="com.google.firebase.components.ComponentRegistrar" />
-450-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0ca231230bda65afdc3e8629af501d99\firebase-iid-20.0.2\AndroidManifest.xml:34:17-82
-451            <meta-data
-451-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\92327581746c992af2e2aebc6ebc428a\firebase-datatransport-17.0.3\AndroidManifest.xml:28:13-30:85
-452                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-452-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\92327581746c992af2e2aebc6ebc428a\firebase-datatransport-17.0.3\AndroidManifest.xml:29:17-115
-453                android:value="com.google.firebase.components.ComponentRegistrar" />
-453-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\92327581746c992af2e2aebc6ebc428a\firebase-datatransport-17.0.3\AndroidManifest.xml:30:17-82
-454        </service>
-455
-456        <activity
-456-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b143e5b9c0d0426fd2c3e340939bf150\firebase-auth-19.2.0\AndroidManifest.xml:24:9-31:50
-457            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
-457-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b143e5b9c0d0426fd2c3e340939bf150\firebase-auth-19.2.0\AndroidManifest.xml:25:13-85
-458            android:excludeFromRecents="true"
-458-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b143e5b9c0d0426fd2c3e340939bf150\firebase-auth-19.2.0\AndroidManifest.xml:26:13-46
-459            android:exported="true"
-459-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b143e5b9c0d0426fd2c3e340939bf150\firebase-auth-19.2.0\AndroidManifest.xml:27:13-36
-460            android:launchMode="singleTask"
-460-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b143e5b9c0d0426fd2c3e340939bf150\firebase-auth-19.2.0\AndroidManifest.xml:28:13-44
-461            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
-461-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b143e5b9c0d0426fd2c3e340939bf150\firebase-auth-19.2.0\AndroidManifest.xml:29:13-102
-462            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-462-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b143e5b9c0d0426fd2c3e340939bf150\firebase-auth-19.2.0\AndroidManifest.xml:30:13-72
-463        <activity
-463-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\00fdd72502b2e420f2fb3b70bf4236ae\play-services-auth-17.0.0\AndroidManifest.xml:23:9-27:75
-464            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-464-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\00fdd72502b2e420f2fb3b70bf4236ae\play-services-auth-17.0.0\AndroidManifest.xml:24:13-93
-465            android:excludeFromRecents="true"
-465-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\00fdd72502b2e420f2fb3b70bf4236ae\play-services-auth-17.0.0\AndroidManifest.xml:25:13-46
-466            android:exported="false"
-466-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\00fdd72502b2e420f2fb3b70bf4236ae\play-services-auth-17.0.0\AndroidManifest.xml:26:13-37
-467            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-467-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\00fdd72502b2e420f2fb3b70bf4236ae\play-services-auth-17.0.0\AndroidManifest.xml:27:13-72
-468        <!--
-469            Service handling Google Sign-In user revocation. For apps that do not integrate with
-470            Google Sign-In, this service will never be started.
-471        -->
-472        <service
-472-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\00fdd72502b2e420f2fb3b70bf4236ae\play-services-auth-17.0.0\AndroidManifest.xml:33:9-36:110
-473            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-473-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\00fdd72502b2e420f2fb3b70bf4236ae\play-services-auth-17.0.0\AndroidManifest.xml:34:13-89
-474            android:exported="true"
-474-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\00fdd72502b2e420f2fb3b70bf4236ae\play-services-auth-17.0.0\AndroidManifest.xml:35:13-36
-475            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
-475-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\00fdd72502b2e420f2fb3b70bf4236ae\play-services-auth-17.0.0\AndroidManifest.xml:36:13-107
-476
-477        <receiver
-477-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0ca231230bda65afdc3e8629af501d99\firebase-iid-20.0.2\AndroidManifest.xml:37:9-44:20
-478            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-478-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0ca231230bda65afdc3e8629af501d99\firebase-iid-20.0.2\AndroidManifest.xml:38:13-78
-479            android:exported="true"
-479-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0ca231230bda65afdc3e8629af501d99\firebase-iid-20.0.2\AndroidManifest.xml:39:13-36
-480            android:permission="com.google.android.c2dm.permission.SEND" >
-480-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0ca231230bda65afdc3e8629af501d99\firebase-iid-20.0.2\AndroidManifest.xml:40:13-73
-481            <intent-filter>
-481-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0ca231230bda65afdc3e8629af501d99\firebase-iid-20.0.2\AndroidManifest.xml:41:13-43:29
-482                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-482-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0ca231230bda65afdc3e8629af501d99\firebase-iid-20.0.2\AndroidManifest.xml:42:17-81
-482-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\0ca231230bda65afdc3e8629af501d99\firebase-iid-20.0.2\AndroidManifest.xml:42:25-78
-483            </intent-filter>
-484        </receiver>
-485
-486        <activity
-486-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\566c5c80bf01ec0a80c33a3833a45677\play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
-487            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-487-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\566c5c80bf01ec0a80c33a3833a45677\play-services-base-17.1.0\AndroidManifest.xml:24:13-79
-488            android:exported="false"
-488-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\566c5c80bf01ec0a80c33a3833a45677\play-services-base-17.1.0\AndroidManifest.xml:25:13-37
-489            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-489-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\566c5c80bf01ec0a80c33a3833a45677\play-services-base-17.1.0\AndroidManifest.xml:26:13-72
-490
-491        <provider
-491-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e0a0fb76e47c5c1d4bb7c758cb119924\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
-492            android:name="com.google.firebase.provider.FirebaseInitProvider"
-492-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e0a0fb76e47c5c1d4bb7c758cb119924\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
-493            android:authorities="pesh.mori.learnerapp.firebaseinitprovider"
-493-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e0a0fb76e47c5c1d4bb7c758cb119924\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
-494            android:exported="false"
-494-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e0a0fb76e47c5c1d4bb7c758cb119924\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
-495            android:initOrder="100" />
-495-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e0a0fb76e47c5c1d4bb7c758cb119924\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
-496
-497        <receiver
-497-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:29:9-33:20
-498            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-498-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:30:13-85
-499            android:enabled="true"
-499-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:31:13-35
-500            android:exported="false" >
-500-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:32:13-37
-501        </receiver>
-502        <receiver
-502-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:34:9-42:20
-503            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
-503-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:35:13-100
-504            android:enabled="true"
-504-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:36:13-35
-505            android:exported="true"
-505-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:37:13-36
-506            android:permission="android.permission.INSTALL_PACKAGES" >
-506-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:38:13-69
-507            <intent-filter>
-507-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:39:13-41:29
-508                <action android:name="com.android.vending.INSTALL_REFERRER" />
-508-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:40:17-79
-508-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:40:25-76
-509            </intent-filter>
-510        </receiver>
-511
-512        <service
-512-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:44:9-47:40
-513            android:name="com.google.android.gms.measurement.AppMeasurementService"
-513-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:45:13-84
-514            android:enabled="true"
-514-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:46:13-35
-515            android:exported="false" />
-515-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:47:13-37
-516        <service
-516-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:48:9-52:72
-517            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-517-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:49:13-87
-518            android:enabled="true"
-518-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:50:13-35
-519            android:exported="false"
-519-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:51:13-37
-520            android:permission="android.permission.BIND_JOB_SERVICE" />
-520-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d7371a850b924d950547ae1301753560\play-services-measurement-17.2.2\AndroidManifest.xml:52:13-69
-521        <!--
-522         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
-523         with the application context. This config is merged in with the host app's manifest,
-524         but there can only be one provider with the same authority activated at any given
-525         point; so if the end user has two or more different apps that use Facebook SDK, only the
-526         first one will be able to use the provider. To work around this problem, we use the
-527         following placeholder in the authority to identify each host application as if it was
-528         a completely different provider.
-529        -->
-530        <provider
-530-->[com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:39:9-42:40
-531            android:name="com.facebook.internal.FacebookInitProvider"
-531-->[com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:40:13-70
-532            android:authorities="pesh.mori.learnerapp.FacebookInitProvider"
-532-->[com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:41:13-72
-533            android:exported="false" />
-533-->[com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:42:13-37
-534
-535        <receiver
-535-->[com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:44:9-50:20
-536            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
-536-->[com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:45:13-86
-537            android:exported="false" >
-537-->[com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:46:13-37
-538            <intent-filter>
-538-->[com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:47:13-49:29
-539                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
-539-->[com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:48:17-95
-539-->[com.facebook.android:facebook-core:4.42.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eeb08e9acd3e7dfe5e9ffb45e1632316\jetified-facebook-core-4.42.0\AndroidManifest.xml:48:25-92
-540            </intent-filter>
-541        </receiver>
-542
-543        <provider
-543-->[com.iceteck.silicompressorr:silicompressor:2.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\12ca0e58e24c43d5540d4ecb376b7499\jetified-silicompressor-2.2.1\AndroidManifest.xml:18:9-26:20
-544            android:name="com.iceteck.silicompressorr.provider.GenericFileProvider"
-544-->[com.iceteck.silicompressorr:silicompressor:2.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\12ca0e58e24c43d5540d4ecb376b7499\jetified-silicompressor-2.2.1\AndroidManifest.xml:19:13-84
-545            android:authorities="com.iceteck.silicompressor.provider"
-545-->[com.iceteck.silicompressorr:silicompressor:2.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\12ca0e58e24c43d5540d4ecb376b7499\jetified-silicompressor-2.2.1\AndroidManifest.xml:20:13-70
-546            android:exported="false"
-546-->[com.iceteck.silicompressorr:silicompressor:2.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\12ca0e58e24c43d5540d4ecb376b7499\jetified-silicompressor-2.2.1\AndroidManifest.xml:21:13-37
-547            android:grantUriPermissions="true" >
-547-->[com.iceteck.silicompressorr:silicompressor:2.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\12ca0e58e24c43d5540d4ecb376b7499\jetified-silicompressor-2.2.1\AndroidManifest.xml:22:13-47
-548            <meta-data
-548-->[com.iceteck.silicompressorr:silicompressor:2.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\12ca0e58e24c43d5540d4ecb376b7499\jetified-silicompressor-2.2.1\AndroidManifest.xml:23:13-25:58
-549                android:name="android.support.FILE_PROVIDER_PATHS"
-549-->[com.iceteck.silicompressorr:silicompressor:2.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\12ca0e58e24c43d5540d4ecb376b7499\jetified-silicompressor-2.2.1\AndroidManifest.xml:24:17-67
-550                android:resource="@xml/provider_paths" />
-550-->[com.iceteck.silicompressorr:silicompressor:2.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\12ca0e58e24c43d5540d4ecb376b7499\jetified-silicompressor-2.2.1\AndroidManifest.xml:25:17-55
-551        </provider>
-552        <provider
-552-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5a989ecc0284fb34170493b8ffa877d7\lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
-553            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-553-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5a989ecc0284fb34170493b8ffa877d7\lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
-554            android:authorities="pesh.mori.learnerapp.lifecycle-process"
-554-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5a989ecc0284fb34170493b8ffa877d7\lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
-555            android:exported="false"
-555-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5a989ecc0284fb34170493b8ffa877d7\lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
-556            android:multiprocess="true" />
-556-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5a989ecc0284fb34170493b8ffa877d7\lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
-557
-558        <service
-558-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\f4bfddc541aa531ec98f59ca3544f6c4\transport-backend-cct-2.2.0\AndroidManifest.xml:29:9-35:19
-559            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-559-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\f4bfddc541aa531ec98f59ca3544f6c4\transport-backend-cct-2.2.0\AndroidManifest.xml:30:13-103
-560            android:exported="false" >
-560-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\f4bfddc541aa531ec98f59ca3544f6c4\transport-backend-cct-2.2.0\AndroidManifest.xml:31:13-37
-561            <meta-data
-561-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\f4bfddc541aa531ec98f59ca3544f6c4\transport-backend-cct-2.2.0\AndroidManifest.xml:32:13-34:39
-562                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-562-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\f4bfddc541aa531ec98f59ca3544f6c4\transport-backend-cct-2.2.0\AndroidManifest.xml:33:17-94
-563                android:value="cct" />
-563-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\f4bfddc541aa531ec98f59ca3544f6c4\transport-backend-cct-2.2.0\AndroidManifest.xml:34:17-36
-564        </service>
-565        <service
-565-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7fae2450d89159ad390944ce5e734a26\transport-runtime-2.2.0\AndroidManifest.xml:26:9-30:19
-566            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-566-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7fae2450d89159ad390944ce5e734a26\transport-runtime-2.2.0\AndroidManifest.xml:27:13-117
-567            android:exported="false"
-567-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7fae2450d89159ad390944ce5e734a26\transport-runtime-2.2.0\AndroidManifest.xml:28:13-37
-568            android:permission="android.permission.BIND_JOB_SERVICE" >
-568-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7fae2450d89159ad390944ce5e734a26\transport-runtime-2.2.0\AndroidManifest.xml:29:13-69
-569        </service>
-570
-571        <receiver
-571-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7fae2450d89159ad390944ce5e734a26\transport-runtime-2.2.0\AndroidManifest.xml:32:9-34:40
-572            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-572-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7fae2450d89159ad390944ce5e734a26\transport-runtime-2.2.0\AndroidManifest.xml:33:13-132
-573            android:exported="false" />
-573-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7fae2450d89159ad390944ce5e734a26\transport-runtime-2.2.0\AndroidManifest.xml:34:13-37
-574    </application>
-575
-576</manifest>
+369        <receiver
+369-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:37:9-44:20
+370            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+370-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:38:13-78
+371            android:exported="true"
+371-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:39:13-36
+372            android:permission="com.google.android.c2dm.permission.SEND" >
+372-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:40:13-73
+373            <intent-filter>
+373-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:41:13-43:29
+374                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+374-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:42:17-81
+374-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1f47ac39b1bd7f05171a3d9f94d24db1\jetified-firebase-iid-20.2.3\AndroidManifest.xml:42:25-78
+375            </intent-filter>
+376        </receiver>
+377        <receiver
+377-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:29:9-33:20
+378            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+378-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:30:13-85
+379            android:enabled="true"
+379-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:31:13-35
+380            android:exported="false" >
+380-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:32:13-37
+381        </receiver>
+382
+383        <service
+383-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:35:9-38:40
+384            android:name="com.google.android.gms.measurement.AppMeasurementService"
+384-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:36:13-84
+385            android:enabled="true"
+385-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:37:13-35
+386            android:exported="false" />
+386-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:38:13-37
+387        <service
+387-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:39:9-43:72
+388            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+388-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:40:13-87
+389            android:enabled="true"
+389-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:41:13-35
+390            android:exported="false"
+390-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:42:13-37
+391            android:permission="android.permission.BIND_JOB_SERVICE" />
+391-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\405ac19fd7ddef0d4a590bace6f1f458\jetified-play-services-measurement-17.5.0\AndroidManifest.xml:43:13-69
+392        <!--
+393         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
+394         with the application context. This config is merged in with the host app's manifest,
+395         but there can only be one provider with the same authority activated at any given
+396         point; so if the end user has two or more different apps that use Facebook SDK, only the
+397         first one will be able to use the provider. To work around this problem, we use the
+398         following placeholder in the authority to identify each host application as if it was
+399         a completely different provider.
+400        -->
+401        <provider
+401-->[com.facebook.android:facebook-core:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\68ccc68ff227ec601a04735898b47224\jetified-facebook-core-5.15.3\AndroidManifest.xml:39:9-42:40
+402            android:name="com.facebook.internal.FacebookInitProvider"
+402-->[com.facebook.android:facebook-core:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\68ccc68ff227ec601a04735898b47224\jetified-facebook-core-5.15.3\AndroidManifest.xml:40:13-70
+403            android:authorities="pesh.mori.learnerapp.FacebookInitProvider"
+403-->[com.facebook.android:facebook-core:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\68ccc68ff227ec601a04735898b47224\jetified-facebook-core-5.15.3\AndroidManifest.xml:41:13-72
+404            android:exported="false" />
+404-->[com.facebook.android:facebook-core:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\68ccc68ff227ec601a04735898b47224\jetified-facebook-core-5.15.3\AndroidManifest.xml:42:13-37
+405
+406        <receiver
+406-->[com.facebook.android:facebook-core:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\68ccc68ff227ec601a04735898b47224\jetified-facebook-core-5.15.3\AndroidManifest.xml:44:9-50:20
+407            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
+407-->[com.facebook.android:facebook-core:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\68ccc68ff227ec601a04735898b47224\jetified-facebook-core-5.15.3\AndroidManifest.xml:45:13-86
+408            android:exported="false" >
+408-->[com.facebook.android:facebook-core:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\68ccc68ff227ec601a04735898b47224\jetified-facebook-core-5.15.3\AndroidManifest.xml:46:13-37
+409            <intent-filter>
+409-->[com.facebook.android:facebook-core:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\68ccc68ff227ec601a04735898b47224\jetified-facebook-core-5.15.3\AndroidManifest.xml:47:13-49:29
+410                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
+410-->[com.facebook.android:facebook-core:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\68ccc68ff227ec601a04735898b47224\jetified-facebook-core-5.15.3\AndroidManifest.xml:48:17-95
+410-->[com.facebook.android:facebook-core:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\68ccc68ff227ec601a04735898b47224\jetified-facebook-core-5.15.3\AndroidManifest.xml:48:25-92
+411            </intent-filter>
+412        </receiver>
+413
+414        <activity
+414-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:24:9-31:50
+415            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+415-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:25:13-85
+416            android:excludeFromRecents="true"
+416-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:26:13-46
+417            android:exported="true"
+417-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:27:13-36
+418            android:launchMode="singleTask"
+418-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:28:13-44
+419            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+419-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:29:13-102
+420            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+420-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:30:13-72
+421        <activity
+421-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:23:9-27:75
+422            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+422-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:24:13-93
+423            android:excludeFromRecents="true"
+423-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:25:13-46
+424            android:exported="false"
+424-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:26:13-37
+425            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+425-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:27:13-72
+426        <!--
+427            Service handling Google Sign-In user revocation. For apps that do not integrate with
+428            Google Sign-In, this service will never be started.
+429        -->
+430        <service
+430-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:33:9-37:51
+431            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+431-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:34:13-89
+432            android:exported="true"
+432-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:35:13-36
+433            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+433-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:36:13-107
+434            android:visibleToInstantApps="true" />
+434-->[com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:37:13-48
+435
+436        <activity
+436-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1adebc941895100039ac654cbbaf2e27\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+437            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+437-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1adebc941895100039ac654cbbaf2e27\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+438            android:exported="false"
+438-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1adebc941895100039ac654cbbaf2e27\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+439            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+439-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1adebc941895100039ac654cbbaf2e27\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+440
+441        <provider
+441-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b21d9d664d0576b41a2ca2c908c34c21\jetified-firebase-common-19.3.1\AndroidManifest.xml:26:9-31:39
+442            android:name="com.google.firebase.provider.FirebaseInitProvider"
+442-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b21d9d664d0576b41a2ca2c908c34c21\jetified-firebase-common-19.3.1\AndroidManifest.xml:27:13-77
+443            android:authorities="pesh.mori.learnerapp.firebaseinitprovider"
+443-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b21d9d664d0576b41a2ca2c908c34c21\jetified-firebase-common-19.3.1\AndroidManifest.xml:28:13-72
+444            android:directBootAware="true"
+444-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b21d9d664d0576b41a2ca2c908c34c21\jetified-firebase-common-19.3.1\AndroidManifest.xml:29:13-43
+445            android:exported="false"
+445-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b21d9d664d0576b41a2ca2c908c34c21\jetified-firebase-common-19.3.1\AndroidManifest.xml:30:13-37
+446            android:initOrder="100" />
+446-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\b21d9d664d0576b41a2ca2c908c34c21\jetified-firebase-common-19.3.1\AndroidManifest.xml:31:13-36
+447        <provider
+447-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7e7c00ff7eb6c223456ea25b88d7b4e3\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+448            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+448-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7e7c00ff7eb6c223456ea25b88d7b4e3\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+449            android:authorities="pesh.mori.learnerapp.lifecycle-process"
+449-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7e7c00ff7eb6c223456ea25b88d7b4e3\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+450            android:exported="false"
+450-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7e7c00ff7eb6c223456ea25b88d7b4e3\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+451            android:multiprocess="true" />
+451-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\7e7c00ff7eb6c223456ea25b88d7b4e3\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+452
+453        <service
+453-->[com.google.android.datatransport:transport-backend-cct:2.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1faea9d3862531e178e2c91a7c12a076\jetified-transport-backend-cct-2.3.1\AndroidManifest.xml:29:9-35:19
+454            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+454-->[com.google.android.datatransport:transport-backend-cct:2.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1faea9d3862531e178e2c91a7c12a076\jetified-transport-backend-cct-2.3.1\AndroidManifest.xml:30:13-103
+455            android:exported="false" >
+455-->[com.google.android.datatransport:transport-backend-cct:2.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1faea9d3862531e178e2c91a7c12a076\jetified-transport-backend-cct-2.3.1\AndroidManifest.xml:31:13-37
+456            <meta-data
+456-->[com.google.android.datatransport:transport-backend-cct:2.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1faea9d3862531e178e2c91a7c12a076\jetified-transport-backend-cct-2.3.1\AndroidManifest.xml:32:13-34:39
+457                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+457-->[com.google.android.datatransport:transport-backend-cct:2.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1faea9d3862531e178e2c91a7c12a076\jetified-transport-backend-cct-2.3.1\AndroidManifest.xml:33:17-94
+458                android:value="cct" />
+458-->[com.google.android.datatransport:transport-backend-cct:2.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\1faea9d3862531e178e2c91a7c12a076\jetified-transport-backend-cct-2.3.1\AndroidManifest.xml:34:17-36
+459        </service>
+460        <service
+460-->[com.google.android.datatransport:transport-runtime:2.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e21284c629ef0756ee9b2c47d90b945c\jetified-transport-runtime-2.2.4\AndroidManifest.xml:26:9-30:19
+461            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+461-->[com.google.android.datatransport:transport-runtime:2.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e21284c629ef0756ee9b2c47d90b945c\jetified-transport-runtime-2.2.4\AndroidManifest.xml:27:13-117
+462            android:exported="false"
+462-->[com.google.android.datatransport:transport-runtime:2.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e21284c629ef0756ee9b2c47d90b945c\jetified-transport-runtime-2.2.4\AndroidManifest.xml:28:13-37
+463            android:permission="android.permission.BIND_JOB_SERVICE" >
+463-->[com.google.android.datatransport:transport-runtime:2.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e21284c629ef0756ee9b2c47d90b945c\jetified-transport-runtime-2.2.4\AndroidManifest.xml:29:13-69
+464        </service>
+465
+466        <receiver
+466-->[com.google.android.datatransport:transport-runtime:2.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e21284c629ef0756ee9b2c47d90b945c\jetified-transport-runtime-2.2.4\AndroidManifest.xml:32:9-34:40
+467            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+467-->[com.google.android.datatransport:transport-runtime:2.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e21284c629ef0756ee9b2c47d90b945c\jetified-transport-runtime-2.2.4\AndroidManifest.xml:33:13-132
+468            android:exported="false" />
+468-->[com.google.android.datatransport:transport-runtime:2.2.4] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e21284c629ef0756ee9b2c47d90b945c\jetified-transport-runtime-2.2.4\AndroidManifest.xml:34:13-37
+469    </application>
+470
+471</manifest>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/share" android:title="Share" android:icon="@drawable/ic_share_black_24dp" android:onClick="doThis"/>
-    <item android:id="@+id/recent" android:title="Recent" android:icon="@drawable/ic_access_time_black_24dp" android:onClick="doThis"/>
+    <item android:id="@+id/share" android:title="Share" android:icon="@drawable/ic_baseline_person_24_theme" android:onClick="doThis"/>
+    <item android:id="@+id/recent" android:title="Recent" android:icon="@drawable/ic_baseline_person_24_theme" android:onClick="doThis"/>
 </menu>

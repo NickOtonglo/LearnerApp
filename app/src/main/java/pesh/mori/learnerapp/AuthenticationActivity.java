@@ -2,15 +2,15 @@ package pesh.mori.learnerapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import androidx.annotation.NonNull;
-import androidx.core.content.IntentCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,6 +28,13 @@ public class AuthenticationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_authentication);
 
         mProgress = new ProgressDialog(this);
@@ -44,7 +51,7 @@ public class AuthenticationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (TextUtils.isEmpty(txtPassword.getText().toString())){
-                    Toast.makeText(AuthenticationActivity.this, "Enter your password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AuthenticationActivity.this, getString(R.string.hint_enter_password), Toast.LENGTH_SHORT).show();
                 } else {
                     performAuthentication();
                 }
@@ -56,9 +63,10 @@ public class AuthenticationActivity extends AppCompatActivity {
     public void checkAuthState(){
         if (mAuth.getCurrentUser()==null){
             mAuth.signOut();
-            Intent loginIntent = new Intent(AuthenticationActivity.this,LoginActivity.class);
+            Intent loginIntent = new Intent(AuthenticationActivity.this,SelectLoginActivity.class);
             loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(loginIntent);
+            finish();
         }
     }
 
@@ -93,7 +101,7 @@ public class AuthenticationActivity extends AppCompatActivity {
 
     public void performAuthentication(){
         mProgress.setCanceledOnTouchOutside(false);
-        mProgress.setMessage("Please wait...");
+        mProgress.setMessage(getString(R.string.info_please_wait));
         mProgress.show();
         String email = mAuth.getCurrentUser().getEmail();
         String password = txtPassword.getText().toString();
@@ -108,6 +116,12 @@ public class AuthenticationActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.transition.static_animation,R.transition.slide_in_from_top);
     }
 
 }

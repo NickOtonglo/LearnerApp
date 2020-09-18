@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/attrBackgroundColor"
+    tools:context=".MyFilesActivity_DownloadsFragment">
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/radio_margin"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="3">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radio_audio_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/attrTextColor"
+                android:textSize="@dimen/text_primary_size"
+                android:text="@string/radio_audio"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/radio_margin"
+                android:layout_marginEnd="@dimen/radio_margin" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radio_video_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/attrTextColor"
+                android:text="@string/radio_video"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/radio_margin"
+                android:layout_marginStart="@dimen/radio_margin"
+                android:layout_marginRight="@dimen/radio_margin"
+                android:layout_marginEnd="@dimen/radio_margin"/>
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radio_document_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/attrTextColor"
+                android:text="@string/radio_ticket"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/radio_margin"
+                android:layout_marginStart="@dimen/radio_margin" />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_download_empty"
+        android:text="@string/link_loading"
+        android:textColor="?attr/attrTextColor"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_primary_size"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/activity_vertical_margin">
+
+    </TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/layout_recycler_mydownloads"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</LinearLayout>

@@ -2,10 +2,6 @@ package pesh.mori.learnerapp;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +10,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,12 +49,19 @@ public class ReportPostActivity extends AppCompatActivity {
     Calendar calendar;
     private SimpleDateFormat sdf;
 
-    private String criteriaRep="",postAuthor="",postTitle="",postKey="",category="",incomingIntent="";
+    private String criteriaRep="",postAuthor="",postTitle="",postKey="",category="",incomingIntent="",postType="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().setDisplayHomeAsUpEnabled( true );
         super.onCreate( savedInstanceState );
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
         setContentView( R.layout.activity_report_post);
 
         HomeActivity homeActivity = new HomeActivity();
@@ -64,13 +72,14 @@ public class ReportPostActivity extends AppCompatActivity {
         calendar = Calendar.getInstance();
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+        postType = getIntent().getExtras().getString("postType");
         postKey = getIntent().getExtras().getString("post_key");
         incomingIntent = getIntent().getExtras().getString("outgoing_intent");
 
-        if (incomingIntent.equals("ViewFileActivity")){
-            category = "Files";
-        } else if (incomingIntent.equals("ViewDiyActivity")){
-            category = "DIY";
+        if (postType.equals(getString(R.string.firebase_ref_posts_type_1))){
+            category = getString(R.string.firebase_ref_posts_type_1);
+        } else if (postType.equals(getString(R.string.firebase_ref_posts_type_2))){
+            category = getString(R.string.firebase_ref_posts_type_2);
         }
 
         mAuth = FirebaseAuth.getInstance();
@@ -84,14 +93,14 @@ public class ReportPostActivity extends AppCompatActivity {
         radioOther = findViewById(R.id.other_content);
         submit = (Button) findViewById(R.id.report);
 
-        mReports = FirebaseDatabase.getInstance().getReference().child("ReportedPosts").child(category).child(postKey).child(mAuth.getCurrentUser().getUid());
+        mReports = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_reported)).child(category).child(postKey).child(mAuth.getCurrentUser().getUid());
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             if (!radioAbusive.isChecked() && !radioIllegal.isChecked() && !radioAdult.isChecked() && !radioCopyright.isChecked()
                     && !radioMalicious.isChecked() & !radioOther.isChecked()){
-                Snackbar.make(findViewById(android.R.id.content),"Kindly select a criterion",Snackbar.LENGTH_LONG).show();
+                Snackbar.make(findViewById(android.R.id.content), R.string.info_kindly_select_a_criterion,Snackbar.LENGTH_LONG).show();
             } else {
                 reportContent();
             }
@@ -102,25 +111,25 @@ public class ReportPostActivity extends AppCompatActivity {
 
     private void  reportContent(){
         if (radioOther.isChecked()){
-            criteriaRep = "Other";
+            criteriaRep = getString(R.string.radio_other);
         }
         if (radioIllegal.isChecked()){
-            criteriaRep = "Illegal Content";
+            criteriaRep = getString(R.string.radio_illegal_content);
         }
         if (radioAbusive.isChecked()){
-            criteriaRep = "Abusive Content";
+            criteriaRep = getString(R.string.radio_abusive_content);
         }
         if (radioMalicious.isChecked()){
-            criteriaRep = "Malicious Content";
+            criteriaRep = getString(R.string.radio_malicious_content);
         }
         if (radioCopyright.isChecked()){
-            criteriaRep = "Copyright Infringement";
+            criteriaRep = getString(R.string.radio_copyright_infringement);
         }
         if (radioAdult.isChecked()){
-            criteriaRep = "Adult Content";
+            criteriaRep = getString(R.string.radio_adult_content);
         }
 
-        mProgress.setMessage("Submitting report...");
+        mProgress.setMessage(getString(R.string.info_submitting_report));
         mProgress.setCanceledOnTouchOutside(false);
         String description = editText.getText().toString().trim();
         if (description.isEmpty() || description.equals("") || TextUtils.isEmpty(description)){
@@ -129,7 +138,7 @@ public class ReportPostActivity extends AppCompatActivity {
         final String timestamp = sdf.format(calendar.getTime());
 
         if (description.isEmpty() && radioOther.isChecked()){
-            Snackbar.make(findViewById(android.R.id.content),"Kindly give us more information",Snackbar.LENGTH_LONG).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.info_kindly_give_us_more_information,Snackbar.LENGTH_LONG).show();
         } else {
             mProgress.show();
 //            final DatabaseReference newNote = mNotes.child(sdf.format(Calendar.getInstance().getTime())).push();
@@ -147,13 +156,13 @@ public class ReportPostActivity extends AppCompatActivity {
                     newReport.child("descrtiption").setValue(finalDescription);
                     newReport.child("item_id").setValue(postKey);
                     mProgress.dismiss();
-                    Toast.makeText(ReportPostActivity.this, "Post reported", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ReportPostActivity.this, R.string.info_post_reported, Toast.LENGTH_LONG).show();
                     finish();
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(ReportPostActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(ReportPostActivity.this, getString(R.string.error_general)+" "+databaseError.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
         }

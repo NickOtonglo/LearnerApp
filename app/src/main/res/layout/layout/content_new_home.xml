@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".HomeActivity"
+    android:background="?attr/attrBackgroundColor"
+    android:animateLayoutChanges="true"
+    tools:showIn="@layout/app_bar_new_home">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="75dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_announcements"
+                        android:textColor="?attr/attrTextSecondaryColor"
+                        android:padding="@dimen/text_primary_padding"
+                        android:id="@+id/txt_label_announcements"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/layout_recycler_announcements"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:layout_editor_absoluteY="8dp"
+                        tools:layout_editor_absoluteX="8dp"
+                        android:scrollbars="vertical"/>
+
+                    <TextView
+                        android:id="@+id/txt_label_promoted"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/text_primary_padding"
+                        android:text="@string/title_promoted"
+                        android:textColor="?attr/attrTextSecondaryColor"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:textStyle="bold"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/layout_recycler_promoted"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="8dp"
+                        android:scrollbars="vertical"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Posts"
+                        android:textColor="?attr/attrTextSecondaryColor"
+                        android:padding="@dimen/text_primary_padding"
+                        android:textSize="@dimen/text_secondary_size"
+                        android:textStyle="bold"
+                        android:id="@+id/txt_label_posts" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/layout_recycler_posts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:layout_editor_absoluteY="8dp"
+                        tools:layout_editor_absoluteX="8dp"
+                        android:scrollbars="vertical"/>
+
+                </LinearLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="8dp"
+        android:src="@drawable/ic_outline_library_add_24"
+        app:fab_colorNormal="?attr/colorPrimary"
+        fab:menu_colorPressed="?attr/colorPrimaryDark"
+        fab:menu_colorRipple="#99FFFFFF"
+        fab:fab_size="normal"
+        fab:menu_backgroundColor="@android:color/transparent"
+        fab:fab_label="@string/hint_genre" />
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fab_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="8dp"
+        fab:menu_fab_size="normal"
+        fab:menu_showShadow="true"
+        fab:menu_shadowColor="#66000000"
+        fab:menu_shadowRadius="4dp"
+        fab:menu_shadowXOffset="1dp"
+        fab:menu_shadowYOffset="3dp"
+        fab:menu_colorNormal="?attr/colorPrimary"
+        fab:menu_colorPressed="?attr/colorPrimaryDark"
+        fab:menu_colorRipple="#99FFFFFF"
+        fab:menu_animationDelayPerItem="50"
+        fab:menu_icon="@drawable/ic_outline_library_add_24"
+        fab:menu_labels_textColor="#FFFFFF"
+        fab:menu_labels_textSize="14sp"
+        fab:menu_labels_cornerRadius="3dp"
+        fab:menu_labels_colorNormal="#333333"
+        app:fab_colorNormal="?attr/colorPrimary"
+        app:fab_colorPressed="?attr/colorPrimaryDark"
+        fab:menu_labels_colorPressed="@android:color/transparent"
+        fab:menu_labels_colorRipple="@android:color/transparent"
+        fab:menu_labels_showShadow="true"
+        fab:menu_labels_singleLine="false"
+        fab:menu_labels_ellipsize="none"
+        fab:menu_labels_maxLines="-1"
+        fab:menu_openDirection="up"
+        fab:menu_backgroundColor="@android:color/transparent"
+        android:visibility="gone">
+
+<!--        <com.github.clans.fab.FloatingActionButton-->
+<!--            android:id="@+id/diy"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/fab_add"-->
+<!--            app:fab_colorNormal="?attr/colorPrimaryDark"-->
+<!--            fab:menu_colorPressed="?attr/attrButtonColor"-->
+<!--            fab:menu_colorRipple="#99FFFFFF"-->
+<!--            fab:fab_size="mini"-->
+<!--            fab:fab_label="@string/hint_non_coursework" />-->
+    </com.github.clans.fab.FloatingActionMenu>
+
+</FrameLayout>

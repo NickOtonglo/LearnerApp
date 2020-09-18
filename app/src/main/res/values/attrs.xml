@@ -7,6 +7,17 @@
     <declare-styleable name="ButtonBarContainerTheme">
         <attr name="metaButtonBarStyle" format="reference" />
         <attr name="metaButtonBarButtonStyle" format="reference" />
+
+        <!--Text colour-->
+        <attr name="attrTextColor" format="color"/>
+        <attr name="attrTextSecondaryColor" format="color"/>
+        <attr name="attrNewIndicator" format="color"/>
+        <!--Background colour-->
+        <attr name="attrBackgroundColor" format="color"/>
+        <attr name="attrOutlineColor" format="color"/>
+        <!--Button colour-->
+        <attr name="attrButtonColor" format="color"/>
+        <attr name="attrButtonTextColor" format="color"/>
     </declare-styleable>
 
 </resources>

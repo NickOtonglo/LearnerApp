@@ -4,18 +4,20 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,10 +25,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rilixtech.CountryCodePicker;
-
-/**
- * Created by MORIAMA on 28/12/2017.
- */
 
 public class ChangePhoneActivity extends AppCompatActivity {
 
@@ -42,7 +40,7 @@ public class ChangePhoneActivity extends AppCompatActivity {
     private Button btnVerify;
 
     private FirebaseAuth mAuth;
-    private CountryCodePicker ccp;;
+    private CountryCodePicker ccp;
     private ProgressDialog mProgress;
     private AlertDialog.Builder mAlert;
 
@@ -50,16 +48,28 @@ public class ChangePhoneActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_changephone );
-        getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
+        setContentView(R.layout.activity_changephone);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorToolBarMainText));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         HomeActivity homeActivity = new HomeActivity();
         homeActivity.checkMaintenanceStatus(getApplicationContext());
 
         mAuth = FirebaseAuth.getInstance();
 
-        mProgress = new ProgressDialog (this);
-        mAlert = new AlertDialog.Builder(this);
+        mProgress = new ProgressDialog(this);
+        mAlert = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
         inputValidation = new InputValidation(activity);
 
         if (getIntent().hasExtra("incomingIntent")){
@@ -83,7 +93,7 @@ public class ChangePhoneActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (txtPhoneNumber.getText().toString().trim().length()<9 || txtPhoneNumber.getText().toString().trim().length()>10){
-                    txtPhoneNumber.setError("Invalid phone number");
+                    txtPhoneNumber.setError(getString(R.string.info_invalid_phone_number));
                 } else
                 verifyPhoneNumber();
             }
@@ -102,6 +112,7 @@ public class ChangePhoneActivity extends AppCompatActivity {
             Intent loginIntent = new Intent(ChangePhoneActivity.this,SelectLoginActivity.class);
             loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(loginIntent);
+            finish();
         }
     }
 
@@ -113,10 +124,10 @@ public class ChangePhoneActivity extends AppCompatActivity {
         mAlert.setMessage(getText(R.string.info_new_phone_alert_message_1)+" ("+txtPhoneNumber.getText().toString()+")." +
                 "\n"+getText(R.string.info_new_phone_alert_message_2)+"." +
                 "\n"+getText(R.string.info_new_phone_alert_message_3)+".")
-                .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNeutralButton(getString(R.string.option_cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getApplicationContext(), "Cancelled", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.info_cancelled, Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -131,10 +142,10 @@ public class ChangePhoneActivity extends AppCompatActivity {
                 if (dataSnapshot.child("phone").getValue().equals(phoneNumber)){
                     if (dataSnapshot.child("phone_verified").exists() && dataSnapshot.child("phone_verified").getValue().equals("true")){
 //                        Log.d("LOG_phone_verified","true");
-                        Toast.makeText(ChangePhoneActivity.this, "This number is already verified", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ChangePhoneActivity.this, R.string.info_this_number_is_already_verified, Toast.LENGTH_LONG).show();
                     } else {
 //                        Log.d("LOG_phone_verified","false");
-                        mAlert.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                        mAlert.setPositiveButton(R.string.option_proceed, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Intent intent = new Intent(getApplicationContext(),PhoneVerificationActivity.class);
@@ -153,7 +164,7 @@ public class ChangePhoneActivity extends AppCompatActivity {
                             if (dataSnapshot.exists()){
 //                                Toast.makeText(ChangePhoneActivity.this, "This phone number is already in use.\nContact support to resolve any conflicts.", Toast.LENGTH_SHORT).show();
                             } else {
-                                mAlert.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                                mAlert.setPositiveButton(R.string.option_proceed, new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 TemporaryPermissions.removeVerificationValue(ChangePhoneActivity.this);
@@ -182,25 +193,9 @@ public class ChangePhoneActivity extends AppCompatActivity {
 
             }
         });
-//        AlertDialog.Builder builder1 = new AlertDialog.Builder( this );
-//        builder1.setMessage( "Verification Code has been sent to the above phone number. This code expires in 5 minutes." );
-//        builder1.setCancelable( false );
-//
-//        builder1.setPositiveButton(
-//                "Ok",
-//                new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                } );
-//
-//        AlertDialog alert1 = builder1.create();
-//        alert1.show();
     }
 
     public void savePhoneNumber(){
-//        final Animation myanim = AnimationUtils.loadAnimation(this, R.anim.bounce3);
-//        btnUpdate.startAnimation( myanim );
         final String phone = txtPhoneNumber.getText().toString().trim();
         if (!inputValidation.isInputEditTextFilled(txtPhoneNumber, textInputLayoutPhone, getString( R.string.error_message_phone ) )) {
             return;
@@ -210,20 +205,20 @@ public class ChangePhoneActivity extends AppCompatActivity {
             return;
         }
         if (!phone.isEmpty() && (phone.length()<9 || phone.length()>10)){
-            txtPhoneNumber.setError("Invalid phone number");
+            txtPhoneNumber.setError(getString(R.string.info_invalid_phone_number));
             return;
         }
         final String phoneNumber = ccp.getFullNumberWithPlus()+phone.substring(phone.length() - 9);
 
-        AlertDialog.Builder builder1 = new AlertDialog.Builder( this );
-        builder1.setMessage( "Are you sure you want to update your phone number?" );
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
+        builder1.setMessage(getString(R.string.confirm_are_you_sure_you_want_to_update_your_phone_number));
         builder1.setCancelable( false );
 
         builder1.setPositiveButton(
-                "Yes",
+                getString(R.string.option_alert_yes),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        mProgress.setMessage("Updating phone number...");
+                        mProgress.setMessage(getString(R.string.info_please_wait));
                         mProgress.setCanceledOnTouchOutside(false);
                         if (!mProgress.isShowing() && !(ChangePhoneActivity.this).isFinishing()){
                             mProgress.show();
@@ -236,7 +231,7 @@ public class ChangePhoneActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
                                         TemporaryPermissions.removeVerificationValue(ChangePhoneActivity.this);
-                                        Toast.makeText(getApplicationContext(), "Phone number updated", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), R.string.info_phone_number_updated, Toast.LENGTH_SHORT).show();
                                         mProgress.dismiss();
                                         if (incomingIntent.equals("HomeActivity")){
                                             startActivity(new Intent(getApplicationContext(),HomeActivity.class));
@@ -251,7 +246,7 @@ public class ChangePhoneActivity extends AppCompatActivity {
                         } else {
 //                            Toast.makeText(ChangePhoneActivity.this, TemporaryPermissions.showVerificationCode(ChangePhoneActivity.this), Toast.LENGTH_LONG).show();
                             if (!txtVerificationCode.getText().toString().trim().equals(TemporaryPermissions.showVerificationCode(ChangePhoneActivity.this))){
-                                Toast.makeText(ChangePhoneActivity.this, "Invalid verification code", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChangePhoneActivity.this, R.string.info_invalid_verification_code, Toast.LENGTH_SHORT).show();
                                 mProgress.dismiss();
                             } else if (txtVerificationCode.getText().toString().trim().equals(TemporaryPermissions.showVerificationCode(ChangePhoneActivity.this))){
                                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid());
@@ -261,7 +256,7 @@ public class ChangePhoneActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()){
                                             TemporaryPermissions.removeVerificationCode(ChangePhoneActivity.this);
-                                            Toast.makeText(getApplicationContext(), "Phone number updated", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), R.string.info_phone_number_updated, Toast.LENGTH_SHORT).show();
                                             mProgress.dismiss();
                                             if (incomingIntent.equals("HomeActivity")){
                                                 startActivity(new Intent(getApplicationContext(),HomeActivity.class));
@@ -274,14 +269,14 @@ public class ChangePhoneActivity extends AppCompatActivity {
                                     }
                                 });
                             } else {
-                                Toast.makeText(ChangePhoneActivity.this, "The phone number is not verified", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ChangePhoneActivity.this, R.string.info_the_phone_number_is_not_verified, Toast.LENGTH_LONG).show();
                                 mProgress.dismiss();
                             }
                         }
                         dialog.cancel();
                     }
                 });
-        builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder1.setNegativeButton(getString(R.string.option_alert_no), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
             }

@@ -1,26 +1,21 @@
 package pesh.mori.learnerapp;
 
-import androidx.appcompat.app.AlertDialog;
-
 import android.app.ProgressDialog;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,12 +23,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class TransactionHistoryActivity_PurchaseFragment extends Fragment {
     private RecyclerView mRecycler;
-    private DatabaseReference mDebit,mFiles,mDIY;
+    private DatabaseReference mDebit,mPosts;
     private FirebaseAuth mAuth;
     private TextView txtEmpty;
     private AlertDialog.Builder mAlert;
@@ -51,8 +45,8 @@ public class TransactionHistoryActivity_PurchaseFragment extends Fragment {
 
 //        mAuthor = ((ViewAuthorActivity)getActivity()).getAuthorId();
 
-        mProgress = new ProgressDialog(getContext());
-        mAlert = new AlertDialog.Builder(getContext());
+        mProgress = new ProgressDialog(getActivity());
+        mAlert = new AlertDialog.Builder(requireActivity(),R.style.AlertDialogStyle);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -60,16 +54,14 @@ public class TransactionHistoryActivity_PurchaseFragment extends Fragment {
 
         mDebit = FirebaseDatabase.getInstance().getReference().child("TransactionRecords").child("Debit");
         mDebit.keepSynced(true);
-        mFiles = FirebaseDatabase.getInstance().getReference().child("Files");
-        mFiles.keepSynced(true);
-        mDIY = FirebaseDatabase.getInstance().getReference().child("DIY");
-        mDIY.keepSynced(true);
+        mPosts = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_type_1));
+        mPosts.keepSynced(true);
 
         mDebit.orderByChild("User").equalTo(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
-                    txtEmpty.setText("Your transaction history is empty!");
+                    txtEmpty.setText(R.string.info_your_transaction_history_is_empty);
                 }
             }
 
@@ -111,9 +103,10 @@ public class TransactionHistoryActivity_PurchaseFragment extends Fragment {
                             viewHolder.setTime(String.valueOf(dataSnapshot.child("Time").getValue()));
                             viewHolder.setAmount("KES "+dataSnapshot.child("TransactionCost").getValue());
                             if (dataSnapshot.child("ItemType").getValue().equals("Token")){
-                                viewHolder.setItem("TOKENS SENT");
+                                viewHolder.setItem(getString(R.string.title_tokens_sent));
                             } else {
-                                FirebaseDatabase.getInstance().getReference().child("AllPosts").child(String.valueOf(dataSnapshot.child("Item").getValue())).addValueEventListener(new ValueEventListener() {
+                                FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_all))
+                                        .child(String.valueOf(dataSnapshot.child("Item").getValue())).addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         viewHolder.setItem(String.valueOf(dataSnapshot.child("Title").getValue()));

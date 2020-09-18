@@ -4,17 +4,16 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Build;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,22 +38,28 @@ public class BidActivity extends AppCompatActivity {
     private SimpleDateFormat sdf;
     private ProgressDialog mProgress;
     private AlertDialog.Builder mAlert,mAlert2;
-    private String TAG = "BidActivity";
     private String incomingIntent;
-    private String childRef;
+    private String childRef,postType="";
     private String mBidPushKey,mMessagePushKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.Theme_UserDialogDark);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.Theme_UserDialogSignature);
+        } else {
+            setTheme(R.style.Theme_UserDialog);
+        }
         setContentView(R.layout.activity_bid);
 
         HomeActivity homeActivity = new HomeActivity();
         homeActivity.checkMaintenanceStatus(getApplicationContext());
 
         mProgress = new ProgressDialog(this);
-        mAlert = new AlertDialog.Builder(this);
-        mAlert2 = new AlertDialog.Builder(this);
+        mAlert = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
+        mAlert2 = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
 
         calendar = Calendar.getInstance();
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -66,11 +71,11 @@ public class BidActivity extends AppCompatActivity {
         mBidPushKey = getIntent().getExtras().getString("mBidPushKey");
         mMessagePushKey = getIntent().getExtras().getString("mMessagePushKey");
         incomingIntent = getIntent().getExtras().getString("outgoing_intent");
-        if (incomingIntent.equals("mydownloads") || incomingIntent.equals("DownloadActivity")){
-            childRef = "Files";
-
-        } else if (incomingIntent.equals("DownloadDiyActivity")){
-            childRef = "DIY";
+        postType = getIntent().getExtras().getString("postType");
+        if (postType.equals(getString(R.string.firebase_ref_posts_type_1))){
+            childRef = getString(R.string.firebase_ref_posts_type_1);
+        } else if (postType.equals(getString(R.string.firebase_ref_posts_type_2))){
+            childRef = getString(R.string.firebase_ref_posts_type_2);
         }
 
         bidAmount = findViewById(R.id.txt_edit_bid);
@@ -84,22 +89,22 @@ public class BidActivity extends AppCompatActivity {
         btn_bid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mProgress.setMessage("Please wait...");
+                mProgress.setMessage(getString(R.string.info_please_wait));
                 mProgress.setCancelable(false);
                 mProgress.show();
                 checkBidAmount();
             }
         });
 
-        mProgress.setMessage("Please wait...");
+        mProgress.setMessage(getString(R.string.info_please_wait));
         mProgress.setCancelable(false);
         mProgress.show();
         checkPendingBid();
     }
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public String preCreateBid(){
-        mAlert.setMessage("Bid submitted successfully. Please wait for the author to accept.");
-        mAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        mAlert.setMessage(R.string.info_bid_submitted_successfuly_please_wait_for_author_to_accept);
+        mAlert.setPositiveButton(getString(R.string.option_ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 finish();
@@ -124,7 +129,7 @@ public class BidActivity extends AppCompatActivity {
 
     /*v1.0.5 new feature 00001*/
     public void checkPendingBid(){
-        final String [] pushKey = {""};
+        final String[] pushKey = {""};
         final DatabaseReference mBids = FirebaseDatabase.getInstance().getReference().child("Status").child("Bids").child(mAuth.getCurrentUser().getUid());
         mBids.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -135,15 +140,15 @@ public class BidActivity extends AppCompatActivity {
                         public void onDataChange(final DataSnapshot dataSnapshot) {
                             if (dataSnapshot.exists()){
                                 if (dataSnapshot.child("status").getValue().equals("pending")){
-                                    mAlert.setTitle("Pending bid")
-                                            .setMessage("You already submitted a bid for this item. Kindly wait for the author to review it.")
+                                    mAlert.setTitle(R.string.title_pending_bid)
+                                            .setMessage(R.string.info_you_already_submitted_a_bid_for_this_item)
                                             .setOnCancelListener(new DialogInterface.OnCancelListener() {
                                                 @Override
                                                 public void onCancel(DialogInterface dialogInterface) {
                                                     finish();
                                                 }
                                             })
-                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            .setPositiveButton(getString(R.string.option_ok), new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
                                                     dialogInterface.dismiss();
@@ -153,13 +158,14 @@ public class BidActivity extends AppCompatActivity {
                                                     finish();
                                                 }
                                             })
-                                            .setNeutralButton("Cancel Bid", new DialogInterface.OnClickListener() {
+                                            .setNeutralButton(R.string.option_cancel_bid, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
                                                     /*v1.0.5 new feature 00001*/
                                                     dialogInterface.dismiss();
 
-                                                    FirebaseDatabase.getInstance().getReference().child("Bids").child(authorId)
+                                                    FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_bids))
+                                                            .child(authorId)
                                                             .addListenerForSingleValueEvent(new ValueEventListener() {
                                                                 @Override
                                                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -265,13 +271,13 @@ public class BidActivity extends AppCompatActivity {
     public void checkBidAmount(){
         if (TextUtils.isEmpty(bidAmount.getText().toString().trim())){
 
-            Toast.makeText(BidActivity.this, "Please enter Bid price", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BidActivity.this, R.string.info_please_enter_bid_price, Toast.LENGTH_SHORT).show();
             mProgress.dismiss();
 
         } else {
-            mAlert.setTitle("Submit Bid")
-                    .setMessage("Are you sure you want to place your bid of "+bidAmount.getText().toString()+" tokens on this item?")
-                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            mAlert.setTitle(R.string.title_submit_bid)
+                    .setMessage(getString(R.string.required_are_you_sure_you_want_to_submit_your_bid_of_1)+" "+bidAmount.getText().toString()+" "+getString(R.string.required_are_you_sure_you_want_to_submit_your_bid_of_2))
+                    .setPositiveButton(getString(R.string.option_alert_yes), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -279,7 +285,7 @@ public class BidActivity extends AppCompatActivity {
                             }
                         }
                     })
-                    .setNeutralButton("CANCEL", new DialogInterface.OnClickListener() {
+                    .setNeutralButton(getString(R.string.option_cancel), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
@@ -307,7 +313,8 @@ public class BidActivity extends AppCompatActivity {
 
         final String bidTime = sdf.format(Calendar.getInstance().getTime());
 
-        DatabaseReference mBid = FirebaseDatabase.getInstance().getReference().child("Bids").child(authorId).child(bidsKey);
+        DatabaseReference mBid = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_bids))
+                .child(authorId).child(bidsKey);
         String ref = String.valueOf(mBid.getKey());
 //        Log.d(TAG,"createBid: mBid.getKey() "+ref);
         mBid.child("bidder_id").setValue(buyerId);
@@ -339,7 +346,7 @@ public class BidActivity extends AppCompatActivity {
         if (mProgress != null && !mProgress.isShowing() && !BidActivity.this.isFinishing()){
             mProgress.show();
         }
-        DatabaseReference mBid = FirebaseDatabase.getInstance().getReference().child("Bids").child(authorId).child(bidsKey);
+        DatabaseReference mBid = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_bids)).child(authorId).child(bidsKey);
         mBid.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -362,32 +369,5 @@ public class BidActivity extends AppCompatActivity {
             }
         });
     }
-
-//    public void bidderNotification(String title, String content) {
-//        NotificationManager mNotificationManager =
-//                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-//            NotificationChannel channel = new NotificationChannel("default",
-//                    "YOUR_CHANNEL_NAME",
-//                    NotificationManager.IMPORTANCE_DEFAULT);
-//            channel.setDescription("YOUR_NOTIFICATION_CHANNEL_DISCRIPTION");
-//            mNotificationManager.createNotificationChannel(channel);
-//        }
-//
-//        Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//        MediaPlayer mp = MediaPlayer.create(getApplicationContext(),notificationSound);
-//
-//        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), "default")
-//                .setSmallIcon(R.mipmap.ic_launcher_round) // notification icon
-//                .setContentTitle(title) // title for notification
-//                .setContentText(content)// message for notification
-//                .setSound(notificationSound) // set alarm sound for notification
-//                .setAutoCancel(true); // clear notification after click
-//        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-//        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//        mBuilder.setContentIntent(pi);
-//        mNotificationManager.notify(0, mBuilder.build());
-//    }
-
 
 }

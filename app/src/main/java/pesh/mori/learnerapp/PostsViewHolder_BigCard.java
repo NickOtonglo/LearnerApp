@@ -1,10 +1,11 @@
 package pesh.mori.learnerapp;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
@@ -30,19 +31,19 @@ public class PostsViewHolder_BigCard extends RecyclerView.ViewHolder {
     }
     public void setAudioImage(){
         ImageView imgUpload = (ImageView)mView.findViewById(R.id.img_thumbnail_big);
-        imgUpload.setImageResource(R.mipmap.audio_preview_hi_res);
+        imgUpload.setImageResource(R.drawable.preview_audio_hi_res);
     }
     public void setVideoImage(){
         ImageView imgUpload = (ImageView)mView.findViewById(R.id.img_thumbnail_big);
-        imgUpload.setImageResource(R.mipmap.video_preview_hi_res);
+        imgUpload.setImageResource(R.drawable.preview_video_hi_res);
     }
     public void setImageImage(){
         ImageView imgUpload = (ImageView)mView.findViewById(R.id.img_thumbnail_big);
-        imgUpload.setImageResource(R.mipmap.image_preview_hi_res);
+        imgUpload.setImageResource(R.drawable.preview_image_hi_res);
     }
     public void setDocImage(){
         ImageView imgUpload = (ImageView)mView.findViewById(R.id.img_thumbnail_big);
-        imgUpload.setImageResource(R.mipmap.doc_preview_hi_res);
+        imgUpload.setImageResource(R.drawable.preview_doc_hi_res);
     }
     public void setThumbnail(Context ctx, String imageThumb){
         ImageView imgUpload = (ImageView)mView.findViewById(R.id.img_thumbnail_big);
@@ -54,11 +55,11 @@ public class PostsViewHolder_BigCard extends RecyclerView.ViewHolder {
     }
     public void setAuthorImage(){
         ImageView imgAuthor = (ImageView)mView.findViewById(R.id.img_author_big);
-        imgAuthor.setImageResource(R.drawable.ic_action_user);
+        imgAuthor.setImageResource(R.drawable.ic_baseline_person_24_theme);
     }
     public void setAdminImage(){
         ImageView imgAuthor = (ImageView)mView.findViewById(R.id.img_author_big);
-        imgAuthor.setImageResource(R.mipmap.ic_diy);
+        imgAuthor.setImageResource(R.drawable.ic_baseline_person_24_theme);
     }
     public void setAuthorName(String name){
         TextView txtAuthorName = (TextView)mView.findViewById(R.id.txt_author_big);
@@ -66,6 +67,6 @@ public class PostsViewHolder_BigCard extends RecyclerView.ViewHolder {
     }
     public void setNull(){
         TextView txtEmpty = mView.findViewById(R.id.txt_upload_empty);
-        txtEmpty.setText("No Files to Display");
+        txtEmpty.setText(R.string.info_no_posts_to_display);
     }
 }

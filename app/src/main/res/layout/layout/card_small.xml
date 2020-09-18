@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/card_small_padding"
+    app:cardBackgroundColor="@color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/img_downl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/card_small_thumbnail_height"
+                android:background="@color/black"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/txt_title_downl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/card_small_text_height"
+                android:text="@string/title_title"
+                android:padding="@dimen/card_small_text_padding"
+                android:textSize="@dimen/card_small_title_text_size"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="?attr/attrTextColor"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_author_downl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/card_small_text_height"
+                android:padding="@dimen/card_small_text_padding"
+                android:textSize="@dimen/card_small_username_text_size"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="?attr/attrTextSecondaryColor"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_time_downl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/card_small_text_height"
+                android:text="@string/hint_time"
+                android:padding="@dimen/card_small_text_padding"
+                android:textSize="@dimen/card_small_timestamp_text_size"
+                android:gravity="right"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="?attr/attrTextSecondaryColor"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

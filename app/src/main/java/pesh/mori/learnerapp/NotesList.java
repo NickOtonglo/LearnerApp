@@ -1,14 +1,15 @@
 package pesh.mori.learnerapp;
 
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +30,13 @@ public class NotesList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_notes_list);
 
         HomeActivity homeActivity = new HomeActivity();
@@ -37,8 +45,8 @@ public class NotesList extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
 
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_close);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorToolBarMainText));
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -70,7 +78,7 @@ public class NotesList extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getChildrenCount()==0){
-                    txtEmpty.setText("No notes found");
+                    txtEmpty.setText(getString(R.string.info_no_notes_found));
                 }
             }
 
@@ -95,14 +103,14 @@ public class NotesList extends AppCompatActivity {
         if (postKey.equals("")){
             fetchAllUserNotes();
         } else {
-            FirebaseRecyclerAdapter<Note,mynotes.NotesViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Note, mynotes.NotesViewHolder>(
+            FirebaseRecyclerAdapter<Note, MyFilesActivity_NotesFragment.NotesViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Note, MyFilesActivity_NotesFragment.NotesViewHolder>(
                     Note.class,
                     R.layout.card_notes,
-                    mynotes.NotesViewHolder.class,
+                    MyFilesActivity_NotesFragment.NotesViewHolder.class,
                     mNotes.orderByChild("linkedTo").equalTo(postKey)
             ) {
                 @Override
-                protected void populateViewHolder(final mynotes.NotesViewHolder viewHolder, Note model, int position) {
+                protected void populateViewHolder(final MyFilesActivity_NotesFragment.NotesViewHolder viewHolder, Note model, int position) {
                     final String noteKey = getRef(position).getKey();
 
                     mNotes.addValueEventListener(new ValueEventListener() {
@@ -142,14 +150,14 @@ public class NotesList extends AppCompatActivity {
     }
 
     private void fetchAllUserNotes() {
-        FirebaseRecyclerAdapter<Note,mynotes.NotesViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Note, mynotes.NotesViewHolder>(
+        FirebaseRecyclerAdapter<Note, MyFilesActivity_NotesFragment.NotesViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Note, MyFilesActivity_NotesFragment.NotesViewHolder>(
                 Note.class,
                 R.layout.card_notes,
-                mynotes.NotesViewHolder.class,
+                MyFilesActivity_NotesFragment.NotesViewHolder.class,
                 mNotes.orderByChild("timestamp")
         ) {
             @Override
-            protected void populateViewHolder(final mynotes.NotesViewHolder viewHolder, Note model, int position) {
+            protected void populateViewHolder(final MyFilesActivity_NotesFragment.NotesViewHolder viewHolder, Note model, int position) {
                 final String noteKey = getRef(position).getKey();
 
                 mNotes.addValueEventListener(new ValueEventListener() {
@@ -190,7 +198,7 @@ public class NotesList extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.static_animation,R.anim.slide_in_from_top);
+        overridePendingTransition(R.transition.static_animation,R.transition.slide_in_from_top);
     }
 
     @Override

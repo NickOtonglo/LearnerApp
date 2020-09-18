@@ -4,24 +4,17 @@
             "outputFile": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw360dp-v13\\values-sw360dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\3370237b51308a73c3a29872040a5330\\preference-1.0.0\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
+                    "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\7ccfcb863c75f9a9c3b93e56c48a31aa\\preference-1.1.1\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
                     "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,127",
-                        "endColumns": "71,64",
-                        "endOffsets": "122,187"
-                    },
-                    "to": {
-                        "startLines": "2,11",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,603",
-                        "endColumns": "71,64",
-                        "endOffsets": "122,663"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "71",
+                        "endOffsets": "122"
                     }
                 },
                 {
-                    "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\a9a2f7a2e2a8650dcfa9572a44f8725f\\jetified-firebase-ui-auth-2.3.0\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
+                    "source": "C:\\Users\\Nick Otto\\.gradle\\caches\\transforms-2\\files-2.1\\e1ae95aa736b0fae36849a93eba5e4ad\\jetified-firebase-ui-auth-2.3.0\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

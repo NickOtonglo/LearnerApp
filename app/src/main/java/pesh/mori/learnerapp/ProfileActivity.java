@@ -3,28 +3,18 @@ package pesh.mori.learnerapp;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.PopupWindow;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.Profile;
@@ -33,6 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -56,9 +47,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private TextView changemail;
-    private TextView changepassword;
-    private TextView changecell;
+    private TextView changEmailAddress;
+    private TextView changePassword;
+    private TextView changePhoneNumber;
     private TextView bio;
     private TextView txtName,txtEmail,txtPhone;
     private CircleImageView profile;
@@ -82,6 +73,13 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView( R.layout.activity_profile);
 //        Toast.makeText(getApplicationContext(), "INFO | Under Development", Toast.LENGTH_SHORT).show();
 
@@ -99,52 +97,51 @@ public class ProfileActivity extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
 
         mProgress = new ProgressDialog(this);
-        mAlert = new AlertDialog.Builder(this);
+        mAlert = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
 
         txtName = findViewById(R.id.account_name);
         txtEmail = findViewById(R.id.account_email);
         txtPhone = findViewById(R.id.account_phone);
 
-        changepassword = (TextView) findViewById(R.id.changepassword);
-        changemail = (TextView) findViewById(R.id.changemail);
+        changePassword = (TextView) findViewById(R.id.changepassword);
+        changEmailAddress = (TextView) findViewById(R.id.changemail);
         profile = (CircleImageView) findViewById(R.id.profile_image);
-        changecell = (TextView) findViewById(R.id.changecell);
+        changePhoneNumber = (TextView) findViewById(R.id.changecell);
         bio = (TextView) findViewById(R.id.bio);
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if (account == null) {
             if (isFacebookAuthenticated()){
                 txtName.setText(String.valueOf(Profile.getCurrentProfile().getFirstName())+" "+(Profile.getCurrentProfile().getLastName()));
-                txtEmail.setText("(Logged in with Facebook)");
+                txtEmail.setText("("+getString(R.string.info_logged_in_with_facebook)+")");
                 txtPhone.setVisibility(View.GONE);
-                txtPhone.setTextColor(Color.parseColor("#3b5999"));
-                mAlert.setTitle("Profile Management")
-                        .setMessage("Your profile is currently managed by an external service (Facebook).")
-                        .setPositiveButton("Close Dialog", new DialogInterface.OnClickListener() {
+                mAlert.setTitle(R.string.title_profile_management)
+                        .setMessage(getString(R.string.info_your_profile_is_currently_managed_by_external_service)+" (Facebook).")
+                        .setPositiveButton(R.string.option_close_dialog, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
                             }
                         })
                         .show();
-                changepassword.setEnabled(false);
-                changepassword.setTextColor(Color.parseColor("#cccccc"));
+                changePassword.setEnabled(false);
+                changePassword.setTextColor(getResources().getColor(R.color.colorTextDisabled));
                 final int sdk = android.os.Build.VERSION.SDK_INT;
                 if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
 //                    changepassword.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.input_outline_grey) );
                 } else {
 //                    changepassword.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.input_outline_grey));
                 }
-                changemail.setEnabled(false);
-                changemail.setTextColor(Color.parseColor("#cccccc"));
+                changEmailAddress.setEnabled(false);
+                changEmailAddress.setTextColor(getResources().getColor(R.color.colorTextDisabled));
                 if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
 //                    changemail.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.input_outline_grey) );
                 } else {
 //                    changemail.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.input_outline_grey));
                 }
                 profile.setEnabled(false);
-                changecell.setEnabled(false);
-                changecell.setTextColor(Color.parseColor("#cccccc"));
+                changePhoneNumber.setEnabled(false);
+                changePhoneNumber.setTextColor(getResources().getColor(R.color.colorTextDisabled));
                 if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
 //                    changecell.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.input_outline_grey) );
                 } else {
@@ -180,34 +177,34 @@ public class ProfileActivity extends AppCompatActivity {
         else if (account != null){
             txtName.setText(account.getDisplayName());
             txtEmail.setText(account.getEmail());
-            txtPhone.setText("(Logged in with Google)");
-            mAlert.setTitle("Profile Management")
-                    .setMessage("Your profile is currently managed by an external service (Google).")
-                    .setPositiveButton("Close Dialog", new DialogInterface.OnClickListener() {
+            txtPhone.setText("("+getString(R.string.info_logged_in_with_google)+")");
+            mAlert.setTitle(getString(R.string.title_profile_management))
+                    .setMessage(getString(R.string.info_your_profile_is_currently_managed_by_external_service)+" (Google).")
+                    .setPositiveButton(getString(R.string.option_close_dialog), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 
                         }
                     })
                     .show();
-            changepassword.setEnabled(false);
-            changepassword.setTextColor(Color.parseColor("#cccccc"));
+            changePassword.setEnabled(false);
+            changePassword.setTextColor(getResources().getColor(R.color.colorTextDisabled));
             final int sdk = android.os.Build.VERSION.SDK_INT;
             if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
 //                changepassword.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.input_outline_grey) );
             } else {
 //                changepassword.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.input_outline_grey));
             }
-            changemail.setEnabled(false);
-            changemail.setTextColor(Color.parseColor("#cccccc"));
+            changEmailAddress.setEnabled(false);
+            changEmailAddress.setTextColor(getResources().getColor(R.color.colorTextDisabled));
             if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
 //                changemail.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.input_outline_grey) );
             } else {
 //                changemail.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.input_outline_grey));
             }
             profile.setEnabled(false);
-            changecell.setEnabled(false);
-            changecell.setTextColor(Color.parseColor("#cccccc"));
+            changePhoneNumber.setEnabled(false);
+            changePhoneNumber.setTextColor(getResources().getColor(R.color.colorTextDisabled));
             if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
 //                changecell.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.input_outline_grey) );
             } else {
@@ -226,72 +223,29 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        final Animation myanim = AnimationUtils.loadAnimation(this, R.anim.bounce3);
-        changecell.startAnimation( myanim );
-        changemail.startAnimation( myanim );
-        changepassword.startAnimation( myanim );
-        bio.startAnimation( myanim );
-
     }
-    public void onButtonShowPopupWindowClick(View view) {
-        final Animation myanim = AnimationUtils.loadAnimation(this, R.anim.bounce3);
-        profile = (CircleImageView) findViewById(R.id.profile);
-        profile.startAnimation( myanim );
 
-        // get a reference to the already created main layout
-        LinearLayout mainLayout = (LinearLayout)findViewById(R.id.activity_profile);
-
-        // inflate the layout of the popup window
-        LayoutInflater inflater = (LayoutInflater)
-                getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.profilepopup_activity, null);
-
-        // create the popup window
-        int width = LayoutParams.MATCH_PARENT;
-        int height = LayoutParams.MATCH_PARENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-        popupWindow.setAnimationStyle(R.style.animation);
-
-        // show the popup window
-        popupWindow.showAtLocation(mainLayout, Gravity.CENTER, 0, 0);
-
-        // dismiss the popup window when touched
-        popupView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                popupWindow.dismiss();
-                return true;
-            }
-        });
-    }
     public void openThis(View view) {
-        final Animation myanim = AnimationUtils.loadAnimation(this, R.anim.bounce3);
-        changemail.startAnimation( myanim );
         Intent changeEmailIntent = new Intent(getApplicationContext(),AuthenticationActivity.class);
         changeEmailIntent.putExtra("incomingIntent","changeEmailIntent");
         startActivity(changeEmailIntent);
-
+        overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
     }
 
     public void seeThis(View view) {
-        final Animation myanim = AnimationUtils.loadAnimation(this, R.anim.bounce3);
-        changepassword.startAnimation( myanim );
         Intent changePasswordIntent = new Intent(getApplicationContext(),AuthenticationActivity.class);
         changePasswordIntent.putExtra("incomingIntent","changePasswordIntent");
         startActivity(changePasswordIntent);
+        overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
     }
 
     public void showThis(View view) {
-        final Animation myanim = AnimationUtils.loadAnimation(this, R.anim.bounce3);
-        changecell.startAnimation( myanim );
         Intent changePhoneIntent = new Intent(getApplicationContext(),AuthenticationActivity.class);
         changePhoneIntent.putExtra("incomingIntent","changePhoneIntent");
         startActivity(changePhoneIntent);
+        overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
     }
     public void viewThis(View view) {
-        final Animation myanim = AnimationUtils.loadAnimation(this, R.anim.bounce3);
-        bio.startAnimation( myanim );
         if(isFacebookAuthenticated() || isGoogleAuthenticated()){
             startActivity(new Intent(getApplicationContext(),BioActivity.class));
         }
@@ -299,22 +253,23 @@ public class ProfileActivity extends AppCompatActivity {
             Intent changeBioIntent = new Intent(getApplicationContext(),AuthenticationActivity.class);
             changeBioIntent.putExtra("incomingIntent","changeBioIntent");
             startActivity(changeBioIntent);
+            overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
         }
     }
 
     public void getImageIntent(){
-        final CharSequence[] items = {"Take Photo", "Choose from Gallery"};
-        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
-        builder.setTitle("Update Picture");
+        final CharSequence[] items = {getString(R.string.option_take_photo), getString(R.string.option_choose_from_gallery)};
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this,R.style.AlertDialogStyle);
+        builder.setTitle(R.string.title_update_picture);
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
 
-                if (items[item].equals("Take Photo")) {
+                if (items[item].equals(getString(R.string.option_take_photo))) {
                     PIC_COUNT = 1;
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(intent, CAMERA_REQUEST);
-                } else if (items[item].equals("Choose from Gallery")) {
+                } else if (items[item].equals(getString(R.string.option_choose_from_gallery))) {
                     PIC_COUNT = 1;
                     Intent intent = new Intent(
                             Intent.ACTION_PICK,
@@ -353,7 +308,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            mProgress.setMessage("Saving profile picture...");
+            mProgress.setMessage(getString(R.string.info_saving_profile_picture));
             mProgress.setCanceledOnTouchOutside(false);
             mProgress.show();
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
@@ -381,7 +336,7 @@ public class ProfileActivity extends AppCompatActivity {
                                                     FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("profile_picture")
                                                             .setValue(String.valueOf(downloadUrl));
                                                     mProgress.dismiss();
-                                                    Toast.makeText(ProfileActivity.this, "Profile picture updated", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(ProfileActivity.this, R.string.info_profile_picture_updated, Toast.LENGTH_SHORT).show();
                                                 }
                                             });
                                         }
@@ -392,7 +347,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
-                Snackbar.make(findViewById(android.R.id.content),String.valueOf(error),Snackbar.LENGTH_LONG).show();
+                Snackbar.make(findViewById(android.R.id.content), String.valueOf(error),Snackbar.LENGTH_LONG).show();
             }
         }
     }

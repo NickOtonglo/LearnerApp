@@ -7,9 +7,8 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer"
     android:orientation="vertical"
-    android:background="@drawable/background_gradient_main"
-    tools:context=".DownloadDiyActivity">
-
+    android:background="?attr/attrBackgroundColor"
+    tools:context=".FilteredCategoryActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -19,22 +18,21 @@
             android:id="@+id/txt_empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Loading..."
-            android:textColor="@color/white"
+            android:text="@string/link_loading"
             android:textStyle="bold"
-            android:textSize="15sp"
+            android:textSize="@dimen/text_primary_size"
+            android:textColor="?attr/attrTextSecondaryColor"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:visibility="visible">
-
-        </TextView>
+            android:visibility="visible"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/layout_recycler_act_diy"
+            android:id="@+id/layout_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout_editor_absoluteY="8dp"
-            tools:layout_editor_absoluteX="8dp">
+            app:layout_anchor="@+id/txt_empty"
+            app:layout_anchorGravity="top|center"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 

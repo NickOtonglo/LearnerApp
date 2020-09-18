@@ -76,6 +76,12 @@
                 <data android:scheme="@string/facebook_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider349521735663309"
+            android:exported="true" />
+
         <activity
             android:name="pesh.mori.learnerapp.SelectLoginActivity"
             android:screenOrientation="portrait" >

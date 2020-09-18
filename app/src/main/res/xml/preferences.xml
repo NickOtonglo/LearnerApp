@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <Preference
         android:key="@string/pref_profile_key"
         android:title="@string/pref_profile_title"
-        android:summary="Manage your account settings here"/>
+        android:summary="@string/info_manage_your_settings_here"/>
 
     <SwitchPreferenceCompat
-        android:key="@string/pref_theme_key"
+        android:key="@string/pref_night_theme_key"
+        android:title="@string/pref_night_theme_title"
+        android:summary="@string/info_changes_the_default_theme"
+        android:defaultValue="false"/>
+
+    <SwitchPreferenceCompat
+        android:key="@string/pref_sign_theme_key"
         android:title="@string/pref_theme_title"
-        android:summary="This feature is coming soon"
-        android:enabled="false"/>
+        android:summary="@string/info_changes_the_default_theme"
+        android:defaultValue="false"/>
 </PreferenceScreen>

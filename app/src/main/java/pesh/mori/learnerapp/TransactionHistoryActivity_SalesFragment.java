@@ -27,11 +27,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class TransactionHistoryActivity_SalesFragment extends Fragment {
     private RecyclerView mRecycler;
-    private DatabaseReference mDebit,mFiles,mDIY;
+    private DatabaseReference mDebit, mPosts;
     private FirebaseAuth mAuth;
     private TextView txtEmpty;
     private AlertDialog.Builder mAlert;
-    private String sourceNode;
 
     private ProgressDialog mProgress;
 
@@ -45,8 +44,8 @@ public class TransactionHistoryActivity_SalesFragment extends Fragment {
 
 //        mAuthor = ((ViewAuthorActivity)getActivity()).getAuthorId();
 
-        mProgress = new ProgressDialog(getContext());
-        mAlert = new AlertDialog.Builder(getContext());
+        mProgress = new ProgressDialog(getActivity());
+        mAlert = new AlertDialog.Builder(requireContext(),R.style.AlertDialogStyle);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -54,16 +53,14 @@ public class TransactionHistoryActivity_SalesFragment extends Fragment {
 
         mDebit = FirebaseDatabase.getInstance().getReference().child("TransactionRecords").child("Credit");
         mDebit.keepSynced(true);
-        mFiles = FirebaseDatabase.getInstance().getReference().child("Files");
-        mFiles.keepSynced(true);
-        mDIY = FirebaseDatabase.getInstance().getReference().child("DIY");
-        mDIY.keepSynced(true);
+        mPosts = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_type_1));
+        mPosts.keepSynced(true);
 
         mDebit.orderByChild("User").equalTo(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
-                    txtEmpty.setText("Your transaction history is empty!");
+                    txtEmpty.setText(getString(R.string.info_your_transaction_history_is_empty));
                 }
             }
 
@@ -105,9 +102,10 @@ public class TransactionHistoryActivity_SalesFragment extends Fragment {
                             viewHolder.setTime(String.valueOf(dataSnapshot.child("Time").getValue()));
                             viewHolder.setAmount("KES "+dataSnapshot.child("TransactionCost").getValue());
                             if (dataSnapshot.child("ItemType").getValue().equals("Token")){
-                                viewHolder.setItem("TOKENS RECEIVED");
+                                viewHolder.setItem(getString(R.string.title_tokens_received));
                             } else {
-                                FirebaseDatabase.getInstance().getReference().child("AllPosts").child(String.valueOf(dataSnapshot.child("Item").getValue())).addValueEventListener(new ValueEventListener() {
+                                FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_all))
+                                        .child(String.valueOf(dataSnapshot.child("Item").getValue())).addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         viewHolder.setItem(String.valueOf(dataSnapshot.child("Title").getValue()));

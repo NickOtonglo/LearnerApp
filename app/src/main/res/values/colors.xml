@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#b71c1c</color>
-    <color name="colorPrimaryDark">#811d33</color>
-    <color name="colorAccent">#f4511e</color>
-    <!--<color name="colorAccent">#FF4081</color>-->
+    <color name="colorPrimary">#B71C1C</color>
+    <color name="colorPrimaryDark">#982525</color>
+<!--    <color name="colorPrimaryDark">@color/colorDanger</color>-->
+<!--    <color name="colorAccent">#4CAF50</color>-->
+    <color name="colorAccent">#E57373</color>
+    <color name="colorTextPrimary">@android:color/primary_text_light</color>
+    <color name="colorTextSecondary">@android:color/secondary_text_light</color>
+    <color name="colorBackground">@android:color/background_light</color>
+<!--    <color name="colorBackground">#FAFAFA</color>-->
+    <color name="colorButton">#971111</color>
     <color name="colorOutline">#C2C2C2</color>
+    <color name="colorNewIndicatorLight">@color/colorDanger</color>
+
+    <color name="colorDarkPrimary">#555C70</color>
+    <color name="colorDarkPrimaryDark">#131419</color>
+    <color name="colorDarkTextPrimary">@android:color/primary_text_dark</color>
+    <color name="colorDarkTextSecondary">@android:color/secondary_text_dark</color>
+    <color name="colorDarkBackground">#2d313d</color>
+    <color name="colorDarkButton">#C6D1F1</color>
+    <color name="colorDarkOutline">#D7EDFF</color>
+
+<!--    <color name="colorSignaturePrimary">#557056</color>-->
+<!--    <color name="colorSignaturePrimaryDark">#131913</color>-->
+    <color name="colorSignaturePrimary">#B71C1C</color>
+    <color name="colorSignaturePrimaryDark">#831B1B</color>
+    <color name="colorSignatureTextPrimary">@android:color/primary_text_dark</color>
+    <color name="colorSignatureTextSecondary">@android:color/secondary_text_dark</color>
+    <color name="colorSignatureBackground">#B12E2E</color>
+<!--    <color name="colorSignatureBackground">#343D2D</color>-->
+    <color name="colorSignatureButton">#FFCDD2</color>
+    <color name="colorSignatureOutline">#DAFFD7</color>
+
+    <color name="colorNewIndicatorDark">@android:color/primary_text_dark</color>
+
     <color name="black">#000000</color>
     <color name="grey">#848b84</color>
     <color name="white">#ffffff</color>
@@ -20,4 +49,18 @@
     <color name="black_overlay">#66000000</color>
     <color name="colorContent">#1F315B</color>
     <color name="colorLinkBlue">#1877F2</color>
+    <color name="colorButtonText">@color/white</color>
+    <color name="colorImageBorder">@color/white</color>
+    <color name="colorToolBarMainText">@android:color/white</color>
+    <color name="colorToolbarSubText">#E7E7E7</color>
+    <color name="colorToolbarTabsText">#E7E7E7</color>
+    <color name="colorToolbarTabIndicator">@android:color/white</color>
+    <color name="colorTextDisabled">#aaaaaa</color>
+    <color name="colorSplash">@color/colorPrimary</color>
+<!--    <color name="colorSplash">#1E1E1E</color>-->
+
+    <color name="colorInfo">#2196F3</color>
+    <color name="colorSuccess">#4CAF50</color>
+    <color name="colorWarning">#FF9800</color>
+    <color name="colorDanger">#F44336</color>
 </resources>

@@ -3,7 +3,6 @@ package pesh.mori.learnerapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +59,13 @@ public class FacebookAuthHandlerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.Theme_UserDialogDark);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.Theme_UserDialogSignature);
+        } else {
+            setTheme(R.style.Theme_UserDialog);
+        }
         setContentView(R.layout.activity_facebook_auth_handler);
 
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -81,13 +87,13 @@ public class FacebookAuthHandlerActivity extends AppCompatActivity {
         LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d(TAG, "facebook:onSuccess:" + loginResult);
+//                Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken());
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
-                        Log.e(TAG,object.toString());
-                        Log.e(TAG,response.toString());
+//                        Log.e(TAG,object.toString());
+//                        Log.e(TAG,response.toString());
                         try {
                             userId = object.getString("id");
                             facebookProfile = new URL("https://graph.facebook.com/" + userId);
@@ -118,7 +124,7 @@ public class FacebookAuthHandlerActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-                Log.d(TAG, "facebook:onCancel");
+//                Log.d(TAG, "facebook:onCancel");
                 returnIntent.putExtra("LOG_RESULT","FAIL");
                 setResult(Activity.RESULT_CANCELED,returnIntent);
                 onBackPressed();
@@ -126,7 +132,7 @@ public class FacebookAuthHandlerActivity extends AppCompatActivity {
 
             @Override
             public void onError(FacebookException error) {
-                Log.d(TAG, "facebook:onError", error);
+//                Log.d(TAG, "facebook:onError", error);
                 returnIntent.putExtra("LOG_RESULT","FAIL");
                 Toast.makeText(getApplicationContext(), "Authentication failed! "+error.getMessage(), Toast.LENGTH_LONG).show();
                 setResult(Activity.RESULT_CANCELED,returnIntent);
@@ -136,7 +142,7 @@ public class FacebookAuthHandlerActivity extends AppCompatActivity {
     }
 
     private void handleFacebookAccessToken(AccessToken token) {
-        Log.d(TAG, "handleFacebookAccessToken:" + token);
+//        Log.d(TAG, "handleFacebookAccessToken:" + token);
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -144,11 +150,11 @@ public class FacebookAuthHandlerActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
+//                            Log.d(TAG, "signInWithCredential:success");
                             updateUI("facebook");
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+//                            Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "Authentication failed! "+task.getException().getMessage(),
                                     Toast.LENGTH_LONG).show();
                             returnIntent.putExtra("LOG_RESULT","FAIL");
@@ -160,18 +166,18 @@ public class FacebookAuthHandlerActivity extends AppCompatActivity {
     }
 
     private void updateUI(String vendor) {
-        Log.d("updateUI","vendor: "+vendor);
+//        Log.d("updateUI","vendor: "+vendor);
         checkAccountExistence(vendor);
     }
 
     private void checkAccountExistence(final String vendor){
         if (mAuth!=null){
-            Log.d("checkAccountExistence","mAuth not null");
+//            Log.d("checkAccountExistence","mAuth not null");
             FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()){
-                        Log.d("checkAccountExistence","account already exists");
+//                        Log.d("checkAccountExistence","account already exists");
                         returnIntent.putExtra("LOG_RESULT","SUCCESS");
                         setResult(Activity.RESULT_OK,returnIntent);
                         onBackPressed();
@@ -186,7 +192,7 @@ public class FacebookAuthHandlerActivity extends AppCompatActivity {
                 }
             });
         } else {
-            Log.d("checkAccountExistence","mAuth null");
+//            Log.d("checkAccountExistence","mAuth null");
             Toast.makeText(this, getString(R.string.error_occurred_try_again), Toast.LENGTH_SHORT).show();
             facebookLogin();
         }
@@ -211,7 +217,7 @@ public class FacebookAuthHandlerActivity extends AppCompatActivity {
                     mNewAccount.child("account_manager").setValue("facebook").addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull final Task<Void> task) {
-                            final DatabaseReference mNewBio = FirebaseDatabase.getInstance().getReference().child("Bio").child(mAuth.getCurrentUser().getUid());
+                            final DatabaseReference mNewBio = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_users_bio)).child(mAuth.getCurrentUser().getUid());
                             mNewBio.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -231,7 +237,7 @@ public class FacebookAuthHandlerActivity extends AppCompatActivity {
                                             mNewBio.child("skills_sector").setValue("");
                                             mNewBio.child("twitter").setValue("");
                                         }
-                                        returnIntent.putExtra("LOG_RESULT","SUCCESS");
+//                                        returnIntent.putExtra("LOG_RESULT","SUCCESS");
                                         setResult(Activity.RESULT_OK,returnIntent);
 //                                        Toast.makeText(FacebookAuthHandlerActivity.this, "Signed in as "+firstName+" "+lastName, Toast.LENGTH_SHORT).show();
                                         onBackPressed();

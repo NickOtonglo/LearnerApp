@@ -2,10 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_source"
-        android:icon="@drawable/ic_textsms_black_24dp"
-        android:title="Go To Source Post"/>
+        android:title="@string/menu_go_to_source"/>
     <item
         android:id="@+id/menu_delete_post"
-        android:icon="@mipmap/ic_delete_black"
-        android:title="Delete" />
+        android:title="@string/menu_delete" />
 </menu>

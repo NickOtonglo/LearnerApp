@@ -6,12 +6,13 @@ package pesh.mori.learnerapp;
 
 import android.app.Activity;
 import android.content.Context;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 /**
  * Created by MORIAMA on 04/10/2017.

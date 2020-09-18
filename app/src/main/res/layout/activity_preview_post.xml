@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".PreviewPostActivity"
     android:orientation="vertical"
-    android:animateLayoutChanges="true">
+    android:animateLayoutChanges="true"
+    android:background="?attr/attrBackgroundColor">
 
     <include
         layout="@layout/app_bar_layout_main"/>
@@ -32,9 +33,9 @@
                 <VideoView
                     android:id="@+id/audio_view"
                     android:layout_width="match_parent"
-                    android:layout_height="120sp"
+                    android:layout_height="120dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="15sp"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:textAllCaps="false"
                     android:textColor="@color/white" />
 
@@ -46,7 +47,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_marginBottom="80dp"
-                    android:src="@drawable/baseline_play_arrow_white_24" />
+                    app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
 
                 <ImageView
                     android:id="@+id/btn_audio_icon"
@@ -56,7 +57,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_marginBottom="80dp"
-                    android:src="@drawable/baseline_audiotrack_white_48"
+                    app:srcCompat="@drawable/ic_baseline_audiotrack_24"
+                    android:tint="@color/white"
                     android:visibility="gone"/>
 
                 <ProgressBar
@@ -79,8 +81,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone"
-            android:background="@color/black">
+            android:background="@color/black"
+            android:visibility="gone">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -89,10 +91,10 @@
                 <VideoView
                     android:id="@+id/video_view"
                     android:layout_width="wrap_content"
-                    android:layout_height="200sp"
+                    android:layout_height="200dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15sp"
+                    android:layout_marginTop="15dp"
                     android:adjustViewBounds="true"
                     android:background="#00ffffff"
                     android:scaleType="centerCrop" />
@@ -105,7 +107,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_marginBottom="80dp"
-                    android:src="@drawable/baseline_play_arrow_white_24" />
+                    app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
 
                 <ProgressBar
                     android:id="@+id/progress_bar_video"
@@ -131,7 +133,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="8sp"
+            android:layout_margin="8dp"
             android:orientation="vertical">
 
             <!--Image layout-->
@@ -148,14 +150,14 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15sp"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:adjustViewBounds="true"
                     android:background="#00ffffff"
                     android:scaleType="centerCrop" />
 
             </LinearLayout>
 
-            <!--Doc Layout-->
+            <!--Ticket Layout-->
             <LinearLayout
                 android:id="@+id/layout_4"
                 android:layout_width="match_parent"
@@ -167,14 +169,14 @@
                     android:id="@+id/btn_open_pdf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10sp"
-                    android:elevation="2sp"
+                    android:paddingLeft="@dimen/button_small_padding"
+                    android:paddingRight="@dimen/button_small_padding"
+                    android:elevation="2dp"
                     android:layout_gravity="center_horizontal"
-                    android:text="Open document"
+                    android:text="@string/option_open_document"
+                    android:background="@drawable/button_wire"
                     android:textAllCaps="false"
-                    android:backgroundTint="@color/colorPrimaryDark"
-                    app:backgroundTint="@color/colorPrimaryDark"
-                    android:textColor="@color/white"/>
+                    android:textColor="?attr/attrTextSecondaryColor"/>
 
             </LinearLayout>
 
@@ -182,226 +184,246 @@
                 android:id="@+id/layout_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8sp"
+                android:layout_margin="8dp"
                 android:orientation="vertical"
                 android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8sp"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Posted at: "
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:text="@string/hint_posted_at"
+                        android:textColor="?attr/attrTextSecondaryColor"/>
 
                     <TextView
                         android:id="@+id/txt_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Loading..."
-                        android:textColor="@color/black" />
+                        android:text="@string/link_loading"
+                        android:textColor="?attr/attrTextColor" />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15sp"
-                    android:text="Title"
-                    android:textColor="@color/colorPrimaryDark"/>
-
-                <EditText
-                    android:id="@+id/txt_title"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="3sp"
-                    android:padding="15sp"
-                    android:textColor="@color/black"
-                    android:hint="Loading..."
-                    android:inputType="textCapCharacters"/>
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/hint_title_of_your_post"
+                    android:textColor="?attr/attrTextSecondaryColor"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/text_input_padding"
+                        android:layout_marginTop="@dimen/text_input_margin"
+                        android:background="@drawable/input_outline"
+                        android:inputType="textCapCharacters"
+                        android:ems="10"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:textColor="?attr/attrTextColor"
+                        android:textSize="@dimen/text_input_text_size"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15sp"
-                    android:text="Price (Tokens)"
-                    android:textColor="@color/colorGreen" />
-
-                <EditText
-                    android:id="@+id/txt_price"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/txt_title_post"
-                    android:layout_marginTop="3sp"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:padding="15sp"
-                    android:textColor="@color/colorGreen"
-                    android:hint="0.00"/>
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/hint_price_tokens"
+                    android:textColor="?attr/attrTextSecondaryColor" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/text_input_padding"
+                        android:layout_marginTop="@dimen/text_input_margin"
+                        android:background="@drawable/input_outline"
+                        android:inputType="numberDecimal"
+                        android:ems="10"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:hint="@string/default_token_amount"
+                        android:textColor="?attr/attrTextColor"
+                        android:textSize="@dimen/text_input_text_size"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15sp"
-                    android:text="Bidding"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/hint_bidding"
+                    android:textColor="?attr/attrTextSecondaryColor"/>
 
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="3sp"
+                    android:layout_marginTop="3dp"
                     android:gravity="center">
                     <RadioButton
                         android:id="@+id/radio_no"
-                        android:text="No"
+                        android:text="@string/radio_no"
+                        android:textColor="?attr/attrTextColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <RadioButton
                         android:id="@+id/radio_yes"
-                        android:text="Yes"
+                        android:text="@string/radio_yes"
+                        android:textColor="?attr/attrTextColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50sp"/>
+                        android:layout_marginStart="50dp"
+                        android:layout_marginLeft="50dp" />
                 </RadioGroup>
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15sp"
-                    android:text="Description"
-                    android:textColor="@color/colorPrimaryDark"/>
-
-                <EditText
-                    android:id="@+id/txt_description"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/txt_title_post"
-                    android:layout_marginTop="3sp"
-                    android:ems="10"
-                    android:inputType="textMultiLine"
-                    android:padding="15sp"
-                    android:hint="Loading..."
-                    android:textColor="@color/black"/>
+                    android:layout_marginTop="15dp"
+                    android:text="@string/hint_description_of_your_post"
+                    android:textColor="?attr/attrTextSecondaryColor"/>
 
-                <!-- File -->
-                <LinearLayout
-                    android:id="@+id/layout_6"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15sp"
-                        android:text="Institution"
-                        android:textColor="@color/colorPrimaryDark"/>
-
-                    <Spinner
-                        android:id="@+id/spinner_institution"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="15sp"
-                        android:layout_marginTop="3sp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15sp"
-                        android:text="Faculty"
-                        android:textColor="@color/colorPrimaryDark"/>
-
-                    <EditText
-                        android:id="@+id/txt_faculty"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:padding="@dimen/text_input_padding"
+                        android:layout_marginTop="@dimen/text_input_margin"
+                        android:background="@drawable/input_outline"
+                        android:inputType="textMultiLine"
+                        android:ems="10"
+                        android:scrollbars = "vertical"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
-                        android:layout_below="@+id/txt_title_post"
-                        android:layout_marginTop="3sp"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:padding="15sp"
-                        android:hint="Loading..."
-                        android:textColor="@color/black"/>
+                        android:textColor="?attr/attrTextColor"
+                        android:textSize="@dimen/text_input_text_size"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15sp"
-                        android:text="Department"
-                        android:textColor="@color/colorPrimaryDark"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/txt_department"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="3sp"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:padding="15sp"
-                        android:hint="Loading..."
-                        android:textColor="@color/black"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15sp"
-                        android:text="Course"
-                        android:textColor="@color/colorPrimaryDark"/>
-
-                    <EditText
-                        android:id="@+id/txt_course"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/txt_title_post"
-                        android:layout_marginBottom="10sp"
-                        android:layout_marginTop="3sp"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:padding="15sp"
-                        android:hint="Loading..."
-                        android:textColor="@color/black"/>
-
-                </LinearLayout>
-
-                <!-- DIY -->
                 <LinearLayout
                     android:id="@+id/layout_7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="30sp"
+                    android:layout_marginBottom="30dp"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <TextView
-                        android:text="Tag"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15sp"
-                        android:textColor="@color/colorPrimaryDark"/>
-
-                    <Spinner
-                        android:id="@+id/spinner_tag"
+                        android:text="@string/hint_non_coursework"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="15sp"
-                        android:layout_marginTop="3sp"/>
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:textColor="?attr/attrTextSecondaryColor"/>
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinner_file_types"
+                        android:layout_width="match_parent"
+                        android:padding="@dimen/spinner_padding"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dropdown"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:text="@string/hint_institution"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:textColor="?attr/attrTextSecondaryColor"/>
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinner_category_8_list"
+                        android:layout_width="match_parent"
+                        android:padding="@dimen/spinner_padding"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dropdown"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/hint_course"
+                        android:textColor="?attr/attrTextSecondaryColor"/>
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_course"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/text_input_padding"
+                        android:layout_marginTop="@dimen/text_input_margin"
+                        android:background="@drawable/input_outline"
+                        android:inputType="textCapCharacters"
+                        android:ems="10"
+                        android:hint="@string/hint_course"
+                        android:textColor="?attr/attrTextColor"
+                        android:textSize="@dimen/text_input_text_size"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/hint_department"
+                        android:textColor="?attr/attrTextSecondaryColor"/>
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_department"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/text_input_padding"
+                        android:layout_marginTop="@dimen/text_input_margin"
+                        android:background="@drawable/input_outline"
+                        android:inputType="textCapWords"
+                        android:ems="10"
+                        android:hint="@string/hint_department"
+                        android:textColor="?attr/attrTextColor"
+                        android:textSize="@dimen/text_input_text_size"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/hint_unit"
+                        android:textColor="?attr/attrTextSecondaryColor"/>
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_unit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/text_input_padding"
+                        android:layout_marginTop="@dimen/text_input_margin"
+                        android:background="@drawable/input_outline"
+                        android:inputType="textCapWords"
+                        android:ems="10"
+                        android:hint="@string/hint_unit"
+                        android:textColor="?attr/attrTextColor"
+                        android:textSize="@dimen/text_input_text_size"/>
 
                 </LinearLayout>
 

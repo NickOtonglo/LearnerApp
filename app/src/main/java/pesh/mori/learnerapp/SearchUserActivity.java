@@ -6,15 +6,8 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +15,11 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,6 +40,13 @@ public class SearchUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_search_user);
 
         HomeActivity homeActivity = new HomeActivity();
@@ -51,11 +56,11 @@ public class SearchUserActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_close);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        mAlert = new AlertDialog.Builder(this);
+        mAlert = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -115,7 +120,7 @@ public class SearchUserActivity extends AppCompatActivity {
 
     public void listUsers(Query databaseReference){
         try {
-            FirebaseRecyclerAdapter<SearchUser,SearchUserActivity.UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<SearchUser,SearchUserActivity.UsersViewHolder>(
+            FirebaseRecyclerAdapter<SearchUser, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<SearchUser, UsersViewHolder>(
                     SearchUser.class,
                     R.layout.card_user_list,
                     SearchUserActivity.UsersViewHolder.class,
@@ -136,13 +141,13 @@ public class SearchUserActivity extends AppCompatActivity {
                                     } else {
                                         viewHolder.setAvatar();
                                     }
-                                    FirebaseDatabase.getInstance().getReference().child("Bio").child(userId).addValueEventListener(new ValueEventListener() {
+                                    FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_users_bio)).child(userId).addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             if (dataSnapshot.exists()){
                                                 viewHolder.setBio(String.valueOf(dataSnapshot.child("about").getValue()));
                                             } else {
-                                                viewHolder.setBio("Bio information not available.");
+                                                viewHolder.setBio(getString(R.string.info_bio_info_not_available));
                                             }
                                         }
 
@@ -156,7 +161,7 @@ public class SearchUserActivity extends AppCompatActivity {
                                         public void onClick(View view) {
                                             if (dataSnapshot.child(userId).child("email").exists()){
                                                 if (dataSnapshot.child(userId).child("email").getValue().equals(mAuth.getCurrentUser().getEmail())){
-                                                    Toast.makeText(SearchUserActivity.this, "You cannot transfer tokens to yourself!", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(SearchUserActivity.this, R.string.info_you_cannot_transfer_tokens_to_yourself, Toast.LENGTH_SHORT).show();
                                                 } else {
                                                     Intent returnIntent = getIntent();
                                                     returnIntent.putExtra("userId",userId);
@@ -199,12 +204,12 @@ public class SearchUserActivity extends AppCompatActivity {
             };
             mRecycler.setAdapter(firebaseRecyclerAdapter);
         } catch (NullPointerException e){
-            Log.d("LOG_EmptyUserNode",e.getMessage());
+//            Log.d("LOG_EmptyUserNode",e.getMessage());
         }
     }
 
     public void contactSupport(){
-        DatabaseReference mLinks = FirebaseDatabase.getInstance().getReference().child("Links");
+        DatabaseReference mLinks = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_type_1));
         mLinks.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -222,7 +227,7 @@ public class SearchUserActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.static_animation,R.anim.slide_in_from_top);
+        overridePendingTransition(R.transition.static_animation,R.transition.slide_in_from_top);
     }
 
     @Override
@@ -262,7 +267,7 @@ public class SearchUserActivity extends AppCompatActivity {
         }
         public void setAvatar(){
             ImageView imgAvatar = (ImageView)mView.findViewById(R.id.img_avatar);
-            imgAvatar.setImageResource(R.mipmap.ic_user);
+            imgAvatar.setImageResource(R.drawable.ic_baseline_person_24_theme);
         }
     }
 }

@@ -6,16 +6,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Handler;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -43,6 +43,7 @@ public class PhoneVerificationActivity extends AppCompatActivity {
     private String phoneNumber = "";
     private int code;
     private String senderNum="";
+    private String verificationLink = "https://moripesh.com/learnerappapi/phone_verification.php/";
 
     private Handler handler;
     private final Runnable runnable = new Runnable() {
@@ -50,7 +51,7 @@ public class PhoneVerificationActivity extends AppCompatActivity {
         public void run() {
             if (TemporaryPermissions.isUserVerified(PhoneVerificationActivity.this)) {
                 finish();
-                Toast.makeText(PhoneVerificationActivity.this, "Your phone number is verified", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PhoneVerificationActivity.this, R.string.info_your_phone_number_is_verified, Toast.LENGTH_SHORT).show();
 
                 // stop handler from updating
                 handler.removeCallbacks(runnable);
@@ -92,6 +93,13 @@ public class PhoneVerificationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_phone_verification);
 
         mProgressBar = findViewById(R.id.progress_bar);
@@ -146,35 +154,48 @@ public class PhoneVerificationActivity extends AppCompatActivity {
                 Log.d("LOG_verifyPhoneNumber","failure");
             }
         });
-        TemporaryPermissions.holdVerificationCode(PhoneVerificationActivity.this,String.valueOf(code));
-        final String url = "https://moripesh.com/learnerappapi/phone_verification.php/?pid="+phoneNumber+"&code="+code;
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        TemporaryPermissions.holdVerificationCode(PhoneVerificationActivity.this, String.valueOf(code));
+        FirebaseDatabase.getInstance().getReference().child("Links").child("PhoneVerificationScript").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onResponse(String response) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists() && !dataSnapshot.getValue().equals("")){
+                    verificationLink = dataSnapshot.getValue().toString();
+                }
+                final String url = verificationLink+"?pid="+phoneNumber+"&code="+code;
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
 //                                progressDialog.dismiss();
-                Log.d("Volley","onResponse: "+response);
-                Log.d("HTTP_Request","URL: "+url);
+                        Log.d("Volley","onResponse: "+response);
+                        Log.d("HTTP_Request","URL: "+url);
 
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        finish();
+                        Toast.makeText(PhoneVerificationActivity.this, getString(R.string.error_network_error), Toast.LENGTH_SHORT).show();
+                        Log.d("VolleyError",""+error.getMessage());
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<>();
+
+                        params.put("phone", phoneNumber);
+
+                        return params;
+                    }
+                };
+
+                Volley.newRequestQueue(PhoneVerificationActivity.this).add(stringRequest);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
-                finish();
-                Toast.makeText(PhoneVerificationActivity.this, "Network error!", Toast.LENGTH_SHORT).show();
-                Log.d("VolleyError",""+error.getMessage());
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                params.put("phone", phoneNumber);
-
-                return params;
-            }
-        };
-
-        Volley.newRequestQueue(PhoneVerificationActivity.this).add(stringRequest);
+        });
     }
 
 //    private void verifyPhoneNumber(final String phoneNumber) {
@@ -228,7 +249,7 @@ public class PhoneVerificationActivity extends AppCompatActivity {
 //    }
 
     private void showSettingsDialog() {
-        AlertDialog.Builder mAlert = new AlertDialog.Builder(PhoneVerificationActivity.this);
+        AlertDialog.Builder mAlert = new AlertDialog.Builder(PhoneVerificationActivity.this,R.style.AlertDialogStyle);
         mAlert.setTitle(R.string.title_alert_permission_denied);
         mAlert.setMessage(R.string.info_alert_permission_denied);
         mAlert.setPositiveButton(R.string.option_alert_go_back, new DialogInterface.OnClickListener() {
@@ -242,7 +263,7 @@ public class PhoneVerificationActivity extends AppCompatActivity {
     }
 
 //    private void showSettingsDialog() {
-//        AlertDialog.Builder mAlert = new AlertDialog.Builder(PhoneVerificationActivity.this);
+//        AlertDialog.Builder mAlert = new AlertDialog.Builder(PhoneVerificationActivity.this,R.style.AlertDialogStyle);
 //        mAlert.setTitle(R.string.title_alert_permissions_needed);
 //        mAlert.setMessage(R.string.info_alert_permissions_needed);
 //        mAlert.setPositiveButton(R.string.option_alert_open_settings, new DialogInterface.OnClickListener() {

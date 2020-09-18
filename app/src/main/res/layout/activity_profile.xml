@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:ignore="HardcodedText"
     android:id="@+id/activity_profile"
-    tools:context=".ProfileActivity">
+    tools:context=".ProfileActivity"
+    android:background="?attr/attrBackgroundColor">
 
     <include
         layout="@layout/app_bar_layout_main"/>
@@ -23,7 +24,8 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorPrimary">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -38,24 +40,18 @@
                             android:id="@+id/profile_image"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="10dp"
-                            android:onClick="onButtonShowPopupWindowClick"
-                            android:src="@mipmap/ic_user"
-                            app:civ_border_color="@color/grey" />
+                            android:src="@drawable/ic_baseline_person_24"
+                            app:civ_border_color="@color/grey"
+                            android:layout_marginStart="10dp" />
 
                         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true"
                             android:layout_marginLeft="80dp"
                             android:layout_marginTop="80dp"
-                            android:src="@drawable/ic_action_user"
+                            android:src="@drawable/ic_outline_camera_24"
                             app:civ_border_color="@color/white"
                             app:civ_fill_color="@color/white" />
                     </FrameLayout>
@@ -73,8 +69,8 @@
                             android:layout_margin="5dp"
                             android:layout_marginRight="10dp"
                             android:padding="5dp"
-                            android:text="Name..."
-                            android:textColor="@color/black"
+                            android:text="@string/hint_required_name"
+                            android:textColor="@color/white"
                             android:textSize="15dp"
                             android:textStyle="bold" />
 
@@ -85,9 +81,9 @@
                             android:layout_margin="5dp"
                             android:layout_marginRight="10dp"
                             android:padding="5dp"
-                            android:text="Phone..."
+                            android:text="@string/hint_required_phone"
+                            android:textColor="@color/white"
                             android:textSize="13dp" />
-
 
                         <TextView
                             android:id="@+id/account_email"
@@ -96,7 +92,8 @@
                             android:layout_margin="5dp"
                             android:layout_marginRight="10dp"
                             android:padding="5dp"
-                            android:text="Email..."
+                            android:text="@string/hint_required_email"
+                            android:textColor="@color/white"
                             android:textSize="13dp" />
 
                     </LinearLayout>
@@ -115,28 +112,30 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="1sp"
-                    android:padding="4sp">
+                    android:layout_marginTop="1dp"
+                    android:backgroundTint="?attr/attrBackgroundColor"
+                    android:padding="4dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:orientation="horizontal">
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30sp"
                             android:layout_height="30sp"
-                            android:src="@drawable/ic_action_email"/>
+                            app:srcCompat="@drawable/ic_baseline_email_24"/>
                         <TextView
                             android:id="@+id/changemail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center|left"
+                            android:layout_gravity="center|start"
                             android:paddingLeft="25sp"
-                            android:gravity="center|left"
+                            android:gravity="center|start"
                             android:onClick="openThis"
-                            android:text="Change email address"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"/>
+                            android:text="@string/link_change_email_address"
+                            android:textColor="?attr/attrTextColor"
+                            android:textSize="16sp"
+                            android:paddingStart="25sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -144,27 +143,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1sp"
-                    android:padding="4sp">
+                    android:backgroundTint="?attr/attrBackgroundColor"
+                    android:padding="4dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:orientation="horizontal">
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30sp"
                             android:layout_height="30sp"
-                            android:src="@drawable/ic_action_locks"/>
+                            app:srcCompat="@drawable/ic_baseline_lock_24"/>
                         <TextView
                             android:id="@+id/changepassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center|left"
+                            android:layout_gravity="center|start"
                             android:paddingLeft="25sp"
-                            android:gravity="center|left"
-                            android:onClick="seeThis"
-                            android:text="Change password"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:gravity="center|start"
+                            android:onClick="performFilter"
+                            android:text="@string/link_change_password"
+                            android:textColor="?attr/attrTextColor"
+                            android:textSize="16sp"
+                            android:paddingStart="25sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -172,27 +173,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1sp"
-                    android:padding="4sp">
+                    android:backgroundTint="?attr/attrBackgroundColor"
+                    android:padding="4dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:orientation="horizontal">
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30sp"
                             android:layout_height="30sp"
-                            android:src="@drawable/ic_action_cell"/>
+                            app:srcCompat="@drawable/ic_baseline_settings_phone_24"/>
                         <TextView
                             android:id="@+id/changecell"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center|left"
+                            android:layout_gravity="center|start"
                             android:paddingLeft="25sp"
-                            android:gravity="center|left"
+                            android:gravity="center|start"
                             android:onClick="showThis"
-                            android:text="Update phone number"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:text="@string/link_update_phone_number"
+                            android:textColor="?attr/attrTextColor"
+                            android:textSize="16sp"
+                            android:paddingStart="25sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -200,28 +203,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1sp"
-                    android:padding="4sp"
-                    android:elevation="2sp">
+                    android:padding="4dp"
+                    android:backgroundTint="?attr/attrBackgroundColor">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:orientation="horizontal">
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30sp"
                             android:layout_height="30sp"
-                            android:src="@drawable/ic_action_face"/>
+                            app:srcCompat="@drawable/ic_baseline_face_24"/>
                         <TextView
                             android:id="@+id/bio"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center|left"
+                            android:layout_gravity="center|start"
                             android:paddingLeft="25sp"
-                            android:gravity="center|left"
+                            android:gravity="center|start"
                             android:onClick="viewThis"
-                            android:text="Update Bio"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"/>
+                            android:text="@string/link_update_bio"
+                            android:textColor="?attr/attrTextColor"
+                            android:textSize="16sp"
+                            android:paddingStart="25sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <View

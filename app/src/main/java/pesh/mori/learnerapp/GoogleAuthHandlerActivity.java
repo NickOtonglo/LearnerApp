@@ -3,7 +3,6 @@ package pesh.mori.learnerapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +47,13 @@ public class GoogleAuthHandlerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.Theme_UserDialogDark);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.Theme_UserDialogSignature);
+        } else {
+            setTheme(R.style.Theme_UserDialog);
+        }
         setContentView(R.layout.activity_google_auth_handler);
 
         calendar = Calendar.getInstance();
@@ -82,11 +88,11 @@ public class GoogleAuthHandlerActivity extends AppCompatActivity {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                txtMessage.setText("Authenticating, please wait...");
+                txtMessage.setText(getString(R.string.info_authenticating_please_wait));
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e);
+//                Log.w(TAG, "Google sign in failed", e);
                 returnIntent.putExtra("LOG_RESULT","FAIL");
                 onBackPressed();
             }
@@ -94,7 +100,7 @@ public class GoogleAuthHandlerActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+//        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -103,12 +109,12 @@ public class GoogleAuthHandlerActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
+//                            Log.d(TAG, "signInWithCredential:success");
                             updateUI("google");
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(getApplicationContext(), "Authentication failed! Please try again", Toast.LENGTH_SHORT).show();
+//                            Log.d(TAG, "signInWithCredential:failure", task.getException());
+                            Toast.makeText(getApplicationContext(), R.string.error_authentication_failed_try_again, Toast.LENGTH_SHORT).show();
                             returnIntent.putExtra("LOG_RESULT","FAIL");
                             setResult(Activity.RESULT_CANCELED,returnIntent);
                             onBackPressed();
@@ -119,18 +125,18 @@ public class GoogleAuthHandlerActivity extends AppCompatActivity {
     }
 
     private void updateUI(String vendor) {
-        Log.d("updateUI","vendor: "+vendor);
+//        Log.d("updateUI","vendor: "+vendor);
         checkAccountExistence(vendor);
     }
 
     private void checkAccountExistence(final String vendor){
         if (mAuth!=null){
-            Log.d("checkAccountExistence","mAuth not null");
+//            Log.d("checkAccountExistence","mAuth not null");
             FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()){
-                        Log.d("checkAccountExistence","account already exists");
+//                        Log.d("checkAccountExistence","account already exists");
                         returnIntent.putExtra("LOG_RESULT","SUCCESS");
                         setResult(Activity.RESULT_OK,returnIntent);
                         onBackPressed();
@@ -145,7 +151,7 @@ public class GoogleAuthHandlerActivity extends AppCompatActivity {
                 }
             });
         } else {
-            Log.d("checkAccountExistence","mAuth null");
+//            Log.d("checkAccountExistence","mAuth null");
             Toast.makeText(this, getString(R.string.error_occurred_try_again), Toast.LENGTH_SHORT).show();
             googleSignIn();
         }
@@ -196,7 +202,7 @@ public class GoogleAuthHandlerActivity extends AppCompatActivity {
                     mGoogleAccount.child("account_manager").setValue("google").addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull final Task<Void> task) {
-                            final DatabaseReference mNewBio = FirebaseDatabase.getInstance().getReference().child("Bio").child(mAuth.getCurrentUser().getUid());
+                            final DatabaseReference mNewBio = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_users_bio)).child(mAuth.getCurrentUser().getUid());
                             mNewBio.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {

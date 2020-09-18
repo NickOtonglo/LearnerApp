@@ -3,7 +3,6 @@ package pesh.mori.learnerapp;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class PostsViewHolder_TransactionsCard extends RecyclerView.ViewHolder {
@@ -31,7 +30,7 @@ public class PostsViewHolder_TransactionsCard extends RecyclerView.ViewHolder {
 
     public void setNotSeen(){
         TextView txtNew = mView.findViewById(R.id.txt_read_indicator);
-        txtNew.setText("*");
+        txtNew.setText(R.string.info_new_indicator);
     }
 
     public void setAmount(String amount){

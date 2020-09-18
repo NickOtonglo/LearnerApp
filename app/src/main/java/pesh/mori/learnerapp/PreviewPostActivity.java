@@ -6,12 +6,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,10 +24,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,10 +49,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PreviewPostActivity extends AppCompatActivity {
-    private LinearLayout layoutAudio,layoutVideo,layoutImage,layoutDoc,layoutFile,layoutDiy;
+    private LinearLayout layoutAudio,layoutVideo, layoutDoc,layoutCat9,layoutCat8;
     private TextView txtTime;
-    private EditText txtTitle,txtPrice,txtDescription,txtFaculty,txtDepartment,txtCourse;
-    private Spinner spinnerInstitution,spinnerTag;
+    private EditText txtTitle,txtPrice,txtDescription;
+    private EditText txtCourse, txtDept,txtUnit;
+    private Spinner spinnerList9,spinnerList8;
     private RadioButton radioYes,radioNo;
     private VideoView vidAudio,vidVideo;
     private ImageView btnPlayAudio,btnAudioIcon,btnPlayVideo;
@@ -60,10 +63,9 @@ public class PreviewPostActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase,mAllPosts,mAllPostsSplit;
     private StorageReference sStorage;
-    private String postKey="",postNode="",institution="",tag="";
-    private List<String> institutionList,tagList;
+    private String postKey="",postNode="", selectedItem ="";
+    private List<String> itemsList;
 
-    private MediaPlayer mediaPlayer;
     private MediaController mediaController;
     private Uri mUri = null;
 
@@ -75,6 +77,13 @@ public class PreviewPostActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_preview_post);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
@@ -83,7 +92,7 @@ public class PreviewPostActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setSubtitle("Not Yet Published");
+        getSupportActionBar().setSubtitle(getString(R.string.title_not_yet_published));
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -91,28 +100,27 @@ public class PreviewPostActivity extends AppCompatActivity {
         postNode = getIntent().getExtras().getString("postNode");
 
         mediaController = new MediaController(this);
-        mediaPlayer = new MediaPlayer();
 
-        mAlert = new AlertDialog.Builder(this);
+        mAlert = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
         mProgress = new ProgressDialog(this);
 
         layoutAudio = findViewById(R.id.layout_1);
         layoutVideo = findViewById(R.id.layout_2);
-        layoutImage = findViewById(R.id.layout_3);
         layoutDoc = findViewById(R.id.layout_4);
-        layoutFile = findViewById(R.id.layout_6);
-        layoutDiy = findViewById(R.id.layout_7);
+        layoutCat9 = findViewById(R.id.layout_7);
+        layoutCat8 = findViewById(R.id.layout_8);
 
-        txtTime = findViewById(R.id.txt_time);
         txtTitle = findViewById(R.id.txt_title);
         txtPrice = findViewById(R.id.txt_price);
         txtDescription = findViewById(R.id.txt_description);
-        txtFaculty = findViewById(R.id.txt_faculty);
-        txtDepartment = findViewById(R.id.txt_department);
-        txtCourse = findViewById(R.id.txt_course);
+        txtTime = findViewById(R.id.txt_time);
 
-        spinnerInstitution = findViewById(R.id.spinner_institution);
-        spinnerTag = findViewById(R.id.spinner_tag);
+        txtCourse = findViewById(R.id.txt_course);
+        txtDept = findViewById(R.id.txt_department);
+        txtUnit = findViewById(R.id.txt_unit);
+
+        spinnerList9 = findViewById(R.id.spinner_file_types);
+        spinnerList8 = findViewById(R.id.spinner_category_8_list);
 
         radioNo = findViewById(R.id.radio_no);
         radioYes = findViewById(R.id.radio_yes);
@@ -128,8 +136,8 @@ public class PreviewPostActivity extends AppCompatActivity {
         mProgressVideo = findViewById(R.id.progress_bar_video);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child(postNode).child(postKey);
-        mAllPosts = FirebaseDatabase.getInstance().getReference().child("AllPosts").child(postKey);
-        mAllPostsSplit = FirebaseDatabase.getInstance().getReference().child("AllPostsSplit").child(postNode).child(postKey);
+        mAllPosts = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_all)).child(postKey);
+        mAllPostsSplit = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_all_split)).child(postNode).child(postKey);
 
         btnPlayAudio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,7 +168,7 @@ public class PreviewPostActivity extends AppCompatActivity {
                         docIntent.putExtra("postKey",postKey);
                         docIntent.putExtra("outgoing_intent","PreviewPostActivity");
                         startActivity(docIntent);
-                        overridePendingTransition(R.anim.slide_in_from_bottom,R.anim.static_animation);
+                        overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
                     }
 
                     @Override
@@ -175,19 +183,27 @@ public class PreviewPostActivity extends AppCompatActivity {
     }
 
     private void fetchValues() {
-        if (postNode.equals("Files")){
-            layoutFile.setVisibility(View.VISIBLE);
-            layoutDiy.setVisibility(View.GONE);
+        mProgress.setMessage(getString(R.string.info_please_wait));
+        mProgress.setCancelable(false);
+        try {
+            if (!mProgress.isShowing()){
+                mProgress.show();
+            }
+        } catch (WindowManager.BadTokenException e){
+            e.printStackTrace();
         }
-        if (postNode.equals("DIY")){
-            layoutFile.setVisibility(View.GONE);
-            layoutDiy.setVisibility(View.VISIBLE);
+        if (postNode.equals(getString(R.string.firebase_ref_posts_type_1))){
+            layoutCat8.setVisibility(View.VISIBLE);
+            layoutCat9.setVisibility(View.GONE);
+        } else if (postNode.equals(getString(R.string.firebase_ref_posts_type_2))){
+            layoutCat9.setVisibility(View.VISIBLE);
+            layoutCat8.setVisibility(View.GONE);
         }
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                txtTime.setText(String.valueOf(dataSnapshot.child("timestamp").getValue()));
+                txtTime.setText(" "+dataSnapshot.child("timestamp").getValue());
                 txtTitle.setText(String.valueOf(dataSnapshot.child("title").getValue()));
                 txtPrice.setText(String.valueOf(dataSnapshot.child("price").getValue()));
                 txtDescription.setText(String.valueOf(dataSnapshot.child("description").getValue()));
@@ -204,26 +220,27 @@ public class PreviewPostActivity extends AppCompatActivity {
                 } else if (bidding.equals("yes")){
                     radioYes.setChecked(true);
                 }
-                if (postNode.equals("Files")){
-                    txtFaculty.setText(String.valueOf(dataSnapshot.child("school").getValue()));
-                    txtDepartment.setText(String.valueOf(dataSnapshot.child("department").getValue()));
-                    txtCourse.setText(String.valueOf(dataSnapshot.child("course").getValue()));
-                    institution = String.valueOf(dataSnapshot.child("institution").getValue());
-                    FirebaseDatabase.getInstance().getReference().child("Lists").addListenerForSingleValueEvent(new ValueEventListener() {
+                //PostsNonCoursework
+                if (postNode.equals(getString(R.string.firebase_ref_posts_type_2))){
+                    selectedItem = String.valueOf(dataSnapshot.child("tag").getValue());
+                    FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_lists)).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            String institutions = String.valueOf(dataSnapshot.child("institutions_list").getValue());
-                            institutionList = Arrays.asList(institutions.split("\\s*,\\s*"));
-                            final List<String>getInstitution = new ArrayList<>();
-                            final int institutionSize = institutionList.size();
-                            for (int i=0;i<institutionSize;i++){
-                                Object object = institutionList.get(i);
-                                getInstitution.add(object.toString().trim());
+                            String tags = String.valueOf(dataSnapshot.child(getString(R.string.firebase_ref_lists_cat_9)).getValue());
+                            itemsList = Arrays.asList(tags.split("\\s*,\\s*"));
+                            final List<String> getTags = new ArrayList<>();
+                            final int facultySize = itemsList.size();
+                            for (int i=0;i<facultySize;i++){
+                                Object object = itemsList.get(i);
+                                getTags.add(object.toString().trim());
                             }
-                            ArrayAdapter<String> institutionAdapter = new ArrayAdapter<String>(PreviewPostActivity.this,android.R.layout.simple_spinner_item,getInstitution);
-                            institutionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            spinnerInstitution.setAdapter(institutionAdapter);
-                            spinnerInstitution.setSelection(institutionAdapter.getPosition(institution));
+                            ArrayAdapter<String> tagsAdapter = new ArrayAdapter<String>(PreviewPostActivity.this,android.R.layout.simple_spinner_item,getTags);
+                            tagsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spinnerList9.setAdapter(tagsAdapter);
+                            spinnerList9.setSelection(tagsAdapter.getPosition(selectedItem));
+                            if (mProgress.isShowing()){
+                                mProgress.dismiss();
+                            }
                         }
 
                         @Override
@@ -231,24 +248,30 @@ public class PreviewPostActivity extends AppCompatActivity {
 
                         }
                     });
-                }
-                if (postNode.equals("DIY")){
-                    tag = String.valueOf(dataSnapshot.child("tag").getValue());
-                    FirebaseDatabase.getInstance().getReference().child("Lists").addListenerForSingleValueEvent(new ValueEventListener() {
+                    //PostsCoursework
+                } else if (postNode.equals(getString(R.string.firebase_ref_posts_type_1))){
+                    selectedItem = String.valueOf(dataSnapshot.child("institution").getValue());
+                    txtCourse.setText(String.valueOf(dataSnapshot.child("course").getValue()));
+                    txtDept.setText(String.valueOf(dataSnapshot.child("department").getValue()));
+                    txtUnit.setText(String.valueOf(dataSnapshot.child("unit").getValue()));
+                    FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_lists)).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            String tags = String.valueOf(dataSnapshot.child("tags_list").getValue());
-                            tagList = Arrays.asList(tags.split("\\s*,\\s*"));
-                            final List<String>getTags = new ArrayList<>();
-                            final int facultySize = tagList.size();
+                            String tags = String.valueOf(dataSnapshot.child(getString(R.string.firebase_ref_lists_cat_8)).getValue());
+                            itemsList = Arrays.asList(tags.split("\\s*,\\s*"));
+                            final List<String> getTags = new ArrayList<>();
+                            final int facultySize = itemsList.size();
                             for (int i=0;i<facultySize;i++){
-                                Object object = tagList.get(i);
+                                Object object = itemsList.get(i);
                                 getTags.add(object.toString().trim());
                             }
                             ArrayAdapter<String> tagsAdapter = new ArrayAdapter<String>(PreviewPostActivity.this,android.R.layout.simple_spinner_item,getTags);
                             tagsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            spinnerTag.setAdapter(tagsAdapter);
-                            spinnerTag.setSelection(tagsAdapter.getPosition(tag));
+                            spinnerList8.setAdapter(tagsAdapter);
+                            spinnerList8.setSelection(tagsAdapter.getPosition(selectedItem));
+                            if (mProgress.isShowing()){
+                                mProgress.dismiss();
+                            }
                         }
 
                         @Override
@@ -274,62 +297,56 @@ public class PreviewPostActivity extends AppCompatActivity {
             priceVal = Double.parseDouble(price);
         }
         String description = txtDescription.getText().toString().trim();
-        String faculty = txtFaculty.getText().toString().trim();
-        String department = txtDepartment.getText().toString().trim();
-        String course = txtCourse.getText().toString().trim();
 
         if (TextUtils.isEmpty(title)){
-            Toast.makeText(this, "Title must not be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.info_title_must_not_be_empty, Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(price)){
-            Toast.makeText(this, "Price must not be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.info_price_must_not_be_empty, Toast.LENGTH_SHORT).show();
             return false;
         }
         if (priceVal==0 && radioYes.isChecked()){
-            Toast.makeText(this, "You cannot allow bidding on a free item", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.info_you_cannot_allow_bidding_on_a_free_item, Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(description)){
-            Toast.makeText(this, "Description must not be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.info_description_must_not_be_empty, Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!radioNo.isChecked() && !radioYes.isChecked()){
-            Toast.makeText(this, "You must select whether the item is biddable or not", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.info_you_must_select_if_item_is_biddable_or_not, Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (postNode.equals("Files")){
-            String institution = spinnerInstitution.getSelectedItem().toString();
-            if (TextUtils.isEmpty(faculty)){
-                Toast.makeText(this, "Faculty must not be empty", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-            if (TextUtils.isEmpty(department)){
-                Toast.makeText(this, "Department must not be empty", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-            if (TextUtils.isEmpty(course)){
-                Toast.makeText(this, "Course must not be empty", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-            if (TextUtils.equals(institution,"--University Institutions--") || TextUtils.equals(institution,"--Tertiary Institutions--")
-                    || TextUtils.equals(institution,"--Artisan Institutions--")){
-                Toast.makeText(this, "No institution selected", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        }
-        if (postNode.equals("DIY")){
-            String tag = spinnerTag.getSelectedItem().toString();
+        if (postNode.equals(getString(R.string.firebase_ref_posts_type_2))){
+            String tag = spinnerList9.getSelectedItem().toString();
             if (TextUtils.equals(tag,"")){
-                Toast.makeText(this, "No tag selected", Toast.LENGTH_SHORT).show();
+                Snackbar.make(findViewById(android.R.id.content), R.string.info_no_category_selected,Snackbar.LENGTH_SHORT).show();
                 return false;
             }
         }
+        if (postNode.equals(getString(R.string.firebase_ref_posts_type_1))){
+            String course = txtCourse.getText().toString().trim();
+            String department = txtDept.getText().toString().trim();
+            String unit = txtUnit.getText().toString().trim();
+            String institution = spinnerList8.getSelectedItem().toString();
+            if(institution.equals("--University Institutions--")
+                    || institution.equals("--Tertiary Institutions--")
+                    || institution.equals("--Artisan Institutions--")){
+                Snackbar.make(findViewById(android.R.id.content), R.string.you_must_select_a_valid_institution,Snackbar.LENGTH_LONG).show();
+                return false;
+            }
+            if (course.isEmpty() || department.isEmpty() || unit.isEmpty()){
+                Snackbar.make(findViewById(android.R.id.content), R.string.info_one_or_more_required_fields_is_empty, Snackbar.LENGTH_LONG).show();
+                return false;
+            }
+        }
+
         return true;
     }
 
     private void savePost(final String category, final Double price) {
-        mProgress.setMessage("Saving post...");
+        mProgress.setMessage(getString(R.string.info_saving_post));
         mProgress.setCancelable(false);
         try {
             if (!mProgress.isShowing()){
@@ -338,7 +355,7 @@ public class PreviewPostActivity extends AppCompatActivity {
         } catch (WindowManager.BadTokenException e){
             e.printStackTrace();
         }
-        FirebaseDatabase.getInstance().getReference().child("PublishedItems").child(mAuth.getCurrentUser().getUid()).child(postKey).child("Title")
+        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_published)).child(mAuth.getCurrentUser().getUid()).child(postKey).child("Title")
                 .setValue(txtTitle.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -351,22 +368,23 @@ public class PreviewPostActivity extends AppCompatActivity {
                     } else if (radioYes.isChecked()){
                         mDatabase.child("biddable").setValue("yes");
                     }
-                    switch (category){
-                        case "DIY":
-                            mDatabase.child("tag").setValue(spinnerTag.getSelectedItem().toString());
-                            break;
-
-                        case "Files":
-                            mDatabase.child("institution").setValue(spinnerInstitution.getSelectedItem().toString());
-                            mDatabase.child("department").setValue(txtDepartment.getText().toString().trim());
-                            mDatabase.child("school").setValue(txtFaculty.getText().toString().trim());
-                            mDatabase.child("course").setValue(txtCourse.getText().toString().trim());
-                            break;
+                    if (category.equals(getString(R.string.firebase_ref_posts_type_1))){
+                        mDatabase.child("institution").setValue(spinnerList8.getSelectedItem().toString());
+                        mDatabase.child("unit").setValue(txtUnit.getText().toString());
+                        mDatabase.child("department").setValue(txtDept.getText().toString());
+                        mDatabase.child("course").setValue(txtCourse.getText().toString());
+                    } else if (category.equals(getString(R.string.firebase_ref_posts_type_2))){
+                        mDatabase.child("tag").setValue(spinnerList9.getSelectedItem().toString());
                     }
+//                    switch (category){
+//                        case "PostsMedia":
+//
+//                            break;
+//                    }
                     if (checkPublishState()){
                         publishPost();
                     } else {
-                        Toast.makeText(PreviewPostActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PreviewPostActivity.this, R.string.info_saved, Toast.LENGTH_SHORT).show();
                         if (mProgress.isShowing()){
                             mProgress.dismiss();
                         }
@@ -398,7 +416,7 @@ public class PreviewPostActivity extends AppCompatActivity {
     }
 
     private void publishPost(){
-        FirebaseDatabase.getInstance().getReference().child("PublishedItems").child(mAuth.getCurrentUser().getUid()).child(postKey).child("Published")
+        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_published)).child(mAuth.getCurrentUser().getUid()).child(postKey).child("Published")
                 .setValue("true").addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -414,10 +432,10 @@ public class PreviewPostActivity extends AppCompatActivity {
                             mAllPostsSplit.child("ItemId").setValue(postKey);
                             mAllPostsSplit.child("Category").setValue(postNode);
                             mAllPostsSplit.child("Title").setValue(dataSnapshot.child("title").getValue());
-                            if (postNode.equals("DIY")){
-                                mAllPostsSplit.child("Tag").setValue(dataSnapshot.child("tag").getValue());
-                            } else if (postNode.equals("Files")){
+                            if (postNode.equals(getString(R.string.firebase_ref_posts_type_1))){
                                 mAllPostsSplit.child("Institution").setValue(dataSnapshot.child("institution").getValue());
+                            } else if (postNode.equals(getString(R.string.firebase_ref_posts_type_2))){
+                                mAllPostsSplit.child("Tag").setValue(dataSnapshot.child("tag").getValue());
                             }
                             mAllPostsSplit.child("FileType").setValue(dataSnapshot.child("file_type").getValue()).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -426,7 +444,7 @@ public class PreviewPostActivity extends AppCompatActivity {
                                         mProgress.dismiss();
                                     }
                                     finish();
-                                    Toast.makeText(PreviewPostActivity.this, "Your post has been published", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(PreviewPostActivity.this, R.string.info_your_post_has_been_published, Toast.LENGTH_SHORT).show();
                                 }
                             });
 
@@ -491,6 +509,13 @@ public class PreviewPostActivity extends AppCompatActivity {
                 vidVideo.setVideoURI(mUri);
                 vidVideo.requestFocus();
                 vidVideo.start();
+                vidVideo.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+                    @Override
+                    public boolean onError(MediaPlayer mp, int what, int extra) {
+//                        Log.d("LOG_vidVideo",mUri.toString());
+                        return false;
+                    }
+                });
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                     vidVideo.setOnInfoListener(new MediaPlayer.OnInfoListener() {
@@ -517,7 +542,7 @@ public class PreviewPostActivity extends AppCompatActivity {
     }
 
     private void deletePost(){
-        mProgress.setMessage("Deleting post...");
+        mProgress.setMessage(getString(R.string.info_deleting_post));
         mProgress.setCancelable(false);
         try {
             if (!mProgress.isShowing()){
@@ -526,7 +551,7 @@ public class PreviewPostActivity extends AppCompatActivity {
         } catch (WindowManager.BadTokenException e){
             e.printStackTrace();
         }
-        FirebaseDatabase.getInstance().getReference().child("PublishedItems").child(mAuth.getCurrentUser().getUid()).child(postKey)
+        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_published)).child(mAuth.getCurrentUser().getUid()).child(postKey)
                 .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -544,7 +569,7 @@ public class PreviewPostActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     mDatabase.removeValue();
-                                    Toast.makeText(PreviewPostActivity.this, "Post deleted", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(PreviewPostActivity.this, R.string.info_post_deleted, Toast.LENGTH_SHORT).show();
                                     if (mProgress.isShowing()){
                                         mProgress.dismiss();
                                     }
@@ -554,7 +579,7 @@ public class PreviewPostActivity extends AppCompatActivity {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     mDatabase.removeValue();
-                                    Toast.makeText(PreviewPostActivity.this, "Post deleted", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(PreviewPostActivity.this, R.string.info_post_deleted, Toast.LENGTH_SHORT).show();
                                     if (mProgress.isShowing()){
                                         mProgress.dismiss();
                                     }
@@ -605,17 +630,17 @@ public class PreviewPostActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.menu_save:
-                mAlert.setTitle("Save post")
-                        .setMessage("Are you sure?")
-                        .setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                mAlert.setTitle(R.string.title_save_post)
+                        .setMessage(R.string.confirm_are_you_sure)
+                        .setPositiveButton(getString(R.string.option_save), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 if (checkRequirements()){
-                                    savePost(postNode,Double.parseDouble(txtPrice.getText().toString().trim()));
+                                    savePost(postNode, Double.parseDouble(txtPrice.getText().toString().trim()));
                                 }
                             }
                         })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getString(R.string.option_cancel), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -624,15 +649,15 @@ public class PreviewPostActivity extends AppCompatActivity {
                         .show();
                 return true;
             case R.id.menu_delete_post:
-                mAlert.setTitle("Delete post")
-                        .setMessage("Are you sure?")
-                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                mAlert.setTitle(R.string.title_delete_post)
+                        .setMessage(getString(R.string.confirm_are_you_sure))
+                        .setPositiveButton(getString(R.string.option_delete), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 deletePost();
                             }
                         })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getString(R.string.option_cancel), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -641,18 +666,18 @@ public class PreviewPostActivity extends AppCompatActivity {
                         .show();
                 return true;
             case R.id.menu_publish:
-                mAlert.setTitle("Publish post")
-                        .setMessage("All changes will be saved. You will not have control of this post after publishing.\nAre you sure you want to publish?")
-                        .setPositiveButton("Publish", new DialogInterface.OnClickListener() {
+                mAlert.setTitle(R.string.title_publish_post)
+                        .setMessage(R.string.info_pre_publishing_notice)
+                        .setPositiveButton(R.string.option_publish, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 if (checkRequirements()){
                                     PUBLISH_STATE = 1;
-                                    savePost(postNode,Double.parseDouble(txtPrice.getText().toString().trim()));
+                                    savePost(postNode, Double.parseDouble(txtPrice.getText().toString().trim()));
                                 }
                             }
                         })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getString(R.string.option_cancel), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 

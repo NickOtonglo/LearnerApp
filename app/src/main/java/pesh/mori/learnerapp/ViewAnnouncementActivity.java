@@ -1,15 +1,7 @@
 package pesh.mori.learnerapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -19,13 +11,18 @@ import android.text.style.UnderlineSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -34,10 +31,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class ViewAnnouncementActivity extends AppCompatActivity {
 
@@ -63,6 +56,13 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_view_announcement);
 
         new HomeActivity().checkMaintenanceStatus(getApplicationContext());
@@ -99,8 +99,8 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
         mProgressAudio = findViewById(R.id.progress_bar_audio);
         mProgressVideo = findViewById(R.id.progress_bar_video);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Announcements").child(postKey);
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("AnnouncementsRef").child(postKey);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_announcements)).child(postKey);
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_announcements_ref)).child(postKey);
 
         txtMoreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +138,7 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
                         docIntent.putExtra("postKey",postKey);
                         docIntent.putExtra("outgoing_intent","ViewAnnouncementActivity");
                         startActivity(docIntent);
-                        overridePendingTransition(R.anim.slide_in_from_bottom,R.anim.static_animation);
+                        overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
                     }
 
                     @Override
@@ -180,8 +180,8 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
                 getSupportActionBar().setSubtitle(String.valueOf(dataSnapshot.child("title").getValue()));
                 txtMessage.setText(String.valueOf(dataSnapshot.child("body").getValue()));
                 if (!dataSnapshot.child("link").exists() || dataSnapshot.child("link").getValue().toString().equals("")){
-                    txtMoreInfo.setText("None at the moment");
-                    txtMoreInfo.setTextColor(Color.parseColor("#cccccc"));
+                    txtMoreInfo.setText(R.string.info_none_at_the_moment);
+                    txtMoreInfo.setTextColor(getResources().getColor(R.color.colorTextDisabled));
                 } else {
                     SpannableString content = new SpannableString(String.valueOf(dataSnapshot.child("link").getValue()));
                     content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
@@ -206,7 +206,7 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
     public void playAudio(){
         btnPlayAudio.setVisibility(View.GONE);
         mProgressAudio.setVisibility(View.VISIBLE);
-        FirebaseDatabase.getInstance().getReference().child("Announcements").child(postKey).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_announcements)).child(postKey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mUri = Uri.parse(String.valueOf(dataSnapshot.child("file_path").getValue()));
@@ -245,7 +245,7 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
         btnPlayVideo.setVisibility(View.GONE);
         mProgressVideo.setVisibility(View.VISIBLE);
 
-        FirebaseDatabase.getInstance().getReference().child("Announcements").child(postKey).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_announcements)).child(postKey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mUri = Uri.parse(String.valueOf(dataSnapshot.child("file_path").getValue()));

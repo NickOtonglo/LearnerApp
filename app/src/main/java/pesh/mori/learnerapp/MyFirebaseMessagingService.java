@@ -7,12 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
-
-import android.os.Build;
-import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -87,7 +85,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
     }
 
-    private void sendMessageNotification(String title,String message, String messageId){
+    private void sendMessageNotification(String title, String message, String messageId){
         Log.d(TAG,"sendMessageNotification: building a message notification");
 
         int notificationId = buildNotificationId(messageId);

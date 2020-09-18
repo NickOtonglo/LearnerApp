@@ -6,15 +6,8 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Handler;
-
-import com.coremedia.iso.boxes.DataReferenceBox;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -29,14 +22,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-import com.github.barteksc.pdfviewer.PDFView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -50,68 +49,50 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TransactionsActivity extends AppCompatActivity {
 
-    private TextView txtTitle,txtDescription,txtInstitution,txtFaculty,txtCourse,txtTime,txtPrice,txtBidding,txtTag;
+    private TextView txtTitle,txtDescription,txtTime,txtPrice,txtBidding,txtTag,txtInstitution,txtDept,txtCourse;
     private TextView txtAuthor;
     private CircleImageView imgAuthor;
     private ProgressBar mProgressBar;
     private ImageView imageView,staticIcon;
     private VideoView audioView,videoView;
-    private PDFView pdfView;
-    private ImageView btnPlay;
     private MediaPlayer mediaPlayer;
-    private Uri mFileUri = null;
-    private Button btnOpenDoc;
-
+    private Uri mUri = null;
     private FirebaseAuth mAuth;
     private String fileKey;
-    private DatabaseReference mFiles;
-    private DatabaseReference mDIY,mView;
-    private StorageReference sStorage;
-
-    private LinearLayout layoutBtn,layoutImage,layoutAudio,layoutVideo,layoutDoc;
-    private Button btnDelete;
+    private DatabaseReference mPosts;
+    private LinearLayout layoutImage,layoutAudio,layoutVideo,layoutDoc;
     private AlertDialog.Builder mAlert;
     private ProgressDialog mProgress;
-
     private String fileType,filePath;
-
-    private ProgressBar progressBuffer,progressPosition;
+    private ProgressBar progressBuffer;
     private ImageView btnPlayVideo;
-    private TextView txtVidNow,txtVidEnd;
-
-    private Boolean playState;
-
-    private int current=0,duration=0;
-
-    private ProgressBar progressBufferAudio,progressPositionAudio;
+    private ProgressBar progressBufferAudio;
     private ImageView btnPlayAudio;
-    private TextView txtAudNow,txtAudEnd;
-
-    private String mAuthor="",author="";
-
-    private String itemKey,incomingIntent,vtag,tag;
+    private String itemKey,incomingIntent;
     private String itemPrice;
-    private String fType,fTitle;
-    private RecyclerView mRecycler;
-    private LinearLayout layoutFiles,layoutDiy;
-
-    private TextView txtTransactPrompt;
+    private String fType,fTitle,postType;
+    private LinearLayout layoutNonCoursework,layoutCoursework;
     private Button btnTransactCancel,btnTransactPurchase,btnTransactBid;
-
     Calendar calendar;
     private SimpleDateFormat sdf;
-
     private String childRef;
     private String mBidPushKey;
     private String mMessagePushKey;
-
     private MediaController mediaController;
-
     static boolean active = false;
+    private Double transactionChargeRate=0.0;
+    private Double amount,d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_transactions);
 
         HomeActivity homeActivity = new HomeActivity();
@@ -121,36 +102,35 @@ public class TransactionsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_close);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         txtTitle = findViewById(R.id.txt_view_title);
         txtDescription = findViewById(R.id.txt_view_description);
-        txtInstitution = findViewById(R.id.txt_view_institution);
-        txtFaculty = findViewById(R.id.txt_view_faculty);
-        txtCourse = findViewById(R.id.txt_view_course);
         txtTime = findViewById(R.id.txt_view_time);
         txtPrice = findViewById(R.id.txt_view_price);
         txtBidding = findViewById(R.id.txt_view_bid);
         txtTag = findViewById(R.id.txt_view_tag);
+        txtInstitution = findViewById(R.id.txt_view_institution);
+        txtDept = findViewById(R.id.txt_view_faculty);
+        txtCourse = findViewById(R.id.txt_view_course);
 
         txtAuthor = findViewById(R.id.txt_author);
         imgAuthor = findViewById(R.id.img_author);
         mProgressBar = findViewById(R.id.progress_bar);
 
-        mAlert = new AlertDialog.Builder(this);
+        mAlert = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
         mProgress = new ProgressDialog(this);
+        mProgress.setCancelable(false);
 
         fileKey = getIntent().getExtras().getString("file_key");
+        postType = getIntent().getExtras().getString("postType");
 
-        mFiles = FirebaseDatabase.getInstance().getReference().child("Files");
-        mFiles.keepSynced(true);
-        mDIY = FirebaseDatabase.getInstance().getReference().child("DIY");
-        mDIY.keepSynced(true);
+        Log.d("LOG_postType",postType);
 
-        layoutFiles = findViewById(R.id.layout_files);
-        layoutDiy = findViewById(R.id.layout_diy);
+        layoutNonCoursework = findViewById(R.id.layout_non_coursework);
+        layoutCoursework = findViewById(R.id.layout_coursework);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -159,45 +139,20 @@ public class TransactionsActivity extends AppCompatActivity {
 
         //AudioControls
         progressBufferAudio = findViewById(R.id.buffer_progress_view_file_audio);
-//        progressPositionAudio = findViewById(R.id.progress_view_file_time_audio);
-//        txtAudNow = findViewById(R.id.txt_view_file_time_start_audio);
-//        txtAudEnd = findViewById(R.id.txt_view_file_time_stop_audio);
         btnPlayAudio = findViewById(R.id.btn_view_file_time_play_audio);
-//        progressBufferAudio.setVisibility(View.GONE);
-//        progressPositionAudio.setMax(100);
         staticIcon = findViewById(R.id.btn_view_file_audio_static);
 
         //VideoControls
         progressBuffer = findViewById(R.id.buffer_progress_view_file);
-//        progressPosition = findViewById(R.id.progress_view_file_time);
-//        txtVidNow = findViewById(R.id.txt_view_file_time_start);
-//        txtVidEnd = findViewById(R.id.txt_view_file_time_stop);
         btnPlayVideo = findViewById(R.id.btn_view_file_time_play);
-//        progressBuffer.setVisibility(View.GONE);
-//        progressPosition.setMax(100);
 
-        playState = false;
-
-        btnPlay = findViewById(R.id.btn_view_file_play);
         imageView = findViewById(R.id.btn_view_file_select_image);
         layoutImage = findViewById(R.id.view_file_layout_1);
         audioView = findViewById(R.id.img_view_file_play_audio);
         layoutAudio = findViewById(R.id.view_file_layout_2);
         videoView = findViewById(R.id.img_view_file_play_video);
         layoutVideo = findViewById(R.id.view_file_layout_3);
-        pdfView = findViewById(R.id.pdfview_file_select_doc);
-//        layoutDoc = findViewById(R.id.view_file_layout_4);
-//        layoutDoc.setEnabled(false);
         layoutDoc = findViewById(R.id.view_file_layout_4);
-//        btnOpenDoc = findViewById(R.id.btn_open_pdf);
-
-//        checkMediaState();
-//        btnPlay.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                checkMediaState();
-//            }
-//        });
 
         btnPlayAudio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,22 +173,32 @@ public class TransactionsActivity extends AppCompatActivity {
         calendar = Calendar.getInstance();
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+        FirebaseDatabase.getInstance().getReference().child("Values").child(getString(R.string.firebase_ref_values_transactions))
+                .child(getString(R.string.firebase_ref_values_transactions_fees_sell_content)).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                transactionChargeRate = Double.parseDouble(dataSnapshot.getValue().toString());
+                checkDefaultAccount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         itemKey = getIntent().getExtras().getString("file_key");
         itemPrice = getIntent().getExtras().getString("item_price");
         incomingIntent = getIntent().getExtras().getString("outgoing_intent");
         fTitle = getIntent().getExtras().getString("title");
         fType = getIntent().getExtras().getString("file_type");
-        vtag = getIntent().getExtras().getString("tag");
 
-        if (incomingIntent.equals("DownloadActivity") || incomingIntent.equals("mydownloads") || incomingIntent.equals("ViewAuthorActivity_PostsFragment_F")){
-            childRef = "Files";
-            mView = FirebaseDatabase.getInstance().getReference().child(childRef);
-            layoutFiles.setVisibility(View.VISIBLE);
-
-        } else if (incomingIntent.equals("DownloadDiyActivity") || incomingIntent.equals("ViewAuthorActivity_PostsFragment_D")){
-            childRef = "DIY";
-            mView = FirebaseDatabase.getInstance().getReference().child(childRef);
-            layoutDiy.setVisibility(View.VISIBLE);
+        if (postType.equals(getString(R.string.firebase_ref_posts_type_1))){
+            childRef = getString(R.string.firebase_ref_posts_type_1);
+            layoutCoursework.setVisibility(View.VISIBLE);
+        } else if (postType.equals(getString(R.string.firebase_ref_posts_type_2))){
+            childRef = getString(R.string.firebase_ref_posts_type_2);
+            layoutNonCoursework.setVisibility(View.VISIBLE);
         }
 
         FirebaseDatabase.getInstance().getReference().child(childRef).child(itemKey).child("biddable").addValueEventListener(new ValueEventListener() {
@@ -250,33 +215,7 @@ public class TransactionsActivity extends AppCompatActivity {
             }
         });
 
-        mProgress = new ProgressDialog(this);
-        mProgress.setCancelable(false);
-
-
         mAuth = FirebaseAuth.getInstance();
-
-//        btnOpenDoc.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mView.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        Intent docIntent = new Intent(getApplicationContext(),ReadDocument.class);
-//                        docIntent.putExtra("filePath",filePath);
-//                        docIntent.putExtra("docName",fTitle);
-//                        startActivity(docIntent);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//
-//                    }
-//                });
-//
-//            }
-//        });
-
 
         //txtTransactPrompt = findViewById(R.id.txtTransactPrompt);
         btnTransactCancel = findViewById(R.id.btnTransactCancel);
@@ -294,15 +233,15 @@ public class TransactionsActivity extends AppCompatActivity {
         btnTransactPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAlert.setTitle("Purchase Item")
-                        .setMessage("Are you sure you want to purchase this item?")
-                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                mAlert.setTitle(getString(R.string.title_purchase_item))
+                        .setMessage(R.string.confirm_are_you_sure_you_want_to_purchase_this_item)
+                        .setPositiveButton(getString(R.string.option_alert_yes), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 checkPendingBid();
                             }
                         })
-                        .setNeutralButton("CANCEL", new DialogInterface.OnClickListener() {
+                        .setNeutralButton(getString(R.string.option_cancel), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();
@@ -326,6 +265,7 @@ public class TransactionsActivity extends AppCompatActivity {
                             bidIntent.putExtra("itemKey", itemKey);
                             bidIntent.putExtra("itemPrice", itemPrice);
                             bidIntent.putExtra("outgoing_intent",incomingIntent);
+                            bidIntent.putExtra("postType",postType);
                             DatabaseReference mSource = FirebaseDatabase.getInstance().getReference().child(childRef);
                             mSource.child(itemKey).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
@@ -349,7 +289,7 @@ public class TransactionsActivity extends AppCompatActivity {
 
                         } else if (bidState.equals("no")){
 
-                            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "This item is not biddable!", Snackbar.LENGTH_LONG);
+                            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), R.string.info_this_item_is_not_biddable, Snackbar.LENGTH_LONG);
                             snackbar.show();
 
 
@@ -365,7 +305,7 @@ public class TransactionsActivity extends AppCompatActivity {
             }
         });
 
-        loadFileDetails();
+        loadPostDetails();
 
     }
 
@@ -414,17 +354,17 @@ public class TransactionsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void viewAuthor(final String key,final String category){
+    public void viewAuthor(final String key, final String category){
         FirebaseDatabase.getInstance().getReference().child(category).child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 final Intent fabIntent = new Intent(getApplicationContext(),ViewAuthorActivity.class);
                 fabIntent.putExtra("post_key",fileKey);
-                fabIntent.putExtra("author_id",String.valueOf(dataSnapshot.child("author").getValue()));
+                fabIntent.putExtra("author_id", String.valueOf(dataSnapshot.child("author").getValue()));
                 FirebaseDatabase.getInstance().getReference().child("Users").child(String.valueOf(dataSnapshot.child("author").getValue())).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        fabIntent.putExtra("author_name",String.valueOf(dataSnapshot.child("username").getValue()));
+                        fabIntent.putExtra("author_name", String.valueOf(dataSnapshot.child("username").getValue()));
                         fabIntent.putExtra("outgoing_intent","TransactionsActivity");
                         startActivity(fabIntent);
                     }
@@ -445,7 +385,11 @@ public class TransactionsActivity extends AppCompatActivity {
 
     /*v1.0.4 bug fix 00006*/
     public void checkPendingBid(){
-        final String [] pushKey = {""};
+        mProgress.setMessage(getString(R.string.info_please_wait));
+        if (!mProgress.isShowing() && !(TransactionsActivity.this).isFinishing()){
+            mProgress.show();
+        }
+        final String[] pushKey = {""};
         final DatabaseReference mBids = FirebaseDatabase.getInstance().getReference().child("Status").child("Bids").child(mAuth.getCurrentUser().getUid());
         mBids.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -456,16 +400,18 @@ public class TransactionsActivity extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if (dataSnapshot.exists()){
                                 if (dataSnapshot.child("status").getValue().equals("pending")){
-                                    mAlert.setTitle("Pending bid")
-                                            .setMessage("You already submitted a bid for this item. Kindly wait for the author to review it.")
-                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    mAlert.setTitle(R.string.title_pending_bid)
+                                            .setMessage(R.string.info_bid_pending_wait_for_author_to_review)
+                                            .setPositiveButton(getString(R.string.option_ok), new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
 
                                                 }
                                             })
                                             .show();
-                                    mProgress.dismiss();
+                                    if (mProgress.isShowing() && !(TransactionsActivity.this).isFinishing()){
+                                        mProgress.dismiss();
+                                    }
                                 } else if (dataSnapshot.child("status").getValue().equals("ready")){
                                     createFinancialAccount();
                                 }
@@ -490,47 +436,47 @@ public class TransactionsActivity extends AppCompatActivity {
 
     public void checkFinancialAccount(){
 //        mProgress.setTitle("Account Configuration");
-        mProgress.setMessage("Your financial account is being configured. Please wait...");
-        FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        mProgress.setMessage(getString(R.string.info_your_financial_account_is_being_configured));
+        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary)).child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
                     if (!(TransactionsActivity.this).isFinishing()){
                         mProgress.show();
                     }
-                    DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(mAuth.getCurrentUser().getUid());
+                    DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary)).child(mAuth.getCurrentUser().getUid());
                     mMonetaryAccount.child("email").setValue(mAuth.getCurrentUser().getEmail());
                     mMonetaryAccount.child("previous_balance").setValue(0.00);
                     mMonetaryAccount.child("current_balance").setValue(0.00);
                     mMonetaryAccount.child("status").setValue("enabled"); //enabled or disabled
-                    Toast.makeText(TransactionsActivity.this, "Setup complete!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TransactionsActivity.this, getString(R.string.info_setup_complete), Toast.LENGTH_SHORT).show();
                     mProgress.dismiss();
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(TransactionsActivity.this, "An error occured: "+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(TransactionsActivity.this, getString(R.string.error_an_error_occurred_while_configuring_your_account)+": "+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     public void createFinancialAccount(){
 //        mProgress.setTitle("Account Configuration");
-        mProgress.setMessage("Your financial account is being configured. Please wait...");
-        FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        mProgress.setMessage(getString(R.string.info_your_financial_account_is_being_configured));
+        if (!mProgress.isShowing() && !(TransactionsActivity.this).isFinishing()){
+            mProgress.show();
+        }
+        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary)).child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
-                    if (!(TransactionsActivity.this).isFinishing()){
-                        mProgress.show();
-                    }
-                    DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(mAuth.getCurrentUser().getUid());
+                    DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary)).child(mAuth.getCurrentUser().getUid());
                     mMonetaryAccount.child("email").setValue(mAuth.getCurrentUser().getEmail());
                     mMonetaryAccount.child("previous_balance").setValue(0.00);
                     mMonetaryAccount.child("current_balance").setValue(0.00);
                     mMonetaryAccount.child("status").setValue("enabled"); //enabled or disabled
-                    Toast.makeText(TransactionsActivity.this, "Setup complete!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TransactionsActivity.this, getString(R.string.info_setup_complete), Toast.LENGTH_SHORT).show();
                     mProgress.dismiss();
                 }
                 checkBalance(itemKey);
@@ -538,17 +484,17 @@ public class TransactionsActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(TransactionsActivity.this, "An error occured: "+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(TransactionsActivity.this, getString(R.string.error_an_error_occurred_while_configuring_your_account)+": "+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     public void checkBalance(final String key){
-        mProgress.setMessage("Please wait...");
+        mProgress.setMessage(getString(R.string.info_please_wait));
         if (!mProgress.isShowing() && !(TransactionsActivity.this).isFinishing()){
             mProgress.show();
         }
-        FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary)).child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 final Double buyerBalance = Double.parseDouble(String.valueOf(dataSnapshot.child("current_balance").getValue()));
@@ -558,7 +504,7 @@ public class TransactionsActivity extends AppCompatActivity {
                         Double price = Double.parseDouble(String.valueOf(dataSnapshot.child(key).child("price").getValue()));
 
                         if (buyerBalance<price){
-                            Toast.makeText(TransactionsActivity.this, "Your balance is insufficient by "+(price-buyerBalance)+" tokens", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TransactionsActivity.this, getString(R.string.info_your_balance_is_insufficient_by)+" "+(price-buyerBalance)+" tokens", Toast.LENGTH_SHORT).show();
                             mProgress.dismiss();
                         } else {
                             getSellerDetails(itemKey,buyerBalance,price);
@@ -597,12 +543,12 @@ public class TransactionsActivity extends AppCompatActivity {
 
                     }
                 });
-                FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(sellerId).addListenerForSingleValueEvent(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary)).child(sellerId).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         try{
                             if (!dataSnapshot.exists()){
-                                DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(sellerId);
+                                DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary)).child(sellerId);
                                 mMonetaryAccount.child("email").setValue(sellerEmail[0]);
                                 mMonetaryAccount.child("previous_balance").setValue(0.00);
                                 mMonetaryAccount.child("current_balance").setValue(0.00);
@@ -613,7 +559,7 @@ public class TransactionsActivity extends AppCompatActivity {
                             debitBuyer(bal,amt,sellerBalance,price,sellerId);
                         }catch (NumberFormatException e){
                             mProgress.dismiss();
-                            Toast.makeText(TransactionsActivity.this, "An error occured. Please try again.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TransactionsActivity.this, getString(R.string.error_error_occurred_try_again), Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -632,13 +578,14 @@ public class TransactionsActivity extends AppCompatActivity {
         });
     }
 
-    public double debitBuyer(Double bal,Double amt,Double sbal,Double samt,String sellerId){
+    public double debitBuyer(Double bal, Double amt, Double sbal, Double samt, String sellerId){
         Double previousBalance = bal;
         if (bal>=amt){
             bal = bal-amt;
 
-            DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(mAuth.getCurrentUser().getUid());
+            DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary)).child(mAuth.getCurrentUser().getUid());
             mMonetaryAccount.child("current_balance").setValue(bal);
+            mMonetaryAccount.child("previous_balance").setValue(bal+amt);
             final String debitTime = sdf.format(Calendar.getInstance().getTime());
 //            getSellerDetails(fileKey);
             creditSeller(sbal,samt,sellerId,mAuth.getCurrentUser().getUid(),previousBalance,bal,debitTime);
@@ -647,16 +594,57 @@ public class TransactionsActivity extends AppCompatActivity {
         return bal;
     }
 
-    public double creditSeller(Double bal,Double amt, String sellerId, String buyerId, Double buyerPBal, Double buyerNBal, String debitTime){
+    public double creditSeller(Double bal, Double amt, String sellerId, String buyerId, Double buyerPBal, Double buyerNBal, String debitTime){
+        amount = (transactionChargeRate/100.0)*amt;
+        amt = amt-(amount);
+        DatabaseReference mDefault = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary)).child(getString(R.string.firebase_ref_monetary_app_default_name));
+        mDefault.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()){
+                    mDefault.child("email").setValue("");
+                    mDefault.child("previous_balance").setValue(d);
+                    mDefault.child("current_balance").setValue(amount);
+                    mDefault.child("status").setValue("enabled");
+                } else {
+                    d = Double.parseDouble(dataSnapshot.child("current_balance").getValue().toString());
+                    mDefault.child("current_balance").setValue(d +(amount));
+                    mDefault.child("previous_balance").setValue(d);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         Double previousBalance = bal;
         bal = bal+amt;
 
-        DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(sellerId);
+        DatabaseReference mMonetaryAccount = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary)).child(sellerId);
         mMonetaryAccount.child("current_balance").setValue(bal);
+        mMonetaryAccount.child("previous_balance").setValue(bal-amt);
 
         final String creditTime = sdf.format(Calendar.getInstance().getTime());
 
-        createRecord(buyerId,sellerId,buyerPBal,previousBalance,buyerNBal,bal,amt,debitTime,creditTime);
+        Double finalBal = bal;
+        Double finalAmt = amt;
+        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary))
+                .child(getString(R.string.firebase_ref_monetary_app_default_name)).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Double prev = Double.parseDouble(dataSnapshot.child("previous_balance").getValue().toString());
+
+                createRecord(buyerId,sellerId,buyerPBal,previousBalance,prev,buyerNBal,
+                        finalBal,amount+prev, finalAmt +amount,debitTime,creditTime);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         return bal;
     }
@@ -672,7 +660,7 @@ public class TransactionsActivity extends AppCompatActivity {
                 final String postOwners = TextUtils.join(",",ownersList);
                 mOwnersList.child("owners").setValue(postOwners);
 
-                DatabaseReference mOwnedItems = FirebaseDatabase.getInstance().getReference().child("OwnedItems").child(mAuth.getCurrentUser().getUid()).child(itemKey);
+                DatabaseReference mOwnedItems = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_owned)).child(mAuth.getCurrentUser().getUid()).child(itemKey);
                 mOwnedItems.child("ItemId").setValue(itemKey);
                 mOwnedItems.child("Category").setValue(childRef);
                 mOwnedItems.child("Title").setValue(fTitle);
@@ -686,7 +674,7 @@ public class TransactionsActivity extends AppCompatActivity {
         });
     }
 
-    public void createRecord(String buyerId,String sellerId,Double buyerPreviousBal,Double sellerPreviousBal,Double buyerNewBal,Double sellerNewBal,Double transAmount,String debitTime,String creditTime){
+    public void createRecord(String buyerId, String sellerId, Double buyerPreviousBal, Double sellerPreviousBal, Double defPreviousBal, Double buyerNewBal, Double sellerNewBal, Double defNewBal, Double transAmount, String debitTime, String creditTime){
         Random rand = new Random();
         int referenceNumber = 100000000 + rand.nextInt(999999999);
         DatabaseReference mTransRecordDebit = FirebaseDatabase.getInstance().getReference().child("TransactionRecords").child("Debit").push();
@@ -697,10 +685,10 @@ public class TransactionsActivity extends AppCompatActivity {
         mTransRecordDebit.child("TransactionCost").setValue(transAmount);
         mTransRecordDebit.child("Time").setValue(debitTime);
         mTransRecordDebit.child("Item").setValue(itemKey);
-        if (incomingIntent.equals("mydownloads") || incomingIntent.equals("DownloadActivity")  || incomingIntent.equals("ViewAuthorActivity_PostsFragment_F")){
-            mTransRecordDebit.child("ItemType").setValue("File");
-        } else if (incomingIntent.equals("DownloadDiyActivity")  || incomingIntent.equals("ViewAuthorActivity_PostsFragment_D")){
-            mTransRecordDebit.child("ItemType").setValue("DIY");
+        if (postType.equals(getString(R.string.firebase_ref_posts_type_1))){
+            mTransRecordDebit.child("ItemType").setValue(getString(R.string.firebase_ref_posts_type_1));
+        } else if (postType.equals(getString(R.string.firebase_ref_posts_type_2))){
+            mTransRecordDebit.child("ItemType").setValue(getString(R.string.firebase_ref_posts_type_2));
         }
         mTransRecordDebit.child("RefNumber").setValue(String.valueOf(referenceNumber));
 
@@ -711,14 +699,28 @@ public class TransactionsActivity extends AppCompatActivity {
         mTransRecordCredit.child("TransactionCost").setValue(transAmount);
         mTransRecordCredit.child("Time").setValue(creditTime);
         mTransRecordCredit.child("Item").setValue(itemKey);
-        if (incomingIntent.equals("mydownloads") || incomingIntent.equals("DownloadActivity")  || incomingIntent.equals("ViewAuthorActivity_PostsFragment_F")){
-            mTransRecordCredit.child("ItemType").setValue("File");
-        } else if (incomingIntent.equals("DownloadDiyActivity")  || incomingIntent.equals("ViewAuthorActivity_PostsFragment_D")){
-            mTransRecordCredit.child("ItemType").setValue("DIY");
+        if (postType.equals(getString(R.string.firebase_ref_posts_type_1))){
+            mTransRecordCredit.child("ItemType").setValue(getString(R.string.firebase_ref_posts_type_1));
+        } else if (postType.equals(getString(R.string.firebase_ref_posts_type_2))){
+            mTransRecordCredit.child("ItemType").setValue(getString(R.string.firebase_ref_posts_type_2));
         }
         mTransRecordCredit.child("RefNumber").setValue(String.valueOf(referenceNumber));
 
-        Toast.makeText(TransactionsActivity.this, "Transaction successful", Toast.LENGTH_SHORT).show();
+        DatabaseReference mTransFee = FirebaseDatabase.getInstance().getReference().child("TransactionRecords").child("Fee").child(key);
+        mTransFee.child("User").setValue(getString(R.string.firebase_ref_monetary_app_default_name));
+        mTransFee.child("BalancePrevious").setValue(defPreviousBal);
+        mTransFee.child("BalanceNew").setValue(defNewBal);
+        mTransFee.child("TransactionCost").setValue(transAmount);
+        mTransFee.child("Time").setValue(creditTime);
+        mTransFee.child("Item").setValue(itemKey);
+        if (postType.equals(getString(R.string.firebase_ref_posts_type_1))){
+            mTransFee.child("ItemType").setValue(getString(R.string.firebase_ref_posts_type_1));
+        } else if (postType.equals(getString(R.string.firebase_ref_posts_type_2))){
+            mTransFee.child("ItemType").setValue(getString(R.string.firebase_ref_posts_type_2));
+        }
+        mTransFee.child("RefNumber").setValue(String.valueOf(referenceNumber));
+
+        Toast.makeText(TransactionsActivity.this, R.string.info_transaction_successful, Toast.LENGTH_SHORT).show();
         mProgress.dismiss();
         finish();
     }
@@ -731,8 +733,8 @@ public class TransactionsActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child(childRef).child(itemKey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mFileUri = Uri.parse(String.valueOf(dataSnapshot.child("file_path").getValue()));
-                audioView.setVideoURI(mFileUri);
+                mUri = Uri.parse(String.valueOf(dataSnapshot.child("file_path").getValue()));
+                audioView.setVideoURI(mUri);
                 audioView.requestFocus();
                 audioView.start();
                 progressBufferAudio.setVisibility(View.GONE);
@@ -784,8 +786,8 @@ public class TransactionsActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child(childRef).child(itemKey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mFileUri = Uri.parse(String.valueOf(dataSnapshot.child("file_path").getValue()));
-                videoView.setVideoURI(mFileUri);
+                mUri = Uri.parse(String.valueOf(dataSnapshot.child("file_path").getValue()));
+                videoView.setVideoURI(mUri);
                 videoView.requestFocus();
                 videoView.start();
 
@@ -829,7 +831,6 @@ public class TransactionsActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        playState = false;
         active = false;
     }
 
@@ -837,24 +838,26 @@ public class TransactionsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         mediaPlayer.stop();
-        overridePendingTransition(R.anim.static_animation,R.anim.slide_in_from_top);
+        overridePendingTransition(R.transition.static_animation,R.transition.slide_in_from_top);
     }
 
-    public void loadFileDetails() {
-//        Log.d("LOG_DEBUG","childRef: "+childRef+", itemKey:"+itemKey);
-        mFiles = FirebaseDatabase.getInstance().getReference().child(childRef).child(itemKey);
-        mFiles.addListenerForSingleValueEvent(new ValueEventListener() {
+    public void loadPostDetails() {
+        mPosts = FirebaseDatabase.getInstance().getReference().child(childRef).child(itemKey);
+        mPosts.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 txtTitle.setText(String.valueOf(dataSnapshot.child("title").getValue()));
                 txtDescription.setText(String.valueOf(dataSnapshot.child("description").getValue()));
-                txtInstitution.setText(String.valueOf(dataSnapshot.child("institution").getValue()));
-                txtFaculty.setText(String.valueOf(dataSnapshot.child("school").getValue()));
-                txtCourse.setText(String.valueOf(dataSnapshot.child("course").getValue()));
                 txtTime.setText(String.valueOf(dataSnapshot.child("timestamp").getValue()));
                 txtPrice.setText(String.valueOf(dataSnapshot.child("price").getValue()));
                 txtBidding.setText(String.valueOf(dataSnapshot.child("biddable").getValue()));
-                txtTag.setText(String.valueOf(dataSnapshot.child("tag").getValue()));
+                if (postType.equals(getString(R.string.firebase_ref_posts_type_1))){
+                    txtInstitution.setText(dataSnapshot.child("institution").getValue().toString());
+                    txtDept.setText(dataSnapshot.child("department").getValue().toString());
+                    txtCourse.setText(dataSnapshot.child("course").getValue().toString());
+                } else if (postType.equals(getString(R.string.firebase_ref_posts_type_2))){
+                    txtTag.setText(String.valueOf(dataSnapshot.child("tag").getValue()));
+                }
                 fileType = String.valueOf(dataSnapshot.child("file_type").getValue());
                 filePath = String.valueOf(dataSnapshot.child("file_path").getValue());
                 if (fileType.equals("image")){
@@ -889,9 +892,7 @@ public class TransactionsActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("Users").child(author).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("profile_picture").getValue().toString().isEmpty()){
-                    Picasso.with(getApplicationContext()).load(R.drawable.ic_action_user).into(imgAuthor);
-                } else {
+                if (!dataSnapshot.child("profile_picture").getValue().toString().isEmpty()){
                     Picasso.with(getApplicationContext()).load(dataSnapshot.child("profile_picture").getValue().toString()).into(imgAuthor);
                 }
                 txtAuthor.setText(dataSnapshot.child("username").getValue().toString());
@@ -905,7 +906,7 @@ public class TransactionsActivity extends AppCompatActivity {
         });
     }
 
-    public void checkOwnershipStatus(final String key,final String category){
+    public void checkOwnershipStatus(final String key, final String category){
         FirebaseDatabase.getInstance().getReference().child(category).child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -916,46 +917,26 @@ public class TransactionsActivity extends AppCompatActivity {
                 String fileType = String.valueOf(dataSnapshot.child("file_type").getValue());
                 Double price = Double.parseDouble(itemPrice);
                 List<String> listOwners = Arrays.asList(owners.split("\\s*,\\s*"));
-                if (category.equals("Files")){
-                    String tag = String.valueOf(dataSnapshot.child("institution").getValue());
-                    if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price>0 && !author.equals(mAuth.getCurrentUser().getUid())){
-                        Intent transactionsIntent = new Intent(getApplicationContext(),TransactionsActivity.class);
-                        transactionsIntent.putExtra("file_key",key);
-                        transactionsIntent.putExtra("outgoing_intent","mydownloads");
-                        transactionsIntent.putExtra("item_price",itemPrice);
-                        transactionsIntent.putExtra("title",title);
-                        transactionsIntent.putExtra("file_type",fileType);
-                        transactionsIntent.putExtra("tag",tag);
-                        startActivity(transactionsIntent);
-                    } else if (listOwners.contains(mAuth.getCurrentUser().getUid()) || author.equals(mAuth.getCurrentUser().getUid())){
-                        Intent viewFileIntent = new Intent(getApplicationContext(),ViewFileActivity.class);
-                        viewFileIntent.putExtra("file_key",key);
-                        startActivity(viewFileIntent);
-                    }  else if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price==0 && !author.equals(mAuth.getCurrentUser().getUid())){
-                        Intent viewFileIntent = new Intent(getApplicationContext(),ViewFileActivity.class);
-                        viewFileIntent.putExtra("file_key",key);
-                        startActivity(viewFileIntent);
-                    }
-                }else if (category.equals("DIY")){
-                    String tag = String.valueOf(dataSnapshot.child("tag").getValue());
-                    if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price>0 && !author.equals(mAuth.getCurrentUser().getUid())){
-                        Intent transactionsIntent = new Intent(getApplicationContext(),TransactionsActivity.class);
-                        transactionsIntent.putExtra("file_key",key);
-                        transactionsIntent.putExtra("outgoing_intent","DownloadDiyActivity");
-                        transactionsIntent.putExtra("item_price",itemPrice);
-                        transactionsIntent.putExtra("title",title);
-                        transactionsIntent.putExtra("file_type",fileType);
-                        transactionsIntent.putExtra("tag",tag);
-                        startActivity(transactionsIntent);
-                    } else if (listOwners.contains(mAuth.getCurrentUser().getUid()) || author.equals(mAuth.getCurrentUser().getUid())){
-                        Intent viewFileIntent = new Intent(getApplicationContext(),ViewDiyActivity.class);
-                        viewFileIntent.putExtra("file_key",key);
-                        startActivity(viewFileIntent);
-                    } else if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price==0 && !author.equals(mAuth.getCurrentUser().getUid())){
-                        Intent viewFileIntent = new Intent(getApplicationContext(),ViewDiyActivity.class);
-                        viewFileIntent.putExtra("file_key",key);
-                        startActivity(viewFileIntent);
-                    }
+
+                if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price>0 && !author.equals(mAuth.getCurrentUser().getUid())){
+                    Intent transactionsIntent = new Intent(getApplicationContext(),TransactionsActivity.class);
+                    transactionsIntent.putExtra("file_key",key);
+                    transactionsIntent.putExtra("outgoing_intent","FilteredCategoryActivity");
+                    transactionsIntent.putExtra("item_price",itemPrice);
+                    transactionsIntent.putExtra("title",title);
+                    transactionsIntent.putExtra("file_type",fileType);
+                    transactionsIntent.putExtra("postType",category);
+                    startActivity(transactionsIntent);
+                } else if (listOwners.contains(mAuth.getCurrentUser().getUid()) || author.equals(mAuth.getCurrentUser().getUid())){
+                    Intent viewPostIntent = new Intent(getApplicationContext(), ViewPostActivity.class);
+                    viewPostIntent.putExtra("file_key",key);
+                    viewPostIntent.putExtra("postType",category);
+                    startActivity(viewPostIntent);
+                } else if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price==0 && !author.equals(mAuth.getCurrentUser().getUid())){
+                    Intent viewPostIntent = new Intent(getApplicationContext(), ViewPostActivity.class);
+                    viewPostIntent.putExtra("file_key",key);
+                    viewPostIntent.putExtra("postType",category);
+                    startActivity(viewPostIntent);
                 }
             }
 
@@ -966,4 +947,34 @@ public class TransactionsActivity extends AppCompatActivity {
         });
     }
 
+    public void checkDefaultAccount(){
+        mProgress.setMessage(getString(R.string.info_please_wait));
+        DatabaseReference mDefault = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary))
+                .child(getString(R.string.firebase_ref_monetary_app_default_name));
+        mDefault.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()){
+                    mDefault.child("email").setValue("");
+                    mDefault.child("previous_balance").setValue(0.0);
+                    mDefault.child("current_balance").setValue(0.0);
+                    mDefault.child("status").setValue("enabled").addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                if (mProgress.isShowing())
+                                mProgress.dismiss();
+                            }
+                        }
+                    });
+                } else
+                mProgress.dismiss();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }

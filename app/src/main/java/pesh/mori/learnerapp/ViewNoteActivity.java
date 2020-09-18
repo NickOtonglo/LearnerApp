@@ -3,11 +3,7 @@ package pesh.mori.learnerapp;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +11,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -42,6 +42,13 @@ public class ViewNoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_view_note);
 
         HomeActivity homeActivity = new HomeActivity();
@@ -58,7 +65,7 @@ public class ViewNoteActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        mAlert = new AlertDialog.Builder(this);
+        mAlert = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
         mProgress = new ProgressDialog(this);
 
         layoutBtn = findViewById(R.id.layout_view_note_btn);
@@ -103,12 +110,12 @@ public class ViewNoteActivity extends AppCompatActivity {
     }
 
     public void removeNote(){
-        mAlert.setTitle("Delete note")
-                .setMessage("Are you sure?")
-                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+        mAlert.setTitle(R.string.title_delete_note)
+                .setMessage(getString(R.string.confirm_are_you_sure))
+                .setPositiveButton(getString(R.string.option_delete), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        mProgress.setMessage("Deleting note...");
+                        mProgress.setMessage(getString(R.string.info_deleting_note));
                         mProgress.setCancelable(false);
                         mProgress.show();
                         mNotes = FirebaseDatabase.getInstance().getReference().child("Notes").child(mAuth.getCurrentUser().getUid()).child(noteKey);
@@ -121,19 +128,19 @@ public class ViewNoteActivity extends AppCompatActivity {
 //                }
                                 mNotes.removeValue();
                                 mProgress.dismiss();
-                                Toast.makeText(ViewNoteActivity.this, "Note deleted", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ViewNoteActivity.this, R.string.note_deleted, Toast.LENGTH_SHORT).show();
                                 finish();
                             }
 
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
                                 mProgress.dismiss();
-                                Toast.makeText(ViewNoteActivity.this, "An error occurred. Please try again.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ViewNoteActivity.this, getString(R.string.error_error_occurred_try_again), Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.option_cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -146,8 +153,8 @@ public class ViewNoteActivity extends AppCompatActivity {
         mNotes.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                final String postKey = String .valueOf(dataSnapshot.child("linkedTo").getValue());
-                FirebaseDatabase.getInstance().getReference().child("AllPosts").child(postKey).addListenerForSingleValueEvent(new ValueEventListener() {
+                final String postKey = String.valueOf(dataSnapshot.child("linkedTo").getValue());
+                FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_all)).child(postKey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (!dataSnapshot.exists()){
@@ -187,7 +194,7 @@ public class ViewNoteActivity extends AppCompatActivity {
         });
     }
 
-    public void checkOwnershipStatus(final String key,final String category){
+    public void checkOwnershipStatus(final String key, final String category){
         FirebaseDatabase.getInstance().getReference().child(category).child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -201,30 +208,19 @@ public class ViewNoteActivity extends AppCompatActivity {
                     transactionsIntent.putExtra("file_key",key);
                     transactionsIntent.putExtra("outgoing_intent","ViewFileActivity");
                     transactionsIntent.putExtra("item_price",itemPrice);
+                    transactionsIntent.putExtra("postType",category);
                     startActivity(transactionsIntent);
-                    overridePendingTransition(R.anim.slide_in_from_bottom,R.anim.static_animation);
+                    overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
                 } else if (listOwners.contains(mAuth.getCurrentUser().getUid()) || author.equals(mAuth.getCurrentUser().getUid())){
-                    if (category.equals("Files")){
-                        Intent viewFileIntent = new Intent(getApplicationContext(),ViewFileActivity.class);
-                        viewFileIntent.putExtra("file_key",key);
-                        startActivity(viewFileIntent);
-                    }
-                    if (category.equals("DIY")){
-                        Intent viewFileIntent = new Intent(getApplicationContext(),ViewDiyActivity.class);
-                        viewFileIntent.putExtra("file_key",key);
-                        startActivity(viewFileIntent);
-                    }
+                    Intent viewPostIntent = new Intent(getApplicationContext(), ViewPostActivity.class);
+                    viewPostIntent.putExtra("file_key",key);
+                    viewPostIntent.putExtra("postType",category);
+                    startActivity(viewPostIntent);
                 } else if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price==0 && !author.equals(mAuth.getCurrentUser().getUid())){
-                    if (category.equals("Files")){
-                        Intent viewFileIntent = new Intent(getApplicationContext(),ViewFileActivity.class);
-                        viewFileIntent.putExtra("file_key",key);
-                        startActivity(viewFileIntent);
-                    }
-                    if (category.equals("DIY")){
-                        Intent viewFileIntent = new Intent(getApplicationContext(),ViewDiyActivity.class);
-                        viewFileIntent.putExtra("file_key",key);
-                        startActivity(viewFileIntent);
-                    }
+                    Intent viewPostIntent = new Intent(getApplicationContext(), ViewPostActivity.class);
+                    viewPostIntent.putExtra("file_key",key);
+                    viewPostIntent.putExtra("postType",category);
+                    startActivity(viewPostIntent);
                 }
             }
 

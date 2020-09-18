@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="0dp"
+    app:cardBackgroundColor="@color/transparent"
+    android:elevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="4dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_title"
+                android:padding="@dimen/text_primary_padding"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_primary_size"
+                android:textColor="?attr/attrTextColor"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_read_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:padding="6.5dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="?attr/attrNewIndicator"
+                android:textAlignment="textEnd"
+                android:layout_gravity="end"
+                android:layout_weight="5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_posted_at"
+                android:textColor="?attr/attrTextSecondaryColor"
+                android:textSize="@dimen/text_secondary_size"
+                android:padding="@dimen/text_secondary_padding"/>
+
+            <TextView
+                android:id="@+id/txt_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/link_loading"
+                android:textColor="?attr/attrTextColor"
+                android:textSize="@dimen/text_secondary_size"
+                android:padding="@dimen/text_secondary_padding"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_post_type"
+                android:textColor="?attr/attrTextSecondaryColor"
+                android:textSize="@dimen/text_secondary_size"
+                android:padding="@dimen/text_secondary_padding"/>
+
+            <TextView
+                android:id="@+id/txt_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/link_loading"
+                android:textColor="?attr/attrTextColor"
+                android:textSize="@dimen/text_secondary_size"
+                android:padding="@dimen/text_secondary_padding"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_description"
+            android:layout_width="match_parent"
+            android:layout_height="80sp"
+            android:text="@string/hint_text"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:paddingLeft="7sp"
+            android:paddingRight="7sp"
+            android:paddingTop="7sp"
+            android:textSize="@dimen/text_secondary_size"
+            android:textColor="?attr/attrTextSecondaryColor"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

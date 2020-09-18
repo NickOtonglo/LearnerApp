@@ -3,18 +3,17 @@ package pesh.mori.learnerapp;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +35,13 @@ public class MessagesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_messages);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
@@ -58,7 +64,7 @@ public class MessagesActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists() || dataSnapshot.getChildrenCount()==0){
-                    txtEmpty.setText("No Messages to Display");
+                    txtEmpty.setText(R.string.info_no_messages_to_display);
                 } else {
                     txtEmpty.setVisibility(View.GONE);
                 }
@@ -94,7 +100,7 @@ public class MessagesActivity extends AppCompatActivity {
                         if (dataSnapshot.exists()){
                             if (dataSnapshot.getChildrenCount()>0){
                                 if (dataSnapshot.child(messageKey).child("seen").exists() && dataSnapshot.child(messageKey).child("seen").getValue().equals("false")){
-                                    Log.d("setSeenIndicator","seen: false");
+//                                    Log.d("setSeenIndicator","seen: false");
                                     viewHolder.setSeenIndicator();
                                 }
                                 viewHolder.setTitle(String.valueOf(dataSnapshot.child(messageKey).child("title").getValue()));
@@ -107,7 +113,7 @@ public class MessagesActivity extends AppCompatActivity {
                                         Intent viewMessageIntent = new Intent(getApplicationContext(),ViewMessagesActivity.class);
                                         viewMessageIntent.putExtra("message_key",messageKey);
                                         startActivity(viewMessageIntent);
-                                        overridePendingTransition(R.anim.slide_in_from_bottom,R.anim.static_animation);
+                                        overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
                                     }
                                 });
                             } else {
@@ -174,11 +180,11 @@ public class MessagesActivity extends AppCompatActivity {
         }
         public void setNull(){
             TextView txtEmpty = mView.findViewById(R.id.txt_notes_empty);
-            txtEmpty.setText("No Messages to Display");
+            txtEmpty.setText(R.string.info_no_messages_to_display);
         }
         public void setSeenIndicator(){
             TextView txtMessage = (TextView)mView.findViewById(R.id.txt_read_indicator);
-            txtMessage.setText("*");
+            txtMessage.setText(R.string.info_new_indicator);
         }
     }
 

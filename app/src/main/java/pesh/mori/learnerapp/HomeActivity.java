@@ -12,41 +12,40 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.core.widget.NestedScrollView;
-import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
-import android.view.View;
-import com.google.android.material.navigation.NavigationView;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.core.widget.NestedScrollView;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.facebook.AccessToken;
 import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -56,8 +55,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -73,56 +70,35 @@ public class HomeActivity extends AppCompatActivity
 
     private NestedScrollView scrollView;
     private FirebaseAuth mAuth;
-    //    private Button btnDiy;
-//    private Button btnInstitution;
-    private FloatingActionMenu fabMenu;
-    private com.github.clans.fab.FloatingActionButton btnDiy,btnInstitution;
-    private TextView preference,inst,diy;
-    private Menu menu;
+//    private FloatingActionMenu fabMenu;
+    private com.github.clans.fab.FloatingActionButton floatingActionButton;
     private DrawerLayout mDrawerLayout;
     private FrameLayout home;
-    private ActionBarDrawerToggle mToggle;
-
     private String mAuthor="";
-
     private RecyclerView recyclerAnnouncements,recyclerPromotions,recyclerPosts;
-
-    private DatabaseReference mFiles,mLinks,mDIY,mFilesItems,mPromos,mAnnouncements,mAnnouncementsRef;
-
-    private static CustomProgressBar progressBar = new CustomProgressBar();
-
-    private static int TIME_OUT = 2000;
-
-    private static int TIME_OUT2 = 5000;
-
+    private DatabaseReference mLinks,mPostsNonCoursework,mPostsCoursework,mPostsAll,mPromos,mAnnouncements,mAnnouncementsRef;
     private DatabaseReference mUsers;
-
-    private CircleImageView headerImage;
-    private TextView txtName,txtTokens;
     private TextView txtAnnouncements,txtPromoted,txtPosts;
-
     private ProgressDialog mProgress;
-
     private Query mSearch;
-
-    private StorageReference sStorage;
-
     private Uri mFileUri = null;
-
     public String tokenBalance,mLink;
-
     private String TAG = "HomeActivity",node="Texts",socket="BidSocket";
     private GoogleSignInClient mGoogleSignInClient;
-
     private int vCode = BuildConfig.VERSION_CODE;
-    private String vName = BuildConfig.VERSION_NAME;
-
     private BadgeDrawerToggle badgeToggle;
     /*v1.0.5 enhancement 00002*/
     int announcementLimit=10,promosLimit=10,postsLimit=25;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -149,38 +125,31 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        btnDiy = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.diy);
-        btnInstitution = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.school);
-        fabMenu = findViewById(R.id.fab_upload);
+        floatingActionButton = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab);
+//        fabMenu = findViewById(R.id.fab_upload);
 
         scrollView = findViewById(R.id.nested_scrollview);
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if (scrollY > oldScrollY) {
-                    fabMenu.setVisibility(View.GONE);
+                    floatingActionButton.setVisibility(View.GONE);
                 } else {
-                    fabMenu.setVisibility(View.VISIBLE);
+                    floatingActionButton.setVisibility(View.VISIBLE);
                 }
             }
         });
 
         mProgress = new ProgressDialog(this);
 
-        btnInstitution.setOnClickListener(new View.OnClickListener() {
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),InstitutionActivity.class));
-            }
-        });
-        btnDiy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),CategoryActivity.class));
+                startActivity(new Intent(getApplicationContext(), SelectGenreActivity.class));
             }
         });
 
-        MessagesCounter.countUnreadMessages();
+        NewItemsCounter.countUnreadMessages();
         initCloudPackets();
         checkMaintenanceStatus(getApplicationContext());
         if (mAuth.getCurrentUser() == null) {
@@ -232,27 +201,21 @@ public class HomeActivity extends AppCompatActivity
         txtPromoted = findViewById(R.id.txt_label_promoted);
         txtPosts = findViewById(R.id.txt_label_posts);
 
-        mFilesItems = FirebaseDatabase.getInstance().getReference().child("AllPosts");
-        mFilesItems.keepSynced(true);
-        mFiles = FirebaseDatabase.getInstance().getReference().child("Files");
-        mFiles.keepSynced(true);
-        mDIY = FirebaseDatabase.getInstance().getReference().child("DIY");
-        mDIY.keepSynced(true);
-        mAnnouncements = FirebaseDatabase.getInstance().getReference().child("Announcements");
+        mPostsAll = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_all));
+        mPostsAll.keepSynced(true);
+        mPostsNonCoursework = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_type_2));
+        mPostsNonCoursework.keepSynced(true);
+        mPostsCoursework = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_type_1));
+        mPostsCoursework.keepSynced(true);
+
+        mAnnouncements = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_announcements));
         mAnnouncements.keepSynced(true);
-        mAnnouncementsRef = FirebaseDatabase.getInstance().getReference().child("AnnouncementsRef");
+        mAnnouncementsRef = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_announcements_ref));
         mAnnouncementsRef.keepSynced(true);
-        mPromos = FirebaseDatabase.getInstance().getReference().child("PromotedItems");
+        mPromos = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_promoted));
         mPromos.keepSynced(true);
 
         setNulls();
-
-//        mRecycler = (RecyclerView) findViewById(R.id.layout_recycler_newest);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
-//        layoutManager.setReverseLayout(true);
-//        layoutManager.setStackFromEnd(true);
-//        mRecycler.setHasFixedSize(true);
-//        mRecycler.setLayoutManager(layoutManager);
 
         recyclerAnnouncements = (RecyclerView) findViewById(R.id.layout_recycler_announcements);
         recyclerAnnouncements.setHasFixedSize(true);
@@ -283,16 +246,16 @@ public class HomeActivity extends AppCompatActivity
         getMessageCount();
         final TextView txtName = (TextView) navigationView.getHeaderView(0).findViewById(R.id.txt_header_name);
         final TextView txtTokenBal = navigationView.getHeaderView(0).findViewById(R.id.txt_header_tokens);
-        final CircleImageView circleImageView = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.img_main_header_profile);
+//        final CircleImageView circleImageView = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.img_main_header_profile);
         final CircleImageView headerImageDefault = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.img_main_header_profile_default);
 
         //Get token balance
-        FirebaseDatabase.getInstance().getReference().child("MonetaryAccount").child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_account_monetary)).child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 tokenBalance = String.valueOf(dataSnapshot.child("current_balance").getValue());
                 if (tokenBalance.equals("") || (tokenBalance.equals("0")) || !dataSnapshot.exists()){
-                    txtTokenBal.setText("0.00");
+                    txtTokenBal.setText(getString(R.string.hint_token_default_value));
                 } else {
                     Double bal = Double.parseDouble(tokenBalance);
                     txtTokenBal.setText(String.format("%.2f",bal));
@@ -305,7 +268,6 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        sStorage = FirebaseStorage.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid());
         mUsers = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid());
         mUsers.addValueEventListener(new ValueEventListener() {
             @Override
@@ -313,34 +275,36 @@ public class HomeActivity extends AppCompatActivity
                 GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
                 if (account == null) {
                     txtName.setText(String.valueOf(dataSnapshot.child("username").getValue()));
-                    getSupportActionBar().setSubtitle("Hi "+String.valueOf(dataSnapshot.child("username").getValue()+"!"));
+                    getSupportActionBar().setSubtitle(getString(R.string.title_hi)+" "+ String.valueOf(dataSnapshot.child("username").getValue()+"!"));
                     String profilePicture = String.valueOf(dataSnapshot.child("profile_picture").getValue());
                     if (!profilePicture.equals("")) {
                         mFileUri = Uri.parse(profilePicture);
-                        Picasso.with(getApplicationContext()).load(mFileUri).into(circleImageView);
-                        getSupportActionBar().setSubtitle("Hi "+String.valueOf(dataSnapshot.child("username").getValue())+"!");
+                        Picasso.with(getApplicationContext()).load(mFileUri).into(headerImageDefault);
+                        getSupportActionBar().setSubtitle(getString(R.string.title_hi)+" "+ String.valueOf(dataSnapshot.child("username").getValue())+"!");
+//                        Log.d("LOG_HomeActivity","profilePicture: not null");
                     }
                     if (profilePicture.equals("")){
-                        circleImageView.setVisibility(View.GONE);
+//                        circleImageView.setVisibility(View.GONE);
                         headerImageDefault.setVisibility(View.VISIBLE);
                         mFileUri = Uri.parse(profilePicture);
-                        Picasso.with(getApplicationContext()).load(R.drawable.ic_action_user).into(headerImageDefault);
-                        getSupportActionBar().setSubtitle("Hi "+String.valueOf(dataSnapshot.child("username").getValue())+"!");
+//                        Picasso.with(getApplicationContext()).load(R.drawable.ic_baseline_person_24).into(headerImageDefault);
+                        getSupportActionBar().setSubtitle(getString(R.string.title_hi)+" "+ String.valueOf(dataSnapshot.child("username").getValue())+"!");
+//                        Log.d("LOG_HomeActivity","profilePicture: null");
                     }
                     if (isFacebookAuthenticated()){
                         Profile profile = Profile.getCurrentProfile();
                         String facebookProfilePic = profile.getProfilePictureUri(300,300).toString();
-                        Picasso.with(getApplicationContext()).load(facebookProfilePic).into(circleImageView);
+                        Picasso.with(getApplicationContext()).load(facebookProfilePic).into(headerImageDefault);
                         txtName.setText(profile.getName());
-                        getSupportActionBar().setSubtitle("Hi "+profile.getFirstName()+"!");
+                        getSupportActionBar().setSubtitle(getString(R.string.title_hi)+" "+profile.getFirstName()+"!");
 //                        updateProfilePicture(profile.getProfilePictureUri(300,300));
                     }
                 }
                 else if (account != null) {
                     Uri accountPictureUri = account.getPhotoUrl();
-                    Picasso.with(getApplicationContext()).load(String.valueOf(accountPictureUri)).into(circleImageView);
+                    Picasso.with(getApplicationContext()).load(String.valueOf(accountPictureUri)).into(headerImageDefault);
                     txtName.setText(account.getDisplayName());
-                    getSupportActionBar().setSubtitle("Hi "+account.getDisplayName()+"!");
+                    getSupportActionBar().setSubtitle(getString(R.string.title_hi)+" "+account.getDisplayName()+"!");
                     FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("profile_picture")
                             .setValue(String.valueOf(accountPictureUri));
 //                    updateProfilePicture(accountPictureUri);
@@ -374,7 +338,7 @@ public class HomeActivity extends AppCompatActivity
                         protected void populateViewHolder(final PostsViewHolder_BigCard viewHolder, final File model, int position) {
                             final String fileKey = getRef(position).getKey();
 
-                            FirebaseDatabase.getInstance().getReference().child("AnnouncementsRef").child(fileKey).addValueEventListener(new ValueEventListener() {
+                            FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_announcements_ref)).child(fileKey).addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     if (dataSnapshot.exists())
@@ -383,7 +347,7 @@ public class HomeActivity extends AppCompatActivity
                                             public void onDataChange(DataSnapshot dataSnapshot) {
                                                 viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
                                                 viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
-                                                viewHolder.setAuthorName("Administrator");
+                                                viewHolder.setAuthorName(getString(R.string.title_administrator));
                                                 try{
                                                     viewHolder.setAdminImage();
                                                 } catch (NullPointerException e){
@@ -444,71 +408,12 @@ public class HomeActivity extends AppCompatActivity
                         protected void populateViewHolder(final PostsViewHolder_BigCard viewHolder, final File model, int position) {
                             final String fileKey = getRef(position).getKey();
 
-                            FirebaseDatabase.getInstance().getReference().child("PromotedItems").child(fileKey).addValueEventListener(new ValueEventListener() {
+                            FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_promoted)).child(fileKey).addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     if (dataSnapshot.exists())
-                                        if (dataSnapshot.child("Category").getValue().equals("Files")){
-                                            mFiles.addValueEventListener(new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                                    viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
-                                                    viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
-                                                    String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
-                                                    mAuthor = String.valueOf(dataSnapshot.child(fileKey).child("author").getValue());
-                                                    FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor).addValueEventListener(new ValueEventListener() {
-                                                        @Override
-                                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                                            try {
-                                                                String name = dataSnapshot.child("username").getValue().toString();
-                                                                String avatarLink = dataSnapshot.child("profile_picture").getValue().toString();
-                                                                viewHolder.setAuthorName(name);
-                                                                if (!avatarLink.isEmpty()){
-                                                                    viewHolder.setAuthorImage(getApplicationContext(),avatarLink);
-                                                                } else {
-                                                                    viewHolder.setAuthorImage();
-                                                                }
-                                                            } catch (NullPointerException e){
-                                                                e.printStackTrace();
-                                                                loadCards();
-                                                            }
-                                                        }
-
-                                                        @Override
-                                                        public void onCancelled(DatabaseError databaseError) {
-
-                                                        }
-                                                    });
-                                                    String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
-                                                    if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
-                                                        if (file_type.equals("audio")){
-                                                            viewHolder.setAudioImage();
-                                                        } else if (file_type.equals("video")){
-                                                            viewHolder.setVideoImage();
-                                                        } else if (file_type.equals("image")){
-                                                            viewHolder.setImageImage();
-                                                        } else if (file_type.equals("doc")){
-                                                            viewHolder.setDocImage();
-                                                        }
-                                                    } else {
-                                                        viewHolder.setThumbnail(getApplicationContext(),thumbnail);
-                                                    }
-                                                    viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View view) {
-                                                            checkOwnershipStatus(fileKey,"Files");
-                                                        }
-                                                    });
-                                                }
-
-                                                @Override
-                                                public void onCancelled(DatabaseError databaseError) {
-
-                                                }
-                                            });
-                                        }
-                                        else if (dataSnapshot.child("Category").getValue().equals("DIY")){
-                                            mDIY.addValueEventListener(new ValueEventListener() {
+                                        if (dataSnapshot.child("Category").getValue().equals(getString(R.string.firebase_ref_posts_type_1))){
+                                            mPostsCoursework.addValueEventListener(new ValueEventListener() {
                                                 @Override
                                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                                     viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
@@ -562,7 +467,72 @@ public class HomeActivity extends AppCompatActivity
                                                     viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                                                         @Override
                                                         public void onClick(View view) {
-                                                            checkOwnershipStatus(fileKey,"DIY");
+                                                            checkOwnershipStatus(fileKey,getString(R.string.firebase_ref_posts_type_1));
+                                                        }
+                                                    });
+                                                }
+
+                                                @Override
+                                                public void onCancelled(DatabaseError databaseError) {
+
+                                                }
+                                            });
+                                        } else if (dataSnapshot.child("Category").getValue().equals(getString(R.string.firebase_ref_posts_type_2))){
+                                            mPostsNonCoursework.addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
+                                                    viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
+                                                    String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
+                                                    mAuthor = String.valueOf(dataSnapshot.child(fileKey).child("author").getValue());
+                                                    FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor).addValueEventListener(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                                            try{
+                                                                String name = dataSnapshot.child("username").getValue().toString();
+                                                                String avatarLink = dataSnapshot.child("profile_picture").getValue().toString();
+                                                                viewHolder.setAuthorName(name);
+                                                                if (!avatarLink.isEmpty()){
+                                                                    viewHolder.setAuthorImage(getApplicationContext(),avatarLink);
+                                                                } else {
+                                                                    viewHolder.setAuthorImage();
+                                                                }
+                                                            } catch (NullPointerException e){
+                                                                e.printStackTrace();
+                                                                loadCards();
+                                                            }
+
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(DatabaseError databaseError) {
+
+                                                        }
+                                                    });
+                                                    try {
+                                                        String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
+                                                        if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
+                                                            if (file_type.equals("audio")){
+                                                                viewHolder.setAudioImage();
+                                                            } else if (file_type.equals("video")){
+                                                                viewHolder.setVideoImage();
+                                                            } else if (file_type.equals("image")){
+                                                                viewHolder.setImageImage();
+                                                            } else if (file_type.equals("doc")){
+                                                                viewHolder.setDocImage();
+                                                            }
+                                                        } else {
+                                                            viewHolder.setThumbnail(getApplicationContext(),thumbnail);
+                                                        }
+                                                    } catch (NullPointerException e){
+                                                        e.printStackTrace();
+                                                        loadCards();
+                                                    }
+
+                                                    viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View view) {
+                                                            checkOwnershipStatus(fileKey,getString(R.string.firebase_ref_posts_type_2));
                                                         }
                                                     });
                                                 }
@@ -586,85 +556,20 @@ public class HomeActivity extends AppCompatActivity
 
                     FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard> firebaseRecyclerAdapter3 = new FirebaseRecyclerAdapter<File, PostsViewHolder_BigCard>(
                             File.class,
-                            R.layout.card_home_posts,
+                            R.layout.card_big,
                             PostsViewHolder_BigCard.class,
-                            mFilesItems.limitToLast(postsLimit)
+                            mPostsAll.limitToLast(postsLimit)
                     ) {
                         @Override
                         protected void populateViewHolder(final PostsViewHolder_BigCard viewHolder, final File model, int position) {
                             final String fileKey = getRef(position).getKey();
 
-                            FirebaseDatabase.getInstance().getReference().child("AllPosts").child(fileKey).addValueEventListener(new ValueEventListener() {
+                            FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_all)).child(fileKey).addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     if (dataSnapshot.exists())
-                                        if (dataSnapshot.child("Category").getValue().equals("Files")){
-                                            mFiles.addValueEventListener(new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                                    viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
-                                                    viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
-                                                    String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
-                                                    mAuthor = String.valueOf(dataSnapshot.child(fileKey).child("author").getValue());
-                                                    FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor).addValueEventListener(new ValueEventListener() {
-                                                        @Override
-                                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                                            try {
-                                                                String name = dataSnapshot.child("username").getValue().toString();
-                                                                String avatarLink = dataSnapshot.child("profile_picture").getValue().toString();
-                                                                viewHolder.setAuthorName(name);
-                                                                if (!avatarLink.isEmpty()){
-                                                                    viewHolder.setAuthorImage(getApplicationContext(),avatarLink);
-                                                                } else {
-                                                                    viewHolder.setAuthorImage();
-                                                                }
-                                                            }catch (NullPointerException e){
-                                                                e.printStackTrace();
-                                                                loadCards();
-                                                            }
-                                                        }
-
-                                                        @Override
-                                                        public void onCancelled(DatabaseError databaseError) {
-
-                                                        }
-                                                    });
-                                                    try {
-                                                        String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
-                                                        if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
-                                                            if (file_type.equals("audio")){
-                                                                viewHolder.setAudioImage();
-                                                            } else if (file_type.equals("video")){
-                                                                viewHolder.setVideoImage();
-                                                            } else if (file_type.equals("image")){
-                                                                viewHolder.setImageImage();
-                                                            } else if (file_type.equals("doc")){
-                                                                viewHolder.setDocImage();
-                                                            }
-                                                        } else {
-                                                            viewHolder.setThumbnail(getApplicationContext(),thumbnail);
-                                                        }
-                                                    } catch (NullPointerException e){
-                                                        e.printStackTrace();
-                                                        loadCards();
-                                                    }
-
-                                                    viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View view) {
-                                                            checkOwnershipStatus(fileKey,"Files");
-                                                        }
-                                                    });
-                                                }
-
-                                                @Override
-                                                public void onCancelled(DatabaseError databaseError) {
-
-                                                }
-                                            });
-                                        }
-                                        else if (dataSnapshot.child("Category").getValue().equals("DIY")){
-                                            mDIY.addValueEventListener(new ValueEventListener() {
+                                        if (dataSnapshot.child("Category").getValue().equals(getString(R.string.firebase_ref_posts_type_1))){
+                                            mPostsCoursework.addValueEventListener(new ValueEventListener() {
                                                 @Override
                                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                                     viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
@@ -718,7 +623,72 @@ public class HomeActivity extends AppCompatActivity
                                                     viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                                                         @Override
                                                         public void onClick(View view) {
-                                                            checkOwnershipStatus(fileKey,"DIY");
+                                                            checkOwnershipStatus(fileKey,getString(R.string.firebase_ref_posts_type_1));
+                                                        }
+                                                    });
+                                                }
+
+                                                @Override
+                                                public void onCancelled(DatabaseError databaseError) {
+
+                                                }
+                                            });
+                                        } else if (dataSnapshot.child("Category").getValue().equals(getString(R.string.firebase_ref_posts_type_2))){
+                                            mPostsNonCoursework.addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    viewHolder.setTitle(String.valueOf(dataSnapshot.child(fileKey).child("title").getValue()));
+                                                    viewHolder.setTimestamp(String.valueOf(dataSnapshot.child(fileKey).child("timestamp").getValue()));
+                                                    String file_type = String.valueOf(dataSnapshot.child(fileKey).child("file_type").getValue());
+                                                    mAuthor = String.valueOf(dataSnapshot.child(fileKey).child("author").getValue());
+                                                    FirebaseDatabase.getInstance().getReference().child("Users").child(mAuthor).addValueEventListener(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                                            try{
+                                                                String name = dataSnapshot.child("username").getValue().toString();
+                                                                String avatarLink = dataSnapshot.child("profile_picture").getValue().toString();
+                                                                viewHolder.setAuthorName(name);
+                                                                if (!avatarLink.isEmpty()){
+                                                                    viewHolder.setAuthorImage(getApplicationContext(),avatarLink);
+                                                                } else {
+                                                                    viewHolder.setAuthorImage();
+                                                                }
+                                                            } catch (NullPointerException e){
+                                                                e.printStackTrace();
+                                                                loadCards();
+                                                            }
+
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(DatabaseError databaseError) {
+
+                                                        }
+                                                    });
+                                                    try {
+                                                        String thumbnail = String.valueOf(dataSnapshot.child(fileKey).child("thumbnail").getValue());
+                                                        if (!dataSnapshot.child(fileKey).child("thumbnail").exists() || thumbnail.equals("")){
+                                                            if (file_type.equals("audio")){
+                                                                viewHolder.setAudioImage();
+                                                            } else if (file_type.equals("video")){
+                                                                viewHolder.setVideoImage();
+                                                            } else if (file_type.equals("image")){
+                                                                viewHolder.setImageImage();
+                                                            } else if (file_type.equals("doc")){
+                                                                viewHolder.setDocImage();
+                                                            }
+                                                        } else {
+                                                            viewHolder.setThumbnail(getApplicationContext(),thumbnail);
+                                                        }
+                                                    } catch (NullPointerException e){
+                                                        e.printStackTrace();
+                                                        loadCards();
+                                                    }
+
+                                                    viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View view) {
+                                                            checkOwnershipStatus(fileKey,getString(R.string.firebase_ref_posts_type_2));
                                                         }
                                                     });
                                                 }
@@ -840,18 +810,18 @@ public class HomeActivity extends AppCompatActivity
             support();
 
         } else if (id == R.id.privacy_policy){
-            startActivity(new Intent(getApplicationContext(),OpenPDF.class));
-            overridePendingTransition(R.anim.slide_in_from_bottom,R.anim.static_animation);
+            startActivity(new Intent(getApplicationContext(), ViewPrivacyPolicy.class));
+            overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
         } else if (id == R.id.messages) {
             Intent intent1 = new Intent( this, MessagesActivity.class );
             this.startActivity( intent1 );
 
         } else if (id == R.id.logout) {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(HomeActivity.this);
-            alertDialogBuilder.setTitle("Log Out?");
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(HomeActivity.this,R.style.AlertDialogStyle);
+            alertDialogBuilder.setTitle(R.string.required_log_out);
             alertDialogBuilder
                     .setCancelable(false)
-                    .setPositiveButton("Yes",
+                    .setPositiveButton(getString(R.string.option_alert_yes),
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
 //                                        moveTaskToBack(true);
@@ -861,7 +831,7 @@ public class HomeActivity extends AppCompatActivity
                                 }
                             })
 
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.option_cancel), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
                             dialog.cancel();
@@ -874,7 +844,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.settings) {
             Intent intent1 = new Intent( this, SettingsActivity.class );
             this.startActivity( intent1 );
-
+            finish();
         } else if (id == R.id.nav_transaction_records){
             startActivity(new Intent(getApplicationContext(),TransactionHistoryActivity.class));
         }
@@ -883,7 +853,7 @@ public class HomeActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    public void checkOwnershipStatus(final String key,final String category){
+    public void checkOwnershipStatus(final String key, final String category){
         FirebaseDatabase.getInstance().getReference().child(category).child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -894,48 +864,29 @@ public class HomeActivity extends AppCompatActivity
                 String fileType = String.valueOf(dataSnapshot.child("file_type").getValue());
                 Double price = Double.parseDouble(itemPrice);
                 List<String> listOwners = Arrays.asList(owners.split("\\s*,\\s*"));
-                if (category.equals("Files")){
-                    String tag = String.valueOf(dataSnapshot.child("institution").getValue());
-                    if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price>0 && !author.equals(mAuth.getCurrentUser().getUid())){
-                        Intent transactionsIntent = new Intent(getApplicationContext(),TransactionsActivity.class);
-                        transactionsIntent.putExtra("file_key",key);
-                        transactionsIntent.putExtra("outgoing_intent","mydownloads");
-                        transactionsIntent.putExtra("item_price",itemPrice);
-                        transactionsIntent.putExtra("title",title);
-                        transactionsIntent.putExtra("file_type",fileType);
-                        transactionsIntent.putExtra("tag",tag);
-                        startActivity(transactionsIntent);
-                        overridePendingTransition(R.anim.slide_in_from_bottom,R.anim.static_animation);
-                    } else if (listOwners.contains(mAuth.getCurrentUser().getUid()) || author.equals(mAuth.getCurrentUser().getUid())){
-                        Intent viewFileIntent = new Intent(getApplicationContext(),ViewFileActivity.class);
-                        viewFileIntent.putExtra("file_key",key);
-                        startActivity(viewFileIntent);
-                    }  else if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price==0 && !author.equals(mAuth.getCurrentUser().getUid())){
-                        Intent viewFileIntent = new Intent(getApplicationContext(),ViewFileActivity.class);
-                        viewFileIntent.putExtra("file_key",key);
-                        startActivity(viewFileIntent);
-                    }
-                }else if (category.equals("DIY")){
-                    String tag = String.valueOf(dataSnapshot.child("tag").getValue());
-                    if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price>0 && !author.equals(mAuth.getCurrentUser().getUid())){
-                        Intent transactionsIntent = new Intent(getApplicationContext(),TransactionsActivity.class);
-                        transactionsIntent.putExtra("file_key",key);
-                        transactionsIntent.putExtra("outgoing_intent","DownloadDiyActivity");
-                        transactionsIntent.putExtra("item_price",itemPrice);
-                        transactionsIntent.putExtra("title",title);
-                        transactionsIntent.putExtra("file_type",fileType);
-                        transactionsIntent.putExtra("tag",tag);
-                        startActivity(transactionsIntent);
-                        overridePendingTransition(R.anim.slide_in_from_bottom,R.anim.static_animation);
-                    } else if (listOwners.contains(mAuth.getCurrentUser().getUid()) || author.equals(mAuth.getCurrentUser().getUid())){
-                        Intent viewFileIntent = new Intent(getApplicationContext(),ViewDiyActivity.class);
-                        viewFileIntent.putExtra("file_key",key);
-                        startActivity(viewFileIntent);
-                    } else if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price==0 && !author.equals(mAuth.getCurrentUser().getUid())){
-                        Intent viewFileIntent = new Intent(getApplicationContext(),ViewDiyActivity.class);
-                        viewFileIntent.putExtra("file_key",key);
-                        startActivity(viewFileIntent);
-                    }
+
+                String tag = String.valueOf(dataSnapshot.child("tag").getValue());
+                if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price>0 && !author.equals(mAuth.getCurrentUser().getUid())){
+                    Intent transactionsIntent = new Intent(getApplicationContext(),TransactionsActivity.class);
+                    transactionsIntent.putExtra("file_key",key);
+                    transactionsIntent.putExtra("outgoing_intent","FilteredCategoryActivity");
+                    transactionsIntent.putExtra("item_price",itemPrice);
+                    transactionsIntent.putExtra("title",title);
+                    transactionsIntent.putExtra("file_type",fileType);
+                    transactionsIntent.putExtra("tag",tag);
+                    transactionsIntent.putExtra("postType",category);
+                    startActivity(transactionsIntent);
+                    overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
+                } else if (listOwners.contains(mAuth.getCurrentUser().getUid()) || author.equals(mAuth.getCurrentUser().getUid())){
+                    Intent viewPostIntent = new Intent(getApplicationContext(), ViewPostActivity.class);
+                    viewPostIntent.putExtra("file_key",key);
+                    viewPostIntent.putExtra("postType",category);
+                    startActivity(viewPostIntent);
+                } else if (!listOwners.contains(mAuth.getCurrentUser().getUid()) && price==0 && !author.equals(mAuth.getCurrentUser().getUid())){
+                    Intent viewPostIntent = new Intent(getApplicationContext(), ViewPostActivity.class);
+                    viewPostIntent.putExtra("file_key",key);
+                    viewPostIntent.putExtra("postType",category);
+                    startActivity(viewPostIntent);
                 }
             }
 
@@ -947,7 +898,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public void openAnnouncement(final String key){
-        FirebaseDatabase.getInstance().getReference().child("Announcements").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_announcements)).child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Intent viewAnnouncementIntent = new Intent(getApplicationContext(),ViewAnnouncementActivity.class);
@@ -979,14 +930,14 @@ public class HomeActivity extends AppCompatActivity
             public boolean onQueryTextSubmit(final String txtSearch) {
 
                 mProgress.setCanceledOnTouchOutside(false);
-                mProgress.setMessage("Fetching results...");
+                mProgress.setMessage(getString(R.string.info_fetching_results));
                 mProgress.show();
-                final Query mParent = FirebaseDatabase.getInstance().getReference().child("AllPosts"); //upper child needed here
+                final Query mParent = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_all)); //upper child needed here
 
                 mParent.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        mSearch = FirebaseDatabase.getInstance().getReference().child("AllPosts");
+                        mSearch = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_all));
                         mSearch.orderByChild("Title").startAt(txtSearch.toUpperCase()).endAt(txtSearch.toUpperCase()+"\uf8ff").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -994,14 +945,14 @@ public class HomeActivity extends AppCompatActivity
                                     mProgress.dismiss();
 //                                    Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "No results found!", Snackbar.LENGTH_LONG);
 //                                    snackbar.show();
-                                    Toast.makeText(HomeActivity.this, "No results", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(HomeActivity.this, R.string.info_no_results, Toast.LENGTH_SHORT).show();
                                 } else {
                                     mProgress.dismiss();
-                                    Intent resultsActivity = new Intent(getApplicationContext(),DownloadsList.class);
+                                    Intent resultsActivity = new Intent(getApplicationContext(), SearchPostActivity.class);
                                     resultsActivity.putExtra("query",txtSearch.toUpperCase());
                                     resultsActivity.putExtra("activityFrom","HomeActivity"); //added this section
                                     startActivity(resultsActivity);
-                                    overridePendingTransition(R.anim.slide_in_from_bottom,R.anim.static_animation);
+                                    overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
                                 }
                             }
 
@@ -1037,12 +988,12 @@ public class HomeActivity extends AppCompatActivity
         home = findViewById(R.id.home);
         mDrawerLayout.setEnabled(false);
         home.setEnabled(false);
-        HandleSockets.ARG_SOCKET_REQUIRED_VALUE=0;
+        SocketsHandler.ARG_SOCKET_REQUIRED_VALUE=0;
         FirebaseDatabase.getInstance().getReference().child(node).child(socket).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    if(!HandleSockets.validateSockets(Integer.parseInt(String.valueOf(dataSnapshot.getValue())))) {
+                    if(!SocketsHandler.validateSockets(Integer.parseInt(String.valueOf(dataSnapshot.getValue())))) {
                         finish();
                     } else {
                         mDrawerLayout.setEnabled(true);
@@ -1081,7 +1032,7 @@ public class HomeActivity extends AppCompatActivity
 
             } else {
 
-                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Network access unavailable!", Snackbar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), getString(R.string.error_network_access_unavailable), Snackbar.LENGTH_LONG);
                 snackbar.show();
             }
         } catch (InterruptedException ignore) {
@@ -1095,7 +1046,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void sendRegistrationToServer(final String token){
-        Log.d(TAG, "sendRegistrationToServer: sending token to server: " + token);
+//        Log.d(TAG, "sendRegistrationToServer: sending token to server: " + token);
         DatabaseReference mToken = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("msg_token");
         mToken.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -1153,7 +1104,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists() || dataSnapshot.getChildrenCount()==0){
-                    txtAnnouncements.setText("No announcements yet");
+                    txtAnnouncements.setText(R.string.info_no_announcements_yet);
                 } else {
 
                 }
@@ -1168,7 +1119,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists() || dataSnapshot.getChildrenCount()==0){
-                    txtPromoted.setText("No promotions yet");
+                    txtPromoted.setText(R.string.info_no_promotions_yet);
                 } else {
 
                 }
@@ -1179,11 +1130,11 @@ public class HomeActivity extends AppCompatActivity
 
             }
         });
-        mFilesItems.addValueEventListener(new ValueEventListener() {
+        mPostsAll.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists() || dataSnapshot.getChildrenCount()==0){
-                    txtPosts.setText("No posts yet");
+                    txtPosts.setText(R.string.info_no_posts_yet);
                 } else {
 
                 }
@@ -1198,11 +1149,11 @@ public class HomeActivity extends AppCompatActivity
 
     private void printKeyHash(){
         try{
-            PackageInfo info = getPackageManager().getPackageInfo("pesh.mori.learnerapp", PackageManager.GET_SIGNATURES);
+            PackageInfo info = getPackageManager().getPackageInfo(getString(R.string.app_package_name), PackageManager.GET_SIGNATURES);
             for (Signature signature:info.signatures){
                 MessageDigest messageDigest = MessageDigest.getInstance("SHA");
                 messageDigest.update(signature.toByteArray());
-                Log.d("KEY_HASH", Base64.encodeToString(messageDigest.digest(),Base64.DEFAULT));
+                Log.d("KEY_HASH", Base64.encodeToString(messageDigest.digest(), Base64.DEFAULT));
             }
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -1210,6 +1161,7 @@ public class HomeActivity extends AppCompatActivity
             e.printStackTrace();
         }
     }
+
     private void support() {
         mLinks = FirebaseDatabase.getInstance().getReference().child("Links");
         mLinks.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -1218,7 +1170,6 @@ public class HomeActivity extends AppCompatActivity
                 mLink = String.valueOf(dataSnapshot.child("support").getValue());
                 Intent intent1 = new Intent( Intent.ACTION_VIEW, Uri.parse(mLink));
                 HomeActivity.this.startActivity( intent1 );
-
             }
 
             @Override
@@ -1227,6 +1178,7 @@ public class HomeActivity extends AppCompatActivity
             }
         });
     }
+
     private void tandc() {
         mLinks = FirebaseDatabase.getInstance().getReference().child("Links");
         mLinks.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -1235,7 +1187,6 @@ public class HomeActivity extends AppCompatActivity
                 mLink = String.valueOf(dataSnapshot.child("TandCs").getValue());
                 Intent intent1 = new Intent( Intent.ACTION_VIEW, Uri.parse(mLink));
                 HomeActivity.this.startActivity( intent1 );
-
             }
 
             @Override
@@ -1244,6 +1195,7 @@ public class HomeActivity extends AppCompatActivity
             }
         });
     }
+
     private void us() {
         mLinks = FirebaseDatabase.getInstance().getReference().child("Links");
         mLinks.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -1252,7 +1204,6 @@ public class HomeActivity extends AppCompatActivity
                 mLink = String.valueOf(dataSnapshot.child("Us").getValue());
                 Intent intent1 = new Intent( Intent.ACTION_VIEW, Uri.parse(mLink));
                 HomeActivity.this.startActivity( intent1 );
-
             }
 
             @Override
@@ -1345,8 +1296,8 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public void getMessageCount(){
-        MessagesCounter.initValues();
-        MessagesCounter.mMessages.orderByChild("seen").equalTo("false").addListenerForSingleValueEvent(new ValueEventListener() {
+        NewItemsCounter.initValues();
+        NewItemsCounter.mMessages.orderByChild("seen").equalTo("false").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getChildrenCount()>0){
@@ -1404,21 +1355,5 @@ public class HomeActivity extends AppCompatActivity
         startActivity(loginIntent);
         finish();
     }
-
-
-//    private void updateProfilePicture(final Uri uri){
-//        Log.d("accountPictureUri",uri.toString());
-//        StorageReference filepath = sStorage.child("image").child(uri.getLastPathSegment());
-//        filepath.putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-//                if (task.isSuccessful()){
-//                    FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("profile_picture")
-//                            .setValue(String.valueOf(uri));
-//                    mProgress.dismiss();
-//                }
-//            }
-//        });
-//    }
 
 }

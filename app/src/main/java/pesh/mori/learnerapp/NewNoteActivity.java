@@ -1,10 +1,7 @@
 package pesh.mori.learnerapp;
 
 import android.app.ProgressDialog;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +37,13 @@ public class NewNoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.Theme_UserDialogDark);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.Theme_UserDialogSignature);
+        } else {
+            setTheme(R.style.Theme_UserDialog);
+        }
         setContentView(R.layout.activity_new_note);
 
         HomeActivity homeActivity = new HomeActivity();
@@ -75,13 +82,13 @@ public class NewNoteActivity extends AppCompatActivity {
     }
 
     private void startPosting() {
-        mProgress.setMessage("Saving note...");
+        mProgress.setMessage(getString(R.string.info_saving_note));
         mProgress.setCanceledOnTouchOutside(false);
         final String title = fileTitle.getText().toString().trim();
         final String description = fileDescription.getText().toString().trim();
         final String time = sdf_full.format(Calendar.getInstance().getTime());
         if (title.isEmpty() || description.isEmpty()){
-            Snackbar.make(findViewById(android.R.id.content),"One or more required field(s) is empty",Snackbar.LENGTH_LONG).show();
+            Snackbar.make(findViewById(android.R.id.content),getString(R.string.info_one_or_more_required_fields_is_empty),Snackbar.LENGTH_LONG).show();
         } else {
             mProgress.show();
 //            final DatabaseReference newNote = mNotes.child(sdf.format(Calendar.getInstance().getTime())).push();
@@ -95,7 +102,7 @@ public class NewNoteActivity extends AppCompatActivity {
                     newNote.child("author").setValue(mAuth.getCurrentUser().getUid());
                     newNote.child("linkedTo").setValue(postKey);
                     mProgress.dismiss();
-                    Toast.makeText(NewNoteActivity.this, "Note saved", Toast.LENGTH_LONG).show();
+                    Toast.makeText(NewNoteActivity.this, R.string.info_note_saved, Toast.LENGTH_LONG).show();
                     finish();
                 }
 
@@ -110,7 +117,7 @@ public class NewNoteActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.static_animation,R.anim.slide_in_from_top);
+        overridePendingTransition(R.transition.static_animation,R.transition.slide_in_from_top);
     }
 
     @Override

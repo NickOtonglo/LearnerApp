@@ -1,10 +1,11 @@
 package pesh.mori.learnerapp;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
@@ -30,23 +31,23 @@ public class PostsViewHolder_SmallCard extends RecyclerView.ViewHolder {
     }
     public void setAudioImage(){
         ImageView imgUpload = (ImageView)mView.findViewById(R.id.img_downl);
-        imgUpload.setImageResource(R.mipmap.audio_preview);
+        imgUpload.setImageResource(R.drawable.preview_audio);
     }
     public void setVideoImage(){
         ImageView imgUpload = (ImageView)mView.findViewById(R.id.img_downl);
-        imgUpload.setImageResource(R.mipmap.video_preview);
+        imgUpload.setImageResource(R.drawable.preview_video);
     }
     public void setImageImage(){
         ImageView imgUpload = (ImageView)mView.findViewById(R.id.img_downl);
-        imgUpload.setImageResource(R.mipmap.image_preview);
+        imgUpload.setImageResource(R.drawable.preview_image);
     }
     public void setNull(){
         TextView txtEmpty = mView.findViewById(R.id.txt_upload_empty);
-        txtEmpty.setText("No Files to Display");
+        txtEmpty.setText(R.string.info_no_posts_to_display);
     }
     public void setDocImage(){
         ImageView imgUpload = (ImageView)mView.findViewById(R.id.img_downl);
-        imgUpload.setImageResource(R.mipmap.doc_preview);
+        imgUpload.setImageResource(R.drawable.preview_doc);
     }
     public void setThumbnail(Context ctx, String imageThumb){
         ImageView imgUpload = (ImageView)mView.findViewById(R.id.img_downl);

@@ -1,11 +1,13 @@
 package pesh.mori.learnerapp;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.os.Build;
+
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 
 import java.util.Objects;
@@ -70,9 +72,11 @@ public class BadgeDrawerArrowDrawable extends DrawerArrowDrawable {
     }
 
     public void setText(String text) {
-        if (!Objects.equals(this.text, text)) {
-            this.text = text;
-            invalidateSelf();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (!Objects.equals(this.text, text)) {
+                this.text = text;
+                invalidateSelf();
+            }
         }
     }
 

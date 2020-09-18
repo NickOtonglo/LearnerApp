@@ -4,21 +4,19 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.core.content.IntentCompat;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,11 +29,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private final AppCompatActivity activity = ChangePasswordActivity.this;
 
     private InputValidation inputValidation;
-    private Button edit;
-    private TextInputLayout textInputLayoutPassword;
-    private TextInputEditText textInputEditTextPassword;
-    private TextInputLayout textInputLayoutConfirm;
-    private TextInputEditText textInputEditTextConfirm;
+    private Button btnSubmit;
+    private TextInputEditText txtPasswordNew;
+    private TextInputEditText txtPasswordConfirm;
+    private TextInputLayout txtParentPasswordNew;
+    private TextInputLayout txtParentPasswordConfirm;
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -45,8 +43,20 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView( R.layout.activity_changepassword );
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorToolBarMainText));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         HomeActivity homeActivity = new HomeActivity();
         homeActivity.checkMaintenanceStatus(getApplicationContext());
@@ -55,73 +65,68 @@ public class ChangePasswordActivity extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
 
         mProgress = new ProgressDialog(this);
-
-        final Animation myanim = AnimationUtils.loadAnimation(this, R.anim.bounce3);
-        edit = (Button) findViewById(R.id.edit);
-        edit.startAnimation( myanim );
+        btnSubmit = (Button) findViewById(R.id.edit);
         initViews();
         checkAuthState();
         initObjects();
         emptyInputEditText();
     }
     private void initViews(){
-
-
-        textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutpasswordnew);
-        textInputLayoutConfirm = (TextInputLayout) findViewById(R.id.textInputLayoutconfirm);
-
-        textInputEditTextPassword = (TextInputEditText) findViewById(R.id.textInputEditTextpasswordnew);
-        textInputEditTextConfirm = (TextInputEditText) findViewById(R.id.textInputEditTextconfirm);
+        txtParentPasswordNew = (TextInputLayout) findViewById(R.id.txt_parent_password_new);
+        txtParentPasswordConfirm = (TextInputLayout) findViewById(R.id.txt_parent_password_confirm);
+        txtPasswordNew = (TextInputEditText) findViewById(R.id.txt_password_new);
+        txtPasswordConfirm = (TextInputEditText) findViewById(R.id.txt_password_confirm);
     }
+
     private void initObjects(){
         inputValidation = new InputValidation(activity);
     }
+
     private void emptyInputEditText(){
-        textInputEditTextPassword.setText(null);
-        textInputEditTextConfirm.setText(null);
+        txtPasswordNew.setText(null);
+        txtPasswordConfirm.setText(null);
     }
 
     public void checkAuthState(){
         if (mAuth.getCurrentUser()==null){
             mAuth.signOut();
-            Intent loginIntent = new Intent(ChangePasswordActivity.this,LoginActivity.class);
+            Intent loginIntent = new Intent(ChangePasswordActivity.this,SelectLoginActivity.class);
             loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(loginIntent);
+            finish();
         }
     }
 
     public void doThis(View view) {
-        final Animation myanim = AnimationUtils.loadAnimation(this, R.anim.bounce3);
-        edit = (Button) findViewById(R.id.edit);
-        edit.startAnimation( myanim );
-        final String password = textInputEditTextPassword.getText().toString();
-        final String confirm_password = textInputEditTextConfirm.getText().toString();
-        if (!inputValidation.isInputEditTextFilled( textInputEditTextPassword, textInputLayoutPassword, getString( R.string.error_message_password ) )) {
+        btnSubmit = (Button) findViewById(R.id.edit);
+        final String password = txtPasswordNew.getText().toString();
+        final String confirm_password = txtPasswordConfirm.getText().toString();
+        if (!inputValidation.isInputEditTextFilled(txtPasswordNew,txtParentPasswordNew,getString(R.string.hint_enter_new_password) )) {
             return;
         }
-        if (!inputValidation.isInputEditTextFilled( textInputEditTextConfirm, textInputLayoutConfirm, getString( R.string.error_message_passwordconfirm ) )) {
+        if (!inputValidation.isInputEditTextFilled(txtPasswordConfirm, txtParentPasswordConfirm, getString( R.string.hint_reenter_new_password) )) {
             return;
         }
         if (!confirm_password.equals(password)){
-            textInputEditTextConfirm.setError("Your two passwords do not match!");
+            txtPasswordConfirm.setError(getString(R.string.error_passwords_dont_match));
             return;
         }
-        AlertDialog.Builder builder1 = new AlertDialog.Builder( this );
-        builder1.setMessage( "Are you sure you want to change your password?" );
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
+        builder1.setMessage(R.string.confirm_are_you_sure_you_want_to_change_your_password);
         builder1.setCancelable( false );
 
         builder1.setPositiveButton(
-                "Yes",
+                getString(R.string.option_alert_yes),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        mProgress.setMessage("Changing password...");
+                        mProgress.setMessage(getString(R.string.info_please_wait));
                         mProgress.setCanceledOnTouchOutside(false);
                         mProgress.show();
                         mUser.updatePassword(password).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
-                                    Toast.makeText(getApplicationContext(), "Password changed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), getString(R.string.info_password_changed), Toast.LENGTH_SHORT).show();
                                     finish();
                                 } else {
                                     Toast.makeText(ChangePasswordActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
@@ -132,7 +137,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                         dialog.cancel();
                     }
                 } );
-        builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder1.setNegativeButton(getString(R.string.option_alert_no), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
             }

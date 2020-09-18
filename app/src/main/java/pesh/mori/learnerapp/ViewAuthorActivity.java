@@ -1,18 +1,17 @@
 package pesh.mori.learnerapp;
 
-import com.google.android.material.tabs.TabLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -28,11 +27,18 @@ public class ViewAuthorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (new SharedPreferencesHandler(this).getNightMode()){
+            setTheme(R.style.DarkTheme_NoActionBar);
+        } else if (new SharedPreferencesHandler(this).getSignatureMode()) {
+            setTheme(R.style.SignatureTheme_NoActionBar);
+        } else {
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         setContentView(R.layout.activity_view_author);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Author");
+        getSupportActionBar().setTitle(getString(R.string.title_author));
         getSupportActionBar().setSubtitle(getIntent().getExtras().getString("author_name"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -54,8 +60,8 @@ public class ViewAuthorActivity extends AppCompatActivity {
     public void setUpViewPager(ViewPager viewPager){
         mViewPageAdapter mAdapter = new mViewPageAdapter(getSupportFragmentManager());
 
-        mAdapter.AddFragmentPage(new ViewAuthorActivity_DetailsFragment(),"Details");
-        mAdapter.AddFragmentPage(new ViewAuthorActivity_PostsFragment(),"Posts");
+        mAdapter.AddFragmentPage(new ViewAuthorActivity_DetailsFragment(),getString(R.string.title_details));
+        mAdapter.AddFragmentPage(new ViewAuthorActivity_PostsFragment(),getString(R.string.title_posts));
 
         viewPager.setAdapter(mAdapter);
     }
@@ -88,7 +94,7 @@ public class ViewAuthorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class mViewPageAdapter extends FragmentPagerAdapter{
+    public class mViewPageAdapter extends FragmentPagerAdapter {
         private List<Fragment> mFragment = new ArrayList<>();
         private List<String> mViewPageTitle = new ArrayList<>();
 
