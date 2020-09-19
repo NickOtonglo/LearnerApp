@@ -1,28 +1,23 @@
 package pesh.mori.learnerapp;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.media.MediaPlayer;
+import android.content.res.Configuration;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.MediaController;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,28 +25,20 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
 
 public class ViewAnnouncementActivity extends AppCompatActivity {
 
-    private LinearLayout layoutAudio,layoutVideo,layoutImage,layoutDoc,layoutFile,layoutDiy;
+    private LinearLayout layoutDoc;
+    private FrameLayout filePlaceholder;
+    private View bottomHorizontalBar2;
     private TextView txtTime,txtTitle,txtMessage,txtMoreInfo;
-    private VideoView vidAudio,vidVideo;
-    private ImageView btnPlayAudio,btnAudioIcon,btnPlayVideo;
-    private ProgressBar mProgressAudio,mProgressVideo;
     private AppCompatButton btnOpenDoc;
 
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase,mDatabaseRef;
-    private StorageReference sStorage;
-    private MediaController mediaController;
-    private MediaPlayer mediaPlayer;
+    private DatabaseReference mDatabase;
     private Uri mUri = null;
 
-    private AlertDialog.Builder mAlert;
-    private ProgressDialog mProgress;
-
-    private String postKey="";
+    private String postKey="",filePath="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,9 +64,6 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         postKey = getIntent().getExtras().getString("file_key");
 
-        layoutAudio = findViewById(R.id.layout_1);
-        layoutVideo = findViewById(R.id.layout_2);
-        layoutImage = findViewById(R.id.layout_3);
         layoutDoc = findViewById(R.id.layout_4);
 
         txtTime = findViewById(R.id.txt_time);
@@ -87,39 +71,15 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
         txtMessage = findViewById(R.id.txt_body);
         txtMoreInfo = findViewById(R.id.txt_more);
 
-        vidAudio = findViewById(R.id.audio_view);
-        vidVideo = findViewById(R.id.video_view);
-
-        btnPlayAudio = findViewById(R.id.btn_play_audio);
-        btnAudioIcon = findViewById(R.id.btn_audio_icon);
-        btnPlayVideo = findViewById(R.id.btn_play_video);
-        mediaController = new MediaController(this);
-        mediaPlayer = new MediaPlayer();
-
-        mProgressAudio = findViewById(R.id.progress_bar_audio);
-        mProgressVideo = findViewById(R.id.progress_bar_video);
+        filePlaceholder = findViewById(R.id.exoplayer_placeholder);
+        bottomHorizontalBar2 = (View)findViewById(R.id.view_bottom_horizontal_bar_2);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_announcements)).child(postKey);
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_announcements_ref)).child(postKey);
 
         txtMoreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openLink();
-            }
-        });
-
-        btnPlayAudio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                playAudio();
-            }
-        });
-
-        btnPlayVideo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                playVideo();
             }
         });
 
@@ -179,6 +139,7 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
                 txtTitle.setText(String.valueOf(dataSnapshot.child("title").getValue()));
                 getSupportActionBar().setSubtitle(String.valueOf(dataSnapshot.child("title").getValue()));
                 txtMessage.setText(String.valueOf(dataSnapshot.child("body").getValue()));
+                filePath = (String) dataSnapshot.child("file_path").getValue();
                 if (!dataSnapshot.child("link").exists() || dataSnapshot.child("link").getValue().toString().equals("")){
                     txtMoreInfo.setText(R.string.info_none_at_the_moment);
                     txtMoreInfo.setTextColor(getResources().getColor(R.color.colorTextDisabled));
@@ -187,87 +148,18 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
                     content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                     txtMoreInfo.setText(content);
                 }
-                if (dataSnapshot.child("file_type").getValue().equals("audio")){
-                    layoutAudio.setVisibility(View.VISIBLE);
-                } else if (dataSnapshot.child("file_type").getValue().equals("video")){
-                    layoutVideo.setVisibility(View.VISIBLE);
+                if (dataSnapshot.child("file_type").getValue().equals("audio") || dataSnapshot.child("file_type").getValue().equals("video")){
+                    filePlaceholder.setVisibility(View.VISIBLE);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("file_path", filePath);
+                    PanelTopFragment topFragment = new PanelTopFragment();
+                    topFragment.setArguments(bundle);
+                    FragmentManager manager = getSupportFragmentManager();
+                    manager.beginTransaction().replace(R.id.exoplayer_placeholder,topFragment,topFragment.getTag())
+                            .commit();
                 } else if (dataSnapshot.child("file_type").getValue().equals("doc")){
                     layoutDoc.setVisibility(View.VISIBLE);
                 }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    public void playAudio(){
-        btnPlayAudio.setVisibility(View.GONE);
-        mProgressAudio.setVisibility(View.VISIBLE);
-        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_announcements)).child(postKey).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mUri = Uri.parse(String.valueOf(dataSnapshot.child("file_path").getValue()));
-                vidAudio.setVideoURI(mUri);
-                vidAudio.requestFocus();
-                vidAudio.start();
-
-                mProgressAudio.setVisibility(View.GONE);
-                btnAudioIcon.setVisibility(View.VISIBLE);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                    vidAudio.setOnInfoListener(new MediaPlayer.OnInfoListener() {
-                        @Override
-                        public boolean onInfo(MediaPlayer mediaPlayer, int i, int i1) {
-                            if (i == mediaPlayer.MEDIA_INFO_BUFFERING_START){
-                                mProgressAudio.setVisibility(View.VISIBLE);
-                            } else {
-                                mProgressAudio.setVisibility(View.GONE);
-                            }
-                            return false;
-                        }
-                    });
-                }
-                vidAudio.setMediaController(mediaController);
-                mediaController.setAnchorView(vidAudio);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    public void playVideo(){
-        btnPlayVideo.setVisibility(View.GONE);
-        mProgressVideo.setVisibility(View.VISIBLE);
-
-        FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_announcements)).child(postKey).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mUri = Uri.parse(String.valueOf(dataSnapshot.child("file_path").getValue()));
-                vidVideo.setVideoURI(mUri);
-                vidVideo.requestFocus();
-                vidVideo.start();
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                    vidVideo.setOnInfoListener(new MediaPlayer.OnInfoListener() {
-                        @Override
-                        public boolean onInfo(MediaPlayer mediaPlayer, int i, int i1) {
-                            if (i == mediaPlayer.MEDIA_INFO_BUFFERING_START){
-                                mProgressVideo.setVisibility(View.VISIBLE);
-                            } else {
-                                mProgressVideo.setVisibility(View.GONE);
-                            }
-                            return false;
-                        }
-                    });
-                }
-                vidVideo.setMediaController(mediaController);
-                mediaController.setAnchorView(layoutVideo);
             }
 
             @Override
@@ -295,5 +187,24 @@ public class ViewAnnouncementActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) filePlaceholder.getLayoutParams();
+            params.height = params.MATCH_PARENT;
+            params.width = params.MATCH_PARENT;
+            filePlaceholder.setLayoutParams(params);
+            bottomHorizontalBar2.setVisibility(View.VISIBLE);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) filePlaceholder.getLayoutParams();
+            params.height = (int)(200*getResources().getDisplayMetrics().density);
+            params.width = params.MATCH_PARENT;
+            filePlaceholder.setLayoutParams(params);
+            bottomHorizontalBar2.setVisibility(View.GONE);
+        }
     }
 }

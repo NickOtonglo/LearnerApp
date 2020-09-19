@@ -32,7 +32,7 @@
             tools:replace="android:value" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@mipmap/ic_launcher" /> <!-- <provider -->
+            android:resource="@mipmap/ic_push_notification" /> <!-- <provider -->
         <!-- android:name="com.facebook.FacebookContentProvider" -->
         <!-- android:authorities="com.facebook.app.FacebookContentProvider287509642607379" -->
         <!-- android:exported="true" /> -->
@@ -214,6 +214,7 @@
         <activity
             android:name=".ViewAnnouncementActivity"
             android:label="@string/title_announcement"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ViewPrivacyPolicy"

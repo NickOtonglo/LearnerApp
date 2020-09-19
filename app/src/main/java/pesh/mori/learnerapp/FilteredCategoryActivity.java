@@ -145,9 +145,9 @@ public class FilteredCategoryActivity extends AppCompatActivity {
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        Log.d("LOG_mPublishedItems", String.valueOf(mPublishedItems.child(key)));
+//                                        Log.d("LOG_mPublishedItems", String.valueOf(mPublishedItems.child(key)));
                                         if (dataSnapshot.exists())
-                                            if (dataSnapshot.child("Published").getValue().equals("true")) {
+                                            if (dataSnapshot.child("Published").getValue().equals("true") && !dataSnapshot.child("Hidden").exists()) {
                                                 if (dataSnapshot.child("Category").getValue().equals(postType)) {
                                                     mPosts.orderByChild("timestamp").addValueEventListener(new ValueEventListener() {
                                                         @Override

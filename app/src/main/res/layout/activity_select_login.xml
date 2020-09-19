@@ -12,13 +12,13 @@
 
     <ImageView
         android:id="@+id/img_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="500dp"
+        android:layout_width="120sp"
+        android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:backgroundTint="@color/tint"
         android:backgroundTintMode="src_atop"
         android:layout_gravity="center_horizontal"
-        android:src="@mipmap/ic_launcher_final"
+        android:src="@drawable/splash_icon"
         android:animateLayoutChanges="true"/>
 
     <ProgressBar

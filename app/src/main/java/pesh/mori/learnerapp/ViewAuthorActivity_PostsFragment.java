@@ -122,7 +122,7 @@ public class ViewAuthorActivity_PostsFragment extends Fragment {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists())
-                            if (dataSnapshot.child("Published").getValue().equals("true")) {
+                            if (dataSnapshot.child("Published").getValue().equals("true") && !dataSnapshot.child("Hidden").exists()) {
                                 if (dataSnapshot.child("Category").getValue().equals(getString(R.string.firebase_ref_posts_type_1))) {
                                     mCoursework.orderByChild("timestamp").addValueEventListener(new ValueEventListener() {
                                         @Override

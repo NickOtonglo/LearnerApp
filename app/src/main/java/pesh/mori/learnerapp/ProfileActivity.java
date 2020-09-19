@@ -232,7 +232,7 @@ public class ProfileActivity extends AppCompatActivity {
         overridePendingTransition(R.transition.slide_in_from_bottom,R.transition.static_animation);
     }
 
-    public void seeThis(View view) {
+    public void performFilter(View view) {
         Intent changePasswordIntent = new Intent(getApplicationContext(),AuthenticationActivity.class);
         changePasswordIntent.putExtra("incomingIntent","changePasswordIntent");
         startActivity(changePasswordIntent);

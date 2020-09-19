@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE resources [
     <!ENTITY appname "L\'earnerApp">
-    <!ENTITY appver "v1.07">
+    <!ENTITY appver "v1.0.7.2">
     <!ENTITY author "Nick Otonglo">
     <!ENTITY package "pesh.mori.learnerapp">
     <!ENTITY twitter "@Twitter">

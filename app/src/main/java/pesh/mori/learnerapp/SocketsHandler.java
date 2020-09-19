@@ -1,9 +1,5 @@
 package pesh.mori.learnerapp;
 
-/**
- * Created by Nick Otto on 20/05/2019.
- */
-
 public class SocketsHandler {
     static int ARG_SOCKET_REQUIRED_VALUE=0;
 

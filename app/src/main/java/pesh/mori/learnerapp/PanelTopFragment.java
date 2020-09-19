@@ -168,7 +168,7 @@ public class PanelTopFragment extends Fragment {
             getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams)playerView.getLayoutParams();
             params.width = params.MATCH_PARENT;
-            params.height = (int)(300*getActivity().getResources().getDisplayMetrics().density);
+            params.height = (int)(200*getActivity().getResources().getDisplayMetrics().density);
             playerView.setLayoutParams(params);
             fullscreen = false;
         } else {

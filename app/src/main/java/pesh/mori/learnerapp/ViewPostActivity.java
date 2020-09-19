@@ -61,8 +61,8 @@ public class ViewPostActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private FrameLayout filePlaceholder;
+    private View bottomHorizontalBar2;
     private SlidingUpPanelLayout slidingUpPanel;
-    private View bottomHorizontalBar1,bottomHorizontalBar2;
     private Button btnOpenPDF;
 
     private Uri mFileUri = null;
@@ -135,7 +135,6 @@ public class ViewPostActivity extends AppCompatActivity {
         imageView = findViewById(R.id.btn_view_select_image);
         layoutImage = findViewById(R.id.view_layout_1);
         filePlaceholder = findViewById(R.id.exoplayer_placeholder);
-        bottomHorizontalBar1 = (View)findViewById(R.id.view_bottom_horizontal_bar_1);
         bottomHorizontalBar2 = (View)findViewById(R.id.view_bottom_horizontal_bar_2);
         slidingUpPanel = findViewById(R.id.sliding_up_panel_parent);
         layoutDoc = findViewById(R.id.view_layout_5);
@@ -465,6 +464,7 @@ public class ViewPostActivity extends AppCompatActivity {
                     mProgress.dismiss();
                 }
                 else if (fileType.equals("doc")){
+                    Log.d("LOG_fileType",fileType);
                     layoutDoc.setVisibility(View.VISIBLE);
                     mProgress.dismiss();
                 }
@@ -621,6 +621,9 @@ public class ViewPostActivity extends AppCompatActivity {
                     mAllPostsSplit.child("ItemId").setValue(key);
                     mAllPostsSplit.child("Title").setValue(dataSnapshot.child("title").getValue());
 
+                    FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_published)).child(mAuth.getCurrentUser().getUid())
+                            .child(key).child("Hidden").removeValue();
+
                     checkHidden();
                     Toast.makeText(ViewPostActivity.this, R.string.info_post_unhidden, Toast.LENGTH_SHORT).show();
                     mProgress.dismiss();
@@ -642,6 +645,8 @@ public class ViewPostActivity extends AppCompatActivity {
                     FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_all_split)).child(postType).child(key).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
+                            FirebaseDatabase.getInstance().getReference().child(getString(R.string.firebase_ref_posts_published)).child(mAuth.getCurrentUser().getUid())
+                                    .child(key).child("Hidden").setValue("true");
                             checkHidden();
                             Toast.makeText(ViewPostActivity.this, R.string.info_post_hidden, Toast.LENGTH_LONG).show();
                             mProgress.dismiss();
@@ -1129,6 +1134,7 @@ public class ViewPostActivity extends AppCompatActivity {
 //                                manager.beginTransaction().replace(R.id.exoplayer_placeholder,topFragment,topFragment.getTag())
 //                                        .commit();
 //                                mProgress.dismiss();
+                                btnOpenPDF.setVisibility(View.VISIBLE);
 
                             }
                         }
@@ -1161,21 +1167,20 @@ public class ViewPostActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
 
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
-            bottomHorizontalBar1.setVisibility(View.VISIBLE);
-            bottomHorizontalBar2.setVisibility(View.VISIBLE);
-//            SlidingUpPanelLayout.LayoutParams params = (SlidingUpPanelLayout.LayoutParams) slidingUpPanel.getLayoutParams();
-//            params.height = 00;
-//            params.width = params.MATCH_PARENT;
-//            slidingUpPanel.setLayoutParams(params);
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) filePlaceholder.getLayoutParams();
+            params.height = params.MATCH_PARENT;
+            params.width = params.MATCH_PARENT;
+            filePlaceholder.setLayoutParams(params);
             slidingUpPanel.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+            bottomHorizontalBar2.setVisibility(View.VISIBLE);
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            bottomHorizontalBar1.setVisibility(View.GONE);
-            bottomHorizontalBar2.setVisibility(View.GONE);
-//            SlidingUpPanelLayout.LayoutParams params = (SlidingUpPanelLayout.LayoutParams) slidingUpPanel.getLayoutParams();
-//            params.height = (int)(450*getResources().getDisplayMetrics().density);
-//            params.width = params.MATCH_PARENT;
-//            slidingUpPanel.setLayoutParams(params);
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) filePlaceholder.getLayoutParams();
+            params.height = (int)(200*getResources().getDisplayMetrics().density);
+            params.width = params.MATCH_PARENT;
+            filePlaceholder.setLayoutParams(params);
             slidingUpPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            bottomHorizontalBar2.setVisibility(View.GONE);
         }
     }
+
 }

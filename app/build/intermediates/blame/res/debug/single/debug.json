@@ -56,12 +56,12 @@
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_push_notification.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_outline_camera_24.xml.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable\\ic_outline_camera_24.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_preview_video.png.flat",
@@ -100,12 +100,12 @@
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout\\spinner_item2.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_new_home.xml.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout\\content_new_home.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_register.xml.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_new_home.xml.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout\\content_new_home.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_input_outline_green.xml.flat",
@@ -124,24 +124,24 @@
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable\\ic_baseline_insert_drive_file_24_white.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_user_list.xml.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout\\card_user_list.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_home_horizontal_view.xml.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout\\card_home_horizontal_view.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_baseline_pause_24.xml.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable\\baseline_pause_24.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_view_sub_post.xml.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout\\activity_view_sub_post.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_baseline_pause_24.xml.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable\\baseline_pause_24.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_delete_24.xml.flat",
@@ -192,12 +192,12 @@
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout\\toolbar.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\transition_popup_out.xml.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\transition\\popup_out.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_view_sub_post_author.xml.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\menu\\menu_view_sub_post_author.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\transition_popup_out.xml.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\transition\\popup_out.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_notes.xml.flat",
@@ -304,12 +304,12 @@
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout\\activity_new_post.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_person_24.xml.flat",
-        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable\\ic_baseline_person_24.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_view_note.xml.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\layout\\activity_view_note.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_person_24.xml.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable\\ic_baseline_person_24.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_input_outline_grey.xml.flat",
@@ -574,6 +574,10 @@
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_preview_audio.png.flat",
         "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable\\preview_audio.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_splash_icon.png.flat",
+        "source": "F:\\AndroidStudioProjects\\LearnerApp\\app\\src\\main\\res\\drawable\\splash_icon.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\LearnerApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_warning_24.xml.flat",

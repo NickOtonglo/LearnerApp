@@ -1235,6 +1235,7 @@ color colorNewIndicatorLight
 color colorOutline
 color colorPrimary
 color colorPrimaryDark
+color colorPrimaryDarkClassic
 color colorSignatureBackground
 color colorSignatureButton
 color colorSignatureOutline
@@ -2468,6 +2469,7 @@ drawable preview_image
 drawable preview_image_hi_res
 drawable preview_video
 drawable preview_video_hi_res
+drawable splash_icon
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3365,7 +3367,6 @@ id video_decoder_gl_surface_view
 id video_view
 id view_author
 id view_bid_layout_1
-id view_bottom_horizontal_bar_1
 id view_bottom_horizontal_bar_2
 id view_file_layout_1
 id view_file_layout_2

@@ -46,6 +46,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class SelectLoginActivity extends AppCompatActivity {
     private FrameLayout frameLayout;
@@ -250,7 +251,7 @@ public class SelectLoginActivity extends AppCompatActivity {
             mProgressBar.setVisibility(View.GONE);
             mProgressBar1.setVisibility(View.GONE);
             imgLogo.requestLayout();
-            imgLogo.getLayoutParams().height = 100;
+            imgLogo.getLayoutParams().height = 200;
             layoutLogin.setVisibility(View.VISIBLE);
         }
     }
@@ -272,7 +273,7 @@ public class SelectLoginActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child(node).child(socket).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(!SocketsHandler.validateSockets(Integer.parseInt(String.valueOf(dataSnapshot.getValue())))) {
+                if(!dataSnapshot.exists()||!SocketsHandler.validateSockets(Integer.parseInt(String.valueOf(dataSnapshot.getValue())))) {
                     finish();
                 } else {
                     frameLayout.setEnabled(true);
@@ -353,6 +354,18 @@ public class SelectLoginActivity extends AppCompatActivity {
                                     .show();
                         }
                     } else {
+                        /*for production only*/
+//                        if (!Objects.requireNonNull(mAuth.getCurrentUser()).isEmailVerified()){
+//                            Intent homeIntent = new Intent(getApplicationContext(), EmailVerificationActivity.class);
+//                            homeIntent.putExtra("outgoingIntent","SelectLoginActivity");
+//                            homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                            startActivity(homeIntent);
+//                        } else {
+//                            Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+//                            homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                            startActivity(homeIntent);
+//                            finish();
+//                        }
                         Intent homeIntent = new Intent(getApplicationContext(),HomeActivity.class);
                         homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(homeIntent);

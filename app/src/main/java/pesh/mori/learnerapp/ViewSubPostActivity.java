@@ -45,7 +45,7 @@ public class ViewSubPostActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private FrameLayout filePlaceholder;
-    private View bottomHorizontalBar1,bottomHorizontalBar2;
+    private View bottomHorizontalBar2;
     private Button btnOpenPDF;
 
     private String fileType,filePath;
@@ -88,7 +88,6 @@ public class ViewSubPostActivity extends AppCompatActivity {
         imageView = findViewById(R.id.btn_view_select_image);
         layoutImage = findViewById(R.id.view_layout_1);
         filePlaceholder = findViewById(R.id.exoplayer_placeholder);
-        bottomHorizontalBar1 = (View)findViewById(R.id.view_bottom_horizontal_bar_1);
         bottomHorizontalBar2 = (View)findViewById(R.id.view_bottom_horizontal_bar_2);
         layoutDoc = findViewById(R.id.view_layout_5);
         btnOpenPDF = findViewById(R.id.btn_open_pdf);
@@ -271,19 +270,17 @@ public class ViewSubPostActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
 
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
-            bottomHorizontalBar1.setVisibility(View.VISIBLE);
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) filePlaceholder.getLayoutParams();
+            params.height = params.MATCH_PARENT;
+            params.width = params.MATCH_PARENT;
+            filePlaceholder.setLayoutParams(params);
             bottomHorizontalBar2.setVisibility(View.VISIBLE);
-//            SlidingUpPanelLayout.LayoutParams params = (SlidingUpPanelLayout.LayoutParams) slidingUpPanel.getLayoutParams();
-//            params.height = 00;
-//            params.width = params.MATCH_PARENT;
-//            slidingUpPanel.setLayoutParams(params);
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            bottomHorizontalBar1.setVisibility(View.GONE);
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) filePlaceholder.getLayoutParams();
+            params.height = (int)(200*getResources().getDisplayMetrics().density);
+            params.width = params.MATCH_PARENT;
+            filePlaceholder.setLayoutParams(params);
             bottomHorizontalBar2.setVisibility(View.GONE);
-//            SlidingUpPanelLayout.LayoutParams params = (SlidingUpPanelLayout.LayoutParams) slidingUpPanel.getLayoutParams();
-//            params.height = (int)(450*getResources().getDisplayMetrics().density);
-//            params.width = params.MATCH_PARENT;
-//            slidingUpPanel.setLayoutParams(params);
         }
     }
 }

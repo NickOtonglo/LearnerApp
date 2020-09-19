@@ -40,7 +40,7 @@
             android:value="@string/facebook_app_id" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@mipmap/ic_launcher" /> <!-- <provider -->
+            android:resource="@mipmap/ic_push_notification" /> <!-- <provider -->
         <!-- android:name="com.facebook.FacebookContentProvider" -->
         <!-- android:authorities="com.facebook.app.FacebookContentProvider287509642607379" -->
         <!-- android:exported="true" /> -->
@@ -240,6 +240,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="pesh.mori.learnerapp.ViewAnnouncementActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_announcement"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

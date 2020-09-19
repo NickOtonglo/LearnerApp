@@ -277,6 +277,9 @@ public class RegistrationActivity_Final extends AppCompatActivity {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
                                                     dialogInterface.dismiss();
+                                                    /*for production only*/
+//                                                    mAuth.signOut();
+//                                                    Intent loginIntent = new Intent(RegistrationActivity_Final.this,EmailVerificationActivity.class);
                                                     mAuth.signOut();
                                                     Intent loginIntent = new Intent(RegistrationActivity_Final.this,SelectLoginActivity.class);
                                                     loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

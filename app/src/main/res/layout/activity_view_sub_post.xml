@@ -12,39 +12,26 @@
         android:id="@+id/toolbar"
         layout="@layout/app_bar_layout_main"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <View
-            android:id="@+id/view_bottom_horizontal_bar_1"
+            android:id="@+id/view_bottom_horizontal_bar_2"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="match_parent"
             android:background="@android:color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_weight="1"
+            app:layout_constraintTop_toBottomOf="@+id/exoplayer_placeholder"
             android:visibility="gone"/>
 
         <FrameLayout
             android:id="@+id/exoplayer_placeholder"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:layout_constraintTop_toBottomOf="@+id/view_bottom_horizontal_bar_1"
-            tools:layout_editor_absoluteX="16dp"
-            android:visibility="gone">
-
-        </FrameLayout>
-
-        <View
-            android:id="@+id/view_bottom_horizontal_bar_2"
-            android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:background="@android:color/black"
-            app:layout_constraintTop_toBottomOf="@+id/exoplayer_placeholder"
-            android:layout_weight="1"
             android:visibility="gone"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_scrollview"

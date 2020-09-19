@@ -3,7 +3,6 @@ package pesh.mori.learnerapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.fragment.app.Fragment;
 
@@ -61,6 +61,13 @@ public class TokensActivity_BuyTokensFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         checkAuth();
 
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         mProgress = new ProgressDialog(getActivity());
         txtHelp = view.findViewById(R.id.txt_help);
         txtAmount = view.findViewById(R.id.textInputEditTextbuy);
@@ -96,7 +103,7 @@ public class TokensActivity_BuyTokensFragment extends Fragment {
                                 if (txtAmount.getText().toString().equals("")){
                                     Toast.makeText(getActivity(), R.string.hint_enter_amount, Toast.LENGTH_SHORT).show();
                                 } else
-                                amount = Double.parseDouble(txtAmount.getText().toString());
+                                    amount = Double.parseDouble(txtAmount.getText().toString());
                                 if (amount<=0){
                                     Toast.makeText(getActivity(), R.string.info_invalid_amount, Toast.LENGTH_SHORT).show();
                                 } else {
@@ -105,53 +112,53 @@ public class TokensActivity_BuyTokensFragment extends Fragment {
                                     int transAmount = amount.intValue();
                                     FirebaseDatabase.getInstance().getReference().child("Links").child("Mpesa_STK")
                                             .addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                            if (dataSnapshot.exists()){
-                                                if (!dataSnapshot.getValue().equals("")){
-                                                    final String urlParams = dataSnapshot.getValue().toString()
-                                                            +"?amount="+transAmount+"&account=irators-0"+phone.substring(4)+"&phone="+phone.substring(1)+"";
-                                                    StringRequest stringRequest = new StringRequest(Request.Method.POST, urlParams, new Response.Listener<String>() {
-                                                        @Override
-                                                        public void onResponse(String response) {
-                                                            Log.d("Volley","onResponse: "+response);
-                                                            Log.d("HTTP_Request","URL: "+urlParams);
-                                                        }
-                                                    }, new Response.ErrorListener() {
-                                                        @Override
-                                                        public void onErrorResponse(VolleyError error) {
-                                                            Toast.makeText(getActivity(), R.string.error_network_error, Toast.LENGTH_SHORT).show();
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                    if (dataSnapshot.exists()){
+                                                        if (!dataSnapshot.getValue().equals("")){
+                                                            final String urlParams = dataSnapshot.getValue().toString()
+                                                                    +"?amount="+transAmount+"&account=learner-0"+phone.substring(4)+"&phone="+phone.substring(1)+"";
+                                                            StringRequest stringRequest = new StringRequest(Request.Method.POST, urlParams, new Response.Listener<String>() {
+                                                                @Override
+                                                                public void onResponse(String response) {
+//                                                            Log.d("Volley","onResponse: "+response);
+//                                                            Log.d("HTTP_Request","URL: "+urlParams);
+                                                                }
+                                                            }, new Response.ErrorListener() {
+                                                                @Override
+                                                                public void onErrorResponse(VolleyError error) {
+                                                                    Toast.makeText(getActivity(), R.string.error_network_error, Toast.LENGTH_SHORT).show();
 //                                            Log.d("Volley","error: "+error);
-                                                        }
-                                                    });
+                                                                }
+                                                            });
 
-                                                    Volley.newRequestQueue(getActivity()).add(stringRequest);
-                                                } else {
-                                                    final String urlParams = URL+"?amount="+transAmount+"&account=irators-0"+phone.substring(4)+"&phone="+phone.substring(1);
-                                                    StringRequest stringRequest = new StringRequest(Request.Method.POST, urlParams, new Response.Listener<String>() {
-                                                        @Override
-                                                        public void onResponse(String response) {
-                                                            Log.d("Volley","onResponse: "+response);
-                                                            Log.d("HTTP_Request","URL: "+urlParams);
-                                                        }
-                                                    }, new Response.ErrorListener() {
-                                                        @Override
-                                                        public void onErrorResponse(VolleyError error) {
-                                                            Toast.makeText(getActivity(), R.string.error_network_error, Toast.LENGTH_SHORT).show();
+                                                            Volley.newRequestQueue(getActivity()).add(stringRequest);
+                                                        } else {
+                                                            final String urlParams = URL+"?amount="+transAmount+"&account=irators-0"+phone.substring(4)+"&phone="+phone.substring(1);
+                                                            StringRequest stringRequest = new StringRequest(Request.Method.POST, urlParams, new Response.Listener<String>() {
+                                                                @Override
+                                                                public void onResponse(String response) {
+//                                                            Log.d("Volley","onResponse: "+response);
+//                                                            Log.d("HTTP_Request","URL: "+urlParams);
+                                                                }
+                                                            }, new Response.ErrorListener() {
+                                                                @Override
+                                                                public void onErrorResponse(VolleyError error) {
+                                                                    Toast.makeText(getActivity(), R.string.error_network_error, Toast.LENGTH_SHORT).show();
 //                                            Log.d("Volley","error: "+error);
-                                                        }
-                                                    });
+                                                                }
+                                                            });
 
-                                                    Volley.newRequestQueue(getActivity()).add(stringRequest);
+                                                            Volley.newRequestQueue(getActivity()).add(stringRequest);
+                                                        }
+                                                    }
                                                 }
-                                            }
-                                        }
 
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                        }
-                                    });
+                                                }
+                                            });
                                 }
                             } else {
                                 Toast.makeText(getActivity(), R.string.info_select_payment_method_first, Toast.LENGTH_SHORT).show();
@@ -166,8 +173,6 @@ public class TokensActivity_BuyTokensFragment extends Fragment {
                 });
             }
         });
-
-        return view;
     }
 
     public void createFinancialAccount(){

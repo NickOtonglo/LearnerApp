@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-250:12
-INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-250:12
-INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-250:12
-INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-250:12
+ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-251:12
+INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-251:12
+INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-251:12
+INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-251:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\a52a5d9a0cfeb7e840ae9cda871e1d97\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.firebaseui:firebase-ui:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\878c22718ae8701dd0b35ee2b76f79f0\jetified-firebase-ui-2.3.0\AndroidManifest.xml:2:1-15:12
 MERGED from [com.firebaseui:firebase-ui-database:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\079ceb615c6861c39796607474460f7a\jetified-firebase-ui-database-2.3.0\AndroidManifest.xml:2:1-19:12
@@ -52,7 +52,7 @@ MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\Nick O
 MERGED from [androidx.transition:transition:1.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5a13d9fc8b3429fbf6f7fe047c363cce\transition-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\ab81da4dd371ec72f76ff595a43fbc33\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:17:1-42:12
-MERGED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:15:1-38:12
+MERGED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:15:1-39:12
 MERGED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\27d8e9721423cacc326eee879ebba2c6\jetified-play-services-auth-api-phone-17.4.0\AndroidManifest.xml:2:1-7:12
@@ -117,22 +117,22 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\Nick Otto\.gradle\caches\trans
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d8b5f4b9e88eb1c7ce6b63caa98657b4\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [io.michaelrocks:libphonenumber-android:8.4.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\761a0c31d28b440a2d1a1ced8859dd3a\jetified-libphonenumber-android-8.4.1\AndroidManifest.xml:2:1-12:12
 MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\ed33b902d1c849ddb1c459e6c820f681\jetified-installreferrer-1.0\AndroidManifest.xml:2:1-13:12
-INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-250:12
-INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-250:12
-INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-250:12
+INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-251:12
+INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-251:12
+INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-251:12
 	package
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:4:5-35
 		INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml
 		INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-250:12
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-251:12
 		INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-250:12
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:1-251:12
 		INJECTED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:2:11-69
@@ -236,8 +236,8 @@ MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Nick Otto\.gradle\ca
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\ab81da4dd371ec72f76ff595a43fbc33\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:21:5-44
-MERGED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:20:5-44
@@ -404,8 +404,8 @@ MERGED from [com.google.android.gms:play-services-measurement-api:17.5.0] C:\Use
 MERGED from [com.google.android.gms:play-services-measurement-api:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eed99e10d77660b8fc433784447953df\jetified-play-services-measurement-api-17.5.0\AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-measurement-impl:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5f235da30d8e300b7bad94e8810dc4d6\jetified-play-services-measurement-impl-17.5.0\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-impl:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5f235da30d8e300b7bad94e8810dc4d6\jetified-play-services-measurement-impl-17.5.0\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:26:5-67
-MERGED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:26:5-67
+MERGED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:26:5-67
+MERGED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:26:5-67
 MERGED from [com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:27:5-67
 MERGED from [com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:27:5-67
 MERGED from [com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\be41cb5c4de42b4d225cde01cb835ca2\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:10:5-67
@@ -430,8 +430,8 @@ MERGED from [com.google.android.gms:play-services-measurement-api:17.5.0] C:\Use
 MERGED from [com.google.android.gms:play-services-measurement-api:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eed99e10d77660b8fc433784447953df\jetified-play-services-measurement-api-17.5.0\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-impl:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5f235da30d8e300b7bad94e8810dc4d6\jetified-play-services-measurement-impl-17.5.0\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement-impl:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5f235da30d8e300b7bad94e8810dc4d6\jetified-play-services-measurement-impl-17.5.0\AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:25:5-79
-MERGED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:25:5-79
+MERGED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:25:5-79
+MERGED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:25:5-79
 MERGED from [com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:26:5-79
 MERGED from [com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:26:5-79
 MERGED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\21446d3168dc3f25c79d4d65a1e3e48e\jetified-firebase-installations-16.3.3\AndroidManifest.xml:10:5-79
@@ -465,7 +465,7 @@ ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:
 	android:name
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:19:22-68
 application
-ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:21:5-248:19
+ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:21:5-249:19
 MERGED from [com.firebaseui:firebase-ui:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\878c22718ae8701dd0b35ee2b76f79f0\jetified-firebase-ui-2.3.0\AndroidManifest.xml:13:5-47
 MERGED from [com.firebaseui:firebase-ui:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\878c22718ae8701dd0b35ee2b76f79f0\jetified-firebase-ui-2.3.0\AndroidManifest.xml:13:5-47
 MERGED from [com.firebaseui:firebase-ui-database:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\079ceb615c6861c39796607474460f7a\jetified-firebase-ui-database-2.3.0\AndroidManifest.xml:13:5-17:19
@@ -520,8 +520,8 @@ MERGED from [com.facebook.android:facebook-core:5.15.3] C:\Users\Nick Otto\.grad
 MERGED from [com.facebook.android:facebook-core:5.15.3] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\68ccc68ff227ec601a04735898b47224\jetified-facebook-core-5.15.3\AndroidManifest.xml:28:5-51:19
 MERGED from [com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:23:5-40:19
 MERGED from [com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:23:5-40:19
-MERGED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:28:5-36:19
-MERGED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:28:5-36:19
 MERGED from [com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:29:5-37:19
 MERGED from [com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:29:5-37:19
 MERGED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\9bb746cca31942df6c09501930bdb876\jetified-play-services-auth-18.1.0\AndroidManifest.xml:22:5-38:19
@@ -596,9 +596,9 @@ MERGED from [com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\c
 	android:name
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:30:13-58
 meta-data#com.google.firebase.messaging.default_notification_icon
-ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:33:9-35:54
+ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:33:9-35:63
 	android:resource
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:35:13-51
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:35:13-60
 	android:name
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:34:13-83
 activity#com.facebook.FacebookActivity
@@ -964,73 +964,75 @@ ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:
 	android:name
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:210:13-42
 activity#pesh.mori.learnerapp.ViewAnnouncementActivity
-ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:214:9-217:59
+ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:214:9-218:59
 	android:label
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:216:13-55
+	android:configChanges
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:217:13-74
 	android:theme
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:217:13-56
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:218:13-56
 	android:name
 		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:215:13-53
 activity#pesh.mori.learnerapp.ViewPrivacyPolicy
-ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:218:9-221:59
+ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:219:9-222:59
 	android:label
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:220:13-57
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:221:13-57
 	android:theme
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:221:13-56
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:222:13-56
 	android:name
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:219:13-46
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:220:13-46
 activity#pesh.mori.learnerapp.TransactionHistoryActivity
-ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:222:9-225:59
+ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:223:9-226:59
 	android:label
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:224:13-63
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:225:13-63
 	android:theme
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:225:13-56
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:226:13-56
 	android:name
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:223:13-55
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:224:13-55
 activity#pesh.mori.learnerapp.ViewTransactionActivity
-ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:226:9-228:62
+ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:227:9-229:62
 	android:label
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:228:13-59
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:229:13-59
 	android:name
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:227:13-52
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:228:13-52
 activity#pesh.mori.learnerapp.EditPostActivity
-ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:229:9-234:55
+ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:230:9-235:55
 	android:label
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:232:13-52
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:233:13-52
 	android:excludeFromRecents
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:231:13-46
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:232:13-46
 	android:launchMode
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:233:13-43
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:234:13-43
 	android:theme
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:234:13-52
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:235:13-52
 	android:name
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:230:13-45
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:231:13-45
 activity#pesh.mori.learnerapp.AddSubPostActivity
-ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:235:9-237:58
+ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:236:9-238:58
 	android:label
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:237:13-55
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:238:13-55
 	android:name
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:236:13-47
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:237:13-47
 activity#pesh.mori.learnerapp.ViewSubPostActivity
-ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:238:9-241:59
+ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:239:9-242:59
 	android:label
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:241:13-56
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:242:13-56
 	android:configChanges
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:240:13-74
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:241:13-74
 	android:name
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:239:13-48
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:240:13-48
 activity#pesh.mori.learnerapp.EditSubPostActivity
-ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:242:9-247:54
+ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:243:9-248:54
 	android:label
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:245:13-52
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:246:13-52
 	android:excludeFromRecents
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:244:13-46
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:245:13-46
 	android:launchMode
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:246:13-43
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:247:13-43
 	android:theme
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:247:13-52
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:248:13-52
 	android:name
-		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:243:13-48
+		ADDED from F:\AndroidStudioProjects\LearnerApp\app\src\main\AndroidManifest.xml:244:13-48
 meta-data#com.google.android.gms.version
 ADDED from [com.firebaseui:firebase-ui-database:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\079ceb615c6861c39796607474460f7a\jetified-firebase-ui-database-2.3.0\AndroidManifest.xml:14:9-16:69
 MERGED from [com.firebaseui:firebase-ui-auth:2.3.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e1ae95aa736b0fae36849a93eba5e4ad\jetified-firebase-ui-auth-2.3.0\AndroidManifest.xml:16:9-18:69
@@ -1151,8 +1153,8 @@ MERGED from [com.google.android.gms:play-services-measurement-api:17.5.0] C:\Use
 MERGED from [com.google.android.gms:play-services-measurement-api:17.5.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\eed99e10d77660b8fc433784447953df\jetified-play-services-measurement-api-17.5.0\AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:33:9-39:19
 MERGED from [com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:33:9-39:19
-MERGED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:29:9-35:19
-MERGED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:30:9-36:19
 MERGED from [com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:30:9-36:19
 MERGED from [com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\be41cb5c4de42b4d225cde01cb835ca2\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:13:9-19:19
@@ -1296,11 +1298,11 @@ ADDED from [com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle
 	android:name
 		ADDED from [com.google.firebase:firebase-auth:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\d53bfb1613a39d502234f4aa12398d90\jetified-firebase-auth-19.4.0\AndroidManifest.xml:37:17-109
 meta-data#com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar
-ADDED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:32:13-34:85
+ADDED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:32:13-34:85
 	android:value
-		ADDED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:34:17-82
+		ADDED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:34:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-database:19.4.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\748833f5dd49ac7b3b44915f53cb414a\jetified-firebase-database-19.4.0\AndroidManifest.xml:33:17-109
+		ADDED from [com.google.firebase:firebase-database:19.3.1] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\5d87be766fc9a28306fd5d4e7ee30646\jetified-firebase-database-19.3.1\AndroidManifest.xml:33:17-109
 meta-data#com.google.firebase.components:com.google.firebase.storage.StorageRegistrar
 ADDED from [com.google.firebase:firebase-storage:19.2.0] C:\Users\Nick Otto\.gradle\caches\transforms-2\files-2.1\e3d4bf85d793dae348007687454dac4e\jetified-firebase-storage-19.2.0\AndroidManifest.xml:33:13-35:85
 	android:value

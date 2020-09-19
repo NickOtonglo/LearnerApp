@@ -27,7 +27,7 @@
     <color name="colorSignaturePrimaryDark">#831B1B</color>
     <color name="colorSignatureTextPrimary">@android:color/primary_text_dark</color>
     <color name="colorSignatureTextSecondary">@android:color/secondary_text_dark</color>
-    <color name="colorSignatureBackground">#B12E2E</color>
+    <color name="colorSignatureBackground">@color/colorPrimaryDarkClassic</color>
 <!--    <color name="colorSignatureBackground">#343D2D</color>-->
     <color name="colorSignatureButton">#FFCDD2</color>
     <color name="colorSignatureOutline">#DAFFD7</color>
@@ -57,6 +57,7 @@
     <color name="colorToolbarTabIndicator">@android:color/white</color>
     <color name="colorTextDisabled">#aaaaaa</color>
     <color name="colorSplash">@color/colorPrimary</color>
+    <color name="colorPrimaryDarkClassic">#FF811D33</color>
 <!--    <color name="colorSplash">#1E1E1E</color>-->
 
     <color name="colorInfo">#2196F3</color>
